@@ -1,0 +1,10 @@
+{
+   "settings": {
+      "import/resolver": {
+        "babel-module": {}
+      }
+    },
+   "rules": {
+      "import/prefer-default-export": "off"
+   }
+}
