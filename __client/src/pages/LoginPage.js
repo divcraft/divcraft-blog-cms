@@ -1,13 +1,8 @@
 import React from 'react';
-import { LogInForm } from 'layouts';
+import { LogInContainer } from 'layouts';
 
 const LoginPage = () => {
-  return (
-    <>
-      <h1>BLOG PANEL</h1>
-      <LogInForm />
-    </>
-  );
+  return <LogInContainer />;
 };
 
 export default LoginPage;
