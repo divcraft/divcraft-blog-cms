@@ -6,6 +6,7 @@ export const GlobalStyle = createGlobalStyle`
    body {
       font-family: 'Poppins', sans-serif;
       line-height: 1.5;
+      box-sizing: border-box;
    }
 `;
 
