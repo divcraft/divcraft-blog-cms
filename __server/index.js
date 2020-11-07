@@ -5,7 +5,10 @@ const bodyParser = require('body-parser');
 const dotenv = require('dotenv');
 const mongoose = require('./mongoose');
 
-const testRouter = require('./routes/api');
+const articlesRouter = require('./routes/articles.router');
+const authorsRouter = require('./routes/authors.router');
+const categoriesRouter = require('./routes/categories.router');
+const commentsRouter = require('./routes/comments.router');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -23,6 +26,9 @@ if (process.env.NODE_ENV === 'production') {
   });
 }
 
-app.use('/api', testRouter);
+app.use('/api/articles', articlesRouter);
+app.use('/api/authors', authorsRouter);
+app.use('/api/categories', categoriesRouter);
+app.use('/api/comments', commentsRouter);
 
 app.listen(PORT);
