@@ -20,6 +20,8 @@
     "express": "^4.17.1",
     "formik": "^2.2.2",
     "mongoose": "^5.10.9",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0",
     "prop-types": "^15.7.2",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",

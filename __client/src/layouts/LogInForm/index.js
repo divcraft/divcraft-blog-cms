@@ -1,4 +1,5 @@
 import React from 'react';
+import Axios from 'axios';
 import { useFormik } from 'formik';
 import { Form, Input, Button } from './style';
 
@@ -9,7 +10,14 @@ const LogInForm = () => {
       password: '',
     },
     onSubmit: ({ username, password }) => {
-      console.log({ username, password });
+      Axios.post('/api/authentication/login', {
+        username,
+        password,
+      })
+        .then((res) => console.log(res))
+        .catch((err) => {
+          throw err;
+        });
     },
   });
   return (
