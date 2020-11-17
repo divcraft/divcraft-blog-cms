@@ -1,1 +1,1 @@
-export { getBannerApi } from './banner.actions';
+export { checkAuthentication } from './auth.actions';

@@ -1,1 +1,1 @@
-export { BANNER } from './store.constants';
+export { BANNER, AUTH } from './store.constants';

@@ -1,3 +1,7 @@
 export const BANNER = {
   GET_BANNER_API: 'GET_BANNER_API',
 };
+
+export const AUTH = {
+  CHECK_AUTHENTICATION: 'CHECK_AUTHENTICATION',
+};

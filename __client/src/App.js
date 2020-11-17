@@ -1,5 +1,5 @@
-import React from 'react';
-import { Provider } from 'react-redux';
+import React, { useEffect } from 'react';
+import { Provider, useDispatch } from 'react-redux';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import { GlobalStyle, theme } from 'utils';
@@ -15,6 +15,7 @@ import {
   MyAccountPage,
   HelpPage,
 } from 'pages';
+import { checkAuthentication } from 'store/actions';
 
 const store = configureStore();
 
@@ -34,10 +35,17 @@ const RootApp = () => {
 };
 
 const App = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(checkAuthentication());
+  }, []);
   return (
     <Switch>
       <Route path="/" exact>
-        {<LoginPage /> || <OverviewPage />}
+        <LoginPage />
+      </Route>
+      <Route path="/home">
+        <OverviewPage />
       </Route>
       <Route path="/moje-artykuly">
         <MyArticlesPage />

@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import banner from './banner.reducer';
+import auth from './auth.reducer';
 
 const rootReducer = combineReducers({
-  banner,
+  auth,
 });
 
 export default rootReducer;

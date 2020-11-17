@@ -1,10 +1,13 @@
-import { BANNER } from 'constants';
+import { AUTH } from 'constants';
 
-const initialState = null;
+const initialState = {
+  isAuthenticated: false,
+  userData: null,
+};
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case BANNER.GET_BANNER_API:
+    case AUTH.CHECK_AUTHENTICATION:
       return action.payload;
     default:
       return state;
