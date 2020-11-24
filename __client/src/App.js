@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Provider, useDispatch } from 'react-redux';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import { GlobalStyle, theme } from 'utils';
 import configureStore from 'store';
@@ -40,35 +40,39 @@ const App = () => {
     dispatch(checkAuthentication());
   }, []);
   return (
-    <Switch>
-      <Route path="/login" exact>
-        <LoginPage />
-      </Route>
-      <Route path="/przeglad">
-        <OverviewPage />
-      </Route>
-      <Route path="/moje-artykuly">
-        <MyArticlesPage />
-      </Route>
-      <Route path="/poczekalnia">
-        <WaitingRoomPage />
-      </Route>
-      <Route path="/panel-kontaktowy">
-        <ContactPanelPage />
-      </Route>
-      <Route path="/panel-admina">
-        <AdminPanelPage />
-      </Route>
-      <Route path="/nowy-artykul">
-        <NewArticlePage />
-      </Route>
-      <Route path="/moje-konto">
-        <MyAccountPage />
-      </Route>
-      <Route path="/pomoc">
-        <HelpPage />
-      </Route>
-    </Switch>
+    <>
+      <Link to="/">home</Link>
+      <Link to="/login">login</Link>
+      <Switch>
+        <Route path="/login">
+          <LoginPage />
+        </Route>
+        <Route path="/przeglad">
+          <OverviewPage />
+        </Route>
+        <Route path="/moje-artykuly">
+          <MyArticlesPage />
+        </Route>
+        <Route path="/poczekalnia">
+          <WaitingRoomPage />
+        </Route>
+        <Route path="/panel-kontaktowy">
+          <ContactPanelPage />
+        </Route>
+        <Route path="/panel-admina">
+          <AdminPanelPage />
+        </Route>
+        <Route path="/nowy-artykul">
+          <NewArticlePage />
+        </Route>
+        <Route path="/moje-konto">
+          <MyAccountPage />
+        </Route>
+        <Route path="/pomoc">
+          <HelpPage />
+        </Route>
+      </Switch>
+    </>
   );
 };
 
