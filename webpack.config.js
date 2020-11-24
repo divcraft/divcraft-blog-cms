@@ -8,8 +8,8 @@ module.exports = {
   entry: './__client/src/index.js',
   output: {
     path: path.resolve(__dirname, 'build'),
-    publicPath: '/',
     filename: '[name].[hash:6].min.js',
+    publicPath: '/',
   },
   module: {
     rules: [

@@ -1,8 +1,14 @@
 import React, { useEffect } from 'react';
-import { Provider, useDispatch } from 'react-redux';
-import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
+import { Provider, useDispatch, useSelector } from 'react-redux';
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Link,
+  Redirect,
+} from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
-import { GlobalStyle, theme } from 'utils';
+import { GlobalStyle, theme, ProtectedRoute } from 'utils';
 import configureStore from 'store';
 import {
   LoginPage,
@@ -35,42 +41,36 @@ const RootApp = () => {
 };
 
 const App = () => {
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(checkAuthentication());
   }, []);
   return (
     <>
-      <Link to="/">home</Link>
       <Link to="/login">login</Link>
+      <br />
+      <Link to="/przeglad">overview</Link>
+      <br />
+      <Link to="/moje-artykuly">moje artykuly</Link>
+      <br />
+      <Link to="/xxxx">xxxx</Link>
       <Switch>
-        <Route path="/login">
-          <LoginPage />
-        </Route>
-        <Route path="/przeglad">
-          <OverviewPage />
-        </Route>
-        <Route path="/moje-artykuly">
-          <MyArticlesPage />
-        </Route>
-        <Route path="/poczekalnia">
-          <WaitingRoomPage />
-        </Route>
-        <Route path="/panel-kontaktowy">
-          <ContactPanelPage />
-        </Route>
-        <Route path="/panel-admina">
-          <AdminPanelPage />
-        </Route>
-        <Route path="/nowy-artykul">
-          <NewArticlePage />
-        </Route>
-        <Route path="/moje-konto">
-          <MyAccountPage />
-        </Route>
-        <Route path="/pomoc">
-          <HelpPage />
-        </Route>
+        <Route
+          path="/login"
+          render={() =>
+            isAuthenticated ? <Redirect to="przeglad" /> : <LoginPage />
+          }
+        />
+        <ProtectedRoute path="/przeglad" component={OverviewPage} />
+        <ProtectedRoute path="/moje-artykuly" component={MyArticlesPage} />
+        <ProtectedRoute path="/poczekalnia" component={WaitingRoomPage} />
+        <ProtectedRoute path="/panel-kontaktowy" component={ContactPanelPage} />
+        <ProtectedRoute path="/panel-admina" component={AdminPanelPage} />
+        <ProtectedRoute path="/nowy-artykul" component={NewArticlePage} />
+        <ProtectedRoute path="/moje-konto" component={MyAccountPage} />
+        <ProtectedRoute path="/pomoc" component={HelpPage} />
+        <Redirect to="/przeglad" />
       </Switch>
     </>
   );
