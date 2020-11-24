@@ -41,10 +41,10 @@ const App = () => {
   }, []);
   return (
     <Switch>
-      <Route path="/" exact>
+      <Route path="/login" exact>
         <LoginPage />
       </Route>
-      <Route path="/home">
+      <Route path="/przeglad">
         <OverviewPage />
       </Route>
       <Route path="/moje-artykuly">
