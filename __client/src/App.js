@@ -54,7 +54,7 @@ const App = () => {
       <br />
       <Link to="/moje-artykuly">moje artykuly</Link>
       <br />
-      <Link to="/xxxx">xxxx</Link>
+      <Link to="/non-existing-page">non-existing page</Link>
       <Switch>
         <Route
           path="/login"
