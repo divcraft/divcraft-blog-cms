@@ -29,7 +29,9 @@ passportConfig();
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static('build'));
   app.get('*', (req, res, next) => {
-    res.sendFile(path.resolve(__dirname, '../build/index.html'));
+    res
+      .redirect(200, '/')
+      .sendFile(path.resolve(__dirname, '../build/index.html'));
     next();
   });
 }
