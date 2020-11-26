@@ -4,7 +4,6 @@ import {
   BrowserRouter as Router,
   Route,
   Switch,
-  Link,
   Redirect,
 } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
@@ -47,32 +46,23 @@ const App = () => {
     dispatch(checkAuthentication());
   }, []);
   return (
-    <>
-      <Link to="/login">login</Link>
-      <br />
-      <Link to="/przeglad">overview</Link>
-      <br />
-      <Link to="/moje-artykuly">moje artykuly</Link>
-      <br />
-      <Link to="/non-existing-page">non-existing page</Link>
-      <Switch>
-        <Route
-          path="/login"
-          render={() =>
-            isAuthenticated ? <Redirect to="przeglad" /> : <LoginPage />
-          }
-        />
-        <ProtectedRoute path="/przeglad" component={OverviewPage} />
-        <ProtectedRoute path="/moje-artykuly" component={MyArticlesPage} />
-        <ProtectedRoute path="/poczekalnia" component={WaitingRoomPage} />
-        <ProtectedRoute path="/panel-kontaktowy" component={ContactPanelPage} />
-        <ProtectedRoute path="/panel-admina" component={AdminPanelPage} />
-        <ProtectedRoute path="/nowy-artykul" component={NewArticlePage} />
-        <ProtectedRoute path="/moje-konto" component={MyAccountPage} />
-        <ProtectedRoute path="/pomoc" component={HelpPage} />
-        <Redirect to="/przeglad" />
-      </Switch>
-    </>
+    <Switch>
+      <Route
+        path="/login"
+        render={() =>
+          isAuthenticated ? <Redirect to="przeglad" /> : <LoginPage />
+        }
+      />
+      <ProtectedRoute path="/przeglad" component={OverviewPage} />
+      <ProtectedRoute path="/moje-artykuly" component={MyArticlesPage} />
+      <ProtectedRoute path="/poczekalnia" component={WaitingRoomPage} />
+      <ProtectedRoute path="/panel-kontaktowy" component={ContactPanelPage} />
+      <ProtectedRoute path="/panel-admina" component={AdminPanelPage} />
+      <ProtectedRoute path="/nowy-artykul" component={NewArticlePage} />
+      <ProtectedRoute path="/moje-konto" component={MyAccountPage} />
+      <ProtectedRoute path="/pomoc" component={HelpPage} />
+      <Redirect to="/przeglad" />
+    </Switch>
   );
 };
 

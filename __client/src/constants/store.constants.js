@@ -4,4 +4,5 @@ export const BANNER = {
 
 export const AUTH = {
   CHECK_AUTHENTICATION: 'CHECK_AUTHENTICATION',
+  LOG_IN_USER: 'LOG_IN_USER',
 };

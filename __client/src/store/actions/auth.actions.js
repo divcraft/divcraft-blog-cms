@@ -10,8 +10,18 @@ export const checkAuthentication = () => (dispatch) => {
   dispatch({
     type: AUTH.CHECK_AUTHENTICATION,
     payload: {
-      isAuthenticated: true,
-      userData: { data: '...' },
+      isAuthenticated: false,
+      userData: undefined,
     },
   });
+};
+
+export const logInUser = (userData) => {
+  return {
+    type: AUTH.LOG_IN_USER,
+    payload: {
+      isAuthenticated: true,
+      userData,
+    },
+  };
 };

@@ -8,10 +8,10 @@ router.get('/', (req, res) => {
 router.post('/login', (req, res, next) => {
   passport.authenticate('local', (err, user) => {
     if (err) throw err;
-    if (!user) return res.send('User is not found');
+    if (!user) return res.status(204).send('User is not found');
     return req.logIn(user, (logErr) => {
       if (logErr) throw logErr;
-      res.send(req.user);
+      res.status(200).send(req.user);
     });
   })(req, res, next);
 });
