@@ -31,6 +31,7 @@
         "react/jsx-filename-extension": "off",
         "import/prefer-default-export": "off",
         "import/no-cycle": "off",
-        "react/jsx-props-no-spreading": "off"
+        "react/jsx-props-no-spreading": "off",
+        "react/require-default-props": "off"
     }
 }

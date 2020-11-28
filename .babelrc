@@ -15,7 +15,8 @@
                "routes": "./__server/routes",
                "models": "./__server/mongoose/models"
             }
-         }
+         },
+         "react-hot-loader/babel"
       ]
    ]
 }

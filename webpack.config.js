@@ -1,15 +1,13 @@
 var path = require('path');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var UglifyJsPlugin = require('uglifyjs-webpack-plugin');
-
-// const production = process.env.NODE_ENV === 'production'
+var webpack = require('webpack');
 
 module.exports = {
   entry: './__client/src/index.js',
   output: {
     path: path.resolve(__dirname, 'build'),
     filename: '[name].[hash:6].min.js',
-    publicPath: '/',
   },
   module: {
     rules: [
@@ -44,7 +42,8 @@ module.exports = {
     open: true,
     hot: true,
     overlay: true,
-    historyApiFallback: true,
+    historyApiFallback: { index: '/' },
+    publicPath: '/',
     proxy: {
       '/': {
         target: 'http://localhost:5000',
@@ -59,6 +58,7 @@ module.exports = {
       favicon: '__client/public/favicon.svg',
       inject: 'body',
     }),
+    new webpack.HotModuleReplacementPlugin(),
   ],
   optimization: {
     minimize: true,

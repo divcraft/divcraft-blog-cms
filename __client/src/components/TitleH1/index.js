@@ -11,9 +11,4 @@ TitleH1.propTypes = {
   children: PropTypes.string,
 };
 
-TitleH1.defaultProps = {
-  login: false,
-  children: undefined,
-};
-
 export default TitleH1;
