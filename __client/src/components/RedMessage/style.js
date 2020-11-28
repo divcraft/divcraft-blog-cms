@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 
-export const ValidationText = styled.div`
+export const RedMessage = styled.div`
   position: absolute;
   color: red;
   font-size: 16px;
   padding: 15px 20%;
   margin: 0 auto;
-  bottom: -130px;
+  bottom: -80px;
 `;

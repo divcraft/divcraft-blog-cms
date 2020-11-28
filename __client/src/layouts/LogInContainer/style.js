@@ -7,14 +7,26 @@ export const Background = styled.div`
     rgba(255, 255, 255, 1) 0%,
     rgba(204, 225, 255, 0.8) 100%
   );
-  display: flex;
-  align-items: center;
-  justify-content: center;
   height: 100vh;
 `;
 
 export const Container = styled.div`
+  margin: auto;
+  padding-top: 120px;
   width: 300px;
   text-align: center;
-  transform: translateY(-15%);
+  position: relative;
+  @media (min-width: 1367px) {
+    padding-top: 200px;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+    & * {
+      height: 60px;
+      border: none;
+      border-radius: 16px;
+      font-size: 20px;
+    }
+  }
 `;

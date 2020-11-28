@@ -3,8 +3,8 @@ import Axios from 'axios';
 import { useFormik } from 'formik';
 import { useDispatch } from 'react-redux';
 import { logInUser } from 'store/actions';
-import { Input, Button } from 'components';
-import { FormContainer, ValidationText } from './style';
+import { Input, Button, RedMessage } from 'components';
+// import { ValidationText } from './style';
 
 const LogInForm = () => {
   const dispatch = useDispatch();
@@ -48,7 +48,7 @@ const LogInForm = () => {
   }, [username, password]);
   return (
     <>
-      <FormContainer onSubmit={formik.handleSubmit}>
+      <form onSubmit={formik.handleSubmit}>
         <Input
           type="text"
           name="username"
@@ -68,15 +68,10 @@ const LogInForm = () => {
         <Button box type="submit" disabled={isButtonDisabled}>
           Zaloguj się
         </Button>
-        {validatedError && (
-          <ValidationText>
-            Niepoprawna nazwa użytkownika lub hasło.
-          </ValidationText>
-        )}
-      </FormContainer>
-      <Button text type="button">
-        Przypomnij hasło
-      </Button>
+      </form>
+      {validatedError && (
+        <RedMessage>Niepoprawna nazwa użytkownika lub hasło.</RedMessage>
+      )}
     </>
   );
 };

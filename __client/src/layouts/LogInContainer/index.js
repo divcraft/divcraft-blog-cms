@@ -1,15 +1,22 @@
-import React from 'react';
-import { LogInForm } from 'layouts';
-import { Logo, TitleH1 } from 'components';
+import React, { useState } from 'react';
+import { LogInForm, RecoverPasswordForm } from 'layouts';
+import { Logo, TitleH1, Button } from 'components';
 import { Background, Container } from './style';
 
 const LogInContainer = () => {
+  const [recoverPassForm, setRecoverPassForm] = useState(false);
+  const inlineButtonContent = !recoverPassForm
+    ? 'Przypomnij hasło'
+    : 'Wróć do logowania';
   return (
     <Background>
       <Container>
         <Logo color="colored" />
         <TitleH1 login>BLOG PANEL</TitleH1>
-        <LogInForm />
+        {!recoverPassForm ? <LogInForm /> : <RecoverPasswordForm />}
+        <Button onClick={() => setRecoverPassForm(!recoverPassForm)}>
+          {inlineButtonContent}
+        </Button>
       </Container>
     </Background>
   );
