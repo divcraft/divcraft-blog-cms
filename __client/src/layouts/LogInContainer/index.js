@@ -5,7 +5,7 @@ import { Background, Container } from './style';
 
 const LogInContainer = () => {
   const [recoverPassForm, setRecoverPassForm] = useState(false);
-  const inlineButtonContent = !recoverPassForm
+  const inlineButtonText = !recoverPassForm
     ? 'Przypomnij hasło'
     : 'Wróć do logowania';
   return (
@@ -15,7 +15,7 @@ const LogInContainer = () => {
         <TitleH1 login>BLOG PANEL</TitleH1>
         {!recoverPassForm ? <LogInForm /> : <RecoverPasswordForm />}
         <Button onClick={() => setRecoverPassForm(!recoverPassForm)}>
-          {inlineButtonContent}
+          {inlineButtonText}
         </Button>
       </Container>
     </Background>

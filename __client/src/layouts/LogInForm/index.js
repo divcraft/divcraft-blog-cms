@@ -1,21 +1,20 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Axios from 'axios';
 import { useFormik } from 'formik';
 import { useDispatch } from 'react-redux';
 import { logInUser } from 'store/actions';
 import { Input, Button, RedMessage } from 'components';
-// import { ValidationText } from './style';
 
 const LogInForm = () => {
   const dispatch = useDispatch();
   const [validatedError, setValidatedError] = useState(false);
-  const [isButtonDisabled, setIsButtonDisabled] = useState(true);
   const formik = useFormik({
     initialValues: {
       username: '',
       password: '',
     },
     onSubmit: ({ username, password }, { resetForm }) => {
+      if (validatedError) setValidatedError(false);
       Axios.post('/api/authentication/login', {
         username,
         password,
@@ -38,14 +37,6 @@ const LogInForm = () => {
         });
     },
   });
-  const { username, password } = formik.values;
-  useEffect(() => {
-    if (!username || !password) {
-      setIsButtonDisabled(true);
-    } else {
-      setIsButtonDisabled(false);
-    }
-  }, [username, password]);
   return (
     <>
       <form onSubmit={formik.handleSubmit}>
@@ -55,7 +46,7 @@ const LogInForm = () => {
           id="username"
           placeholder="login"
           onChange={formik.handleChange}
-          value={username}
+          value={formik.values.username}
         />
         <Input
           type="password"
@@ -63,9 +54,13 @@ const LogInForm = () => {
           id="password"
           placeholder="hasło"
           onChange={formik.handleChange}
-          value={password}
+          value={formik.values.password}
         />
-        <Button box type="submit" disabled={isButtonDisabled}>
+        <Button
+          box
+          type="submit"
+          disabled={!formik.values.username || !formik.values.password}
+        >
           Zaloguj się
         </Button>
       </form>

@@ -7,17 +7,17 @@ export const Background = styled.div`
     rgba(255, 255, 255, 1) 0%,
     rgba(204, 225, 255, 0.8) 100%
   );
-  height: 100vh;
+  min-height: 100vh;
 `;
 
 export const Container = styled.div`
   margin: auto;
-  padding-top: 120px;
+  padding-top: 100px;
   width: 300px;
   text-align: center;
   position: relative;
   @media (min-width: 1367px) {
-    padding-top: 200px;
+    padding-top: 220px;
   }
   form {
     display: flex;
