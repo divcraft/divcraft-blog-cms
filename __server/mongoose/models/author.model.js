@@ -8,7 +8,7 @@ const authorSchema = new Schema(
     lastName: { type: String, required: true },
     privateEmail: { type: String, required: true },
     divcraftEmail: String,
-    login: { type: String, required: true },
+    username: { type: String, required: true },
     password: { type: String, required: true },
     isAdmin: { type: Boolean, default: false },
     photoUrl: String,
