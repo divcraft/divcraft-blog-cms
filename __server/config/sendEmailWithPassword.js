@@ -3,24 +3,30 @@ const nodemailer = require('nodemailer');
 const sendEmailWithPassword = (user, email) => {
   const { username, password } = user;
   const transporter = nodemailer.createTransport({
-    service: 'ovh',
+    host: 'ssl0.ovh.net',
+    port: 465,
+    secure: true,
     auth: {
       user: process.env.PANEL_EMAIL_LOGIN,
       pass: process.env.PANEL_EMAIL_PASSWORD,
     },
   });
   const mailOptions = {
-    from: process.env.PANEL_EMAIL_LOGIN,
+    from: `"Blog | div-craft.com" <${process.env.PANEL_EMAIL_LOGIN}>`,
     to: email,
-    subject: 'Przypomnienie hasła | div-craft blog',
-    text: `
-      Witaj,
-
+    subject: 'Przypomnienie hasła',
+    html: `
+      <h2>Witaj,</h2>
+      <p>
       Twoje dane logowania to:
-         nazwa użytkownika: ${username}
-         hasło: ${password}
-
-      Ta wiadomość została wygenerowana automatycznie.
+        <ul>
+          <li>nazwa użytkownika: ${username}</li>
+          <li>hasło: ${password}</li>
+        </ul>
+      </p>
+      <p>
+        Ta wiadomość została wygenerowana automatycznie.
+      </p>
       `,
   };
   transporter.sendMail(mailOptions, (err, info) => {
