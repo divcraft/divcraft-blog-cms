@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react';
+import React from // useEffect
+'react';
 import { Provider, useDispatch, useSelector } from 'react-redux';
 import {
   BrowserRouter as Router,
@@ -42,9 +43,9 @@ const RootApp = () => {
 const App = () => {
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
   const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(checkAuthentication());
-  }, []);
+  // useEffect(() => {
+  dispatch(checkAuthentication());
+  // }, []);
   return (
     <Switch>
       <Route

@@ -4,16 +4,38 @@ const Author = require('../mongoose/models/author.model');
 const sendEmailWithPassword = require('../config/sendEmailWithPassword');
 
 router.get('/', (req, res) => {
-  res.send(req.user);
+  const { user } = req.cookies;
+  console.log('check cookie:', user);
+  if (user) {
+    Author.findOne({ _id: user }, (err, data) => {
+      if (err) throw err;
+      if (data) {
+        console.log('Cookie works fine');
+        res.status(200).send(data);
+      } else {
+        console.log('Cannot find user by cookie. Log in again.');
+        res.status(401).send('Cannot find user by cookie. Log in again.');
+      }
+    });
+  } else {
+    console.log('User is not logged.');
+    res.status(401).send('User is not logged.');
+  }
 });
 
 router.post('/login', (req, res, next) => {
-  passport.authenticate('local', (err, user) => {
+  passport.authenticate('local', (err, authUser) => {
     if (err) throw err;
-    if (!user) return res.status(401).send('Wrong username or password.');
-    return req.logIn(user, (logErr) => {
+    if (!authUser) return res.status(401).send('Wrong username or password.');
+    req.logIn(authUser, (logErr) => {
       if (logErr) throw logErr;
-      res.status(200).send(req.user);
+      const { user } = req.cookies;
+      if (user) {
+        res.status(200).send(req.user);
+      } else {
+        console.log(req.user);
+        res.status(200).cookie('user', req.user._id).send(req.user);
+      }
     });
   })(req, res, next);
 });
