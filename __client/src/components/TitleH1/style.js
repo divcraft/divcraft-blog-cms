@@ -8,4 +8,5 @@ export const LoginH1 = styled.h1`
   text-align: center;
   transform: translateX(6px);
   margin-top: 5px;
+  width: auto;
 `;

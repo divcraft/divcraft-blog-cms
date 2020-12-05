@@ -42,7 +42,8 @@ const RecoverPasswordForm = () => {
     <>
       {formSent ? (
         <RecoverPassNotifcation>
-          Hasło zostało wysłane na adres {formik.values.email}
+          Hasło zostało wysłane na adres
+          <div>{formik.values.email}</div>
         </RecoverPassNotifcation>
       ) : (
         <form onSubmit={formik.handleSubmit}>

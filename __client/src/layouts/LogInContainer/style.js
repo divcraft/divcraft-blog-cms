@@ -15,7 +15,9 @@ export const Container = styled.div`
   padding-top: 100px;
   width: 300px;
   text-align: center;
-  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   @media (min-width: 1367px) {
     padding-top: 220px;
   }
@@ -23,6 +25,7 @@ export const Container = styled.div`
     display: flex;
     flex-direction: column;
     & * {
+      width: 300px;
       height: 60px;
       border: none;
       border-radius: 16px;

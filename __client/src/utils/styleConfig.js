@@ -5,8 +5,14 @@ export const GlobalStyle = createGlobalStyle`
    ${normalize}
    body {
       font-family: 'Poppins', sans-serif;
-      line-height: 1.5;
+   };
+   * {
       box-sizing: border-box;
+      line-height: 1.5;
+      scrollbar-width: none;
+      &::-webkit-scrollbar {
+        display: none;
+    }   
    }
 `;
 
