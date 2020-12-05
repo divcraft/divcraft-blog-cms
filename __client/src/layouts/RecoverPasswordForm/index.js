@@ -7,11 +7,20 @@ import { RecoverPassNotifcation } from './style';
 const RecoverPasswordForm = () => {
   const [formSent, setFormSent] = useState(false);
   const [emailNotFound, setEmailNotFound] = useState(false);
+  const [emailIncorrect, setEmailIncorrect] = useState(false);
+
   const formik = useFormik({
     initialValues: {
       email: '',
     },
     onSubmit: ({ email }) => {
+      if (emailNotFound) setEmailNotFound(false);
+      if (emailIncorrect) setEmailIncorrect(false);
+      if (
+        !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(formik.values.email)
+      ) {
+        return setEmailIncorrect(true);
+      }
       Axios.post('/api/authentication/recover', {
         email,
       })
@@ -26,17 +35,6 @@ const RecoverPasswordForm = () => {
           throw err;
         });
     },
-    validate: (values) => {
-      if (emailNotFound) setEmailNotFound(false);
-      const errors = {};
-      const isEmailWrong = !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(
-        values.email
-      );
-      if (isEmailWrong) {
-        errors.email = 'Podaj poprawny adres email.';
-      }
-      return errors;
-    },
   });
   return (
     <>
@@ -46,14 +44,13 @@ const RecoverPasswordForm = () => {
           <div>{formik.values.email}</div>
         </RecoverPassNotifcation>
       ) : (
-        <form onSubmit={formik.handleSubmit}>
+        <form onSubmit={formik.handleSubmit} noValidate>
           <Input
             type="email"
             name="email"
             id="email"
             placeholder="email"
             onChange={formik.handleChange}
-            novalidate
             value={formik.values.email}
           />
           <Button box type="submit" disabled={!formik.values.email}>
@@ -61,7 +58,7 @@ const RecoverPasswordForm = () => {
           </Button>
         </form>
       )}
-      {formik.errors.email && <RedMessage>{formik.errors.email}</RedMessage>}
+      {emailIncorrect && <RedMessage>Podaj poprawny adres email.</RedMessage>}
       {emailNotFound && (
         <RedMessage>Brak konta powiązanego z podanym adresem email.</RedMessage>
       )}
