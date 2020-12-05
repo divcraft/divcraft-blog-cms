@@ -10,7 +10,7 @@ router.get('/', (req, res) => {
 router.post('/login', (req, res, next) => {
   passport.authenticate('local', (err, user) => {
     if (err) throw err;
-    if (!user) return res.status(204).send('Wrong username or password.');
+    if (!user) return res.status(401).send('Wrong username or password.');
     return req.logIn(user, (logErr) => {
       if (logErr) throw logErr;
       res.status(200).send(req.user);

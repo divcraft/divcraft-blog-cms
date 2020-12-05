@@ -22,7 +22,7 @@ const LogInForm = () => {
         .then((res) => {
           if (res.status === 200) {
             dispatch(logInUser(res.data));
-          } else if (res.status === 204) {
+          } else if (res.status === 401) {
             setValidatedError(true);
             resetForm({
               values: {
