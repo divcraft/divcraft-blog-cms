@@ -1,6 +1,6 @@
-import React from // useEffect
-'react';
-import { Provider, useDispatch, useSelector } from 'react-redux';
+import React from 'react';
+import { Provider } from 'react-redux';
+import Cookies from 'js-cookie';
 import {
   BrowserRouter as Router,
   Route,
@@ -21,7 +21,6 @@ import {
   MyAccountPage,
   HelpPage,
 } from 'pages';
-import { checkAuthentication } from 'store/actions';
 
 const store = configureStore();
 
@@ -41,18 +40,12 @@ const RootApp = () => {
 };
 
 const App = () => {
-  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
-  const dispatch = useDispatch();
-  // useEffect(() => {
-  dispatch(checkAuthentication());
-  // }, []);
+  const userCookie = Cookies.get('user');
   return (
     <Switch>
       <Route
         path="/login"
-        render={() =>
-          isAuthenticated ? <Redirect to="przeglad" /> : <LoginPage />
-        }
+        render={() => (userCookie ? <Redirect to="przeglad" /> : <LoginPage />)}
       />
       <ProtectedRoute path="/przeglad" component={OverviewPage} />
       <ProtectedRoute path="/moje-artykuly" component={MyArticlesPage} />

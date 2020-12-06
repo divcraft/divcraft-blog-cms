@@ -1,15 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useSelector } from 'react-redux';
+import Cookies from 'js-cookie';
 import { Redirect, Route } from 'react-router-dom';
 
 const ProtectedRoute = ({ component: Component, ...rest }) => {
-  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+  const userCookie = Cookies.get('user');
   return (
     <Route
       {...rest}
       render={(props) =>
-        isAuthenticated ? <Component {...props} /> : <Redirect to="/login" />
+        userCookie ? <Component {...props} /> : <Redirect to="/login" />
       }
     />
   );
@@ -17,10 +17,6 @@ const ProtectedRoute = ({ component: Component, ...rest }) => {
 
 ProtectedRoute.propTypes = {
   component: PropTypes.instanceOf(Object),
-};
-
-ProtectedRoute.defaultProps = {
-  component: undefined,
 };
 
 export default ProtectedRoute;

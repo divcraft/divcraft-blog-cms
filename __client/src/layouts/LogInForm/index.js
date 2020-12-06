@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+import { withRouter } from 'react-router-dom';
 import Axios from 'axios';
 import { useFormik } from 'formik';
 import { useDispatch } from 'react-redux';
 import { logInUser } from 'store/actions';
 import { Input, Button, RedMessage } from 'components';
 
-const LogInForm = () => {
+const LogInForm = ({ history }) => {
   const dispatch = useDispatch();
   const [validatedError, setValidatedError] = useState(false);
   const formik = useFormik({
@@ -21,7 +23,8 @@ const LogInForm = () => {
       })
         .then((res) => {
           if (res.status === 200) {
-            dispatch(logInUser(res.data));
+            dispatch(logInUser());
+            history.push('/przeglad');
           } else if (res.status === 401) {
             setValidatedError(true);
             resetForm({
@@ -71,4 +74,8 @@ const LogInForm = () => {
   );
 };
 
-export default LogInForm;
+LogInForm.propTypes = {
+  history: PropTypes.instanceOf(Object).isRequired,
+};
+
+export default withRouter(LogInForm);

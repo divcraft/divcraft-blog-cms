@@ -1,12 +1,27 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect, useState } from 'react';
+import Axios from 'axios';
+import Cookies from 'js-cookie';
 
 const OverviewPage = () => {
-  const userData = useSelector((state) => state.auth.userData);
+  const userId = Cookies.get('user').slice(3).slice(0, -1);
+  const [user, setUser] = useState({});
+  useEffect(() => {
+    Axios.get(`/api/authors/${userId}`)
+      .then((res) => {
+        if (res.status === 200) {
+          setUser(res.data);
+        } else if (res.status !== 200) {
+          console.log('Something went wrong.');
+        }
+      })
+      .catch((err) => {
+        throw err;
+      });
+  }, []);
   return (
     <>
       <div>OverviewPage</div>
-      <h1>Hello {userData.username}</h1>
+      <h2>{user.username}</h2>
     </>
   );
 };

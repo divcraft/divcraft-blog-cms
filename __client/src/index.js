@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 
-if (module && module.hot) {
+if (process.env.NODE_ENV !== 'production' && module.hot) {
   // eslint-disable-next-line no-console
   console.clear();
   module.hot.accept();
