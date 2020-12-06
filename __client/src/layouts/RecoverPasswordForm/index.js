@@ -25,7 +25,7 @@ const RecoverPasswordForm = () => {
       ) {
         return dispatch(setIncorrectEmailError);
       }
-      Axios.post('/api/authentication/recover', {
+      Axios.post('/api/authentication/recover-password', {
         email,
       })
         .then((res) => {
