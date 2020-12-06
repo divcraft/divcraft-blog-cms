@@ -3,26 +3,6 @@ const router = require('express').Router();
 const Author = require('../mongoose/models/author.model');
 const sendEmailWithPassword = require('../config/sendEmailWithPassword');
 
-// router.get('/', (req, res) => {
-//   const { user } = req.cookies;
-//   console.log('check cookie:', user);
-//   if (user) {
-//     Author.findOne({ _id: user }, (err, data) => {
-//       if (err) throw err;
-//       if (data) {
-//         console.log('Cookie works fine');
-//         res.status(200).send(data);
-//       } else {
-//         console.log('Cannot find user by cookie. Log in again.');
-//         res.status(401).send('Cannot find user by cookie. Log in again.');
-//       }
-//     });
-//   } else {
-//     console.log('User is not logged.');
-//     res.status(401).send('User is not logged.');
-//   }
-// });
-
 router.post('/login', (req, res, next) => {
   passport.authenticate('local', (err, authUser) => {
     if (err) throw err;
@@ -33,13 +13,23 @@ router.post('/login', (req, res, next) => {
       if (user) {
         res.status(200).send(req.user);
       } else {
-        res.status(200).cookie('user', req.user._id).send(req.user);
+        const expiryDate = new Date();
+        expiryDate.setMonth(expiryDate.getMonth() + 1);
+        const cookieProps = {
+          secure: true,
+          sameSite: 'strict',
+          expires: expiryDate,
+        };
+        res
+          .status(200)
+          .cookie('user', req.user._id, cookieProps)
+          .send(req.user);
       }
     });
   })(req, res, next);
 });
 
-router.post('/recover', (req, res) => {
+router.post('/recover-password', (req, res) => {
   const { email } = req.body;
 
   const recoverEmail = (user, foundEmail) => {

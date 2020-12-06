@@ -9,6 +9,7 @@ const OverviewPage = () => {
     Axios.get(`/api/authors/${userId}`)
       .then((res) => {
         if (res.status === 200) {
+          console.log(res.data);
           setUser(res.data);
         } else if (res.status !== 200) {
           console.log('Something went wrong.');
