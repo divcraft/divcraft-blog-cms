@@ -1,25 +1,29 @@
 import React, { useState } from 'react';
 import { useFormik } from 'formik';
 import Axios from 'axios';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  setEmailNotFoundError,
+  setIncorrectEmailError,
+  clearErrorMessage,
+} from 'store/actions';
 import { Input, Button, RedMessage } from 'components';
 import { RecoverPassNotifcation } from './style';
 
 const RecoverPasswordForm = () => {
   const [formSent, setFormSent] = useState(false);
-  const [emailNotFound, setEmailNotFound] = useState(false);
-  const [emailIncorrect, setEmailIncorrect] = useState(false);
-
+  const dispatch = useDispatch();
+  const errorMessage = useSelector((state) => state.errorMessage);
   const formik = useFormik({
     initialValues: {
       email: '',
     },
     onSubmit: ({ email }) => {
-      if (emailNotFound) setEmailNotFound(false);
-      if (emailIncorrect) setEmailIncorrect(false);
+      if (errorMessage) dispatch(clearErrorMessage);
       if (
         !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(formik.values.email)
       ) {
-        return setEmailIncorrect(true);
+        return dispatch(setIncorrectEmailError);
       }
       Axios.post('/api/authentication/recover', {
         email,
@@ -28,7 +32,7 @@ const RecoverPasswordForm = () => {
           if (res.status === 200) {
             setFormSent(true);
           } else if (res.status === 204) {
-            setEmailNotFound(true);
+            dispatch(setEmailNotFoundError);
           }
         })
         .catch((err) => {
@@ -58,10 +62,7 @@ const RecoverPasswordForm = () => {
           </Button>
         </form>
       )}
-      {emailIncorrect && <RedMessage>Podaj poprawny adres email.</RedMessage>}
-      {emailNotFound && (
-        <RedMessage>Brak konta powiązanego z podanym adresem email.</RedMessage>
-      )}
+      {errorMessage && <RedMessage>{errorMessage}</RedMessage>}
     </>
   );
 };
