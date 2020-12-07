@@ -1,14 +1,15 @@
 const passport = require('passport');
 const router = require('express').Router();
 const Author = require('../mongoose/models/author.model');
-const sendEmailWithPassword = require('../config/sendEmailWithPassword');
+const sendEmailWithPassword = require('../utils/sendEmailWithPassword');
+const sendError = require('../utils/sendError');
 
 router.post('/login', (req, res, next) => {
   passport.authenticate('local', (err, authUser) => {
-    if (err) throw err;
-    if (!authUser) return res.status(204).send('Wrong username or password.');
+    if (err) sendError(err, res);
+    if (!authUser) return res.status(401).send('Wrong username or password.');
     req.logIn(authUser, (logErr) => {
-      if (logErr) throw logErr;
+      if (logErr) sendError(logErr, res);
       const { user } = req.cookies;
       if (user) {
         res.status(200).send(req.user);
@@ -32,24 +33,19 @@ router.post('/login', (req, res, next) => {
 router.post('/recover-password', (req, res) => {
   const { email } = req.body;
 
-  const recoverEmail = (user, foundEmail) => {
-    sendEmailWithPassword(user, foundEmail);
-    res.status(200).send(`Email has been sent to ${email}.`);
-  };
-
   Author.findOne({ privateEmail: email }, (err, userByPrivateEmail) => {
-    if (err) throw err;
+    if (err) sendError(err, res);
     if (userByPrivateEmail) {
-      recoverEmail(userByPrivateEmail, email);
+      sendEmailWithPassword(userByPrivateEmail, email, res);
     } else {
       Author.findOne(
         { divcraftEmail: email },
         (secErr, userByDivcraftEmail) => {
-          if (secErr) throw err;
+          if (secErr) sendError(secErr, res);
           if (userByDivcraftEmail) {
-            recoverEmail(userByDivcraftEmail, email);
+            sendEmailWithPassword(userByPrivateEmail, email, res);
           } else {
-            res.status(204).send('Email is not found.');
+            res.status(401).send('Email is not found.');
           }
         }
       );

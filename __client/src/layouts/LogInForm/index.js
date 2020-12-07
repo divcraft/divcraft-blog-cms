@@ -3,7 +3,11 @@ import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import Axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
-import { setAuthenticationError, clearErrorMessage } from 'store/actions';
+import {
+  setAuthenticationError,
+  setInternalServerError,
+  clearErrorMessage,
+} from 'store/actions';
 import { useFormik } from 'formik';
 import { Input, Button, RedMessage } from 'components';
 
@@ -22,20 +26,19 @@ const LogInForm = ({ history }) => {
         password,
       })
         .then((res) => {
-          if (res.status === 200) {
-            history.push('/przeglad');
-          } else if (res.status === 204) {
-            dispatch(setAuthenticationError);
-            resetForm({
-              values: {
-                username,
-                password: '',
-              },
-            });
-          }
+          const { status } = res;
+          if (status === 200) history.push('/przeglad');
         })
         .catch((err) => {
-          throw err;
+          const { status } = err.response;
+          if (status === 401) dispatch(setAuthenticationError);
+          if (status >= 500 || status < 600) dispatch(setInternalServerError);
+          resetForm({
+            values: {
+              username,
+              password: '',
+            },
+          });
         });
     },
   });

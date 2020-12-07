@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   setEmailNotFoundError,
   setIncorrectEmailError,
+  setInternalServerError,
   clearErrorMessage,
 } from 'store/actions';
 import { Input, Button, RedMessage } from 'components';
@@ -29,14 +30,13 @@ const RecoverPasswordForm = () => {
         email,
       })
         .then((res) => {
-          if (res.status === 200) {
-            setFormSent(true);
-          } else if (res.status === 204) {
-            dispatch(setEmailNotFoundError);
-          }
+          const { status } = res;
+          if (status === 200) setFormSent(true);
         })
         .catch((err) => {
-          throw err;
+          const { status } = err.response;
+          if (status === 401) dispatch(setEmailNotFoundError);
+          if (status >= 500 || status < 600) dispatch(setInternalServerError);
         });
     },
   });
