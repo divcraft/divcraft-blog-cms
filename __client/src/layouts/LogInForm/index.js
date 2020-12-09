@@ -32,7 +32,7 @@ const LogInForm = ({ history }) => {
         .catch((err) => {
           const { status } = err.response;
           if (status === 401) dispatch(setAuthenticationError);
-          if (status >= 500 || status < 600) dispatch(setInternalServerError);
+          if (status >= 500 && status < 600) dispatch(setInternalServerError);
           resetForm({
             values: {
               username,
@@ -69,7 +69,7 @@ const LogInForm = ({ history }) => {
           Zaloguj się
         </Button>
       </form>
-      {errorMessage && <RedMessage>{errorMessage}</RedMessage>}
+      {errorMessage && <RedMessage />}
     </>
   );
 };

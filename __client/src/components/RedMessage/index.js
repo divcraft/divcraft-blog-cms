@@ -1,13 +1,10 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
 import { RedMessage } from './style';
 
-const Message = ({ children }) => {
-  return <RedMessage>{children}</RedMessage>;
-};
-
-Message.propTypes = {
-  children: PropTypes.string,
+const Message = () => {
+  const errorMessage = useSelector((state) => state.errorMessage);
+  return <RedMessage>{errorMessage}</RedMessage>;
 };
 
 export default Message;

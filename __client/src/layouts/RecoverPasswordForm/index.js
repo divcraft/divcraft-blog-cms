@@ -36,7 +36,7 @@ const RecoverPasswordForm = () => {
         .catch((err) => {
           const { status } = err.response;
           if (status === 401) dispatch(setEmailNotFoundError);
-          if (status >= 500 || status < 600) dispatch(setInternalServerError);
+          if (status >= 500 && status < 600) dispatch(setInternalServerError);
         });
     },
   });
@@ -62,7 +62,7 @@ const RecoverPasswordForm = () => {
           </Button>
         </form>
       )}
-      {errorMessage && <RedMessage>{errorMessage}</RedMessage>}
+      {errorMessage && <RedMessage />}
     </>
   );
 };
