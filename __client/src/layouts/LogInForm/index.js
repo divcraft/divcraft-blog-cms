@@ -7,6 +7,8 @@ import {
   setAuthenticationError,
   setInternalServerError,
   clearErrorMessage,
+  setFormLoaderOn,
+  setFormLoaderOff,
 } from 'store/actions';
 import { useFormik } from 'formik';
 import { Input, Button, RedMessage } from 'components';
@@ -14,6 +16,7 @@ import { Input, Button, RedMessage } from 'components';
 const LogInForm = ({ history }) => {
   const dispatch = useDispatch();
   const errorMessage = useSelector((state) => state.errorMessage);
+  const isFormLoading = useSelector((state) => state.formLoader);
   const formik = useFormik({
     initialValues: {
       username: '',
@@ -21,18 +24,23 @@ const LogInForm = ({ history }) => {
     },
     onSubmit: ({ username, password }, { resetForm }) => {
       if (errorMessage) dispatch(clearErrorMessage);
+      dispatch(setFormLoaderOn);
       Axios.post('/api/authentication/login', {
         username,
         password,
       })
         .then((res) => {
           const { status } = res;
-          if (status === 200) history.push('/przeglad');
+          if (status === 200) {
+            dispatch(setFormLoaderOff);
+            history.push('/przeglad');
+          }
         })
         .catch((err) => {
           const { status } = err.response;
           if (status === 401) dispatch(setAuthenticationError);
           if (status >= 500 && status < 600) dispatch(setInternalServerError);
+          dispatch(setFormLoaderOff);
           resetForm({
             values: {
               username,
@@ -64,7 +72,9 @@ const LogInForm = ({ history }) => {
         <Button
           box
           type="submit"
-          disabled={!formik.values.username || !formik.values.password}
+          disabled={
+            !formik.values.username || !formik.values.password || isFormLoading
+          }
         >
           Zaloguj się
         </Button>

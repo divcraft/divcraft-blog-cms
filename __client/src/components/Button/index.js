@@ -9,7 +9,7 @@ const Button = ({ box, text, children, ...props }) => {
   return (
     <>
       {box ? (
-        <BoxButton {...props} disabled={isFormLoading && true}>
+        <BoxButton {...props}>
           <div>
             {children}
             {isFormLoading && <LoadingIndicator pattern="button" />}

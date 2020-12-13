@@ -3,6 +3,8 @@ import styled from 'styled-components';
 export const BoxButton = styled.button`
   border: none;
   color: white;
+  margin: 0px;
+  padding: 0px;
   background-color: ${({ theme: { colors } }) => colors.blue.dark};
   :hover {
     cursor: pointer;
