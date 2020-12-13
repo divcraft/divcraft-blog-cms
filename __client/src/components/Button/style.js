@@ -7,6 +7,10 @@ export const BoxButton = styled.button`
   :hover {
     cursor: pointer;
   }
+  & > div {
+    position: relative;
+    display: inline;
+  }
 `;
 
 export const TextButton = styled.button`

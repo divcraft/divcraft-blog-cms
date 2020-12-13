@@ -24,7 +24,7 @@ export const Container = styled.div`
   form {
     display: flex;
     flex-direction: column;
-    & * {
+    & > * {
       width: 300px;
       height: 60px;
       border: none;
