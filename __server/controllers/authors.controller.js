@@ -7,7 +7,7 @@ module.exports = {
       if (err) {
         throw err;
       } else {
-        res.send(data);
+        res.header('Content-Type', 'application/json').json(data);
       }
     });
   },
