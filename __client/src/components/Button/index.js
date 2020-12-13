@@ -1,16 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
 import { LoadingIndicator } from 'components';
 import { BoxButton, TextButton } from './style';
 
 const Button = ({ box, text, children, ...props }) => {
+  const isFormLoading = useSelector((state) => state.formLoader);
   return (
     <>
       {box ? (
-        <BoxButton {...props}>
+        <BoxButton {...props} disabled={isFormLoading && true}>
           <div>
             {children}
-            <LoadingIndicator pattern="button" />
+            {isFormLoading && <LoadingIndicator pattern="button" />}
           </div>
         </BoxButton>
       ) : (
