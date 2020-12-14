@@ -28,17 +28,17 @@ app.use(passport.initialize());
 app.use(passport.session());
 passportConfig();
 
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static('build'));
-  app.get('/', (req, res) => {
-    res.sendFile(path.resolve(__dirname, '../build/index.html'));
-  });
-}
-
 app.use('/api/articles', articlesRouter);
 app.use('/api/authors', authorsRouter);
 app.use('/api/categories', categoriesRouter);
 app.use('/api/comments', commentsRouter);
 app.use('/api/authentication', authenticationRouter);
+
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static('build'));
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, '../build/index.html'));
+  });
+}
 
 app.listen(PORT);
