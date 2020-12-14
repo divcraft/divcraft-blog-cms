@@ -6,24 +6,14 @@ module.exports = () => {
   passport.use(
     new LocalStrategy((username, password, done) => {
       Author.findOne({ username }, (err, user) => {
-        if (err) return done(err);
-        if (!user) {
-          return done(null, false, { message: 'Incorrect username.' });
+        if (err) {
+          return done(err);
         }
-        if (user.password !== password) {
-          return done(null, false, { message: 'Incorrect password.' });
+        if (!user || user.password !== password) {
+          return done(null, false);
         }
         return done(null, user);
       });
     })
   );
-  passport.serializeUser((user, done) => {
-    done(null, user._id);
-  });
-
-  passport.deserializeUser((id, done) => {
-    Author.findById(id, (err, user) => {
-      done(err, user);
-    });
-  });
 };
