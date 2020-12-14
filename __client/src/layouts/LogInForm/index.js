@@ -25,7 +25,7 @@ const LogInForm = ({ history }) => {
     onSubmit: ({ username, password }, { resetForm }) => {
       if (errorMessage) dispatch(clearErrorMessage);
       dispatch(setFormLoaderOn);
-      Axios.post('/api/authentication/login', {
+      Axios.post('/api/auth/login', {
         username,
         password,
       })
@@ -33,7 +33,7 @@ const LogInForm = ({ history }) => {
           const { status } = res;
           if (status === 200) {
             dispatch(setFormLoaderOff);
-            history.push('/przeglad');
+            history.replace('/przeglad');
           }
         })
         .catch((err) => {
