@@ -9,7 +9,7 @@ const mongoose = require('./mongoose');
 const passportConfig = require('./config/passportConfig');
 
 const articlesRouter = require('./routes/articles.router');
-const authorsRouter = require('./routes/authors.router');
+const usersRouter = require('./routes/users.router');
 const categoriesRouter = require('./routes/categories.router');
 const commentsRouter = require('./routes/comments.router');
 const authRouter = require('./routes/auth.router');
@@ -29,7 +29,7 @@ app.use(passport.session());
 passportConfig();
 
 app.use('/api/articles', articlesRouter);
-app.use('/api/authors', authorsRouter);
+app.use('/api/users', usersRouter);
 app.use('/api/categories', categoriesRouter);
 app.use('/api/comments', commentsRouter);
 app.use('/api/auth', authRouter);

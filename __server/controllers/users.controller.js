@@ -1,9 +1,9 @@
-const Authors = require('../mongoose/models/author.model');
+const User = require('../mongoose/models/user.model');
 
 module.exports = {
   findOne(req, res) {
     const { id } = req.params;
-    Authors.findById(id, (err, data) => {
+    User.findById(id, (err, data) => {
       if (err) {
         throw err;
       } else {
@@ -12,7 +12,7 @@ module.exports = {
     });
   },
   findAll(req, res) {
-    Authors.find({}, (err, data) => {
+    User.find({}, (err, data) => {
       if (err) {
         throw err;
       } else {
@@ -21,11 +21,11 @@ module.exports = {
     });
   },
   create(req, res) {
-    const newAuthor = new Authors({
+    const newUser = new User({
       // ...
     });
-    const validateErrors = newAuthor.validateSync();
-    newAuthor.save((err) => {
+    const validateErrors = newUser.validateSync();
+    newUser.save((err) => {
       if (err) {
         res.json(validateErrors);
         throw err;
@@ -35,8 +35,8 @@ module.exports = {
     });
   },
   update(req, res) {
-    const { id, updatedAuthor } = req.body;
-    Authors.findByIdAndUpdate(id, updatedAuthor, (err) => {
+    const { id, updatedUser } = req.body;
+    User.findByIdAndUpdate(id, updatedUser, (err) => {
       if (err) {
         throw err;
       } else {
@@ -46,7 +46,7 @@ module.exports = {
   },
   remove(req, res) {
     const { id } = req.params;
-    Authors.findByIdAndDelete(id, (err) => {
+    User.findByIdAndDelete(id, (err) => {
       if (err) {
         throw err;
       } else {

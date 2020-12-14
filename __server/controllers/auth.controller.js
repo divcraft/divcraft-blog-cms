@@ -1,4 +1,4 @@
-const Author = require('../mongoose/models/author.model');
+const User = require('../mongoose/models/user.model');
 const sendError = require('../utils/sendError');
 const sendEmailWithPassword = require('../utils/sendEmailWithPassword');
 
@@ -23,12 +23,12 @@ module.exports = {
   },
   recoverPassword: (req, res) => {
     const { email } = req.body;
-    Author.findOne({ privateEmail: email }, (err, userByPrivateEmail) => {
+    User.findOne({ privateEmail: email }, (err, userByPrivateEmail) => {
       if (err) sendError(err, res);
       if (userByPrivateEmail) {
         sendEmailWithPassword(userByPrivateEmail, email, res);
       } else {
-        Author.findOne(
+        User.findOne(
           { divcraftEmail: email },
           (secErr, userByDivcraftEmail) => {
             if (secErr) sendError(secErr, res);

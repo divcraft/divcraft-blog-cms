@@ -6,7 +6,7 @@ const OverviewPage = () => {
   const userId = Cookies.get('user').slice(3).slice(0, -1);
   const [user, setUser] = useState({});
   useEffect(() => {
-    Axios.get(`/api/authors/${userId}`)
+    Axios.get(`/api/users/${userId}`)
       .then((res) => {
         if (res.status === 200) {
           console.log(res.data);

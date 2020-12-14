@@ -1,11 +1,11 @@
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
-const Author = require('../mongoose/models/author.model');
+const User = require('../mongoose/models/user.model');
 
 module.exports = () => {
   passport.use(
     new LocalStrategy((username, password, done) => {
-      Author.findOne({ username }, (err, user) => {
+      User.findOne({ username }, (err, user) => {
         if (err) {
           return done(err);
         }
