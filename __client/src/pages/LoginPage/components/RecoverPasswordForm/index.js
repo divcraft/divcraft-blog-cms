@@ -7,8 +7,8 @@ import {
   setIncorrectEmailError,
   setInternalServerError,
   clearErrorMessage,
-  setFormLoaderOn,
-  setFormLoaderOff,
+  setRecoverPasswordFormLoaderOn,
+  setRecoverPasswordFormLoaderOff,
 } from 'store/actions';
 import { Input, Button, RedMessage } from 'components';
 import { RecoverPassNotifcation } from './style';
@@ -17,7 +17,9 @@ const RecoverPasswordForm = () => {
   const [formSent, setFormSent] = useState(false);
   const dispatch = useDispatch();
   const errorMessage = useSelector((state) => state.errorMessage);
-  const isFormLoading = useSelector((state) => state.formLoader);
+  const isFormLoading = useSelector(
+    (state) => state.loginPageLoaders.isRecoverPasswordFormLoading
+  );
   const formik = useFormik({
     initialValues: {
       email: '',
@@ -28,7 +30,7 @@ const RecoverPasswordForm = () => {
         !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(formik.values.email)
       )
         return dispatch(setIncorrectEmailError);
-      dispatch(setFormLoaderOn);
+      dispatch(setRecoverPasswordFormLoaderOn);
       Axios.post('/api/auth/recover-password', {
         email,
       })
@@ -40,7 +42,7 @@ const RecoverPasswordForm = () => {
           const { status } = err.response;
           if (status === 401) dispatch(setEmailNotFoundError);
           if (status >= 500 && status < 600) dispatch(setInternalServerError);
-          dispatch(setFormLoaderOff);
+          dispatch(setRecoverPasswordFormLoaderOff);
         });
     },
   });
@@ -64,6 +66,7 @@ const RecoverPasswordForm = () => {
           <Button
             box
             type="submit"
+            isFormLoading={isFormLoading}
             disabled={!formik.values.email || isFormLoading}
           >
             Wyślij hasło

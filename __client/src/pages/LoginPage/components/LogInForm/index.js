@@ -7,8 +7,8 @@ import {
   setAuthenticationError,
   setInternalServerError,
   clearErrorMessage,
-  setFormLoaderOn,
-  setFormLoaderOff,
+  setLogInFormLoaderOn,
+  setLogInFormLoaderOff,
 } from 'store/actions';
 import { useFormik } from 'formik';
 import { Input, Button, RedMessage } from 'components';
@@ -16,7 +16,9 @@ import { Input, Button, RedMessage } from 'components';
 const LogInForm = ({ history }) => {
   const dispatch = useDispatch();
   const errorMessage = useSelector((state) => state.errorMessage);
-  const isFormLoading = useSelector((state) => state.formLoader);
+  const isFormLoading = useSelector(
+    (state) => state.loginPageLoaders.isLogInFormLoading
+  );
   const formik = useFormik({
     initialValues: {
       username: '',
@@ -24,7 +26,7 @@ const LogInForm = ({ history }) => {
     },
     onSubmit: ({ username, password }, { resetForm }) => {
       if (errorMessage) dispatch(clearErrorMessage);
-      dispatch(setFormLoaderOn);
+      dispatch(setLogInFormLoaderOn);
       Axios.post('/api/auth/login', {
         username,
         password,
@@ -32,7 +34,7 @@ const LogInForm = ({ history }) => {
         .then((res) => {
           const { status } = res;
           if (status === 200) {
-            dispatch(setFormLoaderOff);
+            dispatch(setLogInFormLoaderOff);
             history.replace('/przeglad');
           }
         })
@@ -40,7 +42,7 @@ const LogInForm = ({ history }) => {
           const { status } = err.response;
           if (status === 401) dispatch(setAuthenticationError);
           if (status >= 500 && status < 600) dispatch(setInternalServerError);
-          dispatch(setFormLoaderOff);
+          dispatch(setLogInFormLoaderOff);
           resetForm({
             values: {
               username,
@@ -72,6 +74,7 @@ const LogInForm = ({ history }) => {
         <Button
           box
           type="submit"
+          isFormLoading={isFormLoading}
           disabled={
             !formik.values.username || !formik.values.password || isFormLoading
           }
