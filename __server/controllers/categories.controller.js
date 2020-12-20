@@ -5,18 +5,18 @@ module.exports = {
     const { id } = req.params;
     Categories.findById(id, (err, data) => {
       if (err) {
-        throw err;
+        res.status(500).send(err);
       } else {
-        res.json(data);
+        res.send(data);
       }
     });
   },
   findAll(req, res) {
     Categories.find({}, (err, data) => {
       if (err) {
-        throw err;
+        res.status(500).send(err);
       } else {
-        res.json(data);
+        res.send(data);
       }
     });
   },
@@ -24,13 +24,12 @@ module.exports = {
     const newCategory = new Categories({
       // ...
     });
-    const validateErrors = newCategory.validateSync();
     newCategory.save((err) => {
       if (err) {
-        res.json(validateErrors);
+        res.status(500).send(err);
         throw err;
       } else {
-        res.json('updated correctly');
+        res.send('A category has been added correctly.', newCategory);
       }
     });
   },
@@ -38,9 +37,10 @@ module.exports = {
     const { id, updatedCategory } = req.body;
     Categories.findByIdAndUpdate(id, updatedCategory, (err) => {
       if (err) {
+        res.status(500).send(err);
         throw err;
       } else {
-        res.json('added correctly');
+        res.send('A category has been updated correctly.', updatedCategory);
       }
     });
   },
@@ -48,9 +48,9 @@ module.exports = {
     const { id } = req.params;
     Categories.findByIdAndDelete(id, (err) => {
       if (err) {
-        throw err;
+        res.status(500).send(err);
       } else {
-        res.json(`object with ID ${id} has been deleted successfully`);
+        res.send(`A category with ID '${id}' has been deleted successfully.`);
       }
     });
   },

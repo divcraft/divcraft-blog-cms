@@ -1,12 +1,11 @@
 const User = require('../mongoose/models/user.model');
-const sendError = require('../utils/sendError');
 const sendEmailWithPassword = require('../utils/sendEmailWithPassword');
 
 module.exports = {
   logInUser: (req, res) => {
     const { user } = req.cookies;
     if (user) {
-      res.status(200).send(req.user);
+      res.send('User has been logged in.');
     } else {
       const expiryDate = new Date();
       expiryDate.setMonth(expiryDate.getMonth() + 1);
@@ -16,7 +15,6 @@ module.exports = {
         expires: expiryDate,
       };
       res
-        .status(200)
         .cookie('user', req.user._id, cookieProps)
         .send('User has been logged in.');
     }
@@ -24,14 +22,14 @@ module.exports = {
   recoverPassword: (req, res) => {
     const { email } = req.body;
     User.findOne({ privateEmail: email }, (err, userByPrivateEmail) => {
-      if (err) sendError(err, res);
+      if (err) res.status(500).send(err);
       if (userByPrivateEmail) {
         sendEmailWithPassword(userByPrivateEmail, email, res);
       } else {
         User.findOne(
           { divcraftEmail: email },
           (secErr, userByDivcraftEmail) => {
-            if (secErr) sendError(secErr, res);
+            if (secErr) res.status(500).send(err);
             if (userByDivcraftEmail) {
               sendEmailWithPassword(userByPrivateEmail, email, res);
             } else {

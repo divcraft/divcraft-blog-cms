@@ -5,18 +5,18 @@ module.exports = {
     const { id } = req.params;
     User.findById(id, (err, data) => {
       if (err) {
-        throw err;
+        res.status(500).send(err);
       } else {
-        res.json(data);
+        res.send(data);
       }
     });
   },
   findAll(req, res) {
     User.find({}, (err, data) => {
       if (err) {
-        throw err;
+        res.status(500).send(err);
       } else {
-        res.json(data);
+        res.send(data);
       }
     });
   },
@@ -24,13 +24,12 @@ module.exports = {
     const newUser = new User({
       // ...
     });
-    const validateErrors = newUser.validateSync();
     newUser.save((err) => {
       if (err) {
-        res.json(validateErrors);
+        res.status(500).send(err);
         throw err;
       } else {
-        res.json('updated correctly');
+        res.send('An user has been added correctly.', newUser);
       }
     });
   },
@@ -38,9 +37,10 @@ module.exports = {
     const { id, updatedUser } = req.body;
     User.findByIdAndUpdate(id, updatedUser, (err) => {
       if (err) {
+        res.status(500).send(err);
         throw err;
       } else {
-        res.json('added correctly');
+        res.send('An user has been updated correctly.', updatedUser);
       }
     });
   },
@@ -48,9 +48,9 @@ module.exports = {
     const { id } = req.params;
     User.findByIdAndDelete(id, (err) => {
       if (err) {
-        throw err;
+        res.status(500).send(err);
       } else {
-        res.json(`object with ID ${id} has been deleted successfully`);
+        res.send(`An user with ID '${id}' has been deleted successfully.`);
       }
     });
   },

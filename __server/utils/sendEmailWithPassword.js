@@ -1,5 +1,4 @@
 const nodemailer = require('nodemailer');
-const sendError = require('./sendError');
 
 const sendEmailWithPassword = (user, email, res) => {
   const { username, password } = user;
@@ -31,11 +30,14 @@ const sendEmailWithPassword = (user, email, res) => {
       `,
   };
   transporter.sendMail(mailOptions, (err, info) => {
-    if (err) sendError(err, res);
-    res.status(200).send({
-      describe: `Email has been sent to ${email}.`,
-      info,
-    });
+    if (err) {
+      res.status(500).send(err);
+    } else {
+      res.send({
+        describe: `Email has been sent to ${email}.`,
+        info,
+      });
+    }
   });
 };
 

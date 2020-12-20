@@ -5,18 +5,18 @@ module.exports = {
     const { id } = req.params;
     Comments.findById(id, (err, data) => {
       if (err) {
-        throw err;
+        res.status(500).send(err);
       } else {
-        res.json(data);
+        res.send(data);
       }
     });
   },
   findAll(req, res) {
     Comments.find({}, (err, data) => {
       if (err) {
-        throw err;
+        res.status(500).send(err);
       } else {
-        res.json(data);
+        res.send(data);
       }
     });
   },
@@ -24,13 +24,12 @@ module.exports = {
     const newComment = new Comments({
       // ...
     });
-    const validateErrors = newComment.validateSync();
     newComment.save((err) => {
       if (err) {
-        res.json(validateErrors);
+        res.status(500).send(err);
         throw err;
       } else {
-        res.json('added correctly');
+        res.send('A comment has been added correctly.', newComment);
       }
     });
   },
@@ -38,9 +37,10 @@ module.exports = {
     const { id, updatedComment } = req.body;
     Comments.findByIdAndUpdate(id, updatedComment, (err) => {
       if (err) {
+        res.status(500).send(err);
         throw err;
       } else {
-        res.json('added correctly');
+        res.send('A comment has been updated correctly.', updatedComment);
       }
     });
   },
@@ -48,9 +48,9 @@ module.exports = {
     const { id } = req.params;
     Comments.findByIdAndDelete(id, (err) => {
       if (err) {
-        throw err;
+        res.status(500).send(err);
       } else {
-        res.json(`object with ID ${id} has been deleted successfully`);
+        res.send(`A comment with ID '${id}' has been deleted successfully.`);
       }
     });
   },
