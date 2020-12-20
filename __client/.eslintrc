@@ -33,6 +33,8 @@
         "import/no-cycle": "off",
         "react/jsx-props-no-spreading": "off",
         "react/require-default-props": "off",
-        "consistent-return": "off"
+        "consistent-return": "off",
+        "no-underscore-dangle": "off",
+        "no-else-return": "off"
     }
 }
