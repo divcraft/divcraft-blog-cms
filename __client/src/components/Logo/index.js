@@ -4,13 +4,13 @@ import whiteLogo from 'img/logo-white.svg';
 import coloredLogo from 'img/logo-color.svg';
 import { Img } from './style';
 
-const Logo = ({ color }) => {
-  const logoImg = color === 'colored' ? coloredLogo : whiteLogo;
-  return <Img src={logoImg} alt="Logo" />;
+const Logo = ({ pattern, ...props }) => {
+  const logoImg = pattern === 'colored' ? coloredLogo : whiteLogo;
+  return <Img src={logoImg} alt="Logo" {...props} />;
 };
 
 Logo.propTypes = {
-  color: PropTypes.oneOf(['white', 'colored']).isRequired,
+  pattern: PropTypes.oneOf(['white', 'colored']).isRequired,
 };
 
 export default Logo;

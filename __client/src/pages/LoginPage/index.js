@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { clearErrorMessage } from 'store/actions';
-import { Logo, TitleH1, Button } from 'components';
+import { Logo, Button } from 'components';
 import {
+  LoginTitle,
   LogInForm,
   RecoverPasswordForm,
   Background,
@@ -23,8 +24,8 @@ const LogInContainer = () => {
   return (
     <Background>
       <Container>
-        <Logo color="colored" />
-        <TitleH1 login>BLOG PANEL</TitleH1>
+        <Logo pattern="colored" />
+        <LoginTitle>BLOG PANEL</LoginTitle>
         {!recoverPassForm ? <LogInForm /> : <RecoverPasswordForm />}
         <Button pattern="text" onClick={() => handleClick()}>
           {inlineButtonText}

@@ -1,8 +1,8 @@
 import React from 'react';
-import { LoginInput } from './style';
+import { Input as StyledInput } from './style';
 
 const Input = ({ ...props }) => {
-  return <LoginInput {...props} />;
+  return <StyledInput {...props} />;
 };
 
 export default Input;
