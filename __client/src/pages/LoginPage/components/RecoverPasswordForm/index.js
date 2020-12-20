@@ -64,7 +64,7 @@ const RecoverPasswordForm = () => {
             value={formik.values.email}
           />
           <Button
-            box
+            pattern="box"
             type="submit"
             isFormLoading={isFormLoading}
             disabled={!formik.values.email || isFormLoading}

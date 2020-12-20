@@ -26,7 +26,9 @@ const LogInContainer = () => {
         <Logo color="colored" />
         <TitleH1 login>BLOG PANEL</TitleH1>
         {!recoverPassForm ? <LogInForm /> : <RecoverPasswordForm />}
-        <Button onClick={() => handleClick()}>{inlineButtonText}</Button>
+        <Button pattern="text" onClick={() => handleClick()}>
+          {inlineButtonText}
+        </Button>
       </Container>
     </Background>
   );

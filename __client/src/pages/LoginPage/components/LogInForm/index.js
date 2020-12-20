@@ -72,7 +72,7 @@ const LogInForm = ({ history }) => {
           value={formik.values.password}
         />
         <Button
-          box
+          pattern="box"
           type="submit"
           isFormLoading={isFormLoading}
           disabled={

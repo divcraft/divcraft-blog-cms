@@ -1,32 +1,29 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// import { useSelector } from 'react-redux';
 import { LoadingIndicator } from 'components';
-import { BoxButton, TextButton } from './style';
+import { Button as StyledButton } from './style';
 
-const Button = ({ box, text, isFormLoading, children, ...props }) => {
-  // const isFormLoading = useSelector((state) => state.formLoader);
+const Button = ({ isFormLoading, children, ...props }) => {
   return (
     <>
-      {box ? (
-        <BoxButton {...props}>
-          <div>
-            {children}
-            {isFormLoading && <LoadingIndicator pattern="button" />}
-          </div>
-        </BoxButton>
-      ) : (
-        <TextButton {...props}>{children}</TextButton>
-      )}
+      <StyledButton {...props}>
+        <div>
+          {children}
+          {isFormLoading && <LoadingIndicator pattern="button" />}
+        </div>
+      </StyledButton>
     </>
   );
 };
 
 Button.propTypes = {
-  box: PropTypes.bool,
-  text: PropTypes.bool,
+  pattern: PropTypes.oneOf(['box', 'text']).isRequired,
   isFormLoading: PropTypes.bool,
   children: PropTypes.string.isRequired,
+};
+
+Button.defaultProps = {
+  isFormLoading: false,
 };
 
 export default Button;
