@@ -13,11 +13,9 @@ export const LeftSide = styled.div`
 `;
 
 export const RightSide = styled.div`
-  width: auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  flex-grow: 1;
 `;
 
 export const NewArticleLink = styled(Link)`
@@ -66,6 +64,7 @@ export const UserWindow = styled(Link)`
 `;
 
 export const UserName = styled.div`
+  text-align: right;
   color: white;
   margin-right: 10px;
 `;

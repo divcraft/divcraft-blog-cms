@@ -7,4 +7,5 @@ export { default as LoadingIndicator } from './LoadingIndicator';
 export { default as AppContainer } from './AppContainer';
 export { default as AppHeader } from './AppHeader';
 export { default as AppMenu } from './AppMenu';
-export * from './AppLayout';
+export { AppLayout } from './AppLayout';
+export { Wrapper } from './Wrapper';

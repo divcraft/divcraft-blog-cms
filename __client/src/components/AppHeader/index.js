@@ -1,5 +1,5 @@
 import React from 'react';
-import { Logo } from 'components';
+import { Logo, Wrapper } from 'components';
 import {
   HeaderContainer,
   LeftSide,
@@ -16,13 +16,15 @@ const AppHeader = () => {
       <LeftSide>
         <Logo pattern="white" />
       </LeftSide>
-      <RightSide>
-        <NewArticleLink to="/nowy-artykul">Nowy Artykuł</NewArticleLink>
-        <UserWindow>
-          <UserName>Imię Nazwisko</UserName>
-          <UserPhoto>T</UserPhoto>
-        </UserWindow>
-      </RightSide>
+      <Wrapper>
+        <RightSide>
+          <NewArticleLink to="/nowy-artykul">Nowy Artykuł</NewArticleLink>
+          <UserWindow>
+            <UserName>Imię Nazwisko</UserName>
+            <UserPhoto>T</UserPhoto>
+          </UserWindow>
+        </RightSide>
+      </Wrapper>
     </HeaderContainer>
   );
 };
