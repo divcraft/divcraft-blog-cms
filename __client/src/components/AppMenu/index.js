@@ -1,4 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import Cookies from 'js-cookie';
+import { withRouter } from 'react-router-dom';
 import {
   MenuContainer,
   MenuList,
@@ -8,8 +11,11 @@ import {
   LowerMenuButton,
 } from './style';
 
-const AppMenu = () => {
-  const handleLogout = () => {};
+const AppMenu = ({ history }) => {
+  const handleLogout = () => {
+    Cookies.remove('user');
+    history.replace('/login');
+  };
   return (
     <MenuContainer>
       <MenuList>
@@ -48,4 +54,8 @@ const AppMenu = () => {
   );
 };
 
-export default AppMenu;
+AppMenu.propTypes = {
+  history: PropTypes.instanceOf(Object).isRequired,
+};
+
+export default withRouter(AppMenu);
