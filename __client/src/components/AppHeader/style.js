@@ -14,6 +14,10 @@ export const LeftSide = styled.div`
 
 export const RightSide = styled.div`
   width: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-grow: 1;
 `;
 
 export const NewArticleLink = styled(Link)`
@@ -53,4 +57,27 @@ export const NewArticleLink = styled(Link)`
     width: 17px;
     height: 3px;
   }
+`;
+
+export const UserWindow = styled(Link)`
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+`;
+
+export const UserName = styled.div`
+  color: white;
+  margin-right: 10px;
+`;
+
+export const UserPhoto = styled.div`
+  display: block;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  color: ${({ theme: { colors } }) => colors.gray.darker};
+  background-color: white;
+  text-align: center;
+  line-height: 45px;
+  font-size: 24px;
 `;
