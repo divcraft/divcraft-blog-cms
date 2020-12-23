@@ -1,7 +1,12 @@
 import React from 'react';
+import { AppContainer } from 'components';
 
 const NewArticlePage = () => {
-  return <div>NewArticlePage</div>;
+  return (
+    <AppContainer title="Nowy artykuł">
+      <div>NewArticle</div>
+    </AppContainer>
+  );
 };
 
 export default NewArticlePage;

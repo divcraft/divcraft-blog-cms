@@ -1,7 +1,12 @@
 import React from 'react';
+import { AppContainer } from 'components';
 
 const MyAccountPage = () => {
-  return <div>MyAccountPage</div>;
+  return (
+    <AppContainer title="Moje konto">
+      <div>MyAccount</div>
+    </AppContainer>
+  );
 };
 
 export default MyAccountPage;

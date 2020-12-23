@@ -19,7 +19,7 @@ const AppHeader = () => {
       <Wrapper>
         <RightSide>
           <NewArticleLink to="/nowy-artykul">Nowy Artykuł</NewArticleLink>
-          <UserWindow>
+          <UserWindow to="/moje-konto">
             <UserName>Imię Nazwisko</UserName>
             <UserPhoto>T</UserPhoto>
           </UserWindow>
