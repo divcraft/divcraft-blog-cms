@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-export const HeaderContainer = styled.div`
+export const HeaderContainer = styled.header`
   grid-area: header;
   background-color: ${({ theme: { colors } }) => colors.blue.dark};
   display: flex;
