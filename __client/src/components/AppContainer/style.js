@@ -8,15 +8,3 @@ export const Container = styled.div`
     'header header'
     'menu layout';
 `;
-
-export const Header = styled.div`
-  grid-area: header;
-`;
-
-export const Menu = styled.div`
-  grid-area: menu;
-`;
-
-export const Layout = styled.div`
-  grid-area: layout;
-`;

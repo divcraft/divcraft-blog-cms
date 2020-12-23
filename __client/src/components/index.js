@@ -5,3 +5,6 @@ export { default as Button } from './Button';
 export { default as RedMessage } from './RedMessage';
 export { default as LoadingIndicator } from './LoadingIndicator';
 export { default as AppContainer } from './AppContainer';
+export { default as AppHeader } from './AppHeader';
+export { default as AppMenu } from './AppMenu';
+export * from './AppLayout';
