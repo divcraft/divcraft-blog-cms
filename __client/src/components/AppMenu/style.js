@@ -8,7 +8,8 @@ export const MenuContainer = styled.nav`
   flex-direction: column;
   justify-content: space-between;
   border-right: 1px solid ${({ theme: { colors } }) => colors.gray.light};
-  padding: 70px 0;
+  padding: 70px 0 30px;
+  margin-top: 2px;
   overflow-y: scroll;
 `;
 
@@ -35,10 +36,55 @@ export const UpperMenuItem = styled(NavLink)`
     color: white;
     background-color: ${({ theme: { colors } }) => colors.blue.dark};
   }
+  & > * {
+    margin: 0;
+    margin-left: 15px;
+    margin-bottom: 20px;
+    padding: 0;
+    color: ${({ theme: { colors } }) => colors.gray.darker};
+    border: none;
+    background: none;
+    cursor: pointer;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 `;
 
-export const LowerMenuItem = styled(Link)`
+export const LowerMenuAnchor = styled.a`
+  display: block;
+  margin-left: 15px;
+  margin-bottom: 5px;
+  padding: 0;
   text-decoration: none;
+  color: ${({ theme: { colors } }) => colors.gray.darker};
+  &:hover {
+    text-decoration: underline;
+  }
 `;
 
-export const LowerMenuButton = styled.button``;
+export const LowerMenuLink = styled(Link)`
+  display: block;
+  text-decoration: none;
+  margin-left: 15px;
+  margin-bottom: 5px;
+  padding: 0;
+  color: ${({ theme: { colors } }) => colors.gray.darker};
+  &:hover {
+    text-decoration: underline;
+  }
+`;
+
+export const LowerMenuButton = styled.button`
+  margin: 0;
+  margin-left: 15px;
+  margin-bottom: 30px;
+  padding: 0;
+  color: ${({ theme: { colors } }) => colors.gray.darker};
+  border: none;
+  background: none;
+  cursor: pointer;
+  &:hover {
+    text-decoration: underline;
+  }
+`;

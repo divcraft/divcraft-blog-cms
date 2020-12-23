@@ -3,7 +3,8 @@ import {
   MenuContainer,
   MenuList,
   UpperMenuItem,
-  LowerMenuItem,
+  LowerMenuAnchor,
+  LowerMenuLink,
   LowerMenuButton,
 } from './style';
 
@@ -30,10 +31,12 @@ const AppMenu = () => {
       </MenuList>
       <MenuList>
         <li>
-          <LowerMenuItem to="https://blog.div-craft.com/">Blog</LowerMenuItem>
+          <LowerMenuAnchor target="_blank" href="https://blog.div-craft.com/">
+            Blog
+          </LowerMenuAnchor>
         </li>
         <li>
-          <LowerMenuItem to="/pomoc">Pomoc</LowerMenuItem>
+          <LowerMenuLink to="/pomoc">Pomoc</LowerMenuLink>
         </li>
         <li>
           <LowerMenuButton onClick={() => handleLogout()}>
