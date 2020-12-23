@@ -6,7 +6,7 @@ import { Img } from './style';
 
 const Logo = ({ pattern, ...props }) => {
   const logoImg = pattern === 'colored' ? coloredLogo : whiteLogo;
-  return <Img src={logoImg} alt="Logo" {...props} />;
+  return <Img src={logoImg} alt="Logo" pattern={pattern} {...props} />;
 };
 
 Logo.propTypes = {
