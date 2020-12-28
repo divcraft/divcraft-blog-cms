@@ -1,7 +1,13 @@
 import React from 'react';
+import { TitleContainer } from 'components';
 
 const HelpPage = () => {
-  return <div>Help</div>;
+  return (
+    <>
+      <TitleContainer title="Pomoc" />
+      <div>Help</div>
+    </>
+  );
 };
 
 export default HelpPage;

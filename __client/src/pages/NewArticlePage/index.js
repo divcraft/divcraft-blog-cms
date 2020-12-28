@@ -1,7 +1,13 @@
 import React from 'react';
+import { TitleContainer } from 'components';
 
 const NewArticlePage = () => {
-  return <div>NewArticle</div>;
+  return (
+    <>
+      <TitleContainer title="Nowy artykuł" />
+      <div>NewArticle</div>
+    </>
+  );
 };
 
 export default NewArticlePage;

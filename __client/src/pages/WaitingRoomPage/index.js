@@ -1,7 +1,13 @@
 import React from 'react';
+import { TitleContainer } from 'components';
 
 const WaitingRoomPage = () => {
-  return <div>WaitingRoom</div>;
+  return (
+    <>
+      <TitleContainer title="Poczekalnia" />
+      <div>WaitingRoom</div>
+    </>
+  );
 };
 
 export default WaitingRoomPage;
