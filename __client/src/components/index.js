@@ -9,3 +9,4 @@ export { default as AppHeader } from './AppHeader';
 export { default as AppMenu } from './AppMenu';
 export { AppLayout } from './AppLayout';
 export { Wrapper } from './Wrapper';
+export { default as TitleContainer } from './TitleContainer';
