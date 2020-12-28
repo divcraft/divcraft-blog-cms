@@ -3,21 +3,17 @@ import PropTypes from 'prop-types';
 import { AppHeader, AppMenu, AppLayout } from 'components';
 import { Container } from './style';
 
-const AppContainer = ({ title, requiresName, children }) => {
+const AppContainer = ({ children }) => {
   return (
     <Container>
       <AppHeader />
       <AppMenu />
-      <AppLayout title={title} requiresName={requiresName}>
-        {children}
-      </AppLayout>
+      <AppLayout>{children}</AppLayout>
     </Container>
   );
 };
 
 AppContainer.propTypes = {
-  title: PropTypes.string.isRequired,
-  requiresName: PropTypes.bool,
   children: PropTypes.instanceOf(Object).isRequired,
 };
 

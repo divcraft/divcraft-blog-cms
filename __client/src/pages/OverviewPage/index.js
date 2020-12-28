@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { AppContainer } from 'components';
 import Axios from 'axios';
 import Cookies from 'js-cookie';
 
@@ -22,10 +21,8 @@ const OverviewPage = () => {
   }, []);
   return (
     <>
-      <AppContainer title="Przegląd" requiresName>
-        <div>OverviewPage</div>
-        <h2>{user.username}</h2>
-      </AppContainer>
+      <div>OverviewPage</div>
+      <h2>{user.username}</h2>
     </>
   );
 };
