@@ -19,10 +19,7 @@ const AppHeader = () => {
     Axios.get(`/api/users/${userId}`)
       .then((res) => {
         if (res.status === 200) {
-          console.log(res.data);
           setUser(res.data);
-        } else if (res.status !== 200) {
-          console.log('Something went wrong.');
         }
       })
       .catch((err) => {

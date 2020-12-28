@@ -9,7 +9,7 @@ export const HeaderContainer = styled.header`
 `;
 
 export const LeftSide = styled.div`
-  width: 300px;
+  width: 250px;
 `;
 
 export const RightSide = styled.div`
@@ -20,16 +20,16 @@ export const RightSide = styled.div`
 
 export const NewArticleLink = styled(Link)`
   display: block;
-  width: 240px;
-  height: 60px;
+  width: 190px;
+  height: 50px;
   background-color: white;
   border-radius: 15px;
   text-align: center;
-  line-height: 60px;
+  line-height: 50px;
   position: relative;
   color: ${({ theme: { colors } }) => colors.gray.darker};
   text-decoration: none;
-  font-size: 20px;
+  font-size: 16px;
   padding-left: 20px;
   &::before {
     content: '';
@@ -37,7 +37,7 @@ export const NewArticleLink = styled(Link)`
     border-radius: 2px;
     background-color: ${({ theme: { colors } }) => colors.gray.darker};
     top: 50%;
-    left: 50px;
+    left: 38px;
     display: block;
     transform: translate(-50%, -50%);
     width: 3px;
@@ -49,7 +49,7 @@ export const NewArticleLink = styled(Link)`
     border-radius: 2px;
     background-color: ${({ theme: { colors } }) => colors.gray.darker};
     top: 50%;
-    left: 50px;
+    left: 38px;
     display: block;
     transform: translate(-50%, -50%);
     width: 17px;

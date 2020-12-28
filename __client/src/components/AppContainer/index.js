@@ -17,8 +17,4 @@ AppContainer.propTypes = {
   children: PropTypes.instanceOf(Object).isRequired,
 };
 
-AppContainer.default = {
-  isRequired: false,
-};
-
 export default AppContainer;

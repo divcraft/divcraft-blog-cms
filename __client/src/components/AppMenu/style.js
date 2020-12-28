@@ -8,7 +8,7 @@ export const MenuContainer = styled.nav`
   flex-direction: column;
   justify-content: space-between;
   border-right: 1px solid ${({ theme: { colors } }) => colors.gray.light};
-  padding: 70px 0 30px;
+  padding: 25px 0 0;
   margin-top: 2px;
   overflow-y: scroll;
 `;
@@ -26,11 +26,11 @@ export const UpperMenuItem = styled(NavLink)`
   padding-left: 65px;
   display: block;
   width: 100%;
-  height: 80px;
+  height: 70px;
   color: ${({ theme: { colors } }) => colors.gray.darker};
   background-color: ${({ theme: { colors } }) => colors.gray.light};
   border-radius: 20px;
-  line-height: 80px;
+  line-height: 70px;
   &:hover,
   &.active {
     color: white;
@@ -78,7 +78,7 @@ export const LowerMenuLink = styled(Link)`
 export const LowerMenuButton = styled.button`
   margin: 0;
   margin-left: 15px;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   padding: 0;
   color: ${({ theme: { colors } }) => colors.gray.darker};
   border: none;

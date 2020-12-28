@@ -7,7 +7,7 @@ const MainTitle = ({ children, ...props }) => {
 };
 
 MainTitle.propTypes = {
-  children: PropTypes.string.isRequired,
+  children: PropTypes.string,
 };
 
 export default MainTitle;
