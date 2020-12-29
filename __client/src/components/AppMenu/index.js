@@ -3,12 +3,20 @@ import PropTypes from 'prop-types';
 import Cookies from 'js-cookie';
 import { withRouter } from 'react-router-dom';
 import {
+  faHome,
+  faNewspaper,
+  faEdit,
+  faComments,
+  faCog,
+} from '@fortawesome/free-solid-svg-icons';
+import {
   MenuContainer,
   MenuList,
   UpperMenuItem,
   LowerMenuAnchor,
   LowerMenuLink,
   LowerMenuButton,
+  StyledFontAwesome,
 } from './style';
 
 const AppMenu = ({ history }) => {
@@ -20,19 +28,34 @@ const AppMenu = ({ history }) => {
     <MenuContainer>
       <MenuList>
         <li>
-          <UpperMenuItem to="/przeglad">Przegląd</UpperMenuItem>
+          <UpperMenuItem to="/przeglad">
+            <StyledFontAwesome icon={faHome} />
+            Przegląd
+          </UpperMenuItem>
         </li>
         <li>
-          <UpperMenuItem to="/moje-artykuly">Moje artykuły</UpperMenuItem>
+          <UpperMenuItem to="/moje-artykuly">
+            <StyledFontAwesome icon={faNewspaper} />
+            Moje artykuły
+          </UpperMenuItem>
         </li>
         <li>
-          <UpperMenuItem to="/poczekalnia">Poczekalnia</UpperMenuItem>
+          <UpperMenuItem to="/poczekalnia">
+            <StyledFontAwesome icon={faEdit} />
+            Poczekalnia
+          </UpperMenuItem>
         </li>
         <li>
-          <UpperMenuItem to="/panel-kontaktowy">Panel kontaktowy</UpperMenuItem>
+          <UpperMenuItem to="/panel-kontaktowy">
+            <StyledFontAwesome icon={faComments} />
+            Panel kontaktowy
+          </UpperMenuItem>
         </li>
         <li>
-          <UpperMenuItem to="/panel-admina">Panel admina</UpperMenuItem>
+          <UpperMenuItem to="/panel-admina">
+            <StyledFontAwesome icon={faCog} />
+            Panel admina
+          </UpperMenuItem>
         </li>
       </MenuList>
       <MenuList>

@@ -17,9 +17,9 @@ export const Outer = styled.div`
     css`
       width: 40px;
       height: 40px;
-      top: 30px;
+      top: 50%;
       left: 50%;
-      transform: translateX(-50%);
+      transform: translate(-50%, -50%);
     `}
   ${(props) =>
     props.pattern === `button` &&
@@ -55,7 +55,7 @@ export const Inner = styled.div`
       props.pattern === `main` &&
       css`
         height: 10px;
-        background: black;
+        background: ${({ theme: { colors } }) => colors.blue.dark};
       `}
     ${(props) =>
       props.pattern === `button` &&

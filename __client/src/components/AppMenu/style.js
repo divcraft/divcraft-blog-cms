@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Link, NavLink } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export const MenuContainer = styled.nav`
   grid-area: menu;
@@ -18,6 +19,9 @@ export const MenuList = styled.ul`
   width: 100%;
   display: block;
   padding: 0 10px;
+  & li {
+    position: relative;
+  }
 `;
 
 export const UpperMenuItem = styled(NavLink)`
@@ -32,7 +36,9 @@ export const UpperMenuItem = styled(NavLink)`
   border-radius: 20px;
   line-height: 70px;
   &:hover,
-  &.active {
+  &.active,
+  &:hover path,
+  &.active path {
     color: white;
     background-color: ${({ theme: { colors } }) => colors.blue.dark};
   }
@@ -87,4 +93,13 @@ export const LowerMenuButton = styled.button`
   &:hover {
     text-decoration: underline;
   }
+`;
+
+export const StyledFontAwesome = styled(FontAwesomeIcon)`
+  height: auto;
+  position: absolute;
+  top: 50%;
+  left: 13px;
+  color: ${({ theme: { colors } }) => colors.gray.darker};
+  transform: translateY(-50%) scale(1.5);
 `;

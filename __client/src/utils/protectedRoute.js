@@ -1,24 +1,32 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import PropTypes from 'prop-types';
-import Cookies from 'js-cookie';
 import { Redirect, Route } from 'react-router-dom';
-import { AppContainer } from 'components';
+import { LoadingIndicator } from 'components';
+import { checkAuth } from 'utils';
+
+const AppContainer = React.lazy(() => import('components/AppContainer'));
 
 const ProtectedRoute = ({ component: Component, ...rest }) => {
-  const userCookie = Cookies.get('user');
+  const isLogged = checkAuth();
   return (
-    <Route
-      {...rest}
-      render={(props) =>
-        userCookie ? (
-          <AppContainer>
-            <Component {...props} />
-          </AppContainer>
-        ) : (
-          <Redirect to="/login" />
-        )
-      }
-    />
+    isLogged && (
+      <Route
+        {...rest}
+        render={(props) => {
+          if (isLogged === 'true') {
+            return (
+              <Suspense fallback={<LoadingIndicator pattern="main" />}>
+                <AppContainer>
+                  <Component {...props} />
+                </AppContainer>
+              </Suspense>
+            );
+          } else if (isLogged === 'false') {
+            return <Redirect to="/login" />;
+          }
+        }}
+      />
+    )
   );
 };
 
