@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import Axios from 'axios';
+import React from 'react';
 import Cookies from 'js-cookie';
+import { useDispatch, useSelector } from 'react-redux';
 import { Logo, Wrapper } from 'components';
+import { fetchUserData } from 'store/actions';
 import {
   HeaderContainer,
   LeftSide,
@@ -13,19 +14,10 @@ import {
 } from './style';
 
 const AppHeader = () => {
-  const userId = Cookies.get('user').slice(3).slice(0, -1);
-  const [user, setUser] = useState('');
-  useEffect(() => {
-    Axios.get(`/api/users/${userId}`)
-      .then((res) => {
-        if (res.status === 200) {
-          setUser(res.data);
-        }
-      })
-      .catch((err) => {
-        throw err;
-      });
-  }, []);
+  const cookieId = Cookies.get('user').slice(3).slice(0, -1);
+  const dispatch = useDispatch();
+  const userData = useSelector((state) => state.userData);
+  dispatch(fetchUserData(cookieId));
   return (
     <HeaderContainer>
       <LeftSide>
@@ -35,8 +27,10 @@ const AppHeader = () => {
         <RightSide>
           <NewArticleLink to="/nowy-artykul">Nowy Artykuł</NewArticleLink>
           <UserWindow to="/moje-konto">
-            <UserName>{user.username}</UserName>
-            <UserPhoto>{user && user.username[0].toUpperCase()}</UserPhoto>
+            <UserName>{userData && userData.username}</UserName>
+            <UserPhoto>
+              {userData && userData.username[0].toUpperCase()}
+            </UserPhoto>
           </UserWindow>
         </RightSide>
       </Wrapper>
