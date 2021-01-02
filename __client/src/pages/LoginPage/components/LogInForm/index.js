@@ -35,7 +35,7 @@ const LogInForm = ({ history }) => {
           const { status } = res;
           if (status === 200) {
             dispatch(setLogInFormLoaderOff);
-            history.replace('/przeglad');
+            history.go(0);
           }
         })
         .catch((err) => {

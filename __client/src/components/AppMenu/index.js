@@ -22,7 +22,7 @@ import {
 const AppMenu = ({ history }) => {
   const handleLogout = () => {
     Cookies.remove('user');
-    history.replace('/login');
+    history.go(0);
   };
   return (
     <MenuContainer>
