@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Axios from 'axios';
 import Cookies from 'js-cookie';
 import { TitleContainer, Wrapper } from 'components';
+import { SectionContainer } from './components';
 
 const OverviewPage = () => {
   const userId = Cookies.get('user').slice(3).slice(0, -1);
@@ -21,7 +22,7 @@ const OverviewPage = () => {
     <>
       <TitleContainer username={user.username} />
       <Wrapper>
-        <div>OverviewPage</div>
+        <SectionContainer>OverviewPage</SectionContainer>
       </Wrapper>
     </>
   );
