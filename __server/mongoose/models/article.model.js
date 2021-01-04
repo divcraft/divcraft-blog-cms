@@ -6,7 +6,6 @@ const articleSchema = new Schema(
   {
     author_id: String,
     category_id: String,
-    publicationDate: Date,
     ratingSum: Number,
     ratersNumber: Number,
     header: {

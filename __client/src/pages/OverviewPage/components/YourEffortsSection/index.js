@@ -1,13 +1,19 @@
 import React from 'react';
 import { SectionContainer } from 'components';
+import { useSelector } from 'react-redux';
 import { LineItem, Text, Underline } from './style';
 
 const YouEffortsSection = () => {
+  const userId = useSelector((state) => state.userData);
+  const writtenArticles = () => {
+    console.log('yourEfforts', userId);
+    return 33;
+  };
   return (
     <SectionContainer title="Twoje wyniki">
       <LineItem>
         <Text>Napisane artykuły:</Text>
-        <Text>21</Text>
+        <Text>{writtenArticles()}</Text>
       </LineItem>
       <LineItem>
         <Text>Łączna ilość odsłon Twoich artykułów:</Text>
