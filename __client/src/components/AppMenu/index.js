@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Cookies from 'js-cookie';
+import { useSelector } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import {
   faHome,
@@ -20,6 +21,7 @@ import {
 } from './style';
 
 const AppMenu = ({ history }) => {
+  const isAdmin = useSelector((state) => state.userData.user.isAdmin);
   const handleLogout = () => {
     Cookies.remove('user');
     history.go(0);
@@ -51,12 +53,14 @@ const AppMenu = ({ history }) => {
             Panel kontaktowy
           </UpperMenuItem>
         </li>
-        <li>
-          <UpperMenuItem to="/panel-admina">
-            <StyledFontAwesome icon={faCog} />
-            Panel admina
-          </UpperMenuItem>
-        </li>
+        {isAdmin && (
+          <li>
+            <UpperMenuItem to="/panel-admina">
+              <StyledFontAwesome icon={faCog} />
+              Panel admina
+            </UpperMenuItem>
+          </li>
+        )}
       </MenuList>
       <MenuList>
         <li>

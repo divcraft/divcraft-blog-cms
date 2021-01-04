@@ -4,9 +4,9 @@ import { useSelector } from 'react-redux';
 import { LineItem, Text, Underline } from './style';
 
 const YouEffortsSection = () => {
-  const userId = useSelector((state) => state.userData);
+  const user = useSelector((state) => state.userData.user);
   const writtenArticles = () => {
-    console.log('yourEfforts', userId);
+    console.log('yourEfforts', user);
     return 33;
   };
   return (
