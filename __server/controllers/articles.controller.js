@@ -20,6 +20,16 @@ module.exports = {
       }
     });
   },
+  findAllByAuthorId(req, res) {
+    const { userId } = req.query;
+    Articles.find({ author_id: userId }, (err, data) => {
+      if (err) {
+        res.status(500).send(err);
+      } else {
+        res.send(data);
+      }
+    });
+  },
   create(req, res) {
     const newArticle = new Articles({
       // ...
