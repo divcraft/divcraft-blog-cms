@@ -6,8 +6,11 @@ const articleSchema = new Schema(
   {
     author_id: String,
     category_id: String,
-    ratingSum: Number,
-    ratersNumber: Number,
+    ratingSum: { type: Number, default: 0 },
+    ratersNumber: { type: Number, default: 0 },
+    isFinished: { type: Boolean, default: false },
+    isPublished: { type: Boolean, default: false },
+    publicationDate: Date,
     header: {
       title: { type: String, required: true },
       subtitle: String,

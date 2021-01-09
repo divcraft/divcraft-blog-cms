@@ -12,23 +12,24 @@ module.exports = {
     });
   },
   findAll(req, res) {
-    Articles.find({}, (err, data) => {
-      if (err) {
-        res.status(500).send(err);
-      } else {
-        res.send(data);
-      }
-    });
-  },
-  findAllByAuthorId(req, res) {
     const { userId } = req.query;
-    Articles.find({ author_id: userId }, (err, data) => {
-      if (err) {
-        res.status(500).send(err);
-      } else {
-        res.send(data);
-      }
-    });
+    if (userId) {
+      Articles.find({ author_id: userId }, (err, data) => {
+        if (err) {
+          res.status(500).send(err);
+        } else {
+          res.send(data);
+        }
+      });
+    } else {
+      Articles.find({}, (err, data) => {
+        if (err) {
+          res.status(500).send(err);
+        } else {
+          res.send(data);
+        }
+      });
+    }
   },
   create(req, res) {
     const newArticle = new Articles({
