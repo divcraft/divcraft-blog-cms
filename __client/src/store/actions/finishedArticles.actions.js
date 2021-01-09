@@ -10,12 +10,12 @@ import {
 } from 'constants';
 
 export const fetchFinishedArticles = () => (dispatch) => {
+  const userId = useSelector((state) => state.userData.user._id);
   useEffect(() => {
     dispatch({
       type: FETCH_FINISHED_ARTICLES_PROMISE,
     });
-    const userId = useSelector((state) => state.userData._id);
-    Axios.get(`/api/articles?userId=${userId},isFinished=true`)
+    Axios.get(`/api/articles?userId=${userId}&isFinished=true`)
       .then((res) => {
         const { data } = res;
         dispatch({

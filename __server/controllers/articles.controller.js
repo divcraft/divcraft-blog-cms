@@ -12,9 +12,9 @@ module.exports = {
     });
   },
   findAll(req, res) {
-    const { userId } = req.query;
-    if (userId) {
-      Articles.find({ author_id: userId }, (err, data) => {
+    const { userId, isFinished } = req.query;
+    if (userId && isFinished) {
+      Articles.find({ author_id: userId, isFinished: true }, (err, data) => {
         if (err) {
           res.status(500).send(err);
         } else {
