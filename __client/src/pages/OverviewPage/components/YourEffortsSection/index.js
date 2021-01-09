@@ -9,6 +9,7 @@ const YouEffortsSection = () => {
     writtenArticles: null,
     totalArticleViews: 0,
     averageRatingOfAllArticles: null,
+    newestPublishedArticle: null,
   });
   const user = useSelector((state) => state.userData.user);
   useEffect(() => {
@@ -16,20 +17,43 @@ const YouEffortsSection = () => {
       const publishedArticles = data.filter(
         (article) => article.isPublished === true
       );
+      // console.log({ publishedArticles });
+
       const writtenArticles = publishedArticles.length;
+
       const sumOfRatingOfAllArticles =
         publishedArticles.length > 1
           ? publishedArticles.reduce(
-              (a, b) => a.averageRating + b.averageRating
+              (acc, { averageRating }) => acc + averageRating,
+              0
             )
           : publishedArticles[0].averageRating;
       const averageRatingOfAllArticles = (
         sumOfRatingOfAllArticles / publishedArticles.length
       ).toFixed(2);
+
+      const newestPublishedArticle = publishedArticles
+        .map((article) => {
+          const transformatedDate = new Date(article.publicationDate);
+          return {
+            ...article,
+            publicationDate: Date.parse(transformatedDate),
+          };
+        })
+        .sort((a, b) => a.publicationDate + b.publicationDate)
+        .map((article) => {
+          // const transformatedDate = new Date(article.publicationDate);
+          return {
+            ...article,
+            publicationDate: new Date(article.publicationDate),
+          };
+        })[0];
+
       setApiData({
         ...apiData,
         writtenArticles,
         averageRatingOfAllArticles,
+        newestPublishedArticle,
       });
     });
   }, []);
@@ -37,6 +61,7 @@ const YouEffortsSection = () => {
     writtenArticles,
     totalArticleViews,
     averageRatingOfAllArticles,
+    newestPublishedArticle,
   } = apiData;
   console.log(apiData);
   return (
@@ -57,9 +82,22 @@ const YouEffortsSection = () => {
       <LineItem>
         <Text>Najnowszy opublikowany artykuł:</Text>
         <Underline>
-          Dbam o RAM, czyli jak uniknąć przeciążenia przeglądarki
+          {newestPublishedArticle && newestPublishedArticle.header.title}
         </Underline>
-        <Text>(2/09/2020)</Text>
+        <Text>
+          (
+          {newestPublishedArticle &&
+            newestPublishedArticle.publicationDate.getDay()}
+          /
+          {newestPublishedArticle &&
+            (newestPublishedArticle.publicationDate.getMonth() + 1 < 10
+              ? `0${newestPublishedArticle.publicationDate.getMonth() + 1}`
+              : newestPublishedArticle.publicationDate.getMonth() + 1)}
+          /
+          {newestPublishedArticle &&
+            newestPublishedArticle.publicationDate.getFullYear()}
+          )
+        </Text>
       </LineItem>
       <LineItem>
         <Text>Najlepiej oceniany artykuł:</Text>
