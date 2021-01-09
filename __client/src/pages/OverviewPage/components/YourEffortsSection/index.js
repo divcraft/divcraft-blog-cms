@@ -10,6 +10,7 @@ const YouEffortsSection = () => {
     totalArticleViews: 0,
     averageRatingOfAllArticles: null,
     newestPublishedArticle: null,
+    bestRatedArticle: null,
   });
   const user = useSelector((state) => state.userData.user);
   useEffect(() => {
@@ -17,16 +18,15 @@ const YouEffortsSection = () => {
       const publishedArticles = data.filter(
         (article) => article.isPublished === true
       );
-      // console.log({ publishedArticles });
 
       const writtenArticles = publishedArticles.length;
 
       const sumOfRatingOfAllArticles =
         publishedArticles.length > 1
           ? publishedArticles.reduce(
-              (acc, { averageRating }) => acc + averageRating,
-              0
-            )
+            (acc, { averageRating }) => acc + averageRating,
+            0
+          )
           : publishedArticles[0].averageRating;
       const averageRatingOfAllArticles = (
         sumOfRatingOfAllArticles / publishedArticles.length
@@ -41,19 +41,21 @@ const YouEffortsSection = () => {
           };
         })
         .sort((a, b) => a.publicationDate + b.publicationDate)
-        .map((article) => {
-          // const transformatedDate = new Date(article.publicationDate);
-          return {
-            ...article,
-            publicationDate: new Date(article.publicationDate),
-          };
-        })[0];
+        .map((article) => ({
+          ...article,
+          publicationDate: new Date(article.publicationDate),
+        }))[0];
+
+      const bestRatedArticle = publishedArticles.sort(
+        (a, b) => a.averageRating + b.averageRating
+      )[0];
 
       setApiData({
         ...apiData,
         writtenArticles,
         averageRatingOfAllArticles,
         newestPublishedArticle,
+        bestRatedArticle,
       });
     });
   }, []);
@@ -62,8 +64,9 @@ const YouEffortsSection = () => {
     totalArticleViews,
     averageRatingOfAllArticles,
     newestPublishedArticle,
+    bestRatedArticle,
   } = apiData;
-  console.log(apiData);
+  // console.log(apiData);
   return (
     <SectionContainer title="Twoje wyniki">
       <LineItem>
@@ -72,7 +75,7 @@ const YouEffortsSection = () => {
       </LineItem>
       <LineItem>
         <Text>Łączna ilość odsłon Twoich artykułów:</Text>
-        <Text>{totalArticleViews}</Text>{' '}
+        <Text>{totalArticleViews}</Text>
         {/* will be added after getting the blog public */}
       </LineItem>
       <LineItem>
@@ -101,13 +104,15 @@ const YouEffortsSection = () => {
       </LineItem>
       <LineItem>
         <Text>Najlepiej oceniany artykuł:</Text>
-        <Underline>Umieszczenie elementów multimedialnych na stronie</Underline>
-        <Text>(4,9)</Text>
+        <Underline>
+          {bestRatedArticle && bestRatedArticle.header.title}
+        </Underline>
+        <Text>({bestRatedArticle && bestRatedArticle.averageRating})</Text>
       </LineItem>
       <LineItem>
         <Text>Najpopularniejszy artykuł:</Text>
         <Underline>Umieszczenie elementów multimedialnych na stronie</Underline>
-        <Text>(0 odsłon)</Text>{' '}
+        <Text>(0 odsłon)</Text>
         {/* will be added after getting the blog public */}
       </LineItem>
     </SectionContainer>
