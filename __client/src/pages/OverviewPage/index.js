@@ -12,15 +12,17 @@ const OverviewPage = () => {
   );
   const dispatch = useDispatch();
   dispatch(fetchFinishedArticles());
-  return loadingState === SUCCESSED ? (
+  return (
     <>
       <TitleContainer username={firstName} />
-      <Wrapper>
-        <YourEffortsSection />
-      </Wrapper>
+      {loadingState === SUCCESSED ? (
+        <Wrapper>
+          <YourEffortsSection />
+        </Wrapper>
+      ) : (
+        <LoadingIndicator pattern="main" />
+      )}
     </>
-  ) : (
-    <LoadingIndicator pattern="main" />
   );
 };
 
