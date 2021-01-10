@@ -9,6 +9,7 @@ const newsSchema = new Schema(
     newsType: String,
     commentsCounter: Number,
     reportData: {
+      comment_id: String,
       reporterName: String,
       reportContent: String,
     },
