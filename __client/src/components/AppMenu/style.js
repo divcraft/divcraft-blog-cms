@@ -58,7 +58,7 @@ export const UpperMenuItem = styled(NavLink)`
 `;
 
 export const LowerMenuAnchor = styled.a`
-  display: block;
+  display: inline;
   margin-left: 15px;
   margin-bottom: 5px;
   padding: 0;
@@ -70,7 +70,7 @@ export const LowerMenuAnchor = styled.a`
 `;
 
 export const LowerMenuLink = styled(Link)`
-  display: block;
+  display: inline;
   text-decoration: none;
   margin-left: 15px;
   margin-bottom: 5px;

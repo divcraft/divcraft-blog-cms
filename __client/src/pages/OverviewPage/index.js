@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { TitleContainer, Wrapper, LoadingIndicator } from 'components';
 import { SUCCESSED } from 'constants';
 import { fetchFinishedArticles } from 'store/actions';
-import { YourEffortsSection } from './components';
+import { YourEffortsSection, NewsSection } from './components';
 
 const OverviewPage = () => {
   const firstName = useSelector((state) => state.userData.user.firstName);
@@ -18,6 +18,7 @@ const OverviewPage = () => {
       {loadingState === SUCCESSED ? (
         <Wrapper>
           <YourEffortsSection />
+          <NewsSection />
         </Wrapper>
       ) : (
         <LoadingIndicator pattern="main" />
