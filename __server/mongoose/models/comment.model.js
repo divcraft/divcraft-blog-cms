@@ -8,12 +8,11 @@ const commentSchema = new Schema(
     authorEmail: { type: String, required: true },
     authorImg: String,
     content: { type: String, required: true },
-    publicationDate: { type: Date, default: Date.now },
     likesNumber: Number,
     isWrittenByArticleAuthor: { type: Boolean, default: false },
     isReported: { type: Boolean, default: false },
     response: {
-      isResponed: Boolean,
+      isResponsed: Boolean,
       mainComment_id: String,
     },
     deletion: {
