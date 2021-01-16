@@ -8,7 +8,7 @@ import {
   Redirect,
 } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
-import { GlobalStyle, theme, ProtectedRoute } from 'utils';
+import { GlobalStyle, theme, ProtectedRoute, AdminRoute } from 'utils';
 import configureStore from 'store';
 import {
   LoginPage,
@@ -51,10 +51,10 @@ const App = () => {
       <ProtectedRoute path="/moje-artykuly" component={MyArticlesPage} />
       <ProtectedRoute path="/poczekalnia" component={WaitingRoomPage} />
       <ProtectedRoute path="/panel-kontaktowy" component={ContactPanelPage} />
-      <ProtectedRoute path="/panel-admina" component={AdminPanelPage} />
       <ProtectedRoute path="/nowy-artykul" component={NewArticlePage} />
       <ProtectedRoute path="/moje-konto" component={MyAccountPage} />
       <ProtectedRoute path="/pomoc" component={HelpPage} />
+      <AdminRoute path="/panel-admina" component={AdminPanelPage} />
       <Redirect to="/przeglad" />
     </Switch>
   );
