@@ -7,6 +7,7 @@ export const NewsList = styled.li`
 `;
 
 export const NewsListItem = styled.li`
+  background-color: white;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
