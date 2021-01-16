@@ -46,7 +46,8 @@ const YourEffortsSection = () => {
           publicationDate: Date.parse(transformatedDate),
         };
       })
-      .sort((a, b) => a.publicationDate + b.publicationDate)
+      .sort((a, b) => a.publicationDate - b.publicationDate)
+      .reverse()
       .map((article) => ({
         ...article,
         publicationDate: new Date(article.publicationDate),
@@ -54,9 +55,13 @@ const YourEffortsSection = () => {
     return newestPublishedArticle;
   };
   const setBestRatedArticle = () => {
-    const bestRatedArticle = publishedArticles.sort(
-      (a, b) => a.averageRating + b.averageRating
-    )[0];
+    let bestRatedArticle = publishedArticles
+      .sort((a, b) => a.averageRating - b.averageRating)
+      .reverse()[0];
+    bestRatedArticle = {
+      ...bestRatedArticle,
+      averageRating: bestRatedArticle.averageRating.toFixed(2),
+    };
     return bestRatedArticle;
   };
   useEffect(() => {
@@ -99,7 +104,7 @@ const YourEffortsSection = () => {
           <Text>Najnowszy opublikowany artykuł:</Text>
           <Underline>{newestPublishedArticle.header.title}</Underline>
           <Text>
-            ({newestPublishedArticle.publicationDate.getDay()}/
+            ({newestPublishedArticle.publicationDate.getDate()}/
             {newestPublishedArticle.publicationDate.getMonth() + 1 < 10
               ? `0${newestPublishedArticle.publicationDate.getMonth() + 1}`
               : newestPublishedArticle.publicationDate.getMonth() + 1}
