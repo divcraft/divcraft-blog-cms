@@ -25,6 +25,7 @@ const YourEffortsSection = () => {
     return writtenArticles;
   };
   const setAverageRatingOfAllArticles = () => {
+    if (publishedArticles.length === 0) return 0;
     const sumOfRatingOfAllArticles =
       publishedArticles.length > 1
         ? publishedArticles.reduce(
@@ -38,6 +39,7 @@ const YourEffortsSection = () => {
     return averageRatingOfAllArticles;
   };
   const setNewestPublishedArticle = () => {
+    if (publishedArticles.length === 0) return null;
     const newestPublishedArticle = publishedArticles
       .map((article) => {
         const transformatedDate = new Date(article.publicationDate);
@@ -55,6 +57,7 @@ const YourEffortsSection = () => {
     return newestPublishedArticle;
   };
   const setBestRatedArticle = () => {
+    if (publishedArticles.length === 0) return null;
     let bestRatedArticle = publishedArticles
       .sort((a, b) => a.averageRating - b.averageRating)
       .reverse()[0];
@@ -102,19 +105,31 @@ const YourEffortsSection = () => {
         </LineItem>
         <LineItem>
           <Text>Najnowszy opublikowany artykuł:</Text>
-          <Underline>{newestPublishedArticle.header.title}</Underline>
-          <Text>
-            ({newestPublishedArticle.publicationDate.getDate()}/
-            {newestPublishedArticle.publicationDate.getMonth() + 1 < 10
-              ? `0${newestPublishedArticle.publicationDate.getMonth() + 1}`
-              : newestPublishedArticle.publicationDate.getMonth() + 1}
-            /{newestPublishedArticle.publicationDate.getFullYear()})
-          </Text>
+          {newestPublishedArticle ? (
+            <>
+              <Underline>{newestPublishedArticle.header.title}</Underline>
+              <Text>
+                ({newestPublishedArticle.publicationDate.getDate()}/
+                {newestPublishedArticle.publicationDate.getMonth() + 1 < 10
+                  ? `0${newestPublishedArticle.publicationDate.getMonth() + 1}`
+                  : newestPublishedArticle.publicationDate.getMonth() + 1}
+                /{newestPublishedArticle.publicationDate.getFullYear()})
+              </Text>
+            </>
+          ) : (
+            <Text>brak</Text>
+          )}
         </LineItem>
         <LineItem>
           <Text>Najlepiej oceniany artykuł:</Text>
-          <Underline>{bestRatedArticle.header.title}</Underline>
-          <Text>({bestRatedArticle.averageRating})</Text>
+          {bestRatedArticle ? (
+            <>
+              <Underline>{bestRatedArticle.header.title}</Underline>
+              <Text>({bestRatedArticle.averageRating})</Text>
+            </>
+          ) : (
+            <Text>brak</Text>
+          )}
         </LineItem>
         <LineItem>
           <Text>Najpopularniejszy artykuł:</Text>
