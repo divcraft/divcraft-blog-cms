@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { SectionContainer } from 'components';
 import { useSelector } from 'react-redux';
-import { LineItem, Text, Underline } from './style';
+import { LineItem, GrayText, Underline } from './style';
 
 const YourEffortsSection = () => {
   const [sectionData, setSectionData] = useState({
@@ -91,52 +91,52 @@ const YourEffortsSection = () => {
     isCalculated && (
       <SectionContainer title="Twoje wyniki">
         <LineItem>
-          <Text>Napisane artykuły:</Text>
-          <Text>{writtenArticles}</Text>
+          <span>Napisane artykuły:</span>
+          <span>{writtenArticles}</span>
         </LineItem>
         <LineItem>
-          <Text>Łączna ilość odsłon Twoich artykułów:</Text>
-          <Text>{totalArticleViews}</Text>
+          <span>Łączna ilość odsłon Twoich artykułów:</span>
+          <span>{totalArticleViews}</span>
           {/* will be added after getting the blog public */}
         </LineItem>
         <LineItem>
-          <Text>Średnia ocena za wszystkie artykuły:</Text>
-          <Text>{averageRatingOfAllArticles}</Text>
+          <span>Średnia ocena za wszystkie artykuły:</span>
+          <span>{averageRatingOfAllArticles}</span>
         </LineItem>
         <LineItem>
-          <Text>Najnowszy opublikowany artykuł:</Text>
+          <span>Najnowszy opublikowany artykuł:</span>
           {newestPublishedArticle ? (
             <>
               <Underline>{newestPublishedArticle.header.title}</Underline>
-              <Text>
+              <span>
                 ({newestPublishedArticle.publicationDate.getDate()}/
                 {newestPublishedArticle.publicationDate.getMonth() + 1 < 10
                   ? `0${newestPublishedArticle.publicationDate.getMonth() + 1}`
                   : newestPublishedArticle.publicationDate.getMonth() + 1}
                 /{newestPublishedArticle.publicationDate.getFullYear()})
-              </Text>
+              </span>
             </>
           ) : (
-            <Text>brak</Text>
+            <GrayText>brak opublikowanych artykułów</GrayText>
           )}
         </LineItem>
         <LineItem>
-          <Text>Najlepiej oceniany artykuł:</Text>
+          <span>Najlepiej oceniany artykuł:</span>
           {bestRatedArticle ? (
             <>
               <Underline>{bestRatedArticle.header.title}</Underline>
-              <Text>({bestRatedArticle.averageRating})</Text>
+              <span>({bestRatedArticle.averageRating})</span>
             </>
           ) : (
-            <Text>brak</Text>
+            <GrayText>brak opublikowanych artykułów</GrayText>
           )}
         </LineItem>
         <LineItem>
-          <Text>Najpopularniejszy artykuł:</Text>
+          <span>Najpopularniejszy artykuł:</span>
           <Underline>
             Umieszczenie elementów multimedialnych na stronie
           </Underline>
-          <Text>(0 odsłon)</Text>
+          <span>(0 odsłon)</span>
           {/* will be added after getting the blog public */}
         </LineItem>
       </SectionContainer>

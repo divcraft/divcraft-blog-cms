@@ -16,7 +16,9 @@ export const LineItem = styled.div`
   }
 `;
 
-export const Text = styled.span``;
+export const GrayText = styled.span`
+  color: ${({ theme: { colors } }) => colors.gray.dark};
+`;
 
 export const Underline = styled(Link)`
   display: block;
