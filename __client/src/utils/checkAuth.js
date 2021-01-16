@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import Axios from 'axios';
 import Cookies from 'js-cookie';
+import { SUCCESSED, FAILED } from 'constants';
 
 export default () => {
   const [islogged, setIsLogged] = useState(null);
@@ -10,14 +11,14 @@ export default () => {
       cookieId = cookieId.slice(3).slice(0, -1);
       Axios.get(`/api/users/${cookieId}`)
         .then(() => {
-          setIsLogged('true');
+          setIsLogged(SUCCESSED);
         })
         .catch(() => {
           Cookies.remove('user');
-          setIsLogged('false');
+          setIsLogged(FAILED);
         });
     } else {
-      setIsLogged('false');
+      setIsLogged(FAILED);
     }
   }, []);
   return islogged;
