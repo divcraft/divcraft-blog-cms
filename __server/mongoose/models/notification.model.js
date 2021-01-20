@@ -6,7 +6,7 @@ const notificationSchema = new Schema(
   {
     user_id: String,
     article_id: String,
-    newsType: String,
+    notificationType: String,
     commentsCounter: Number,
     reportData: {
       comment_id: String,

@@ -14,7 +14,7 @@ module.exports = {
   findAll(req, res) {
     const { userId, isFinished } = req.query;
     if (userId && isFinished) {
-      Articles.find({ author_id: userId, isFinished: true }, (err, data) => {
+      Articles.find({ user_id: userId, isFinished: true }, (err, data) => {
         if (err) {
           res.status(500).send(err);
         } else {

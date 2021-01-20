@@ -4,7 +4,7 @@ const { Schema } = mongoose;
 
 const articleSchema = new Schema(
   {
-    author_id: String,
+    user_id: String,
     category_id: String,
     averageRating: { type: Number, default: 0 },
     ratersNumber: { type: Number, default: 0 },
