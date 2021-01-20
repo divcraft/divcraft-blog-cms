@@ -1,60 +1,60 @@
 import React from 'react';
 import { SectionContainer } from 'components';
 import {
-  NewsList,
-  NewsListItem,
-  NewsText,
+  NotificationsList,
+  NotificationListItem,
+  NotificationText,
   CheckLink,
   ArticleLink,
 } from './style';
 
-const NewsSection = () => {
+const NotificationsSection = () => {
   return (
     <SectionContainer title="Aktualności">
-      <NewsList>
-        <NewsListItem>
-          <NewsText>
+      <NotificationsList>
+        <NotificationListItem>
+          <NotificationText>
             <span>Masz 5 nowych komentarzy pod artykułem</span>
             <ArticleLink>
               27-letnia Polka z Raciczek Dolnych szczerze po trzech dniach od
               szczepienia na covid-19
             </ArticleLink>
-          </NewsText>
+          </NotificationText>
           <CheckLink>Sprawdź</CheckLink>
-        </NewsListItem>
-        <NewsListItem>
-          <NewsText>
+        </NotificationListItem>
+        <NotificationListItem>
+          <NotificationText>
             <span>Masz 5 nowych komentarzy pod artykułem</span>
             <ArticleLink>
               27-letnia Polka z Raciczek Dolnych szczerze po trzech dniach od
               szczepienia na covid-19
             </ArticleLink>
-          </NewsText>
+          </NotificationText>
           <CheckLink>Sprawdź</CheckLink>
-        </NewsListItem>
-        <NewsListItem>
-          <NewsText>
+        </NotificationListItem>
+        <NotificationListItem>
+          <NotificationText>
             <span>Masz 5 nowych komentarzy pod artykułem</span>
             <ArticleLink>
               27-letnia Polka z Raciczek Dolnych szczerze po trzech dniach od
               szczepienia na covid-19
             </ArticleLink>
-          </NewsText>
+          </NotificationText>
           <CheckLink>Sprawdź</CheckLink>
-        </NewsListItem>
-        <NewsListItem>
-          <NewsText>
+        </NotificationListItem>
+        <NotificationListItem>
+          <NotificationText>
             <span>Masz 5 nowych komentarzy pod artykułem</span>
             <ArticleLink>
               27-letnia Polka z Raciczek Dolnych szczerze po trzech dniach od
               szczepienia na covid-19
             </ArticleLink>
-          </NewsText>
+          </NotificationText>
           <CheckLink>Sprawdź</CheckLink>
-        </NewsListItem>
-      </NewsList>
+        </NotificationListItem>
+      </NotificationsList>
     </SectionContainer>
   );
 };
 
-export default NewsSection;
+export default NotificationsSection;

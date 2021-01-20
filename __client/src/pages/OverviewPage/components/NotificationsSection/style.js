@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-export const NewsList = styled.li`
+export const NotificationsList = styled.li`
   padding: 0;
   list-style: none;
 `;
 
-export const NewsListItem = styled.li`
+export const NotificationListItem = styled.li`
   background-color: white;
   display: flex;
   flex-direction: row;
@@ -26,7 +26,7 @@ export const NewsListItem = styled.li`
   }
 `;
 
-export const NewsText = styled.div`
+export const NotificationText = styled.div`
   margin-right: 10px;
   display: flex;
   flex-wrap: wrap;
