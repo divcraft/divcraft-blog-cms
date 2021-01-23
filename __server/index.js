@@ -12,6 +12,7 @@ const articlesRouter = require('./routes/articles.router');
 const usersRouter = require('./routes/users.router');
 const categoriesRouter = require('./routes/categories.router');
 const commentsRouter = require('./routes/comments.router');
+const notificationsRouter = require('./routes/notifications.router');
 const authRouter = require('./routes/auth.router');
 
 const app = express();
@@ -32,6 +33,7 @@ app.use('/api/articles', articlesRouter);
 app.use('/api/users', usersRouter);
 app.use('/api/categories', categoriesRouter);
 app.use('/api/comments', commentsRouter);
+app.use('/api/notifications', notificationsRouter);
 app.use('/api/auth', authRouter);
 
 if (process.env.NODE_ENV === 'production') {
