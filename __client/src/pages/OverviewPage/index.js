@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { TitleContainer, Wrapper, LoadingIndicator } from 'components';
 import { SUCCESSED } from 'constants';
-import { fetchFinishedArticles } from 'store/actions';
+import { fetchFinishedArticles, clearFinishedArticles } from 'store/actions';
 import { YourEffortsSection, NotificationsSection } from './components';
 
 const OverviewPage = () => {
@@ -12,6 +12,11 @@ const OverviewPage = () => {
   );
   const dispatch = useDispatch();
   dispatch(fetchFinishedArticles());
+  useEffect(() => {
+    return () => {
+      dispatch(clearFinishedArticles);
+    };
+  }, []);
   return (
     <>
       <TitleContainer username={firstName} />
