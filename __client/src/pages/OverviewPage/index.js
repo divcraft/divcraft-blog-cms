@@ -2,25 +2,38 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { TitleContainer, Wrapper, LoadingIndicator } from 'components';
 import { SUCCESSED } from 'constants';
-import { fetchFinishedArticles, clearFinishedArticles } from 'store/actions';
+import {
+  fetchFinishedArticles,
+  clearFinishedArticles,
+  fetchNotifications,
+  clearNotifications,
+} from 'store/actions';
 import { YourEffortsSection, NotificationsSection } from './components';
 
 const OverviewPage = () => {
   const firstName = useSelector((state) => state.userData.user.firstName);
-  const loadingState = useSelector(
+  const finishedArticlesLoadingState = useSelector(
     (state) => state.finishedArticles.loadingState
   );
+  const notificationsLoadingState = useSelector(
+    (state) => state.notifications.loadingState
+  );
+  const isDataLoaded =
+    finishedArticlesLoadingState === SUCCESSED &&
+    notificationsLoadingState === SUCCESSED;
   const dispatch = useDispatch();
   dispatch(fetchFinishedArticles());
+  dispatch(fetchNotifications());
   useEffect(() => {
     return () => {
       dispatch(clearFinishedArticles);
+      dispatch(clearNotifications);
     };
   }, []);
   return (
     <>
       <TitleContainer username={firstName} />
-      {loadingState === SUCCESSED ? (
+      {isDataLoaded ? (
         <Wrapper>
           <YourEffortsSection />
           <NotificationsSection />
