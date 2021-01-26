@@ -10,7 +10,7 @@ import {
 } from './style';
 
 const NotificationsSection = () => {
-  const [notificationsLength, setNotificationLength] = useState(5);
+  const [notificationsLength, setNotificationLength] = useState(3);
   const notifications = useSelector(
     (state) => state.notifications.notifications
   );
@@ -59,9 +59,9 @@ const NotificationsSection = () => {
       {notifications.length !== 0 ? (
         <>
           <NotificationsList>{notificationsList}</NotificationsList>
-          {notificationsLength <= notificationsList.length && (
+          {notificationsLength < notifications.length && (
             <LoadMoreButton
-              onClick={() => setNotificationLength(notificationsLength + 5)}
+              onClick={() => setNotificationLength(notificationsLength + 3)}
             />
           )}
         </>

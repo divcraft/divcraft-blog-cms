@@ -8,7 +8,11 @@ import {
   fetchNotifications,
   clearNotifications,
 } from 'store/actions';
-import { YourEffortsSection, NotificationsSection } from './components';
+import {
+  YourEffortsSection,
+  NotificationsSection,
+  AwaitingArticlesSection,
+} from './components';
 
 const OverviewPage = () => {
   const firstName = useSelector((state) => state.userData.user.firstName);
@@ -37,6 +41,7 @@ const OverviewPage = () => {
         <Wrapper>
           <YourEffortsSection />
           <NotificationsSection />
+          <AwaitingArticlesSection />
         </Wrapper>
       ) : (
         <LoadingIndicator pattern="main" />
