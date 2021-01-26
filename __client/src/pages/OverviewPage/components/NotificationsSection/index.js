@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { SectionContainer, LoadMoreButton } from 'components';
 import { useSelector } from 'react-redux';
+import { SectionContainer, LoadMoreButton, GrayText } from 'components';
 import {
   NotificationsList,
   NotificationListItem,
@@ -56,11 +56,17 @@ const NotificationsSection = () => {
     .splice(0, notificationsLength);
   return (
     <SectionContainer title="Aktualności">
-      <NotificationsList>{notificationsList}</NotificationsList>
-      {notificationsLength <= notificationsList.length && (
-        <LoadMoreButton
-          onClick={() => setNotificationLength(notificationsLength + 5)}
-        />
+      {notifications.length !== 0 ? (
+        <>
+          <NotificationsList>{notificationsList}</NotificationsList>
+          {notificationsLength <= notificationsList.length && (
+            <LoadMoreButton
+              onClick={() => setNotificationLength(notificationsLength + 5)}
+            />
+          )}
+        </>
+      ) : (
+        <GrayText>Brak nowych powiadomień</GrayText>
       )}
     </SectionContainer>
   );

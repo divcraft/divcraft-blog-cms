@@ -1,15 +1,16 @@
 import React from 'react';
-import { SectionContainer } from 'components';
+import { SectionContainer, GrayText } from 'components';
 import { useSelector } from 'react-redux';
-import { LineItem, GrayText, Underline } from './style';
+import { LineItem, Underline } from './style';
 
 const YourEffortsSection = () => {
   let calcData = {
-    writtenArticles: null,
+    writtenArticles: 0,
     totalArticleViews: 0,
-    averageRatingOfAllArticles: null,
+    averageRatingOfAllArticles: 0,
     newestPublishedArticle: null,
     bestRatedArticle: null,
+    mostPopularArticle: null,
   };
   const finishedArticles = useSelector(
     (state) => state.finishedArticles.articles
@@ -77,6 +78,7 @@ const YourEffortsSection = () => {
     averageRatingOfAllArticles,
     newestPublishedArticle,
     bestRatedArticle,
+    mostPopularArticle,
   } = calcData;
   return (
     <SectionContainer title="Twoje wyniki">
@@ -123,8 +125,16 @@ const YourEffortsSection = () => {
       </LineItem>
       <LineItem>
         <span>Najpopularniejszy artykuł:</span>
-        <Underline>Umieszczenie elementów multimedialnych na stronie</Underline>
-        <span>(0 odsłon)</span>
+        {mostPopularArticle ? (
+          <>
+            <Underline>
+              Umieszczenie elementów multimedialnych na stronie
+            </Underline>
+            <span>(0 odsłon)</span>
+          </>
+        ) : (
+          <GrayText>brak opublikowanych artykułów</GrayText>
+        )}
         {/* will be added after getting the blog public */}
       </LineItem>
     </SectionContainer>

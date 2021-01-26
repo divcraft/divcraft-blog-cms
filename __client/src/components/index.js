@@ -12,3 +12,4 @@ export { Wrapper } from './Wrapper';
 export { default as TitleContainer } from './TitleContainer';
 export { default as SectionContainer } from './SectionContainer';
 export { default as LoadMoreButton } from './LoadMoreButton';
+export { GrayText } from './GrayText';
