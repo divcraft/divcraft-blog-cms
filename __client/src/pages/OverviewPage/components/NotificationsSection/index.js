@@ -59,11 +59,8 @@ const NotificationsSection = () => {
       <NotificationsList>{notificationsList}</NotificationsList>
       {notificationsLength <= notificationsList.length && (
         <LoadMoreButton
-          type="button"
           onClick={() => setNotificationLength(notificationsLength + 5)}
-        >
-          Załaduj więcej
-        </LoadMoreButton>
+        />
       )}
     </SectionContainer>
   );

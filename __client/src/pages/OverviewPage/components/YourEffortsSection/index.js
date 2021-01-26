@@ -1,19 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { SectionContainer } from 'components';
 import { useSelector } from 'react-redux';
 import { LineItem, GrayText, Underline } from './style';
 
 const YourEffortsSection = () => {
-  const [sectionData, setSectionData] = useState({
-    isCalculated: false,
-    data: {
-      writtenArticles: null,
-      totalArticleViews: 0,
-      averageRatingOfAllArticles: null,
-      newestPublishedArticle: null,
-      bestRatedArticle: null,
-    },
-  });
+  let calcData = {
+    writtenArticles: null,
+    totalArticleViews: 0,
+    averageRatingOfAllArticles: null,
+    newestPublishedArticle: null,
+    bestRatedArticle: null,
+  };
   const finishedArticles = useSelector(
     (state) => state.finishedArticles.articles
   );
@@ -67,80 +64,70 @@ const YourEffortsSection = () => {
     };
     return bestRatedArticle;
   };
-  useEffect(() => {
-    setSectionData({
-      isCalculated: true,
-      data: {
-        ...sectionData.data,
-        writtenArticles: setWrittenArticles(),
-        averageRatingOfAllArticles: setAverageRatingOfAllArticles(),
-        newestPublishedArticle: setNewestPublishedArticle(),
-        bestRatedArticle: setBestRatedArticle(),
-      },
-    });
-  }, []);
+  calcData = {
+    ...calcData,
+    writtenArticles: setWrittenArticles(),
+    averageRatingOfAllArticles: setAverageRatingOfAllArticles(),
+    newestPublishedArticle: setNewestPublishedArticle(),
+    bestRatedArticle: setBestRatedArticle(),
+  };
   const {
     writtenArticles,
     totalArticleViews,
     averageRatingOfAllArticles,
     newestPublishedArticle,
     bestRatedArticle,
-  } = sectionData.data;
-  const { isCalculated } = sectionData;
+  } = calcData;
   return (
-    isCalculated && (
-      <SectionContainer title="Twoje wyniki">
-        <LineItem>
-          <span>Napisane artykuły:</span>
-          <span>{writtenArticles}</span>
-        </LineItem>
-        <LineItem>
-          <span>Łączna ilość odsłon Twoich artykułów:</span>
-          <span>{totalArticleViews}</span>
-          {/* will be added after getting the blog public */}
-        </LineItem>
-        <LineItem>
-          <span>Średnia ocena za wszystkie artykuły:</span>
-          <span>{averageRatingOfAllArticles}</span>
-        </LineItem>
-        <LineItem>
-          <span>Najnowszy opublikowany artykuł:</span>
-          {newestPublishedArticle ? (
-            <>
-              <Underline>{newestPublishedArticle.header.title}</Underline>
-              <span>
-                ({newestPublishedArticle.publicationDate.getDate()}/
-                {newestPublishedArticle.publicationDate.getMonth() + 1 < 10
-                  ? `0${newestPublishedArticle.publicationDate.getMonth() + 1}`
-                  : newestPublishedArticle.publicationDate.getMonth() + 1}
-                /{newestPublishedArticle.publicationDate.getFullYear()})
-              </span>
-            </>
-          ) : (
-            <GrayText>brak opublikowanych artykułów</GrayText>
-          )}
-        </LineItem>
-        <LineItem>
-          <span>Najlepiej oceniany artykuł:</span>
-          {bestRatedArticle ? (
-            <>
-              <Underline>{bestRatedArticle.header.title}</Underline>
-              <span>({bestRatedArticle.averageRating})</span>
-            </>
-          ) : (
-            <GrayText>brak opublikowanych artykułów</GrayText>
-          )}
-        </LineItem>
-        <LineItem>
-          <span>Najpopularniejszy artykuł:</span>
-          <Underline>
-            Umieszczenie elementów multimedialnych na stronie
-          </Underline>
-          <span>(0 odsłon)</span>
-          {/* will be added after getting the blog public */}
-        </LineItem>
-      </SectionContainer>
-    )
+    <SectionContainer title="Twoje wyniki">
+      <LineItem>
+        <span>Napisane artykuły:</span>
+        <span>{writtenArticles}</span>
+      </LineItem>
+      <LineItem>
+        <span>Łączna ilość odsłon Twoich artykułów:</span>
+        <span>{totalArticleViews}</span>
+        {/* will be added after getting the blog public */}
+      </LineItem>
+      <LineItem>
+        <span>Średnia ocena za wszystkie artykuły:</span>
+        <span>{averageRatingOfAllArticles}</span>
+      </LineItem>
+      <LineItem>
+        <span>Najnowszy opublikowany artykuł:</span>
+        {newestPublishedArticle ? (
+          <>
+            <Underline>{newestPublishedArticle.header.title}</Underline>
+            <span>
+              ({newestPublishedArticle.publicationDate.getDate()}/
+              {newestPublishedArticle.publicationDate.getMonth() + 1 < 10
+                ? `0${newestPublishedArticle.publicationDate.getMonth() + 1}`
+                : newestPublishedArticle.publicationDate.getMonth() + 1}
+              /{newestPublishedArticle.publicationDate.getFullYear()})
+            </span>
+          </>
+        ) : (
+          <GrayText>brak opublikowanych artykułów</GrayText>
+        )}
+      </LineItem>
+      <LineItem>
+        <span>Najlepiej oceniany artykuł:</span>
+        {bestRatedArticle ? (
+          <>
+            <Underline>{bestRatedArticle.header.title}</Underline>
+            <span>({bestRatedArticle.averageRating})</span>
+          </>
+        ) : (
+          <GrayText>brak opublikowanych artykułów</GrayText>
+        )}
+      </LineItem>
+      <LineItem>
+        <span>Najpopularniejszy artykuł:</span>
+        <Underline>Umieszczenie elementów multimedialnych na stronie</Underline>
+        <span>(0 odsłon)</span>
+        {/* will be added after getting the blog public */}
+      </LineItem>
+    </SectionContainer>
   );
 };
 
