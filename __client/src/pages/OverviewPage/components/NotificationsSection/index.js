@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { SectionContainer } from 'components';
+import { SectionContainer, LoadMoreButton } from 'components';
 import { useSelector } from 'react-redux';
 import {
   NotificationsList,
@@ -58,12 +58,12 @@ const NotificationsSection = () => {
     <SectionContainer title="Aktualności">
       <NotificationsList>{notificationsList}</NotificationsList>
       {notificationsLength <= notificationsList.length && (
-        <button
+        <LoadMoreButton
           type="button"
           onClick={() => setNotificationLength(notificationsLength + 5)}
         >
           Załaduj więcej
-        </button>
+        </LoadMoreButton>
       )}
     </SectionContainer>
   );
