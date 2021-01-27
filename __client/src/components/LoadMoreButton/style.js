@@ -8,6 +8,7 @@ export const LoadMoreButton = styled.button`
   padding: 5px 0;
   border: none;
   border-bottom: 2px solid ${({ theme: { colors } }) => colors.gray.light};
+  color: ${({ theme: { colors } }) => colors.gray.dark};
   &:hover {
     cursor: pointer;
     background-color: ${({ theme: { colors } }) => colors.gray.light};
