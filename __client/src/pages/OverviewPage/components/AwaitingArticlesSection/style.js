@@ -1,11 +1,6 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-export const AwaitingArticlesList = styled.ul`
-  padding: 0;
-  list-style: none;
-`;
-
 export const AwaitingArticleListItem = styled.li`
   background-color: white;
   display: flex;

@@ -1,11 +1,6 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-export const NotificationsList = styled.ul`
-  padding: 0;
-  list-style: none;
-`;
-
 export const NotificationListItem = styled.li`
   background-color: white;
   display: flex;

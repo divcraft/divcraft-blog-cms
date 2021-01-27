@@ -1,13 +1,8 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { LoadMoreButton, GrayText, LinkButton } from 'components';
-import { SectionContainer } from 'pages/OverviewPage/components';
-import {
-  NotificationsList,
-  NotificationListItem,
-  NotificationText,
-  ArticleLink,
-} from './style';
+import { SectionContainer, ListContainer } from 'pages/OverviewPage/components';
+import { NotificationListItem, NotificationText, ArticleLink } from './style';
 
 const NotificationsSection = () => {
   const [notificationsLength, setNotificationLength] = useState(3);
@@ -68,7 +63,7 @@ const NotificationsSection = () => {
     <SectionContainer title="Aktualności">
       {notifications.length !== 0 ? (
         <>
-          <NotificationsList>{notificationsList}</NotificationsList>
+          <ListContainer>{notificationsList}</ListContainer>
           {notificationsLength < notifications.length && (
             <LoadMoreButton
               onClick={() => setNotificationLength(notificationsLength + 3)}

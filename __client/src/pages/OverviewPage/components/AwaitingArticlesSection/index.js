@@ -1,13 +1,8 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { LoadMoreButton, GrayText, LinkButton } from 'components';
-import { SectionContainer } from 'pages/OverviewPage/components';
-import {
-  AwaitingArticlesList,
-  AwaitingArticleListItem,
-  LinkContainer,
-  ArticleLink,
-} from './style';
+import { SectionContainer, ListContainer } from 'pages/OverviewPage/components';
+import { AwaitingArticleListItem, LinkContainer, ArticleLink } from './style';
 
 const AwaitingArticlesSection = () => {
   const [finishedArticlesLength, setFinishedArticlesLength] = useState(3);
@@ -41,7 +36,7 @@ const AwaitingArticlesSection = () => {
     <SectionContainer title="Artykuły oczekujące na publikację">
       {finishedArticles.length !== 0 ? (
         <>
-          <AwaitingArticlesList>{finishedArticlesList}</AwaitingArticlesList>
+          <ListContainer>{finishedArticlesList}</ListContainer>
           {finishedArticlesLength < finishedArticles.length && (
             <LoadMoreButton
               onClick={() =>
