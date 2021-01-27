@@ -1,8 +1,14 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { LoadMoreButton, GrayText, LinkButton } from 'components';
-import { SectionContainer, ListContainer } from 'pages/OverviewPage/components';
-import { AwaitingArticleListItem, LinkContainer, ArticleLink } from './style';
+import {
+  LoadMoreButton,
+  GrayText,
+  LinkButton,
+  ListContainer,
+  NotificationListItem,
+} from 'components';
+import { SectionContainer, ArticleLink } from 'pages/OverviewPage/components';
+import { LinkContainer } from './style';
 
 const AwaitingArticlesSection = () => {
   const [finishedArticlesLength, setFinishedArticlesLength] = useState(3);
@@ -22,13 +28,13 @@ const AwaitingArticlesSection = () => {
     .map((article) => {
       const { _id, header } = article;
       return (
-        <AwaitingArticleListItem key={_id}>
+        <NotificationListItem key={_id}>
           <ArticleLink>{header.title}</ArticleLink>
           <LinkContainer>
             <LinkButton pattern="blue">Podgląd</LinkButton>
             <LinkButton pattern="white">Edytuj</LinkButton>
           </LinkContainer>
-        </AwaitingArticleListItem>
+        </NotificationListItem>
       );
     })
     .splice(0, finishedArticlesLength);

@@ -1,8 +1,14 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { LoadMoreButton, GrayText, LinkButton } from 'components';
-import { SectionContainer, ListContainer } from 'pages/OverviewPage/components';
-import { NotificationListItem, NotificationText, ArticleLink } from './style';
+import {
+  LoadMoreButton,
+  GrayText,
+  LinkButton,
+  ListContainer,
+  NotificationListItem,
+} from 'components';
+import { SectionContainer, ArticleLink } from 'pages/OverviewPage/components';
+import { NotificationText } from './style';
 
 const NotificationsSection = () => {
   const [notificationsLength, setNotificationLength] = useState(3);
