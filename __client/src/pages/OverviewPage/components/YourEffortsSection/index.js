@@ -1,5 +1,6 @@
 import React from 'react';
-import { SectionContainer, GrayText } from 'components';
+import { GrayText } from 'components';
+import { SectionContainer } from 'pages/OverviewPage/components';
 import { useSelector } from 'react-redux';
 import { LineItem, Underline } from './style';
 

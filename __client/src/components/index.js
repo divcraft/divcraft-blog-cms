@@ -1,7 +1,6 @@
 export { default as Logo } from './Logo';
 export { default as MainTitle } from './MainTitle';
 export { default as Input } from './Input';
-export { default as Button } from './Button';
 export { default as RedMessage } from './RedMessage';
 export { default as LoadingIndicator } from './LoadingIndicator';
 export { default as AppContainer } from './AppContainer';
@@ -10,7 +9,6 @@ export { default as AppMenu } from './AppMenu';
 export { AppLayout } from './AppLayout';
 export { Wrapper } from './Wrapper';
 export { default as TitleContainer } from './TitleContainer';
-export { default as SectionContainer } from './SectionContainer';
 export { default as LoadMoreButton } from './LoadMoreButton';
 export { GrayText } from './GrayText';
 export { default as LinkButton } from './LinkButton';

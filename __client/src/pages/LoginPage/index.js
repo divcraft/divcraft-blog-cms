@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { clearErrorMessage } from 'store/actions';
-import { Logo, Button } from 'components';
+import { Logo } from 'components';
 import {
   LoginTitle,
   LogInForm,
   RecoverPasswordForm,
   Background,
   Container,
+  Button,
 } from './components';
 
 const LogInContainer = () => {

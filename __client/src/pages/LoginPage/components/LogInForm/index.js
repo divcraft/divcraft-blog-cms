@@ -11,7 +11,8 @@ import {
   setLogInFormLoaderOff,
 } from 'store/actions';
 import { useFormik } from 'formik';
-import { Input, Button, RedMessage } from 'components';
+import { Input, RedMessage } from 'components';
+import { Button } from 'pages/LoginPage/components';
 
 const LogInForm = ({ history }) => {
   const dispatch = useDispatch();

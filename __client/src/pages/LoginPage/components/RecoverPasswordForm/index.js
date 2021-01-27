@@ -10,7 +10,8 @@ import {
   setRecoverPasswordFormLoaderOn,
   setRecoverPasswordFormLoaderOff,
 } from 'store/actions';
-import { Input, Button, RedMessage } from 'components';
+import { Input, RedMessage } from 'components';
+import { Button } from 'pages/LoginPage/components';
 import { RecoverPassNotifcation } from './style';
 
 const RecoverPasswordForm = () => {

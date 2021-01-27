@@ -1,11 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
-import {
-  SectionContainer,
-  LoadMoreButton,
-  GrayText,
-  LinkButton,
-} from 'components';
+import { LoadMoreButton, GrayText, LinkButton } from 'components';
+import { SectionContainer } from 'pages/OverviewPage/components';
 import {
   NotificationsList,
   NotificationListItem,
