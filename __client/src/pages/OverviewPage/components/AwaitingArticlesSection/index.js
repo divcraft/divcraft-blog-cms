@@ -16,6 +16,15 @@ const AwaitingArticlesSection = () => {
   );
   const finishedArticlesList = finishedArticles
     .map((article) => {
+      const transformatedDate = new Date(article.updatedAt);
+      return {
+        ...article,
+        updatedAt: Date.parse(transformatedDate),
+      };
+    })
+    .sort((a, b) => a.updatedAt - b.updatedAt)
+    .reverse()
+    .map((article) => {
       const { _id, header } = article;
       return (
         <AwaitingArticleListItem key={_id}>
