@@ -1,11 +1,15 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { SectionContainer, LoadMoreButton, GrayText } from 'components';
+import {
+  SectionContainer,
+  LoadMoreButton,
+  GrayText,
+  LinkButton,
+} from 'components';
 import {
   AwaitingArticlesList,
   AwaitingArticleListItem,
   LinkContainer,
-  CheckLink,
   ArticleLink,
 } from './style';
 
@@ -30,8 +34,8 @@ const AwaitingArticlesSection = () => {
         <AwaitingArticleListItem key={_id}>
           <ArticleLink>{header.title}</ArticleLink>
           <LinkContainer>
-            <CheckLink>Podgląd</CheckLink>
-            <CheckLink>Edytuj</CheckLink>
+            <LinkButton pattern="blue">Podgląd</LinkButton>
+            <LinkButton pattern="white">Edytuj</LinkButton>
           </LinkContainer>
         </AwaitingArticleListItem>
       );

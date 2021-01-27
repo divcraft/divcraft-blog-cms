@@ -35,19 +35,6 @@ export const NotificationText = styled.div`
   }
 `;
 
-export const CheckLink = styled(Link)`
-  flex-shrink: 0;
-  text-decoration: none;
-  border-radius: 15px;
-  text-align: center;
-  line-height: 30px;
-  display: block;
-  color: white;
-  background-color: ${({ theme: { colors } }) => colors.blue.regular};
-  width: 120px;
-  height: 30px;
-`;
-
 export const ArticleLink = styled(Link)`
   color: black;
 `;

@@ -1,11 +1,15 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { SectionContainer, LoadMoreButton, GrayText } from 'components';
+import {
+  SectionContainer,
+  LoadMoreButton,
+  GrayText,
+  LinkButton,
+} from 'components';
 import {
   NotificationsList,
   NotificationListItem,
   NotificationText,
-  CheckLink,
   ArticleLink,
 } from './style';
 
@@ -49,7 +53,7 @@ const NotificationsSection = () => {
             <span>{spanData()}</span>
             <ArticleLink>{articleData.header.title}</ArticleLink>
           </NotificationText>
-          <CheckLink>Sprawdź</CheckLink>
+          <LinkButton pattern="blue">Sprawdź</LinkButton>
         </NotificationListItem>
       );
     })

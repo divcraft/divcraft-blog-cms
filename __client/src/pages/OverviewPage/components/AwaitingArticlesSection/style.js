@@ -32,25 +32,6 @@ export const LinkContainer = styled.span`
   margin-right: 5px;
 `;
 
-export const CheckLink = styled(Link)`
-  flex-shrink: 0;
-  text-decoration: none;
-  border-radius: 15px;
-  text-align: center;
-  line-height: 30px;
-  display: block;
-  color: white;
-  background-color: ${({ theme: { colors } }) => colors.blue.regular};
-  border: solid 1px ${({ theme: { colors } }) => colors.blue.regular};
-  width: 120px;
-  height: 30px;
-  &:last-child {
-    margin-left: 10px;
-    color: black;
-    background-color: white;
-  }
-`;
-
 export const ArticleLink = styled(Link)`
   color: black;
 `;
