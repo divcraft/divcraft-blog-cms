@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const NotificationListItem = styled.li`
+export const SmallTileListItem = styled.li`
   background-color: white;
   display: flex;
   justify-content: space-between;

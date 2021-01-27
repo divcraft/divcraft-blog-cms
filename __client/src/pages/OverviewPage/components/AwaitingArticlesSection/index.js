@@ -5,7 +5,7 @@ import {
   GrayText,
   LinkButton,
   ListContainer,
-  NotificationListItem,
+  SmallTileListItem,
 } from 'components';
 import { SectionContainer, ArticleLink } from 'pages/OverviewPage/components';
 import { LinkContainer } from './style';
@@ -28,13 +28,13 @@ const AwaitingArticlesSection = () => {
     .map((article) => {
       const { _id, header } = article;
       return (
-        <NotificationListItem key={_id}>
+        <SmallTileListItem key={_id}>
           <ArticleLink>{header.title}</ArticleLink>
           <LinkContainer>
             <LinkButton pattern="blue">Podgląd</LinkButton>
             <LinkButton pattern="white">Edytuj</LinkButton>
           </LinkContainer>
-        </NotificationListItem>
+        </SmallTileListItem>
       );
     })
     .splice(0, finishedArticlesLength);

@@ -13,4 +13,4 @@ export { default as LoadMoreButton } from './LoadMoreButton';
 export { GrayText } from './GrayText';
 export { default as LinkButton } from './LinkButton';
 export { ListContainer } from './ListContainer';
-export { NotificationListItem } from './NotificationListItem';
+export { SmallTileListItem } from './SmallTileListItem';
