@@ -1,6 +1,6 @@
 import React from 'react';
 import { TitleContainer, Wrapper, ListContainer } from 'components';
-// import { PublishedArticle } from './components';
+import { PublishedArticle } from './components';
 
 const MyArticlesPage = () => {
   return (
@@ -8,7 +8,11 @@ const MyArticlesPage = () => {
       <TitleContainer title="Moje artykuły" />
       <Wrapper>
         <ListContainer>
-          <div>MyArticles</div>
+          <PublishedArticle>Artykuł</PublishedArticle>
+          <PublishedArticle>Artykuł</PublishedArticle>
+          <PublishedArticle>Artykuł</PublishedArticle>
+          <PublishedArticle>Artykuł</PublishedArticle>
+          <PublishedArticle>Artykuł</PublishedArticle>
         </ListContainer>
       </Wrapper>
     </>

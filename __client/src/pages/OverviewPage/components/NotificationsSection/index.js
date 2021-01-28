@@ -5,7 +5,7 @@ import {
   GrayText,
   LinkButton,
   ListContainer,
-  SmallTileListItem,
+  TileListItem,
 } from 'components';
 import { SectionContainer, ArticleLink } from 'pages/OverviewPage/components';
 import { NotificationText } from './style';
@@ -59,13 +59,13 @@ const NotificationsSection = () => {
             }
           };
           return (
-            <SmallTileListItem key={_id}>
+            <TileListItem pattern="small" key={_id}>
               <NotificationText>
                 <span>{spanData()}</span>
                 <ArticleLink>{articleData.header.title}</ArticleLink>
               </NotificationText>
               <LinkButton pattern="blue">Sprawdź</LinkButton>
-            </SmallTileListItem>
+            </TileListItem>
           );
         })
         .splice(0, notificationsLength),
