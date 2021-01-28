@@ -69,7 +69,7 @@ const NotificationsSection = () => {
           );
         })
         .splice(0, notificationsLength),
-    [notifications, publishedArticles]
+    [notifications, publishedArticles, notificationsLength]
   );
   return (
     <SectionContainer title="Aktualności">

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import {
   LoadMoreButton,
@@ -15,29 +15,33 @@ const AwaitingArticlesSection = () => {
   const finishedArticles = useSelector(
     (state) => state.finishedArticles.articles
   );
-  const finishedArticlesList = finishedArticles
-    .map((article) => {
-      const transformatedDate = new Date(article.updatedAt);
-      return {
-        ...article,
-        updatedAt: Date.parse(transformatedDate),
-      };
-    })
-    .sort((a, b) => a.updatedAt - b.updatedAt)
-    .reverse()
-    .map((article) => {
-      const { _id, header } = article;
-      return (
-        <SmallTileListItem key={_id}>
-          <ArticleLink>{header.title}</ArticleLink>
-          <LinkContainer>
-            <LinkButton pattern="blue">Podgląd</LinkButton>
-            <LinkButton pattern="white">Edytuj</LinkButton>
-          </LinkContainer>
-        </SmallTileListItem>
-      );
-    })
-    .splice(0, finishedArticlesLength);
+  const finishedArticlesList = useMemo(
+    () =>
+      finishedArticles
+        .map((article) => {
+          const transformatedDate = new Date(article.updatedAt);
+          return {
+            ...article,
+            updatedAt: Date.parse(transformatedDate),
+          };
+        })
+        .sort((a, b) => a.updatedAt - b.updatedAt)
+        .reverse()
+        .map((article) => {
+          const { _id, header } = article;
+          return (
+            <SmallTileListItem key={_id}>
+              <ArticleLink>{header.title}</ArticleLink>
+              <LinkContainer>
+                <LinkButton pattern="blue">Podgląd</LinkButton>
+                <LinkButton pattern="white">Edytuj</LinkButton>
+              </LinkContainer>
+            </SmallTileListItem>
+          );
+        })
+        .splice(0, finishedArticlesLength),
+    [finishedArticles, finishedArticlesLength]
+  );
   return (
     <SectionContainer title="Artykuły oczekujące na publikację">
       {finishedArticles.length !== 0 ? (
