@@ -1,11 +1,16 @@
 import React from 'react';
-import { TitleContainer } from 'components';
+import { TitleContainer, Wrapper, ListContainer } from 'components';
+// import { PublishedArticle } from './components';
 
 const MyArticlesPage = () => {
   return (
     <>
       <TitleContainer title="Moje artykuły" />
-      <div>MyArticles</div>
+      <Wrapper>
+        <ListContainer>
+          <div>MyArticles</div>
+        </ListContainer>
+      </Wrapper>
     </>
   );
 };
