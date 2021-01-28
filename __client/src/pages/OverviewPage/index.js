@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { TitleContainer, Wrapper, LoadingIndicator } from 'components';
 import { SUCCESSED } from 'constants';
@@ -22,9 +22,12 @@ const OverviewPage = () => {
   const notificationsLoadingState = useSelector(
     (state) => state.notifications.loadingState
   );
-  const isDataLoaded =
-    finishedArticlesLoadingState === SUCCESSED &&
-    notificationsLoadingState === SUCCESSED;
+  const isDataLoaded = useMemo(
+    () =>
+      finishedArticlesLoadingState === SUCCESSED &&
+      notificationsLoadingState === SUCCESSED,
+    [finishedArticlesLoadingState, notificationsLoadingState]
+  );
   const dispatch = useDispatch();
   dispatch(fetchFinishedArticles());
   dispatch(fetchNotifications());
