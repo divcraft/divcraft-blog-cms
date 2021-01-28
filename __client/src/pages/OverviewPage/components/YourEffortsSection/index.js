@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { GrayText } from 'components';
 import { SectionContainer } from 'pages/OverviewPage/components';
 import { useSelector } from 'react-redux';
@@ -16,14 +16,15 @@ const YourEffortsSection = () => {
   const finishedArticles = useSelector(
     (state) => state.finishedArticles.articles
   );
-  const publishedArticles = finishedArticles.filter(
-    (article) => article.isPublished === true
+  const publishedArticles = useMemo(
+    () => finishedArticles.filter((article) => article.isPublished === true),
+    [finishedArticles]
   );
-  const setWrittenArticles = () => {
+  const setWrittenArticles = useMemo(() => {
     const writtenArticles = publishedArticles.length;
     return writtenArticles;
-  };
-  const setAverageRatingOfAllArticles = () => {
+  }, [publishedArticles]);
+  const setAverageRatingOfAllArticles = useMemo(() => {
     if (publishedArticles.length === 0) return 0;
     const sumOfRatingOfAllArticles =
       publishedArticles.length > 1
@@ -36,8 +37,8 @@ const YourEffortsSection = () => {
       sumOfRatingOfAllArticles / publishedArticles.length
     ).toFixed(2);
     return averageRatingOfAllArticles;
-  };
-  const setNewestPublishedArticle = () => {
+  }, [publishedArticles]);
+  const setNewestPublishedArticle = useMemo(() => {
     if (publishedArticles.length === 0) return null;
     const newestPublishedArticle = publishedArticles
       .map((article) => {
@@ -54,8 +55,8 @@ const YourEffortsSection = () => {
         publicationDate: new Date(article.publicationDate),
       }))[0];
     return newestPublishedArticle;
-  };
-  const setBestRatedArticle = () => {
+  }, [publishedArticles]);
+  const setBestRatedArticle = useMemo(() => {
     if (publishedArticles.length === 0) return null;
     let bestRatedArticle = publishedArticles
       .sort((a, b) => a.averageRating - b.averageRating)
@@ -65,13 +66,13 @@ const YourEffortsSection = () => {
       averageRating: bestRatedArticle.averageRating.toFixed(2),
     };
     return bestRatedArticle;
-  };
+  }, [publishedArticles]);
   calcData = {
     ...calcData,
-    writtenArticles: setWrittenArticles(),
-    averageRatingOfAllArticles: setAverageRatingOfAllArticles(),
-    newestPublishedArticle: setNewestPublishedArticle(),
-    bestRatedArticle: setBestRatedArticle(),
+    writtenArticles: setWrittenArticles,
+    averageRatingOfAllArticles: setAverageRatingOfAllArticles,
+    newestPublishedArticle: setNewestPublishedArticle,
+    bestRatedArticle: setBestRatedArticle,
   };
   const {
     writtenArticles,
