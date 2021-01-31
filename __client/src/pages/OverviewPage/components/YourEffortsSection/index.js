@@ -2,6 +2,7 @@ import React, { useMemo } from 'react';
 import { GrayText } from 'components';
 import { SectionContainer } from 'pages/OverviewPage/components';
 import { useSelector } from 'react-redux';
+import { displayDate } from 'utils';
 import { LineItem, Underline } from './style';
 
 const YourEffortsSection = () => {
@@ -101,14 +102,8 @@ const YourEffortsSection = () => {
         <span>Najnowszy opublikowany artykuł:</span>
         {newestPublishedArticle ? (
           <>
-            <Underline>{newestPublishedArticle.header.title}</Underline>
-            <span>
-              ({newestPublishedArticle.publicationDate.getDate()}/
-              {newestPublishedArticle.publicationDate.getMonth() + 1 < 10
-                ? `0${newestPublishedArticle.publicationDate.getMonth() + 1}`
-                : newestPublishedArticle.publicationDate.getMonth() + 1}
-              /{newestPublishedArticle.publicationDate.getFullYear()})
-            </span>
+            <Underline>{newestPublishedArticle.header.title}</Underline>(
+            {displayDate(newestPublishedArticle.publicationDate)})
           </>
         ) : (
           <GrayText>brak opublikowanych artykułów</GrayText>
