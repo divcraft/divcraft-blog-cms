@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components';
 
 export const TileListItem = styled.li`
+  overflow: hidden;
   background-color: white;
   display: flex;
   justify-content: space-between;
@@ -19,7 +20,7 @@ export const TileListItem = styled.li`
     props.pattern === `big` &&
     css`
       min-height: 100px;
-      padding: 0 20px 0 0;
+      padding: 0;
     `}
   &:last-child {
     margin-bottom: 0;
