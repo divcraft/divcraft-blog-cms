@@ -11,6 +11,10 @@ export const LinkButton = styled(Link)`
   border: solid 1px ${({ theme: { colors } }) => colors.blue.regular};
   width: 120px;
   height: 30px;
+  &:hover {
+    box-shadow: 0px 0px 1px 1px
+      ${({ theme: { colors } }) => colors.blue.regular};
+  }
   &:nth-child(2) {
     margin-left: 10px;
   }
