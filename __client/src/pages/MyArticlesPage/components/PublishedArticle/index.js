@@ -1,5 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { TileListItem, LinkButton } from 'components';
+import { displayDate } from 'utils';
 import {
   faCalendarAlt,
   faComment,
@@ -18,27 +20,33 @@ import {
   IconText,
 } from './style';
 
-const PublishedArticle = () => {
+const PublishedArticle = ({ article }) => {
+  const {
+    averageRating,
+    header: { title },
+    // category_id,
+    publicationDate,
+  } = article;
   return (
     <TileListItem pattern="big">
       <Image src="" alt="" />
       <MainContainer>
         <TextContainer>
           <div>
-            <ArticleLink>published article</ArticleLink>
+            <ArticleLink>{title}</ArticleLink>
           </div>
           <IconsContainer>
             <Icon>
               <StyledFontAwesome icon={faCalendarAlt} />
-              <IconText>Opis ikony</IconText>
+              <IconText>{displayDate(publicationDate)}</IconText>
             </Icon>
             <Icon>
               <StyledFontAwesome icon={faComment} />
-              <IconText>Opis ikony</IconText>
+              <IconText>32</IconText>
             </Icon>
             <Icon>
               <StyledFontAwesome icon={faStar} />
-              <IconText>Opis ikony</IconText>
+              <IconText>{averageRating.toFixed(2)}</IconText>
             </Icon>
             <Icon>
               <StyledFontAwesome icon={faFolderOpen} />
@@ -53,6 +61,10 @@ const PublishedArticle = () => {
       </MainContainer>
     </TileListItem>
   );
+};
+
+PublishedArticle.propTypes = {
+  article: PropTypes.instanceOf(Object).isRequired,
 };
 
 export default PublishedArticle;

@@ -35,6 +35,7 @@
         "react/require-default-props": "off",
         "consistent-return": "off",
         "no-underscore-dangle": "off",
-        "no-else-return": "off"
+        "no-else-return": "off",
+        "camelcase": "off"
     }
 }
