@@ -4,6 +4,7 @@ import loginPageLoaders from './loginPageLoaders.reducer';
 import userData from './userData.reducer';
 import finishedArticles from './finishedArticles.reducer';
 import notifications from './notifications.reducer';
+import publishedArticles from './publishedArticles.reducer';
 
 const rootReducer = combineReducers({
   errorMessage,
@@ -11,6 +12,7 @@ const rootReducer = combineReducers({
   userData,
   finishedArticles,
   notifications,
+  publishedArticles,
 });
 
 export default rootReducer;
