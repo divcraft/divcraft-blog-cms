@@ -12,9 +12,17 @@ module.exports = {
     });
   },
   findAll(req, res) {
-    const { userId, isFinished } = req.query;
+    const { userId, isFinished, isPublished } = req.query;
     if (userId && isFinished) {
       Articles.find({ user_id: userId, isFinished: true }, (err, data) => {
+        if (err) {
+          res.status(500).send(err);
+        } else {
+          res.send(data);
+        }
+      });
+    } else if (userId && isPublished) {
+      Articles.find({ user_id: userId, isPublished: true }, (err, data) => {
         if (err) {
           res.status(500).send(err);
         } else {
