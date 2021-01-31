@@ -28,7 +28,4 @@ export const TileListItem = styled.li`
   &:hover {
     box-shadow: 1px 1px 5px ${({ theme: { colors } }) => colors.gray.dark};
   }
-  & span {
-    display: flex;
-  }
 `;

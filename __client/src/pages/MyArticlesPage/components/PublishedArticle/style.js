@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export const Image = styled.img`
   display: block;
@@ -25,10 +26,33 @@ export const TextContainer = styled.div`
 
 export const IconsContainer = styled.div`
   color: ${({ theme: { colors } }) => colors.gray.dark};
+  display: flex;
+`;
+
+export const Icon = styled.div`
+  margin-right: 20px;
+  &:last-child {
+    margin-right: 0;
+  }
+`;
+
+export const IconText = styled.span`
+  display: inline;
+`;
+
+export const StyledFontAwesome = styled(FontAwesomeIcon)`
+  width: 15px;
+  height: auto;
+  margin-right: 5px;
 `;
 
 export const ArticleLink = styled(Link)`
+  display: inline;
   color: black;
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
 `;
 
 export const LinkContainer = styled.div`
