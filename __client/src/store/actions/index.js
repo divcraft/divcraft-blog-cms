@@ -4,3 +4,4 @@ export * from './userData.actions';
 export * from './finishedArticles.actions';
 export * from './notifications.actions';
 export * from './publishedArticles.actions';
+export * from './categories.actions';

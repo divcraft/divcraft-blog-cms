@@ -22,7 +22,7 @@ export default (state = initialState, action) => {
     case FETCH_CATEGORIES_SUCCESS:
       return {
         loadingState: SUCCESSED,
-        user: action.payload,
+        categories: action.payload,
       };
     case FETCH_CATEGORIES_FAIL:
       return {
