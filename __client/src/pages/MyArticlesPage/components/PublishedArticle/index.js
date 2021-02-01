@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { TileListItem, LinkButton } from 'components';
 import { displayDate } from 'utils';
+import { useSelector } from 'react-redux';
 import {
   faCalendarAlt,
   faComment,
@@ -21,12 +22,17 @@ import {
 } from './style';
 
 const PublishedArticle = ({ article }) => {
+  const categories = useSelector((state) => state.categories.categories);
   const {
     averageRating,
     header: { title },
-    // category_id,
+    category_id,
     publicationDate,
   } = article;
+  const articleCategory = useMemo(
+    () => categories.find((category) => category._id === category_id),
+    [categories]
+  );
   return (
     <TileListItem pattern="big">
       <Image src="" alt="" />
@@ -50,7 +56,7 @@ const PublishedArticle = ({ article }) => {
             </Icon>
             <Icon>
               <StyledFontAwesome icon={faFolderOpen} />
-              <IconText>Opis ikony</IconText>
+              <IconText>{articleCategory.name}</IconText>
             </Icon>
           </IconsContainer>
         </TextContainer>
