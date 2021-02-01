@@ -30,7 +30,16 @@ export const IconsContainer = styled.div`
 `;
 
 export const Icon = styled.div`
-  margin-right: 20px;
+  margin-right: 17px;
+  &:nth-child(1) {
+    min-width: 108px;
+  }
+  &:nth-child(2) {
+    min-width: 46px;
+  }
+  &:nth-child(3) {
+    min-width: 62px;
+  }
   &:last-child {
     margin-right: 0;
   }
