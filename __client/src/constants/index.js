@@ -5,3 +5,4 @@ export * from './dataLoaders.constants';
 export * from './finishedArticles.constants';
 export * from './notifications.constants';
 export * from './publishedArticles.constants';
+export * from './categories.constants';
