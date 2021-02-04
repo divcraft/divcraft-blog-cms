@@ -11,13 +11,18 @@ import { SectionContainer, ArticleLink } from 'pages/OverviewPage/components';
 import { LinkContainer } from './style';
 
 const AwaitingArticlesSection = () => {
-  const [finishedArticlesLength, setFinishedArticlesLength] = useState(3);
+  const [awaitingArticlesLength, setAwaitingArticlesLength] = useState(3);
   const finishedArticles = useSelector(
     (state) => state.finishedArticles.articles
   );
-  const finishedArticlesList = useMemo(
+  const awaitingArticles = useMemo(
+    () => finishedArticles.filter((article) => article.isPublished === false),
+    [finishedArticles]
+  );
+  const awaitingArticlesList = useMemo(
     () =>
-      finishedArticles
+      awaitingArticles
+        .filter((article) => article.isPublished === false)
         .map((article) => {
           const transformatedDate = new Date(article.updatedAt);
           return {
@@ -39,18 +44,18 @@ const AwaitingArticlesSection = () => {
             </TileListItem>
           );
         })
-        .splice(0, finishedArticlesLength),
-    [finishedArticles, finishedArticlesLength]
+        .splice(0, awaitingArticlesLength),
+    [awaitingArticles, awaitingArticlesLength]
   );
   return (
     <SectionContainer title="Artykuły oczekujące na publikację">
       {finishedArticles.length !== 0 ? (
         <>
-          <ListContainer>{finishedArticlesList}</ListContainer>
-          {finishedArticlesLength < finishedArticles.length && (
+          <ListContainer>{awaitingArticlesList}</ListContainer>
+          {awaitingArticlesLength < awaitingArticles.length && (
             <LoadMoreButton
               onClick={() =>
-                setFinishedArticlesLength(finishedArticlesLength + 3)
+                setAwaitingArticlesLength(awaitingArticlesLength + 3)
               }
             />
           )}
