@@ -6,6 +6,7 @@ import finishedArticles from './finishedArticles.reducer';
 import notifications from './notifications.reducer';
 import publishedArticles from './publishedArticles.reducer';
 import categories from './categories.reducer';
+import comments from './comments.reducer';
 
 const rootReducer = combineReducers({
   errorMessage,
@@ -15,6 +16,7 @@ const rootReducer = combineReducers({
   notifications,
   publishedArticles,
   categories,
+  comments,
 });
 
 export default rootReducer;
