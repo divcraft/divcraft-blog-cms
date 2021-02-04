@@ -12,7 +12,8 @@ module.exports = {
     });
   },
   findAll(req, res) {
-    Comments.find({}, (err, data) => {
+    const { userId } = req.query;
+    Comments.find({ user_id: userId }, (err, data) => {
       if (err) {
         res.status(500).send(err);
       } else {
