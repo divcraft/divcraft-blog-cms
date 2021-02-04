@@ -27,6 +27,7 @@ const PublishedArticle = ({ article }) => {
     averageRating,
     header: { title },
     category_id,
+    articleComments,
     publicationDate,
   } = article;
   const articleCategory = useMemo(
@@ -48,7 +49,7 @@ const PublishedArticle = ({ article }) => {
             </Icon>
             <Icon>
               <StyledFontAwesome icon={faComment} />
-              <IconText>32</IconText>
+              <IconText>{articleComments.length}</IconText>
             </Icon>
             <Icon>
               <StyledFontAwesome icon={faStar} />
