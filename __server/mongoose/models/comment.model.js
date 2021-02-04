@@ -4,6 +4,7 @@ const { Schema } = mongoose;
 
 const commentSchema = new Schema(
   {
+    article_id: { type: String, required: true },
     authorName: { type: String, required: true },
     authorEmail: { type: String, required: true },
     authorImg: String,
