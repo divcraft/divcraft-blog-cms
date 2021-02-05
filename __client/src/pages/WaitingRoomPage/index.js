@@ -1,14 +1,18 @@
 import React from 'react';
-import { TitleContainer, Wrapper, Submenu } from 'components';
+import { TitleContainer, Submenu } from 'components';
+import { Switch, Route, useRouteMatch } from 'react-router-dom';
+import { ToGettingPublic, EditStage } from './pages';
 
 const WaitingRoomPage = () => {
+  const { path } = useRouteMatch();
   return (
     <>
       <TitleContainer title="Poczekalnia" />
       <Submenu />
-      <Wrapper>
-        <div>WaitingRoom</div>
-      </Wrapper>
+      <Switch>
+        <Route path={`${path}/do-publikacji`} component={ToGettingPublic} />
+        <Route path={`${path}/tryb-edycji`} component={EditStage} />
+      </Switch>
     </>
   );
 };
