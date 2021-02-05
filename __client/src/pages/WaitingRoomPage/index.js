@@ -1,11 +1,14 @@
 import React from 'react';
-import { TitleContainer } from 'components';
+import { TitleContainer, Wrapper, Submenu } from 'components';
 
 const WaitingRoomPage = () => {
   return (
     <>
       <TitleContainer title="Poczekalnia" />
-      <div>WaitingRoom</div>
+      <Submenu />
+      <Wrapper>
+        <div>WaitingRoom</div>
+      </Wrapper>
     </>
   );
 };

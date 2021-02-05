@@ -14,3 +14,4 @@ export { GrayText } from './GrayText';
 export { default as LinkButton } from './LinkButton';
 export { ListContainer } from './ListContainer';
 export { default as TileListItem } from './TileListItem';
+export { default as Submenu } from './Submenu';
