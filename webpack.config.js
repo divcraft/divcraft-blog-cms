@@ -4,7 +4,7 @@ var UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 var webpack = require('webpack');
 
 module.exports = {
-  entry: './__client/src/index.js',
+  entry: '/__client/src/index.js',
   output: {
     path: path.resolve(__dirname, 'build'),
     publicPath: '/',
