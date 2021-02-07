@@ -1,12 +1,12 @@
 import React, { Suspense } from 'react';
 import PropTypes from 'prop-types';
 import { Redirect, Route } from 'react-router-dom';
-import { AppContainer, LoadingIndicator } from 'components';
+import { LoadingIndicator } from 'components';
 import { checkAuth } from 'utils';
 import { SUCCESSED, FAILED } from 'constants';
 import { useSelector } from 'react-redux';
 
-// const AppContainer = React.lazy(() => import('components/AppContainer'));
+const AppContainer = React.lazy(() => import('components/AppContainer'));
 
 const ProtectedRoute = ({ component: Component, adminAccess, ...rest }) => {
   const isLogged = checkAuth();
