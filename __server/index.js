@@ -39,9 +39,13 @@ app.use('/api/auth', authRouter);
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static('build'));
   app.get('*', (req, res) => {
-    res
-      .sendFile(path.resolve(__dirname, '../build/index.html'));
+    res.sendFile(path.resolve(__dirname, '../build/index.html'));
+  });
+} else {
+  app.get('*', (req, res) => {
+    res.redirect('http://localhost:3000');
   });
 }
 
-app.listen(PORT);
+// eslint-disable-next-line no-console
+app.listen(PORT, () => console.log('Server is ready to work'));
