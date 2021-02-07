@@ -4,7 +4,7 @@ var UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 var webpack = require('webpack');
 
 module.exports = {
-  entry: '/__client/src/index.js',
+  entry: './__client/src/index.js',
   output: {
     path: path.resolve(__dirname, 'build'),
     publicPath: '/',
@@ -43,7 +43,7 @@ module.exports = {
     open: true,
     hot: true,
     overlay: true,
-    historyApiFallback: { index: '/' },
+    historyApiFallback: { index: '/index.html' },
     proxy: {
       '/': {
         target: 'http://localhost:5000',
