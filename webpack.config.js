@@ -7,6 +7,7 @@ module.exports = {
   entry: './__client/src/index.js',
   output: {
     path: path.resolve(__dirname, 'build'),
+    publicPath: '/',
     filename: '[name].[hash:6].min.js',
   },
   module: {
@@ -43,7 +44,6 @@ module.exports = {
     hot: true,
     overlay: true,
     historyApiFallback: { index: '/' },
-    publicPath: '/',
     proxy: {
       '/': {
         target: 'http://localhost:5000',
