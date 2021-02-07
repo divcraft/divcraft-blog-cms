@@ -10,8 +10,16 @@ const WaitingRoomPage = () => {
       <TitleContainer title="Poczekalnia" />
       <Submenu />
       <Switch>
-        <Route path={`${path}/do-publikacji`} component={ToGettingPublic} />
-        <Route path={`${path}/tryb-edycji`} component={EditStage} />
+        <Route
+          path={`${path}/do-publikacji`}
+          exact
+          render={() => <ToGettingPublic />}
+        />
+        <Route
+          path={`${path}/tryb-edycji`}
+          exact
+          render={() => <EditStage />}
+        />
         <Redirect path={path} exact to={`${path}/do-publikacji`} />
         <Redirect to="/przeglad" />
       </Switch>
