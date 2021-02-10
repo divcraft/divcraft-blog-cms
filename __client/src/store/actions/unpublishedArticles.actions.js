@@ -15,7 +15,9 @@ export const fetchUnpublishedArticles = () => (dispatch) => {
     dispatch({
       type: FETCH_UNPUBLISHED_ARTICLES_PROMISE,
     });
-    Axios.get(`/api/articles?userId=${userId}&isPublished=false`)
+    Axios.get(
+      `/api/articles?userId=${userId}&isPublished=false&isFinished=true`
+    )
       .then((res) => {
         const { data } = res;
         dispatch({
