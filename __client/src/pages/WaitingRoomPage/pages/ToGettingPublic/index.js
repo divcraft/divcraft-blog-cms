@@ -3,24 +3,24 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Wrapper, LoadingIndicator } from 'components';
 import { SUCCESSED } from 'constants';
 import {
-  fetchUnpublishedArticles,
-  clearUnpublishedArticles,
+  fetchToGettingPublicArticles,
+  clearToGettingPublicArticles,
 } from 'store/actions';
 // import { ToGettingPublicArticleList } from './components';
 
 const ToGettingPublicPage = () => {
-  const unpublishedArticlesLoadingState = useSelector(
-    (state) => state.unpublishedArticles.loadingState
+  const toGettingPublicArticlesLoadingState = useSelector(
+    (state) => state.toGettingPublicArticles.loadingState
   );
   const isDataLoaded = useMemo(
-    () => unpublishedArticlesLoadingState === SUCCESSED,
-    [unpublishedArticlesLoadingState]
+    () => toGettingPublicArticlesLoadingState === SUCCESSED,
+    [toGettingPublicArticlesLoadingState]
   );
   const dispatch = useDispatch();
-  dispatch(fetchUnpublishedArticles());
+  dispatch(fetchToGettingPublicArticles());
   useEffect(() => {
     return () => {
-      dispatch(clearUnpublishedArticles);
+      dispatch(clearToGettingPublicArticles);
     };
   }, []);
   return (

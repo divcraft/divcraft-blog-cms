@@ -1,8 +1,8 @@
 import {
-  FETCH_UNPUBLISHED_ARTICLES_PROMISE,
-  FETCH_UNPUBLISHED_ARTICLES_SUCCESS,
-  FETCH_UNPUBLISHED_ARTICLES_FAIL,
-  CLEAR_UNPUBLISHED_ARTICLES,
+  FETCH_TO_GETTING_PUBLIC_ARTICLES_PROMISE,
+  FETCH_TO_GETTING_PUBLIC_ARTICLES_SUCCESS,
+  FETCH_TO_GETTING_PUBLIC_ARTICLES_FAIL,
+  CLEAR_TO_GETTING_PUBLIC_ARTICLES,
   LOADING,
   SUCCESSED,
   FAILED,
@@ -15,22 +15,22 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case FETCH_UNPUBLISHED_ARTICLES_PROMISE:
+    case FETCH_TO_GETTING_PUBLIC_ARTICLES_PROMISE:
       return {
         ...state,
         loadingState: LOADING,
       };
-    case FETCH_UNPUBLISHED_ARTICLES_SUCCESS:
+    case FETCH_TO_GETTING_PUBLIC_ARTICLES_SUCCESS:
       return {
         loadingState: SUCCESSED,
         articles: action.payload,
       };
-    case FETCH_UNPUBLISHED_ARTICLES_FAIL:
+    case FETCH_TO_GETTING_PUBLIC_ARTICLES_FAIL:
       return {
         ...state,
         loadingState: FAILED,
       };
-    case CLEAR_UNPUBLISHED_ARTICLES:
+    case CLEAR_TO_GETTING_PUBLIC_ARTICLES:
       return {
         loadingState: null,
         articles: null,

@@ -7,7 +7,7 @@ import notifications from './notifications.reducer';
 import publishedArticles from './publishedArticles.reducer';
 import categories from './categories.reducer';
 import comments from './comments.reducer';
-import unpublishedArticles from './unpublishedArticles.reducer';
+import toGettingPublicArticles from './toGettingPublicArticles.reducer';
 import toEditArticles from './toEditArticles.reducer';
 
 const rootReducer = combineReducers({
@@ -19,7 +19,7 @@ const rootReducer = combineReducers({
   publishedArticles,
   categories,
   comments,
-  unpublishedArticles,
+  toGettingPublicArticles,
   toEditArticles,
 });
 
