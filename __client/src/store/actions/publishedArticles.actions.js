@@ -15,7 +15,7 @@ export const fetchPublishedArticles = () => (dispatch) => {
     dispatch({
       type: FETCH_PUBLISHED_ARTICLES_PROMISE,
     });
-    Axios.get(`/api/articles?userId=${userId}&isPublished=true`)
+    Axios.get(`/api/articles?user_id=${userId}&isPublished=true`)
       .then((res) => {
         const { data } = res;
         dispatch({

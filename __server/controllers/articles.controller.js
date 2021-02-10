@@ -12,32 +12,17 @@ module.exports = {
     });
   },
   findAll(req, res) {
-    const { userId, isFinished, isPublished } = req.query;
-    if (userId && isFinished) {
-      Articles.find({ user_id: userId, isFinished: true }, (err, data) => {
-        if (err) {
-          res.status(500).send(err);
-        } else {
-          res.send(data);
-        }
-      });
-    } else if (userId && isPublished) {
-      Articles.find({ user_id: userId, isPublished: true }, (err, data) => {
-        if (err) {
-          res.status(500).send(err);
-        } else {
-          res.send(data);
-        }
-      });
-    } else {
-      Articles.find({}, (err, data) => {
-        if (err) {
-          res.status(500).send(err);
-        } else {
-          res.send(data);
-        }
-      });
-    }
+    const { query } = req;
+    const queryConfig = {
+      ...query,
+    };
+    Articles.find(queryConfig, (err, data) => {
+      if (err) {
+        res.status(500).send(err);
+      } else {
+        res.send(data);
+      }
+    });
   },
   create(req, res) {
     const newArticle = new Articles({

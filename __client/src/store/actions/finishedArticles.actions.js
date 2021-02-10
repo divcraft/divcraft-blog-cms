@@ -15,7 +15,7 @@ export const fetchFinishedArticles = () => (dispatch) => {
     dispatch({
       type: FETCH_FINISHED_ARTICLES_PROMISE,
     });
-    Axios.get(`/api/articles?userId=${userId}&isFinished=true`)
+    Axios.get(`/api/articles?user_id=${userId}&isFinished=true`)
       .then((res) => {
         const { data } = res;
         dispatch({

@@ -16,7 +16,7 @@ export const fetchToEditArticles = () => (dispatch) => {
       type: FETCH_TO_EDIT_ARTICLES_PROMISE,
     });
     Axios.get(
-      `/api/articles?userId=${userId}&isPublished=false&isFinished=false`
+      `/api/articles?user_id=${userId}&isPublished=false&isFinished=false`
     )
       .then((res) => {
         const { data } = res;
