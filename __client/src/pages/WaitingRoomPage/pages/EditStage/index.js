@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Wrapper, LoadingIndicator } from 'components';
 import { SUCCESSED } from 'constants';
 import { fetchToEditArticles, clearToEditArticles } from 'store/actions';
-// import { ToGettingPublicArticleList } from './components';
+import { UnpublishedArticleList } from 'pages/WaitingRoomPage/components';
 
 const EditStagePage = () => {
   const toEditArticlesLoadingState = useSelector(
@@ -23,8 +23,7 @@ const EditStagePage = () => {
     <>
       {isDataLoaded ? (
         <Wrapper>
-          {/* <ToEditArticleList /> */}
-          <div>edit stage</div>
+          <UnpublishedArticleList pattern="toEdit" />
         </Wrapper>
       ) : (
         <LoadingIndicator pattern="main" />

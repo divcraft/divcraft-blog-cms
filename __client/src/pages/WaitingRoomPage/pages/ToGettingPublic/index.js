@@ -6,7 +6,7 @@ import {
   fetchToGettingPublicArticles,
   clearToGettingPublicArticles,
 } from 'store/actions';
-// import { ToGettingPublicArticleList } from './components';
+import { UnpublishedArticleList } from 'pages/WaitingRoomPage/components';
 
 const ToGettingPublicPage = () => {
   const toGettingPublicArticlesLoadingState = useSelector(
@@ -27,8 +27,7 @@ const ToGettingPublicPage = () => {
     <>
       {isDataLoaded ? (
         <Wrapper>
-          {/* <PublishedArticleList /> */}
-          <div>to getting public</div>
+          <UnpublishedArticleList pattern="toGettingPublic" />
         </Wrapper>
       ) : (
         <LoadingIndicator pattern="main" />

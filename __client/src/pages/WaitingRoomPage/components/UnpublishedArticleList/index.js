@@ -7,7 +7,7 @@ import { ListContainer } from 'components';
 const UnpublishedArticleList = ({ pattern }) => {
   let articles = [];
   if (pattern === 'toGettingPublic') {
-    articles = useSelector((state) => state.unpublishedArticles.articles);
+    articles = useSelector((state) => state.toGettingPublicArticles.articles);
   } else if (pattern === 'toEdit') {
     articles = useSelector((state) => state.toEditArticles.articles);
   }
