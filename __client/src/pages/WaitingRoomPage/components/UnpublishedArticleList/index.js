@@ -13,17 +13,17 @@ const UnpublishedArticleList = ({ pattern }) => {
   }
   const articlesList = articles
     .map((article) => {
-      const transformatedDate = new Date(article.publicationDate);
+      const transformatedDate = new Date(article.updatedAt);
       return {
         ...article,
-        publicationDate: Date.parse(transformatedDate),
+        updatedAt: Date.parse(transformatedDate),
       };
     })
-    .sort((a, b) => a.publicationDate - b.publicationDate)
+    .sort((a, b) => a.updatedAt - b.updatedAt)
     .reverse()
     .map((article) => ({
       ...article,
-      publicationDate: new Date(article.publicationDate),
+      updatedAt: new Date(article.updatedAt),
     }))
     .map((article) => (
       <UnpublishedArticle
