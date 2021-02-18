@@ -28,6 +28,7 @@ export const StyledFontAwesome = styled(FontAwesomeIcon)`
   width: 15px;
   height: auto;
   margin-right: 5px;
+  color: ${({ theme: { colors } }) => colors.yellow.regular};
 `;
 
 export const ArticleLink = styled(Link)`
@@ -44,6 +45,10 @@ export const LinkContainer = styled.div`
     margin-left: 0;
     margin-top: 10px;
   }
+`;
+
+export const SemiboldText = styled.span`
+  font-weight: 600;
 `;
 
 export const DataContainer = styled.div``;

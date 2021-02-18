@@ -15,6 +15,7 @@ import {
   Marker,
   LastUpdateDate,
   CategoryData,
+  SemiboldText,
 } from './style';
 
 const UnpublishedArticle = ({ article }) => {
@@ -41,10 +42,11 @@ const UnpublishedArticle = ({ article }) => {
               <StyledFontAwesome icon={faStar} />
             </Marker>
             <LastUpdateDate>
-              <strong>Ostatnio zmodyfikowano:</strong> {displayDate(updatedAt)}
+              <SemiboldText>Ostatnio zmodyfikowano:</SemiboldText>{' '}
+              {displayDate(updatedAt)}
             </LastUpdateDate>
             <CategoryData>
-              <strong>Kategoria:</strong> {articleCategory.name}
+              <SemiboldText>Kategoria:</SemiboldText> {articleCategory.name}
             </CategoryData>
           </DataContainer>
         </TextContainer>
