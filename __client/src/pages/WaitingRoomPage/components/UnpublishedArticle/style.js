@@ -27,7 +27,6 @@ export const TextContainer = styled.div`
 export const StyledFontAwesome = styled(FontAwesomeIcon)`
   width: 15px;
   height: auto;
-  margin-right: 5px;
   color: ${({ theme: { colors } }) => colors.yellow.regular};
 `;
 
@@ -48,13 +47,14 @@ export const LinkContainer = styled.div`
 `;
 
 export const SemiboldText = styled.span`
-  font-weight: 600;
+  font-weight: 500;
 `;
 
-export const DataContainer = styled.div``;
-
-export const Marker = styled.span``;
-
-export const LastUpdateDate = styled.span``;
-
-export const CategoryData = styled.span``;
+export const DataContainer = styled.div`
+  & > span {
+    margin-right: 10px;
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+`;

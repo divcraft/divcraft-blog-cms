@@ -12,9 +12,6 @@ import {
   ArticleLink,
   StyledFontAwesome,
   DataContainer,
-  Marker,
-  LastUpdateDate,
-  CategoryData,
   SemiboldText,
 } from './style';
 
@@ -38,16 +35,17 @@ const UnpublishedArticle = ({ article }) => {
             <ArticleLink>{title}</ArticleLink>
           </div>
           <DataContainer>
-            <Marker>
+            <span>
               <StyledFontAwesome icon={faStar} />
-            </Marker>
-            <LastUpdateDate>
-              <SemiboldText>Ostatnio zmodyfikowano:</SemiboldText>{' '}
+            </span>
+            <span>
+              <SemiboldText>Ostatnio zmodyfikowano: </SemiboldText>
               {displayDate(updatedAt)}
-            </LastUpdateDate>
-            <CategoryData>
-              <SemiboldText>Kategoria:</SemiboldText> {articleCategory.name}
-            </CategoryData>
+            </span>
+            <span>
+              <SemiboldText>Kategoria: </SemiboldText>
+              {articleCategory.name}
+            </span>
           </DataContainer>
         </TextContainer>
         <LinkContainer>
