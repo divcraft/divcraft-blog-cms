@@ -2,7 +2,8 @@ import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { TileListItem, LinkButton } from 'components';
 import { displayDate } from 'utils';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { addMarkedArticle, removeMarkedArticle } from 'store/actions';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 import {
   MainContainer,
@@ -17,25 +18,27 @@ import {
 } from './style';
 
 const UnpublishedArticle = ({ article }) => {
+  const dispatch = useDispatch();
   const categories = useSelector((state) => state.categories.categories);
-  const markedArticles = useSelector(
-    (state) => state.userData.user.markedArticles
-  );
+  const user = useSelector((state) => state.userData.user);
+  const { markedArticles } = user;
   const {
     _id,
     header: { title },
     category_id,
     updatedAt,
   } = article;
-  const isMarked =
-    markedArticles.find((articleId) => articleId === _id) || false;
-  console.log({ isMarked });
+  const isMarked = markedArticles.includes(_id);
   const articleCategory = useMemo(
     () => categories.find((category) => category._id === category_id),
     [categories]
   );
   const handleMarkArticle = () => {
-    console.log({ isMarked });
+    if (!isMarked) {
+      dispatch(addMarkedArticle(_id, user));
+    } else {
+      dispatch(removeMarkedArticle(_id, user));
+    }
   };
   return (
     <TileListItem pattern="big">

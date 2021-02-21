@@ -34,13 +34,14 @@ module.exports = {
     });
   },
   update(req, res) {
-    const { id, updatedUser } = req.body;
+    const { id } = req.params;
+    const { updatedUser } = req.body;
     User.findByIdAndUpdate(id, updatedUser, (err) => {
       if (err) {
         res.status(500).send(err);
         throw err;
       } else {
-        res.send('An user has been updated correctly.', updatedUser);
+        res.send(updatedUser);
       }
     });
   },

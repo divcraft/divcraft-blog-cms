@@ -11,7 +11,6 @@ import {
   REMOVE_MARKED_ARTICLE_SUCCESS,
   REMOVE_MARKED_ARTICLE_FAIL,
 } from 'constants';
-import { useSelector } from 'react-redux';
 
 export const fetchUserData = (id) => (dispatch) => {
   useEffect(() => {
@@ -34,19 +33,17 @@ export const fetchUserData = (id) => (dispatch) => {
   }, []);
 };
 
-export const addMarkedArticle = (articleId) => (dispatch) => {
-  const userData = useSelector((state) => state.userData);
+export const addMarkedArticle = (articleId, userData) => (dispatch) => {
   const newMarkedArticles = [...userData.markedArticles, articleId];
-  const user = {
+  const updatedUser = {
     ...userData,
     markedArticles: newMarkedArticles,
   };
-  // useEffect(() => {
   dispatch({
     type: ADD_MARKED_ARTICLE_PROMISE,
   });
   Axios.put(`/api/users/${userData._id}`, {
-    user,
+    updatedUser,
   })
     .then((res) => {
       dispatch({
@@ -60,24 +57,21 @@ export const addMarkedArticle = (articleId) => (dispatch) => {
       });
       throw err;
     });
-  // }, []);
 };
 
-export const removeMarkedArticle = (articleId) => (dispatch) => {
-  const userData = useSelector((state) => state.userData);
+export const removeMarkedArticle = (articleId, userData) => (dispatch) => {
   const newMarkedArticles = userData.markedArticles.filter(
     (article) => article !== articleId
   );
-  const user = {
+  const updatedUser = {
     ...userData,
     markedArticles: newMarkedArticles,
   };
-  // useEffect(() => {
   dispatch({
     type: REMOVE_MARKED_ARTICLE_PROMISE,
   });
   Axios.put(`/api/users/${userData._id}`, {
-    user,
+    updatedUser,
   })
     .then((res) => {
       dispatch({
@@ -91,5 +85,4 @@ export const removeMarkedArticle = (articleId) => (dispatch) => {
       });
       throw err;
     });
-  // }, []);
 };

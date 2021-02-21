@@ -12,7 +12,9 @@ const AppContainer = ({ children }) => {
   const dispatch = useDispatch();
   dispatch(fetchUserData(cookieId));
   dispatch(fetchCategories());
-  const userDataLoader = useSelector((state) => state.userData.loadingState);
+  const userDataLoader = useSelector(
+    (state) => state.userData.userLoadingState
+  );
   const categoriesLoader = useSelector(
     (state) => state.categories.loadingState
   );

@@ -22,7 +22,7 @@ const userSchema = new Schema(
     twitterUrl: String,
     linkedinUrl: String,
     instagramUrl: String,
-    markedArticles: [{ article_id: String }],
+    markedArticles: [],
   },
   {
     timestamps: true,
