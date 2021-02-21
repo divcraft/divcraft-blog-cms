@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -28,6 +28,11 @@ export const StyledFontAwesome = styled(FontAwesomeIcon)`
   width: 15px;
   height: auto;
   color: ${({ theme: { colors } }) => colors.yellow.regular};
+  ${(props) =>
+    !props.isMarked &&
+    css`
+      color: ${({ theme: { colors } }) => colors.gray.regular};
+    `}
 `;
 
 export const ArticleLink = styled(Link)`
@@ -57,4 +62,11 @@ export const DataContainer = styled.div`
       margin-right: 0;
     }
   }
+`;
+
+export const StarButton = styled.button`
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
 `;

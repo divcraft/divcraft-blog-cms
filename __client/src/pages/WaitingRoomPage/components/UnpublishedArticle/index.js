@@ -13,6 +13,7 @@ import {
   StyledFontAwesome,
   DataContainer,
   SemiboldText,
+  StarButton,
 } from './style';
 
 const UnpublishedArticle = ({ article }) => {
@@ -46,9 +47,9 @@ const UnpublishedArticle = ({ article }) => {
           </div>
           <DataContainer>
             <span>
-              <button type="button" onClick={() => handleMarkArticle()}>
-                <StyledFontAwesome icon={faStar} />
-              </button>
+              <StarButton type="button" onClick={() => handleMarkArticle()}>
+                <StyledFontAwesome icon={faStar} isMarked={isMarked} />
+              </StarButton>
             </span>
             <span>
               <SemiboldText>Ostatnio zmodyfikowano: </SemiboldText>
