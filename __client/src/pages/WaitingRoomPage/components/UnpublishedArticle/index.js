@@ -17,7 +17,7 @@ import {
   StarButton,
 } from './style';
 
-const UnpublishedArticle = ({ article }) => {
+const UnpublishedArticle = ({ article, pattern }) => {
   const dispatch = useDispatch();
   const categories = useSelector((state) => state.categories.categories);
   const user = useSelector((state) => state.userData.user);
@@ -65,8 +65,13 @@ const UnpublishedArticle = ({ article }) => {
           </DataContainer>
         </TextContainer>
         <LinkContainer>
-          <LinkButton pattern="blue">Podgląd</LinkButton>
-          <LinkButton pattern="white">Komentarze</LinkButton>
+          <LinkButton pattern="white">Podgląd</LinkButton>
+          <LinkButton pattern="white">Edytuj</LinkButton>
+          {pattern === 'toGettingPublic' ? (
+            <LinkButton pattern="blueWide">Wycofaj z publikacji</LinkButton>
+          ) : (
+            <LinkButton pattern="blueWide">Usuń</LinkButton>
+          )}
         </LinkContainer>
       </MainContainer>
     </TileListItem>
@@ -75,7 +80,7 @@ const UnpublishedArticle = ({ article }) => {
 
 UnpublishedArticle.propTypes = {
   article: PropTypes.instanceOf(Object).isRequired,
-  // pattern: PropTypes.oneOf(['toGettingPublic', 'toEdit']).isRequired,
+  pattern: PropTypes.oneOf(['toGettingPublic', 'toEdit']).isRequired,
 };
 
 export default UnpublishedArticle;

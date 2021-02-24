@@ -45,8 +45,13 @@ export const ArticleLink = styled(Link)`
 `;
 
 export const LinkContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  width: 250px;
   & a:nth-child(2) {
-    margin-left: 0;
+    margin-left: 10px;
+  }
+  & a:nth-child(3) {
     margin-top: 10px;
   }
 `;
