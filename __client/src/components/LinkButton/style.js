@@ -12,11 +12,8 @@ export const LinkButton = styled(Link)`
   width: 120px;
   height: 30px;
   &:hover {
-    box-shadow: 0px 0px 1px 1px
+    box-shadow: 0px 0px 0px 1px
       ${({ theme: { colors } }) => colors.blue.regular};
-  }
-  &:nth-child(2) {
-    margin-left: 10px;
   }
   ${(props) =>
     props.pattern === `blue` &&
