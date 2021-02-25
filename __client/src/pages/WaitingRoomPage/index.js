@@ -4,11 +4,21 @@ import { Switch, Redirect, Route, useRouteMatch } from 'react-router-dom';
 import { ToGettingPublic, EditStage } from './pages';
 
 const WaitingRoomPage = () => {
-  const { path } = useRouteMatch();
+  const { url, path } = useRouteMatch();
+  const navConfig = [
+    {
+      name: 'Do publikacji',
+      path: `${url}/do-publikacji`,
+    },
+    {
+      name: 'Tryb edycji',
+      path: `${url}/tryb-edycji`,
+    },
+  ];
   return (
     <>
       <TitleContainer title="Poczekalnia" />
-      <Submenu />
+      <Submenu navConfig={navConfig} />
       <Switch>
         <Route
           path={`${path}/do-publikacji`}
