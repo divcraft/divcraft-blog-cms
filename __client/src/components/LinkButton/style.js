@@ -10,6 +10,7 @@ export const LinkButton = styled(Link)`
   color: white;
   border: solid 1px ${({ theme: { colors } }) => colors.blue.regular};
   width: 120px;
+  flex-shrink: 0;
   height: 30px;
   &:hover {
     box-shadow: 0px 0px 0px 1px

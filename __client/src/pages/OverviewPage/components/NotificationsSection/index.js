@@ -62,9 +62,11 @@ const NotificationsSection = () => {
             <TileListItem pattern="small" key={_id}>
               <NotificationText>
                 <span>{spanData()}</span>
-                <ArticleLink>{articleData.header.title}</ArticleLink>
+                <ArticleLink to="/">{articleData.header.title}</ArticleLink>
               </NotificationText>
-              <LinkButton pattern="blue">Sprawdź</LinkButton>
+              <LinkButton to="/" pattern="blue">
+                Sprawdź
+              </LinkButton>
             </TileListItem>
           );
         })

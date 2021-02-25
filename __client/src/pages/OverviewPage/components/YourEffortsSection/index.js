@@ -102,7 +102,7 @@ const YourEffortsSection = () => {
         <span>Najnowszy opublikowany artykuł:</span>
         {newestPublishedArticle ? (
           <>
-            <Underline>{newestPublishedArticle.header.title}</Underline>(
+            <Underline to="/">{newestPublishedArticle.header.title}</Underline>(
             {displayDate(newestPublishedArticle.publicationDate)})
           </>
         ) : (
@@ -113,7 +113,7 @@ const YourEffortsSection = () => {
         <span>Najlepiej oceniany artykuł:</span>
         {bestRatedArticle ? (
           <>
-            <Underline>{bestRatedArticle.header.title}</Underline>
+            <Underline to="/">{bestRatedArticle.header.title}</Underline>
             <span>({bestRatedArticle.averageRating})</span>
           </>
         ) : (
@@ -124,7 +124,7 @@ const YourEffortsSection = () => {
         <span>Najpopularniejszy artykuł:</span>
         {mostPopularArticle ? (
           <>
-            <Underline>
+            <Underline to="/">
               Umieszczenie elementów multimedialnych na stronie
             </Underline>
             <span>(0 odsłon)</span>

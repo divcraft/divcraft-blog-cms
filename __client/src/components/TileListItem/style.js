@@ -4,6 +4,7 @@ export const TileListItem = styled.li`
   overflow: hidden;
   background-color: white;
   display: flex;
+  flex-grow: 1;
   justify-content: space-between;
   align-items: center;
   width: 100%;

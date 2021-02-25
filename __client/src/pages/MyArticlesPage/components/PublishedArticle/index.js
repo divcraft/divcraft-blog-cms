@@ -40,7 +40,7 @@ const PublishedArticle = ({ article }) => {
       <MainContainer>
         <TextContainer>
           <div>
-            <ArticleLink>{title}</ArticleLink>
+            <ArticleLink to="/">{title}</ArticleLink>
           </div>
           <IconsContainer>
             <Icon>
@@ -62,8 +62,12 @@ const PublishedArticle = ({ article }) => {
           </IconsContainer>
         </TextContainer>
         <LinkContainer>
-          <LinkButton pattern="blue">Podgląd</LinkButton>
-          <LinkButton pattern="white">Komentarze</LinkButton>
+          <LinkButton to="/" pattern="blue">
+            Podgląd
+          </LinkButton>
+          <LinkButton to="/" pattern="white">
+            Komentarze
+          </LinkButton>
         </LinkContainer>
       </MainContainer>
     </TileListItem>

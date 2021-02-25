@@ -36,10 +36,14 @@ const AwaitingArticlesSection = () => {
           const { _id, header } = article;
           return (
             <TileListItem pattern="small" key={_id}>
-              <ArticleLink>{header.title}</ArticleLink>
+              <ArticleLink to="/">{header.title}</ArticleLink>
               <LinkContainer>
-                <LinkButton pattern="blue">Podgląd</LinkButton>
-                <LinkButton pattern="white">Edytuj</LinkButton>
+                <LinkButton to="/" pattern="blue">
+                  Podgląd
+                </LinkButton>
+                <LinkButton to="/" pattern="white">
+                  Edytuj
+                </LinkButton>
               </LinkContainer>
             </TileListItem>
           );

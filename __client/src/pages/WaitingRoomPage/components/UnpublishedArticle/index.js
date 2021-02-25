@@ -46,7 +46,7 @@ const UnpublishedArticle = ({ article, pattern }) => {
       <MainContainer>
         <TextContainer>
           <div>
-            <ArticleLink>{title}</ArticleLink>
+            <ArticleLink to="/">{title}</ArticleLink>
           </div>
           <DataContainer>
             <span>
@@ -65,12 +65,20 @@ const UnpublishedArticle = ({ article, pattern }) => {
           </DataContainer>
         </TextContainer>
         <LinkContainer>
-          <LinkButton pattern="white">Podgląd</LinkButton>
-          <LinkButton pattern="white">Edytuj</LinkButton>
+          <LinkButton to="/" pattern="white">
+            Podgląd
+          </LinkButton>
+          <LinkButton to="/" pattern="white">
+            Edytuj
+          </LinkButton>
           {pattern === 'toGettingPublic' ? (
-            <LinkButton pattern="blueWide">Wycofaj z publikacji</LinkButton>
+            <LinkButton to="/" pattern="blueWide">
+              Wycofaj z publikacji
+            </LinkButton>
           ) : (
-            <LinkButton pattern="blueWide">Usuń</LinkButton>
+            <LinkButton to="/" pattern="blueWide">
+              Usuń
+            </LinkButton>
           )}
         </LinkContainer>
       </MainContainer>
