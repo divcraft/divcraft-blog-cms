@@ -6,10 +6,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { addMarkedArticle, removeMarkedArticle } from 'store/actions';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 import {
-  MainContainer,
-  TextContainer,
   LinkContainer,
-  Image,
   ArticleLink,
   StyledFontAwesome,
   DataContainer,
@@ -42,9 +39,9 @@ const UnpublishedArticle = ({ article, pattern }) => {
   };
   return (
     <TileListItem pattern="big">
-      <Image src="" alt="" />
-      <MainContainer>
-        <TextContainer>
+      <img src="" alt="" />
+      <div>
+        <div>
           <div>
             <ArticleLink to="/">{title}</ArticleLink>
           </div>
@@ -63,7 +60,7 @@ const UnpublishedArticle = ({ article, pattern }) => {
               {articleCategory.name}
             </span>
           </DataContainer>
-        </TextContainer>
+        </div>
         <LinkContainer>
           <LinkButton to="/" pattern="white">
             Podgląd
@@ -81,7 +78,7 @@ const UnpublishedArticle = ({ article, pattern }) => {
             </LinkButton>
           )}
         </LinkContainer>
-      </MainContainer>
+      </div>
     </TileListItem>
   );
 };

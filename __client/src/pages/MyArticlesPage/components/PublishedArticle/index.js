@@ -10,11 +10,8 @@ import {
   faFolderOpen,
 } from '@fortawesome/free-solid-svg-icons';
 import {
-  MainContainer,
-  TextContainer,
   IconsContainer,
   LinkContainer,
-  Image,
   ArticleLink,
   StyledFontAwesome,
   Icon,
@@ -36,9 +33,9 @@ const PublishedArticle = ({ article }) => {
   );
   return (
     <TileListItem pattern="big">
-      <Image src="" alt="" />
-      <MainContainer>
-        <TextContainer>
+      <img src="" alt="" />
+      <div>
+        <div>
           <div>
             <ArticleLink to="/">{title}</ArticleLink>
           </div>
@@ -60,7 +57,7 @@ const PublishedArticle = ({ article }) => {
               <IconText>{articleCategory.name}</IconText>
             </Icon>
           </IconsContainer>
-        </TextContainer>
+        </div>
         <LinkContainer>
           <LinkButton to="/" pattern="blue">
             Podgląd
@@ -69,7 +66,7 @@ const PublishedArticle = ({ article }) => {
             Komentarze
           </LinkButton>
         </LinkContainer>
-      </MainContainer>
+      </div>
     </TileListItem>
   );
 };
