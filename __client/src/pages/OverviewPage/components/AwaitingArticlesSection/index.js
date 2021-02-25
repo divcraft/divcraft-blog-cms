@@ -6,8 +6,9 @@ import {
   LinkButton,
   ListContainer,
   TileListItem,
+  LinkText,
 } from 'components';
-import { SectionContainer, ArticleLink } from 'pages/OverviewPage/components';
+import { SectionContainer } from 'pages/OverviewPage/components';
 import { LinkContainer } from './style';
 
 const AwaitingArticlesSection = () => {
@@ -36,7 +37,9 @@ const AwaitingArticlesSection = () => {
           const { _id, header } = article;
           return (
             <TileListItem pattern="small" key={_id}>
-              <ArticleLink to="/">{header.title}</ArticleLink>
+              <LinkText pattern="underline" to="/">
+                {header.title}
+              </LinkText>
               <LinkContainer>
                 <LinkButton to="/" pattern="blue">
                   Podgląd

@@ -1,9 +1,9 @@
 import React, { useMemo } from 'react';
-import { GrayText } from 'components';
+import { GrayText, LinkText } from 'components';
 import { SectionContainer } from 'pages/OverviewPage/components';
 import { useSelector } from 'react-redux';
 import { displayDate } from 'utils';
-import { LineItem, Underline } from './style';
+import { LineItem } from './style';
 
 const YourEffortsSection = () => {
   let calcData = {
@@ -102,8 +102,10 @@ const YourEffortsSection = () => {
         <span>Najnowszy opublikowany artykuł:</span>
         {newestPublishedArticle ? (
           <>
-            <Underline to="/">{newestPublishedArticle.header.title}</Underline>(
-            {displayDate(newestPublishedArticle.publicationDate)})
+            <LinkText pattern="underline" to="/">
+              {newestPublishedArticle.header.title}
+            </LinkText>
+            ({displayDate(newestPublishedArticle.publicationDate)})
           </>
         ) : (
           <GrayText>brak opublikowanych artykułów</GrayText>
@@ -113,7 +115,9 @@ const YourEffortsSection = () => {
         <span>Najlepiej oceniany artykuł:</span>
         {bestRatedArticle ? (
           <>
-            <Underline to="/">{bestRatedArticle.header.title}</Underline>
+            <LinkText pattern="underline" to="/">
+              {bestRatedArticle.header.title}
+            </LinkText>
             <span>({bestRatedArticle.averageRating})</span>
           </>
         ) : (
@@ -124,9 +128,9 @@ const YourEffortsSection = () => {
         <span>Najpopularniejszy artykuł:</span>
         {mostPopularArticle ? (
           <>
-            <Underline to="/">
+            <LinkText pattern="underline" to="/">
               Umieszczenie elementów multimedialnych na stronie
-            </Underline>
+            </LinkText>
             <span>(0 odsłon)</span>
           </>
         ) : (

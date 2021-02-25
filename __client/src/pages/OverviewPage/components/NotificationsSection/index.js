@@ -6,8 +6,9 @@ import {
   LinkButton,
   ListContainer,
   TileListItem,
+  LinkText,
 } from 'components';
-import { SectionContainer, ArticleLink } from 'pages/OverviewPage/components';
+import { SectionContainer } from 'pages/OverviewPage/components';
 import { NotificationText } from './style';
 
 const NotificationsSection = () => {
@@ -62,7 +63,9 @@ const NotificationsSection = () => {
             <TileListItem pattern="small" key={_id}>
               <NotificationText>
                 <span>{spanData()}</span>
-                <ArticleLink to="/">{articleData.header.title}</ArticleLink>
+                <LinkText pattern="underline" to="/">
+                  {articleData.header.title}
+                </LinkText>
               </NotificationText>
               <LinkButton to="/" pattern="blue">
                 Sprawdź

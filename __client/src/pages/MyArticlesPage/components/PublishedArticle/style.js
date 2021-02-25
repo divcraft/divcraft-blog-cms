@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export const LinkContainer = styled.div`
@@ -38,13 +37,4 @@ export const Icon = styled.div`
 
 export const IconText = styled.span`
   display: inline;
-`;
-
-export const ArticleLink = styled(Link)`
-  display: inline;
-  color: black;
-  text-decoration: none;
-  &:hover {
-    text-decoration: underline;
-  }
 `;

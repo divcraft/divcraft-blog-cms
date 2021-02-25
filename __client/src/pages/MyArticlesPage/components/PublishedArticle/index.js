@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
-import { TileListItem, LinkButton } from 'components';
+import { TileListItem, LinkButton, LinkText } from 'components';
 import { displayDate } from 'utils';
 import { useSelector } from 'react-redux';
 import {
@@ -12,7 +12,6 @@ import {
 import {
   IconsContainer,
   LinkContainer,
-  ArticleLink,
   StyledFontAwesome,
   Icon,
   IconText,
@@ -37,7 +36,9 @@ const PublishedArticle = ({ article }) => {
       <div>
         <div>
           <div>
-            <ArticleLink to="/">{title}</ArticleLink>
+            <LinkText pattern="noUnderline" to="/">
+              {title}
+            </LinkText>
           </div>
           <IconsContainer>
             <Icon>

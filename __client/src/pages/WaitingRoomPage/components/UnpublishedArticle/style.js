@@ -1,5 +1,4 @@
 import styled, { css } from 'styled-components';
-import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export const LinkContainer = styled.div`
@@ -25,10 +24,6 @@ export const StyledFontAwesome = styled(FontAwesomeIcon)`
     `}
 `;
 
-export const SemiboldText = styled.span`
-  font-weight: 500;
-`;
-
 export const DataContainer = styled.div`
   & > span {
     margin-right: 10px;
@@ -45,11 +40,6 @@ export const StarButton = styled.button`
   padding: 0;
 `;
 
-export const ArticleLink = styled(Link)`
-  display: inline;
-  color: black;
-  text-decoration: none;
-  &:hover {
-    text-decoration: underline;
-  }
+export const SemiboldText = styled.span`
+  font-weight: 500;
 `;

@@ -1,13 +1,12 @@
 import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
-import { TileListItem, LinkButton } from 'components';
+import { TileListItem, LinkButton, LinkText } from 'components';
 import { displayDate } from 'utils';
 import { useSelector, useDispatch } from 'react-redux';
 import { addMarkedArticle, removeMarkedArticle } from 'store/actions';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 import {
   LinkContainer,
-  ArticleLink,
   StyledFontAwesome,
   DataContainer,
   SemiboldText,
@@ -43,7 +42,9 @@ const UnpublishedArticle = ({ article, pattern }) => {
       <div>
         <div>
           <div>
-            <ArticleLink to="/">{title}</ArticleLink>
+            <LinkText pattern="noUnderline" to="/">
+              {title}
+            </LinkText>
           </div>
           <DataContainer>
             <span>

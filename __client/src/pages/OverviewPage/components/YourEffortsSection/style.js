@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
 
 export const LineItem = styled.div`
   display: flex;
@@ -14,9 +13,4 @@ export const LineItem = styled.div`
   & *:last-child {
     margin-right: 0;
   }
-`;
-
-export const Underline = styled(Link)`
-  display: block;
-  color: black;
 `;
