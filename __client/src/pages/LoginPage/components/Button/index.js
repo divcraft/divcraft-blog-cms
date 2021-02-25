@@ -17,7 +17,7 @@ const Button = ({ isFormLoading, children, ...props }) => {
 };
 
 Button.propTypes = {
-  pattern: PropTypes.oneOf(['blue', 'text']).isRequired,
+  pattern: PropTypes.oneOf(['box', 'text']).isRequired,
   isFormLoading: PropTypes.bool,
   children: PropTypes.string.isRequired,
 };

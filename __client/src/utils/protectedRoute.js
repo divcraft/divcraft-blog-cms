@@ -6,7 +6,7 @@ import { checkAuth } from 'utils';
 import { SUCCESSED, FAILED } from 'constants';
 import { useSelector } from 'react-redux';
 
-const AppContainer = React.lazy(() => import('components/AppContainer'));
+const AppContainer = React.lazy(() => import('layouts/AppContainer'));
 
 const ProtectedRoute = ({ component: Component, adminAccess, ...rest }) => {
   const isLogged = checkAuth();
