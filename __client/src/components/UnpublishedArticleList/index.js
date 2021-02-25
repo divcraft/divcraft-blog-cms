@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
-import { UnpublishedArticle } from 'pages/WaitingRoomPage/components';
-import { ListContainer } from 'components';
+import { ListContainer, UnpublishedArticle } from 'components';
 
 const UnpublishedArticleList = ({ pattern }) => {
   let articles = [];
