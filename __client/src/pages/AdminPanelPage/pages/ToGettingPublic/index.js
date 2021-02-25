@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Wrapper, LoadingIndicator, UnpublishedArticleList } from 'components';
 import { SUCCESSED } from 'constants';
 import {
-  fetchToGettingPublicArticles,
+  fetchToGettingPublicArticlesAllUsers,
   clearToGettingPublicArticles,
 } from 'store/actions';
 
@@ -16,7 +16,7 @@ const ToGettingPublicPage = () => {
     [toGettingPublicArticlesLoadingState]
   );
   const dispatch = useDispatch();
-  dispatch(fetchToGettingPublicArticles());
+  dispatch(fetchToGettingPublicArticlesAllUsers());
   useEffect(() => {
     return () => {
       dispatch(clearToGettingPublicArticles);

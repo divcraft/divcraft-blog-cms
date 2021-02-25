@@ -9,7 +9,7 @@ import {
   CLEAR_TO_GETTING_PUBLIC_ARTICLES,
 } from 'constants';
 
-export const fetchToGettingPublicArticles = () => (dispatch) => {
+export const fetchToGettingPublicArticlesOneUser = () => (dispatch) => {
   const userId = useSelector((state) => state.userData.user._id);
   useEffect(() => {
     dispatch({
@@ -23,6 +23,30 @@ export const fetchToGettingPublicArticles = () => (dispatch) => {
         dispatch({
           type: FETCH_TO_GETTING_PUBLIC_ARTICLES_SUCCESS,
           payload: data,
+        });
+      })
+      .catch((err) => {
+        dispatch({
+          type: FETCH_TO_GETTING_PUBLIC_ARTICLES_FAIL,
+        });
+        throw err;
+      });
+  }, []);
+};
+
+export const fetchToGettingPublicArticlesAllUsers = () => (dispatch) => {
+  const userId = useSelector((state) => state.userData.user._id);
+  useEffect(() => {
+    dispatch({
+      type: FETCH_TO_GETTING_PUBLIC_ARTICLES_PROMISE,
+    });
+    Axios.get(`/api/articles?isPublished=false&isFinished=true`)
+      .then((res) => {
+        const { data } = res;
+        const payload = data.filter((article) => article.user_id !== userId);
+        dispatch({
+          type: FETCH_TO_GETTING_PUBLIC_ARTICLES_SUCCESS,
+          payload,
         });
       })
       .catch((err) => {
