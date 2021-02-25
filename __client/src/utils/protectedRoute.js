@@ -12,7 +12,7 @@ const ProtectedRoute = ({ component: Component, adminAccess, ...rest }) => {
   const isLogged = checkAuth();
   const userData = useSelector((state) => state.userData);
   const isAdmin =
-    userData.loadingState === SUCCESSED ? userData.user.isAdmin : false;
+    userData.userLoadingState === SUCCESSED ? userData.user.isAdmin : false;
   return (
     isLogged && (
       <Route
