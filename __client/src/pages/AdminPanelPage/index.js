@@ -22,7 +22,7 @@ const AdminPanelPage = () => {
   return (
     <>
       <div>
-        <TitleContainer title="Poczekalnia" />
+        <TitleContainer title="Panel Admina" />
         <Submenu navConfig={navConfig} />
       </div>
       <Switch>
