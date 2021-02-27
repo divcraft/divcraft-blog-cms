@@ -15,3 +15,4 @@ export { default as LinkText } from './LinkText';
 export { default as UnpublishedArticle } from './UnpublishedArticle';
 export { default as UnpublishedArticleList } from './UnpublishedArticleList';
 export { default as NotificationsList } from './NotificationsList';
+export { default as NotificationsListItem } from './NotificationsListItem';

@@ -32,6 +32,30 @@ export const fetchPublishedArticles = () => (dispatch) => {
   }, []);
 };
 
+export const fetchPublishedArticlesAllUsers = () => (dispatch) => {
+  const userId = useSelector((state) => state.userData.user._id);
+  useEffect(() => {
+    dispatch({
+      type: FETCH_PUBLISHED_ARTICLES_PROMISE,
+    });
+    Axios.get(`/api/articles?&isPublished=true`)
+      .then((res) => {
+        const { data } = res;
+        const payload = data.filter((article) => article.user_id !== userId);
+        dispatch({
+          type: FETCH_PUBLISHED_ARTICLES_SUCCESS,
+          payload,
+        });
+      })
+      .catch((err) => {
+        dispatch({
+          type: FETCH_PUBLISHED_ARTICLES_FAIL,
+        });
+        throw err;
+      });
+  }, []);
+};
+
 export const clearPublishedArticles = {
   type: CLEAR_PUBLISHED_ARTICLES,
 };

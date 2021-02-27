@@ -2,39 +2,35 @@ import React, { useState, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 import {
+  NotificationsListItem,
   LoadMoreButton,
   GrayText,
-  LinkButton,
   ListContainer,
-  TileListItem,
-  LinkText,
 } from 'components';
-import { SectionContainer } from 'pages/OverviewPage/components';
-import { NotificationText } from './style';
 
-const NotificationsSection = ({ pattern }) => {
-  const [notificationsLength, setNotificationLength] = useState(3);
+const NotificationsList = ({ pattern }) => {
   const notifications = useSelector(
     (state) => state.notifications.notifications
   );
-  // if (pattern === 'allUsers')
-  //   notifications.filter((item) => item.notificationType === 'report');
   const finishedArticles = useSelector(
     (state) => state.finishedArticles.articles
   );
   const publishedArticles = useSelector(
     (state) => state.publishedArticles.articles
   );
+  const [notificationsLength, setNotificationLength] = useState(
+    pattern === 'oneUser' ? 3 : notifications.length
+  );
   const articleList = useMemo(() => {
-    let payload = [];
+    let articles = [];
     if (pattern === 'oneUser') {
-      payload = finishedArticles.filter(
+      articles = finishedArticles.filter(
         (article) => article.isPublished === true
       );
-    } else if (pattern === 'oneUser') {
-      payload = publishedArticles;
+    } else if (pattern === 'allUsers') {
+      articles = publishedArticles;
     }
-    return payload;
+    return articles;
   }, [finishedArticles, publishedArticles]);
   const notificationsList = useMemo(
     () =>
@@ -52,63 +48,28 @@ const NotificationsSection = ({ pattern }) => {
         })
         .sort((a, b) => a.updatedAt - b.updatedAt)
         .reverse()
-        .map((item) => {
-          const { notificationType, commentsCounter, articleData, _id } = item;
-          const spanData = () => {
-            if (notificationType === 'newComments') {
-              const newCommentsCase = () => {
-                const counterToString = commentsCounter.toString();
-                const lastStringItem =
-                  counterToString[counterToString.length - 1];
-                if (counterToString === '1') return 'nowy komentarz';
-                if (lastStringItem >= 2 && lastStringItem <= 4) {
-                  return 'nowe komentarze';
-                } else {
-                  return 'nowych komentarzy';
-                }
-              };
-              return `Masz ${commentsCounter} ${newCommentsCase()} pod artykułem`;
-            } else if (notificationType === 'report') {
-              return `Masz nowe zgłoszenie komentarza pod artykułem`;
-            }
-          };
-          return (
-            <TileListItem pattern="small" key={_id}>
-              <NotificationText>
-                <span>{spanData()}</span>
-                <LinkText pattern="underline" to="/">
-                  {articleData.header.title}
-                </LinkText>
-              </NotificationText>
-              <LinkButton to="/" pattern="blue">
-                Sprawdź
-              </LinkButton>
-            </TileListItem>
-          );
-        })
-        .splice(0, notificationsLength),
+        .splice(0, notificationsLength)
+        .map((item) => (
+          <NotificationsListItem key={item._id} notification={item} />
+        )),
     [notifications, articleList, notificationsLength]
   );
-  return (
-    <SectionContainer title="Aktualności">
-      {notifications.length !== 0 ? (
-        <>
-          <ListContainer>{notificationsList}</ListContainer>
-          {notificationsLength < notifications.length && (
-            <LoadMoreButton
-              onClick={() => setNotificationLength(notificationsLength + 3)}
-            />
-          )}
-        </>
-      ) : (
-        <GrayText>Brak nowych powiadomień</GrayText>
+  return notifications.length !== 0 ? (
+    <>
+      <ListContainer>{notificationsList}</ListContainer>
+      {notificationsLength < notifications.length && (
+        <LoadMoreButton
+          onClick={() => setNotificationLength(notificationsLength + 3)}
+        />
       )}
-    </SectionContainer>
+    </>
+  ) : (
+    <GrayText>Brak nowych powiadomień</GrayText>
   );
 };
 
-NotificationsSection.propTypes = {
+NotificationsList.propTypes = {
   pattern: PropTypes.oneOf(['oneUser', 'allUsers']).isRequired,
 };
 
-export default NotificationsSection;
+export default NotificationsList;

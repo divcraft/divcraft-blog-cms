@@ -1,11 +1,6 @@
 import React, { useEffect, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  TitleContainer,
-  Wrapper,
-  LoadingIndicator,
-  NotificationsList,
-} from 'components';
+import { TitleContainer, Wrapper, LoadingIndicator } from 'components';
 import { SUCCESSED } from 'constants';
 import {
   fetchFinishedArticles,
@@ -13,7 +8,11 @@ import {
   fetchNotifications,
   clearNotifications,
 } from 'store/actions';
-import { YourEffortsSection, AwaitingArticlesSection } from './components';
+import {
+  YourEffortsSection,
+  NotificationsSection,
+  AwaitingArticlesSection,
+} from './components';
 
 const OverviewPage = () => {
   const firstName = useSelector((state) => state.userData.user.firstName);
@@ -44,7 +43,7 @@ const OverviewPage = () => {
       {isDataLoaded ? (
         <Wrapper>
           <YourEffortsSection />
-          <NotificationsList pattern="oneUser" />
+          <NotificationsSection pattern="oneUser" />
           <AwaitingArticlesSection />
         </Wrapper>
       ) : (

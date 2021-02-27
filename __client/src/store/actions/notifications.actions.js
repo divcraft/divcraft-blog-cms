@@ -32,6 +32,30 @@ export const fetchNotifications = () => (dispatch) => {
   }, []);
 };
 
+export const fetchReportsAllUsers = () => (dispatch) => {
+  const userId = useSelector((state) => state.userData.user._id);
+  useEffect(() => {
+    dispatch({
+      type: FETCH_NOTIFICATION_PROMISE,
+    });
+    Axios.get('/api/notifications?notificationType=report')
+      .then((res) => {
+        const { data } = res;
+        const payload = data.filter((item) => item.user_id !== userId);
+        dispatch({
+          type: FETCH_NOTIFICATION_SUCCESS,
+          payload,
+        });
+      })
+      .catch((err) => {
+        dispatch({
+          type: FETCH_NOTIFICATION_FAIL,
+        });
+        throw err;
+      });
+  }, []);
+};
+
 export const clearNotifications = {
   type: CLEAR_NOTIFICATION,
 };

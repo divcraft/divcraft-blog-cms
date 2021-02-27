@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Wrapper, LoadingIndicator, NotificationsList } from 'components';
 import { SUCCESSED } from 'constants';
 import {
-  fetchPublishedArticles,
-  fetchNotifications,
+  fetchPublishedArticlesAllUsers,
+  fetchReportsAllUsers,
   clearPublishedArticles,
   clearNotifications,
 } from 'store/actions';
@@ -23,8 +23,8 @@ const Reports = () => {
     [publishedArticlesLoadingState, notificationsLoadingState]
   );
   const dispatch = useDispatch();
-  dispatch(fetchPublishedArticles());
-  dispatch(fetchNotifications());
+  dispatch(fetchPublishedArticlesAllUsers());
+  dispatch(fetchReportsAllUsers());
   useEffect(() => {
     return () => {
       dispatch(clearPublishedArticles);
