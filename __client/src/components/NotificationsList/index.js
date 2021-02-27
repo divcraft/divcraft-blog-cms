@@ -1,4 +1,5 @@
 import React, { useState, useMemo } from 'react';
+import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 import {
   LoadMoreButton,
@@ -11,23 +12,35 @@ import {
 import { SectionContainer } from 'pages/OverviewPage/components';
 import { NotificationText } from './style';
 
-const NotificationsSection = () => {
+const NotificationsSection = ({ pattern }) => {
   const [notificationsLength, setNotificationLength] = useState(3);
   const notifications = useSelector(
     (state) => state.notifications.notifications
   );
+  if (pattern === 'allUsers')
+    notifications.filter((item) => item.notificationType === 'report');
   const finishedArticles = useSelector(
     (state) => state.finishedArticles.articles
   );
-  const publishedArticles = useMemo(
-    () => finishedArticles.filter((article) => article.isPublished === true),
-    [finishedArticles]
+  const publishedArticles = useSelector(
+    (state) => state.publishedArticles.articles
   );
+  const articleList = useMemo(() => {
+    let payload = [];
+    if (pattern === 'oneUser') {
+      payload = finishedArticles.filter(
+        (article) => article.isPublished === true
+      );
+    } else if (pattern === 'oneUser') {
+      payload = publishedArticles;
+    }
+    return payload;
+  }, [finishedArticles, publishedArticles]);
   const notificationsList = useMemo(
     () =>
       notifications
         .map((notification) => {
-          const articleData = publishedArticles.find(
+          const articleData = articleList.find(
             (article) => article._id === notification.article_id
           );
           const transformatedDate = new Date(notification.updatedAt);
@@ -74,7 +87,7 @@ const NotificationsSection = () => {
           );
         })
         .splice(0, notificationsLength),
-    [notifications, publishedArticles, notificationsLength]
+    [notifications, articleList, notificationsLength]
   );
   return (
     <SectionContainer title="Aktualności">
@@ -92,6 +105,10 @@ const NotificationsSection = () => {
       )}
     </SectionContainer>
   );
+};
+
+NotificationsSection.propTypes = {
+  pattern: PropTypes.oneOf(['oneUser', 'allUsers']).isRequired,
 };
 
 export default NotificationsSection;
