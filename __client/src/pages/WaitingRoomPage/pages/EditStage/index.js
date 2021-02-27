@@ -25,7 +25,7 @@ const EditStagePage = () => {
           <UnpublishedArticleList pattern="toEdit" />
         </Wrapper>
       ) : (
-        <LoadingIndicator pattern="main" />
+        <LoadingIndicator pattern="page" />
       )}
     </>
   );

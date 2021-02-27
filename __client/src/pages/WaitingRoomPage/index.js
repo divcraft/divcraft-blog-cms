@@ -17,8 +17,10 @@ const WaitingRoomPage = () => {
   ];
   return (
     <>
-      <TitleContainer title="Poczekalnia" />
-      <Submenu navConfig={navConfig} />
+      <div>
+        <TitleContainer title="Poczekalnia" />
+        <Submenu navConfig={navConfig} />
+      </div>
       <Switch>
         <Route
           path={`${path}/do-publikacji`}

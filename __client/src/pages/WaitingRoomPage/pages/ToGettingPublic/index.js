@@ -29,7 +29,7 @@ const ToGettingPublicPage = () => {
           <UnpublishedArticleList pattern="toGettingPublic" />
         </Wrapper>
       ) : (
-        <LoadingIndicator pattern="main" />
+        <LoadingIndicator pattern="page" />
       )}
     </>
   );

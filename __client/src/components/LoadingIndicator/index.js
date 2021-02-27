@@ -16,7 +16,7 @@ const LoadingIndicator = ({ pattern, ...props }) => {
 };
 
 LoadingIndicator.propTypes = {
-  pattern: PropTypes.oneOf(['main', 'button']),
+  pattern: PropTypes.oneOf(['main', 'page', 'button']),
 };
 
 export default LoadingIndicator;

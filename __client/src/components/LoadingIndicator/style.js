@@ -12,14 +12,19 @@ const spinner = keyframes`
 export const Outer = styled.div`
   opacity: 0.5;
   position: absolute;
+  transform: translate(-50%, -50%);
+  width: 40px;
+  height: 40px;
+  left: 50%;
   ${(props) =>
     props.pattern === `main` &&
     css`
-      width: 40px;
-      height: 40px;
       top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
+    `}
+  ${(props) =>
+    props.pattern === `page` &&
+    css`
+      top: 70px;
     `}
   ${(props) =>
     props.pattern === `button` &&
@@ -34,11 +39,7 @@ export const Outer = styled.div`
 
 export const Inner = styled.div`
   animation: ${spinner} 1.2s linear infinite;
-  ${(props) =>
-    props.pattern === `main` &&
-    css`
-      transform-origin: 20px 20px;
-    `}
+  transform-origin: 20px 20px;
   ${(props) =>
     props.pattern === `button` &&
     css`
@@ -51,12 +52,8 @@ export const Inner = styled.div`
     left: 45.5%;
     width: 9%;
     border-radius: 30%;
-    ${(props) =>
-      props.pattern === `main` &&
-      css`
-        height: 10px;
-        background: ${({ theme: { colors } }) => colors.blue.dark};
-      `}
+    height: 10px;
+    background: ${({ theme: { colors } }) => colors.blue.dark};
     ${(props) =>
       props.pattern === `button` &&
       css`

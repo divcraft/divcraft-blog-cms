@@ -40,7 +40,7 @@ const MyArticlesPage = () => {
           <PublishedArticleList />
         </Wrapper>
       ) : (
-        <LoadingIndicator pattern="main" />
+        <LoadingIndicator pattern="page" />
       )}
     </>
   );

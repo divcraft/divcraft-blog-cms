@@ -47,7 +47,7 @@ const OverviewPage = () => {
           <AwaitingArticlesSection />
         </Wrapper>
       ) : (
-        <LoadingIndicator pattern="main" />
+        <LoadingIndicator pattern="page" />
       )}
     </>
   );
