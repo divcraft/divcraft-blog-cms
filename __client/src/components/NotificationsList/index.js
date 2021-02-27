@@ -17,8 +17,8 @@ const NotificationsSection = ({ pattern }) => {
   const notifications = useSelector(
     (state) => state.notifications.notifications
   );
-  if (pattern === 'allUsers')
-    notifications.filter((item) => item.notificationType === 'report');
+  // if (pattern === 'allUsers')
+  //   notifications.filter((item) => item.notificationType === 'report');
   const finishedArticles = useSelector(
     (state) => state.finishedArticles.articles
   );

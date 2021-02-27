@@ -1,7 +1,7 @@
 import React from 'react';
 import { TitleContainer, Submenu } from 'components';
 import { Switch, Redirect, Route, useRouteMatch } from 'react-router-dom';
-import { ToGettingPublic } from './pages';
+import { ToGettingPublic, Reports } from './pages';
 
 const AdminPanelPage = () => {
   const { url, path } = useRouteMatch();
@@ -31,11 +31,7 @@ const AdminPanelPage = () => {
           exact
           render={() => <ToGettingPublic />}
         />
-        <Route
-          path={`${path}/zgloszenia`}
-          exact
-          render={() => <div>reports</div>}
-        />
+        <Route path={`${path}/zgloszenia`} exact render={() => <Reports />} />
         <Route
           path={`${path}/uzytkownicy`}
           exact
