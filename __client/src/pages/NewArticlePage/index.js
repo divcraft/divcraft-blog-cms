@@ -1,11 +1,14 @@
 import React from 'react';
-import { TitleContainer } from 'components';
+import { TitleContainer, Wrapper } from 'components';
+import { HeaderEditor } from './components';
 
 const NewArticlePage = () => {
   return (
     <>
       <TitleContainer title="Nowy artykuł" />
-      <div>NewArticle</div>
+      <Wrapper>
+        <HeaderEditor />
+      </Wrapper>
     </>
   );
 };
