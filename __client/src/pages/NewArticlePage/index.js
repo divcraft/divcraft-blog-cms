@@ -7,7 +7,9 @@ const NewArticlePage = () => {
     <>
       <TitleContainer title="Nowy artykuł" />
       <Wrapper>
-        <HeaderEditor />
+        <form>
+          <HeaderEditor />
+        </form>
       </Wrapper>
     </>
   );

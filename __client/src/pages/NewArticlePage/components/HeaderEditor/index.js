@@ -1,13 +1,27 @@
 import React from 'react';
-import { HeaderContainer, Title, Subtitle, Image } from './style';
+import {
+  HeaderContainer,
+  TitleInput,
+  SubtitleInput,
+  ImageContainer,
+  Image,
+  ImageInput,
+  ImageLabel,
+} from './style';
 
 const HeaderEditor = () => {
   return (
     <>
       <HeaderContainer>
-        <Title>Tytuł artykułu</Title>
-        <Subtitle>Podtytuł</Subtitle>
-        <Image />
+        <TitleInput value="" placeholder="Tytuł artykułu" />
+        <SubtitleInput value="Podtytuł" />
+        <ImageContainer>
+          <Image />
+          <ImageLabel htmlFor="file-upload">
+            +
+            <ImageInput type="file" id="file-upload" />
+          </ImageLabel>
+        </ImageContainer>
       </HeaderContainer>
     </>
   );
