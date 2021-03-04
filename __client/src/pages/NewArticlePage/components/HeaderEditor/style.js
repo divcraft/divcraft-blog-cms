@@ -37,20 +37,26 @@ export const ImageLabel = styled.label`
   left: 30px;
 `;
 
-export const TitleInput = styled.input`
+export const Input = styled.input`
+  text-align: center;
+  border: none;
   overflow-x: hidden;
-  resize: horizontal;
-  display: inline-block;
-  font-size: 28px;
-  font-weight: 500;
-  margin: 15px auto 10px;
-  width: auto;
+  resize: both;
+  display: block;
+  width: ${(props) =>
+    props.value ? props.value.length + 1 : props.placeholder.length}ch;
+  max-width: 100%;
 `;
 
-export const SubtitleInput = styled.input`
-  display: block;
+export const TitleInput = styled(Input)`
+  font-size: 28px;
+  font-weight: 500;
+  margin: 25px auto 10px;
+`;
+
+export const SubtitleInput = styled(Input)`
   font-size: 24px;
   font-weight: 400;
   color: ${({ theme: { colors } }) => colors.gray.dark};
-  margin: 15px auto;
+  margin: 10px auto 25px;
 `;
