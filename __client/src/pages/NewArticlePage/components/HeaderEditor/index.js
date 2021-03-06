@@ -1,5 +1,6 @@
 import React from 'react';
-import { useState } from 'react/cjs/react.development';
+import PropTypes from 'prop-types';
+
 import {
   HeaderContainer,
   TitleInput,
@@ -10,14 +11,12 @@ import {
   ImageLabel,
 } from './style';
 
-const HeaderEditor = () => {
-  const [title, setTitle] = useState('');
-  const [subtitle, setSubtitle] = useState('');
-  const handleTitle = (e) => {
-    setTitle(e.target.value);
+const HeaderEditor = ({ title, subtitle }) => {
+  const handleTitle = () => {
+    // setTitle(e.target.value);
   };
-  const handleSubtitle = (e) => {
-    setSubtitle(e.target.value);
+  const handleSubtitle = () => {
+    // setSubtitle(e.target.value);
   };
   return (
     <>
@@ -42,6 +41,11 @@ const HeaderEditor = () => {
       </HeaderContainer>
     </>
   );
+};
+
+HeaderEditor.propTypes = {
+  title: PropTypes.string.isRequired,
+  subtitle: PropTypes.string.isRequired,
 };
 
 export default HeaderEditor;
