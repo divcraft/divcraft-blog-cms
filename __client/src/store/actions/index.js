@@ -8,3 +8,4 @@ export * from './categories.actions';
 export * from './comments.actions';
 export * from './toGettingPublicArticles.actions';
 export * from './toEditArticles.actions';
+export * from './articleData.actions';

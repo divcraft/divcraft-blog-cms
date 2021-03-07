@@ -9,3 +9,4 @@ export * from './categories.constants';
 export * from './comments.constants';
 export * from './toGettingPublicArticles.constants';
 export * from './toEditArticles.constants';
+export * from './articleData.constants';

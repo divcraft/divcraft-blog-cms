@@ -9,6 +9,7 @@ import categories from './categories.reducer';
 import comments from './comments.reducer';
 import toGettingPublicArticles from './toGettingPublicArticles.reducer';
 import toEditArticles from './toEditArticles.reducer';
+import articleData from './articleData.reducer';
 
 const rootReducer = combineReducers({
   errorMessage,
@@ -21,6 +22,7 @@ const rootReducer = combineReducers({
   comments,
   toGettingPublicArticles,
   toEditArticles,
+  articleData,
 });
 
 export default rootReducer;

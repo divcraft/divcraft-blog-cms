@@ -13,8 +13,44 @@ const NewArticlePage = () => {
         title: 'section title',
         items: [
           {
-            type: ['paragraph', 'subtitle', 'image', 'code', 'list'],
+            type: 'PARAGRAPH',
             content: '',
+          },
+        ],
+      },
+      {
+        title: 'section title',
+        items: [
+          {
+            type: 'SUBTITLE',
+            content: '',
+          },
+        ],
+      },
+      {
+        title: 'section title',
+        items: [
+          {
+            type: 'IMAGE',
+            content: '',
+          },
+        ],
+      },
+      {
+        title: 'section title',
+        items: [
+          {
+            type: 'CODE',
+            content: '',
+          },
+        ],
+      },
+      {
+        title: 'section title',
+        items: [
+          {
+            type: 'LIST',
+            content: [],
           },
         ],
       },
