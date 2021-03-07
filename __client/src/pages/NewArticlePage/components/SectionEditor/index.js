@@ -2,27 +2,28 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { PARAGRAPH, SUBTITLE, IMAGE, CODE, LIST } from 'constants';
 import { SectionContainer } from 'components';
+import {
+  ParagraphEditor,
+  SubtitleEditor,
+  ImageEditor,
+  CodeEditor,
+  ListEditor,
+} from 'pages/NewArticlePage/components';
 import { SectionTitle } from './style';
 
 const SectionEditor = ({ data: { title, items } }) => {
   const sectionItemList = items.map(({ type, content }) => {
     switch (type) {
       case PARAGRAPH:
-        return <p>{content}</p>;
+        return <ParagraphEditor content={content} />;
       case SUBTITLE:
-        return <h3>{content}</h3>;
+        return <SubtitleEditor content={content} />;
       case IMAGE:
-        return <img src={content.src} alt={content.alt} />;
+        return <ImageEditor content={content} />;
       case CODE:
-        return <code>{content}</code>;
+        return <CodeEditor content={content} />;
       case LIST:
-        return (
-          <ul>
-            {content.map((item) => (
-              <li>{item}</li>
-            ))}
-          </ul>
-        );
+        return <ListEditor content={content} />;
       default:
         return null;
     }
