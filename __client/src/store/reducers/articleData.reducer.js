@@ -22,47 +22,70 @@ const initialState = {
     },
     sections: [
       {
-        title: 'section title',
+        title: 'section paragraph',
         items: [
           {
             type: 'PARAGRAPH',
-            content: '',
+            content:
+              'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fugiat odio voluptatibus nemo nulla repellendus! Adipisci maiores recusandae quam quasi modi ea aut fuga nisi incidunt error totam, repellendus voluptates. Rerum!',
           },
         ],
       },
       {
-        title: 'section title',
+        title: 'section subtitle',
         items: [
           {
             type: 'SUBTITLE',
-            content: '',
+            content: 'Podtytuł sekcji',
           },
         ],
       },
       {
-        title: 'section title',
+        title: 'section image',
         items: [
           {
             type: 'IMAGE',
-            content: '',
+            content: {
+              url: '',
+              alt: '',
+            },
           },
         ],
       },
       {
-        title: 'section title',
+        title: 'section code',
         items: [
           {
             type: 'CODE',
-            content: '',
+            content: `
+<p>HTML Editor Sample Page</p>
+<h2>HTML Editor</h2>
+<p>You can use this online HTML editor to generate HTML code for your own website. You can do all sorts of 
+things with this HTML editor, such as:</p>
+<ul>
+    <li>Create <strong>bold</strong> or <em>italic</em> text.</li>
+    <li>Change the <span style="color:#800000">text color</span></li>
+    <li>Change the <span style="font-family:comic sans ms,cursive">font family</span> or <span style="font-
+size:12px">font size</span></li>
+    <li>Create <a href="#">hyperlinks</a></li>
+    <li>Create a bulleted list...</li>
+    <li>...and much more!</li>
+</ul>
+            `,
           },
         ],
       },
       {
-        title: 'section title',
+        title: 'section list',
         items: [
           {
             type: 'LIST',
-            content: [],
+            content: [
+              'list item 1',
+              'list item 2',
+              'list item 3',
+              'list item 4',
+            ],
           },
         ],
       },

@@ -10,3 +10,4 @@ export * from './comments.constants';
 export * from './toGettingPublicArticles.constants';
 export * from './toEditArticles.constants';
 export * from './articleData.constants';
+export * from './sectionDataTypes.constants';
