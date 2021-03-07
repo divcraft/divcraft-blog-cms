@@ -1,6 +1,11 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  editHeaderTitle,
+  editHeaderSubtitle,
+  // editHeaderImageUrl,
+  editHeaderImageAlt,
+} from 'store/actions';
 import {
   HeaderContainer,
   TitleInput,
@@ -8,15 +13,23 @@ import {
   ImageContainer,
   Image,
   ImageInput,
+  ImageAltInput,
   ImageLabel,
+  GrayArea,
 } from './style';
 
-const HeaderEditor = ({ title, subtitle }) => {
-  const handleTitle = () => {
-    // setTitle(e.target.value);
+const HeaderEditor = () => {
+  const dispatch = useDispatch();
+  const header = useSelector((state) => state.articleData.article.header);
+  const { title, subtitle, image } = header;
+  const handleTitle = (e) => {
+    dispatch(editHeaderTitle(e.target.value));
   };
-  const handleSubtitle = () => {
-    // setSubtitle(e.target.value);
+  const handleSubtitle = (e) => {
+    dispatch(editHeaderSubtitle(e.target.value));
+  };
+  const handleImageAlt = (e) => {
+    dispatch(editHeaderImageAlt(e.target.value));
   };
   return (
     <>
@@ -32,7 +45,18 @@ const HeaderEditor = ({ title, subtitle }) => {
           placeholder="Podtytuł"
         />
         <ImageContainer>
-          <Image />
+          {image.url ? (
+            <>
+              <Image src={image.url} alt={image.alt} />
+              <ImageAltInput
+                onChange={handleImageAlt}
+                placeholder="Opis obrazka"
+                value={image.alt}
+              />
+            </>
+          ) : (
+            <GrayArea />
+          )}
           <ImageLabel htmlFor="file-upload">
             +
             <ImageInput type="file" id="file-upload" />
@@ -41,11 +65,6 @@ const HeaderEditor = ({ title, subtitle }) => {
       </HeaderContainer>
     </>
   );
-};
-
-HeaderEditor.propTypes = {
-  title: PropTypes.string.isRequired,
-  subtitle: PropTypes.string.isRequired,
 };
 
 export default HeaderEditor;

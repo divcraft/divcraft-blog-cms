@@ -1,62 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { TitleContainer, Wrapper } from 'components';
+import { useSelector } from 'react-redux';
 import { HeaderEditor, SectionEditor } from './components';
 
 const NewArticlePage = () => {
-  const [articleData, setArticleData] = useState({
-    header: {
-      title: '',
-      subtitle: '',
-    },
-    sections: [
-      {
-        title: 'section title',
-        items: [
-          {
-            type: 'PARAGRAPH',
-            content: '',
-          },
-        ],
-      },
-      {
-        title: 'section title',
-        items: [
-          {
-            type: 'SUBTITLE',
-            content: '',
-          },
-        ],
-      },
-      {
-        title: 'section title',
-        items: [
-          {
-            type: 'IMAGE',
-            content: '',
-          },
-        ],
-      },
-      {
-        title: 'section title',
-        items: [
-          {
-            type: 'CODE',
-            content: '',
-          },
-        ],
-      },
-      {
-        title: 'section title',
-        items: [
-          {
-            type: 'LIST',
-            content: [],
-          },
-        ],
-      },
-    ],
-  });
-  if (!articleData) setArticleData();
+  const articleData = useSelector((state) => state.articleData.article);
+
   const sectionEditorList = articleData.sections.map((section) => (
     <SectionEditor data={section} />
   ));

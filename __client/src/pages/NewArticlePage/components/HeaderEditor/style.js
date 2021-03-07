@@ -35,6 +35,7 @@ export const ImageLabel = styled.label`
   border: none;
   bottom: 30px;
   left: 30px;
+  box-shadow: 0 0 1px 0.5px ${({ theme: { colors } }) => colors.gray.dark}; 
 `;
 
 export const Input = styled.input`
@@ -59,4 +60,21 @@ export const SubtitleInput = styled(Input)`
   font-weight: 400;
   color: ${({ theme: { colors } }) => colors.gray.dark};
   margin: 10px auto 25px;
+`;
+
+export const ImageAltInput = styled.input`
+  text-align: center;
+  opacity: 0.7;
+  width: ${(props) =>
+    props.value ? props.value.length + 1 : props.placeholder.length}ch;
+  position: absolute;
+  padding: 3px;
+  border: none;
+  bottom: 35px;
+  left: 100px;
+`;
+
+export const GrayArea = styled.div`
+  width: 100%;
+  height: 100%;
 `;

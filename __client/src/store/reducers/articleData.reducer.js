@@ -2,6 +2,7 @@ import {
   EDIT_HEADER_TITLE,
   EDIT_HEADER_SUBTITLE,
   EDIT_HEADER_IMAGE_URL,
+  EDIT_HEADER_IMAGE_ALT,
   CLEAR_ARTICLE_DATA,
   // LOADING,
   // SUCCESSED,
@@ -14,7 +15,10 @@ const initialState = {
     header: {
       title: '',
       subtitle: '',
-      imageUrl: '',
+      image: {
+        url: '',
+        alt: '',
+      },
     },
     sections: [
       {
@@ -97,7 +101,24 @@ export default (state = initialState, action) => {
           ...state.article,
           header: {
             ...state.article.header,
-            imageUrl: action.payload,
+            image: {
+              ...state.article.header.image,
+              url: action.payload,
+            },
+          },
+        },
+      };
+    case EDIT_HEADER_IMAGE_ALT:
+      return {
+        ...state,
+        article: {
+          ...state.article,
+          header: {
+            ...state.article.header,
+            image: {
+              ...state.article.header.image,
+              alt: action.payload,
+            },
           },
         },
       };
@@ -113,62 +134,6 @@ export default (state = initialState, action) => {
         },
       };
     default:
-      return {
-        loadingState: null,
-        article: {
-          header: {
-            title: '',
-            subtitle: '',
-            imageUrl: '',
-          },
-          sections: [
-            {
-              title: 'section title',
-              items: [
-                {
-                  type: 'PARAGRAPH',
-                  content: '',
-                },
-              ],
-            },
-            {
-              title: 'section title',
-              items: [
-                {
-                  type: 'SUBTITLE',
-                  content: '',
-                },
-              ],
-            },
-            {
-              title: 'section title',
-              items: [
-                {
-                  type: 'IMAGE',
-                  content: '',
-                },
-              ],
-            },
-            {
-              title: 'section title',
-              items: [
-                {
-                  type: 'CODE',
-                  content: '',
-                },
-              ],
-            },
-            {
-              title: 'section title',
-              items: [
-                {
-                  type: 'LIST',
-                  content: [],
-                },
-              ],
-            },
-          ],
-        },
-      };
+      return state;
   }
 };
