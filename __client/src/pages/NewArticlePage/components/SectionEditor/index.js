@@ -1,8 +1,8 @@
 import React from 'react';
-import { Container } from './style';
+import { SectionContainer } from 'components';
 
 const SectionEditor = () => {
-  return <Container>section editor</Container>;
+  return <SectionContainer>section editor</SectionContainer>;
 };
 
 export default SectionEditor;
