@@ -3,6 +3,7 @@ import {
   EDIT_HEADER_SUBTITLE,
   EDIT_HEADER_IMAGE_URL,
   EDIT_HEADER_IMAGE_ALT,
+  UPDATE_ARTICLE_SECTION_LIST,
   CLEAR_ARTICLE_DATA,
   // LOADING,
   // SUCCESSED,
@@ -22,9 +23,11 @@ const initialState = {
     },
     sections: [
       {
+        sectionPosition: 1,
         title: 'section paragraph',
         items: [
           {
+            itemPosition: 1,
             type: 'PARAGRAPH',
             content:
               'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fugiat odio voluptatibus nemo nulla repellendus! Adipisci maiores recusandae quam quasi modi ea aut fuga nisi incidunt error totam, repellendus voluptates. Rerum!',
@@ -32,18 +35,22 @@ const initialState = {
         ],
       },
       {
+        sectionPosition: 2,
         title: 'section subtitle',
         items: [
           {
+            itemPosition: 1,
             type: 'SUBTITLE',
             content: 'Podtytuł sekcji',
           },
         ],
       },
       {
+        sectionPosition: 3,
         title: 'section image',
         items: [
           {
+            itemPosition: 1,
             type: 'IMAGE',
             content: {
               url: '',
@@ -53,12 +60,13 @@ const initialState = {
         ],
       },
       {
+        sectionPosition: 4,
         title: 'section code',
         items: [
           {
+            itemPosition: 1,
             type: 'CODE',
-            content: `
-<p>HTML Editor Sample Page</p>
+            content: `<p>HTML Editor Sample Page</p>
 <h2>HTML Editor</h2>
 <p>You can use this online HTML editor to generate HTML code for your own website. You can do all sorts of 
 things with this HTML editor, such as:</p>
@@ -70,15 +78,16 @@ size:12px">font size</span></li>
     <li>Create <a href="#">hyperlinks</a></li>
     <li>Create a bulleted list...</li>
     <li>...and much more!</li>
-</ul>
-            `,
+</ul>`,
           },
         ],
       },
       {
+        sectionPosition: 5,
         title: 'section list',
         items: [
           {
+            itemPosition: 1,
             type: 'LIST',
             content: [
               'list item 1',
@@ -143,6 +152,14 @@ export default (state = initialState, action) => {
               alt: action.payload,
             },
           },
+        },
+      };
+    case UPDATE_ARTICLE_SECTION_LIST:
+      return {
+        ...state,
+        article: {
+          ...state.article,
+          sections: action.payload,
         },
       };
     case CLEAR_ARTICLE_DATA:

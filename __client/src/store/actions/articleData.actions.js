@@ -3,6 +3,7 @@ import {
   EDIT_HEADER_SUBTITLE,
   EDIT_HEADER_IMAGE_URL,
   EDIT_HEADER_IMAGE_ALT,
+  UPDATE_ARTICLE_SECTION_LIST,
   CLEAR_ARTICLE_DATA,
 } from 'constants';
 
@@ -31,6 +32,13 @@ export const editHeaderImageAlt = (imageAlt) => {
   return {
     type: EDIT_HEADER_IMAGE_ALT,
     payload: imageAlt,
+  };
+};
+
+export const updateArticleSectionList = (sectionList) => {
+  return {
+    type: UPDATE_ARTICLE_SECTION_LIST,
+    payload: sectionList,
   };
 };
 

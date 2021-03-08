@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { useDispatch, useSelector } from 'react-redux';
+import { updateArticleSectionList } from 'store/actions';
 import { PARAGRAPH, SUBTITLE, IMAGE, CODE, LIST } from 'constants';
 import { SectionContainer } from 'components';
 import {
@@ -11,19 +13,64 @@ import {
 } from 'pages/NewArticlePage/components';
 import { SectionTitle } from './style';
 
-const SectionEditor = ({ data: { title, items } }) => {
-  const sectionItemList = items.map(({ type, content }) => {
+const SectionEditor = ({ data: { title, items, sectionPosition } }) => {
+  const sections = useSelector((state) => state.articleData.article.sections);
+  const dispatch = useDispatch();
+  const handleTitle = (e) => {
+    const updatedSections = sections.map((section) => {
+      if (section.sectionPosition === sectionPosition) {
+        return {
+          ...section,
+          title: e.target.value,
+        };
+      } else {
+        return section;
+      }
+    });
+    dispatch(updateArticleSectionList(updatedSections));
+  };
+  const sectionItemList = items.map(({ type, content, itemPosition }) => {
     switch (type) {
       case PARAGRAPH:
-        return <ParagraphEditor content={content} />;
+        return (
+          <ParagraphEditor
+            itemPosition={itemPosition}
+            sectionPosition={sectionPosition}
+            content={content}
+          />
+        );
       case SUBTITLE:
-        return <SubtitleEditor content={content} />;
+        return (
+          <SubtitleEditor
+            itemPosition={itemPosition}
+            sectionPosition={sectionPosition}
+            content={content}
+          />
+        );
       case IMAGE:
-        return <ImageEditor content={content} />;
+        return (
+          <ImageEditor
+            itemPosition={itemPosition}
+            sectionPosition={sectionPosition}
+            content={content}
+          />
+        );
       case CODE:
-        return <CodeEditor content={content} />;
+        return (
+          <CodeEditor
+            itemPosition={itemPosition}
+            sectionPosition={sectionPosition}
+            content={content}
+          />
+        );
       case LIST:
-        return <ListEditor content={content} />;
+        return (
+          <ListEditor
+            itemPosition={itemPosition}
+            sectionPosition={sectionPosition}
+            content={content}
+          />
+        );
       default:
         return null;
     }
@@ -32,7 +79,7 @@ const SectionEditor = ({ data: { title, items } }) => {
     <SectionContainer>
       <SectionTitle
         value={title}
-        // onChange={handleTitle}
+        onChange={handleTitle}
         placeholder="Tytuł sekcji"
       />
       {sectionItemList}
