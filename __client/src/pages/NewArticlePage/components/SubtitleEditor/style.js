@@ -1,15 +1,12 @@
 import styled from 'styled-components';
 
-export const SectionTitle = styled.input`
-  text-align: center;
+export const SubtitleContainer = styled.input`
   border: none;
-  overflow-x: hidden;
   resize: both;
   display: block;
   width: ${(props) =>
     props.value ? props.value.length + 1 : props.placeholder.length}ch;
   max-width: 100%;
-  margin: auto;
-  font-size: 24px;
-  font-weight: 500;
+  font-size: 16px;
+  font-weight: 600;
 `;

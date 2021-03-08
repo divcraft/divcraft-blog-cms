@@ -30,7 +30,11 @@ const SectionEditor = ({ data: { title, items } }) => {
   });
   return (
     <SectionContainer>
-      <SectionTitle>{title}</SectionTitle>
+      <SectionTitle
+        value={title}
+        // onChange={handleTitle}
+        placeholder="Tytuł sekcji"
+      />
       {sectionItemList}
     </SectionContainer>
   );

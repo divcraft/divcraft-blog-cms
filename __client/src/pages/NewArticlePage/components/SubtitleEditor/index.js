@@ -1,10 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { SubtitleContainer } from './style';
 
 const SubtitleEditor = ({ content }) => {
   return (
     <>
-      <h3>{content}</h3>
+      <SubtitleContainer
+        // onChange={handleHeightSize}
+        value={content}
+        placeholder="Wpisz tekst..."
+      />
     </>
   );
 };

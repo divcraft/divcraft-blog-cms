@@ -1,10 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { CodeContainer } from './style';
 
 const CodeEditor = ({ content }) => {
+  const [height, setHeight] = useState(null);
+  const handleHeightSize = (e) => setHeight(e.target.scrollHeight);
   return (
     <>
-      <code>{content}</code>
+      <CodeContainer
+        onChange={handleHeightSize}
+        height={height}
+        placeholder="Wpisz kod..."
+      >
+        {content}
+      </CodeContainer>
     </>
   );
 };
