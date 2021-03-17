@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateArticleSectionList } from 'store/actions';
 import { PARAGRAPH, SUBTITLE, IMAGE, CODE, LIST } from 'constants';
+import { ContentEditor } from 'utils';
 import { SectionContainer } from 'components';
 import {
   ParagraphEditor,
@@ -30,55 +31,32 @@ const SectionEditor = ({ data: { title, items, sectionPosition } }) => {
     dispatch(updateArticleSectionList(updatedSections));
   };
   const sectionItemList = items.map(({ type, content, itemPosition }) => {
-    switch (type) {
-      case PARAGRAPH:
-        return (
-          <ParagraphEditor
-            key={itemPosition}
-            itemPosition={itemPosition}
-            sectionPosition={sectionPosition}
-            content={content}
-          />
-        );
-      case SUBTITLE:
-        return (
-          <SubtitleEditor
-            key={itemPosition}
-            itemPosition={itemPosition}
-            sectionPosition={sectionPosition}
-            content={content}
-          />
-        );
-      case IMAGE:
-        return (
-          <ImageEditor
-            key={itemPosition}
-            itemPosition={itemPosition}
-            sectionPosition={sectionPosition}
-            content={content}
-          />
-        );
-      case CODE:
-        return (
-          <CodeEditor
-            key={itemPosition}
-            itemPosition={itemPosition}
-            sectionPosition={sectionPosition}
-            content={content}
-          />
-        );
-      case LIST:
-        return (
-          <ListEditor
-            key={itemPosition}
-            itemPosition={itemPosition}
-            sectionPosition={sectionPosition}
-            content={content}
-          />
-        );
-      default:
-        return null;
-    }
+    const getComponent = () => {
+      switch (type) {
+        case PARAGRAPH:
+          return ParagraphEditor;
+        case SUBTITLE:
+          return SubtitleEditor;
+        case IMAGE:
+          return ImageEditor;
+        case CODE:
+          return CodeEditor;
+        case LIST:
+          return ListEditor;
+        default:
+          return null;
+      }
+    };
+    return (
+      <ContentEditor
+        key={itemPosition}
+        type={type}
+        component={getComponent()}
+        itemPosition={itemPosition}
+        sectionPosition={sectionPosition}
+        content={content}
+      />
+    );
   });
   return (
     <SectionContainer>
