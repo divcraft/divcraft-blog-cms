@@ -6,7 +6,7 @@ const ListEditor = ({ content }) => {
     <>
       <ul>
         {content.map((item) => (
-          <li>{item}</li>
+          <li key={item}>{item}</li>
         ))}
       </ul>
     </>

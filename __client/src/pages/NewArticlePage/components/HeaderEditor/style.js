@@ -16,6 +16,7 @@ export const ImageContainer = styled.div`
 export const Image = styled.img`
   width: 100%;
   height: 100%;
+  object-fit: cover;
 `;
 
 export const ImageInput = styled.input`
@@ -35,7 +36,7 @@ export const ImageLabel = styled.label`
   border: none;
   bottom: 30px;
   left: 30px;
-  box-shadow: 0 0 1px 0.5px ${({ theme: { colors } }) => colors.gray.dark}; 
+  box-shadow: 0 0 1px 0.5px ${({ theme: { colors } }) => colors.gray.dark};
 `;
 
 export const Input = styled.input`

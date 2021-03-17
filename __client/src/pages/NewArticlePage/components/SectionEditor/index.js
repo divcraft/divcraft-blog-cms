@@ -11,7 +11,7 @@ import {
   CodeEditor,
   ListEditor,
 } from 'pages/NewArticlePage/components';
-import { SectionTitle } from './style';
+import { SectionTitle, FlexContainer } from './style';
 
 const SectionEditor = ({ data: { title, items, sectionPosition } }) => {
   const sections = useSelector((state) => state.articleData.article.sections);
@@ -82,12 +82,14 @@ const SectionEditor = ({ data: { title, items, sectionPosition } }) => {
   });
   return (
     <SectionContainer>
-      <SectionTitle
-        value={title}
-        onChange={handleTitle}
-        placeholder="Tytuł sekcji"
-      />
-      {sectionItemList}
+      <FlexContainer>
+        <SectionTitle
+          value={title}
+          onChange={handleTitle}
+          placeholder="Tytuł sekcji"
+        />
+        {sectionItemList}
+      </FlexContainer>
     </SectionContainer>
   );
 };

@@ -2,24 +2,36 @@ import styled from 'styled-components';
 
 export const ImageContainer = styled.div`
   margin: 10px auto;
-  width: 100px;
-  height: 100px;
   position: relative;
+  min-height: 100px;
+  min-width: 250px;
+  background-color: ${({ theme: { colors } }) => colors.gray.regular};
+  &:hover > div {
+    opacity: 1;
+  }
 `;
 
 export const Image = styled.img`
-  width: auto;
-  height: auto;
+  display: block;
+  object-fit: cover;
 `;
 
-export const ImageInput = styled.input`
+export const ImageEditors = styled.div`
+  opacity: 0;
+  transition: 0.4s;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  bottom: 15px;
+  left: 15px;
+  z-index: 1;
+`;
+export const ImageSrcInput = styled.input`
   display: none;
 `;
 
-export const ImageLabel = styled.label`
+export const ImageSrcLabel = styled.label`
   background-color: ${({ theme: { colors } }) => colors.gray.light};
-  position: absolute;
-  z-index: 1;
   font-size: 24px;
   cursor: pointer;
   width: 40px;
@@ -27,25 +39,14 @@ export const ImageLabel = styled.label`
   line-height: 40px;
   border-radius: 12px;
   border: none;
-  bottom: 30px;
-  left: 30px;
   box-shadow: 0 0 1px 0.5px ${({ theme: { colors } }) => colors.gray.dark};
   text-align: center;
 `;
 
 export const ImageAltInput = styled.input`
-  text-align: center;
+  margin-left: 15px;
   opacity: 0.7;
-  width: ${(props) =>
-    props.value ? props.value.length + 1 : props.placeholder.length}ch;
-  position: absolute;
+  width: 150px;
   padding: 3px;
   border: none;
-  bottom: 35px;
-  left: 100px;
-`;
-
-export const GrayArea = styled.div`
-  width: 100%;
-  height: 100%;
 `;

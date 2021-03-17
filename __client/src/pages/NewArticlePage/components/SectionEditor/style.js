@@ -13,3 +13,8 @@ export const SectionTitle = styled.input`
   font-size: 24px;
   font-weight: 500;
 `;
+
+export const FlexContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
