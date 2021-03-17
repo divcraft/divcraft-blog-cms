@@ -29,8 +29,18 @@ const contentEditor = ({
           };
         }
       } else if (type === LIST) {
-        console.log(e);
-        return [...prevContent];
+        const updatedArray = prevContent.map((item) => {
+          const { position } = e.target.dataset;
+          if (Number(position) === item.listItemPosition) {
+            return {
+              ...item,
+              data: e.target.value,
+            };
+          } else {
+            return item;
+          }
+        });
+        return updatedArray;
       } else {
         return e.target.value;
       }

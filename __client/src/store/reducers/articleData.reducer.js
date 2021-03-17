@@ -90,10 +90,22 @@ size:12px">font size</span></li>
             itemPosition: 1,
             type: 'LIST',
             content: [
-              'list item 1',
-              'list item 2',
-              'list item 3',
-              'list item 4',
+              {
+                listItemPosition: 1,
+                data: 'list item 1',
+              },
+              {
+                listItemPosition: 2,
+                data: 'list item 2',
+              },
+              {
+                listItemPosition: 3,
+                data: 'list item 3',
+              },
+              {
+                listItemPosition: 4,
+                data: 'list item 4',
+              },
             ],
           },
         ],
