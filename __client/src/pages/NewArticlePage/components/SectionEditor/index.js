@@ -34,6 +34,7 @@ const SectionEditor = ({ data: { title, items, sectionPosition } }) => {
       case PARAGRAPH:
         return (
           <ParagraphEditor
+            key={itemPosition}
             itemPosition={itemPosition}
             sectionPosition={sectionPosition}
             content={content}
@@ -42,6 +43,7 @@ const SectionEditor = ({ data: { title, items, sectionPosition } }) => {
       case SUBTITLE:
         return (
           <SubtitleEditor
+            key={itemPosition}
             itemPosition={itemPosition}
             sectionPosition={sectionPosition}
             content={content}
@@ -50,6 +52,7 @@ const SectionEditor = ({ data: { title, items, sectionPosition } }) => {
       case IMAGE:
         return (
           <ImageEditor
+            key={itemPosition}
             itemPosition={itemPosition}
             sectionPosition={sectionPosition}
             content={content}
@@ -58,6 +61,7 @@ const SectionEditor = ({ data: { title, items, sectionPosition } }) => {
       case CODE:
         return (
           <CodeEditor
+            key={itemPosition}
             itemPosition={itemPosition}
             sectionPosition={sectionPosition}
             content={content}
@@ -66,6 +70,7 @@ const SectionEditor = ({ data: { title, items, sectionPosition } }) => {
       case LIST:
         return (
           <ListEditor
+            key={itemPosition}
             itemPosition={itemPosition}
             sectionPosition={sectionPosition}
             content={content}

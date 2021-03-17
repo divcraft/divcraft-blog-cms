@@ -6,7 +6,7 @@ import { HeaderEditor, SectionEditor, InnerWrapper } from './components';
 const NewArticlePage = () => {
   const sections = useSelector((state) => state.articleData.article.sections);
   const sectionEditorList = sections.map((section) => (
-    <SectionEditor data={section} />
+    <SectionEditor key={section.sectionPosition} data={section} />
   ));
   return (
     <>
