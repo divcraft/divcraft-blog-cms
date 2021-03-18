@@ -12,6 +12,7 @@ import {
   CodeEditor,
   ListEditor,
   AddSectionItemButtons,
+  RemoveElementButton,
 } from 'pages/NewArticlePage/components';
 import { SectionTitle, FlexContainer } from './style';
 
@@ -62,6 +63,7 @@ const SectionEditor = ({ data: { title, items, sectionPosition } }) => {
   return (
     <SectionContainer>
       <FlexContainer>
+        <RemoveElementButton />
         <SectionTitle
           value={title}
           onChange={handleTitle}

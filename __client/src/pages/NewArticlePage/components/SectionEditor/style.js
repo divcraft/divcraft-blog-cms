@@ -17,4 +17,5 @@ export const SectionTitle = styled.input`
 export const FlexContainer = styled.div`
   display: flex;
   flex-direction: column;
+  position: relative;
 `;

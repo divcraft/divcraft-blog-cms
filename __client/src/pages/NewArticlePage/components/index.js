@@ -8,3 +8,4 @@ export { default as CodeEditor } from './CodeEditor';
 export { default as ListEditor } from './ListEditor';
 export { default as AddElementButton } from './AddElementButton';
 export { default as AddSectionItemButtons } from './AddSectionItemButtons';
+export { default as RemoveElementButton } from './RemoveElementButton';

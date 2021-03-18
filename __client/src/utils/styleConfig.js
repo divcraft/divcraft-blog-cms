@@ -33,5 +33,8 @@ export const theme = {
     yellow: {
       regular: '#e6e600',
     },
+    red: {
+      regular: '#FF8484',
+    },
   },
 };
