@@ -1,11 +1,12 @@
 import styled, { css } from 'styled-components';
 
 export const StyledButton = styled.button`
+  text-align: left;
+  padding-left: 40px;
   display: block;
   margin: 20px 0;
   cursor: pointer;
   position: relative;
-  padding-left: 25px;
   width: 165px;
   height: 40px;
   line-height: 40px;

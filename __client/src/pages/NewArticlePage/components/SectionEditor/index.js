@@ -11,6 +11,7 @@ import {
   ImageEditor,
   CodeEditor,
   ListEditor,
+  AddSectionItemButtons,
 } from 'pages/NewArticlePage/components';
 import { SectionTitle, FlexContainer } from './style';
 
@@ -67,6 +68,7 @@ const SectionEditor = ({ data: { title, items, sectionPosition } }) => {
           placeholder="Tytuł sekcji"
         />
         {sectionItemList}
+        <AddSectionItemButtons sectionPosition={sectionPosition} />
       </FlexContainer>
     </SectionContainer>
   );

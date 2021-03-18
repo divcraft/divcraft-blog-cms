@@ -7,3 +7,4 @@ export { default as ImageEditor } from './ImageEditor';
 export { default as CodeEditor } from './CodeEditor';
 export { default as ListEditor } from './ListEditor';
 export { default as AddElementButton } from './AddElementButton';
+export { default as AddSectionItemButtons } from './AddSectionItemButtons';
