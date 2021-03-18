@@ -10,7 +10,7 @@ export const GlobalStyle = createGlobalStyle`
       box-sizing: border-box;
       line-height: 1.5;
       scrollbar-width: none;
-      outline: none;
+      outline: 0px !important;
       &::-webkit-scrollbar {
         display: none;
     }   
