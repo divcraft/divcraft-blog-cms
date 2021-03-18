@@ -1,12 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { ParagraphContainer } from './style';
 
 const ParagraphEditor = ({ content, handleContent }) => {
+  const [height, setHeight] = useState('auto');
+  const handleChange = (e) => {
+    handleContent(e);
+    setHeight(e.target.scrollHeight);
+  };
+  const handleLoad = (e) => {
+    setHeight(e.target.scrollHeight);
+  };
   return (
     <ParagraphContainer
-      onChange={handleContent}
-      height={300}
+      onChange={handleChange}
+      onFocus={handleLoad}
+      height={height}
       placeholder="Wpisz tekst..."
       value={content}
     />
