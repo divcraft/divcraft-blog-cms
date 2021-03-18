@@ -32,6 +32,15 @@ const SectionEditor = ({ data: { title, items, sectionPosition } }) => {
     });
     dispatch(updateArticleSectionList(updatedSections));
   };
+  const handleRemoveSection = () => {
+    const updatedSections = sections
+      .filter((section) => section.sectionPosition !== sectionPosition)
+      .map((section, index) => ({
+        ...section,
+        sectionPosition: index + 1,
+      }));
+    dispatch(updateArticleSectionList(updatedSections));
+  };
   const sectionItemList = items.map(({ type, content, itemPosition }) => {
     const getComponent = () => {
       switch (type) {
@@ -63,7 +72,7 @@ const SectionEditor = ({ data: { title, items, sectionPosition } }) => {
   return (
     <SectionContainer>
       <FlexContainer>
-        <RemoveElementButton />
+        <RemoveElementButton onClick={handleRemoveSection} />
         <SectionTitle
           value={title}
           onChange={handleTitle}
