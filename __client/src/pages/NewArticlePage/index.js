@@ -1,7 +1,12 @@
 import React from 'react';
 import { TitleContainer, Wrapper } from 'components';
 import { useSelector } from 'react-redux';
-import { HeaderEditor, SectionEditor, InnerWrapper } from './components';
+import {
+  HeaderEditor,
+  SectionEditor,
+  InnerWrapper,
+  AddElementButton,
+} from './components';
 
 const NewArticlePage = () => {
   const sections = useSelector((state) => state.articleData.article.sections);
@@ -17,6 +22,7 @@ const NewArticlePage = () => {
             <HeaderEditor />
             {sectionEditorList}
           </form>
+          <AddElementButton pattern="blue">Nowa sekcja</AddElementButton>
         </InnerWrapper>
       </Wrapper>
     </>
