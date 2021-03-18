@@ -1,6 +1,7 @@
 import React from 'react';
 import { TitleContainer, Wrapper } from 'components';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { updateArticleSectionList } from 'store/actions';
 import {
   HeaderEditor,
   SectionEditor,
@@ -9,10 +10,22 @@ import {
 } from './components';
 
 const NewArticlePage = () => {
+  const dispatch = useDispatch();
   const sections = useSelector((state) => state.articleData.article.sections);
   const sectionEditorList = sections.map((section) => (
     <SectionEditor key={section.sectionPosition} data={section} />
   ));
+  const handleNewSection = () => {
+    const updatedSections = [
+      ...sections,
+      {
+        sectionPosition: sections.length + 1,
+        title: '',
+        items: [],
+      },
+    ];
+    dispatch(updateArticleSectionList(updatedSections));
+  };
   return (
     <>
       <TitleContainer title="Nowy artykuł" />
@@ -22,7 +35,9 @@ const NewArticlePage = () => {
             <HeaderEditor />
             {sectionEditorList}
           </form>
-          <AddElementButton pattern="blue">Nowa sekcja</AddElementButton>
+          <AddElementButton pattern="blue" onClick={handleNewSection}>
+            Nowa sekcja
+          </AddElementButton>
         </InnerWrapper>
       </Wrapper>
     </>

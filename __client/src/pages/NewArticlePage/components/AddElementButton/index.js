@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { StyledButton } from './style';
 
-const AddElementButton = ({ pattern, children }) => {
+const AddElementButton = ({ pattern, children, ...props }) => {
   return (
-    <StyledButton type="button" pattern={pattern}>
+    <StyledButton type="button" pattern={pattern} {...props}>
       {children}
     </StyledButton>
   );
