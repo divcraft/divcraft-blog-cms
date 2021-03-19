@@ -14,7 +14,7 @@ import {
   AddSectionItemButtons,
   RemoveElementButton,
 } from 'pages/NewArticlePage/components';
-import { SectionTitle, FlexContainer } from './style';
+import { SectionTitle, ContentContainer, RelativeContainer } from './style';
 
 const SectionEditor = ({ data: { title, items, sectionPosition } }) => {
   const sections = useSelector((state) => state.articleData.article.sections);
@@ -59,28 +59,30 @@ const SectionEditor = ({ data: { title, items, sectionPosition } }) => {
       }
     };
     return (
-      <ContentEditor
-        key={itemPosition}
-        type={type}
-        component={getComponent()}
-        itemPosition={itemPosition}
-        sectionPosition={sectionPosition}
-        content={content}
-      />
+      <ContentContainer>
+        <ContentEditor
+          key={itemPosition}
+          type={type}
+          component={getComponent()}
+          itemPosition={itemPosition}
+          sectionPosition={sectionPosition}
+          content={content}
+        />
+      </ContentContainer>
     );
   });
   return (
     <SectionContainer>
-      <FlexContainer>
-        <RemoveElementButton onClick={handleRemoveSection} />
+      <RelativeContainer>
         <SectionTitle
           value={title}
           onChange={handleTitle}
           placeholder="Tytuł sekcji"
         />
-        {sectionItemList}
-        <AddSectionItemButtons sectionPosition={sectionPosition} />
-      </FlexContainer>
+        <RemoveElementButton onClick={handleRemoveSection} />
+      </RelativeContainer>
+      <div>{sectionItemList}</div>
+      <AddSectionItemButtons sectionPosition={sectionPosition} />
     </SectionContainer>
   );
 };

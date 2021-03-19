@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { EditItemButtons } from 'pages/NewArticlePage/components';
 import {
   ImageContainer,
   Image,
@@ -9,35 +10,10 @@ import {
   ImageAltInput,
 } from './style';
 
-const ImageEditor = ({ content, handleContent }) => {
-  // const handleContent = (e) => {
-  //   const updatedSections = sections.map((section) => {
-  //     if (section.sectionPosition === sectionPosition) {
-  //       const updatedItems = section.items.map((item) => {
-  //         if (item.itemPosition === itemPosition) {
-  //           return {
-  //             ...item,
-  //             content: {
-  //               ...item.content,
-  //               alt: e.target.value,
-  //             },
-  //           };
-  //         } else {
-  //           return item;
-  //         }
-  //       });
-  //       return {
-  //         ...section,
-  //         items: updatedItems,
-  //       };
-  //     } else {
-  //       return section;
-  //     }
-  //   });
-  //   dispatch(updateArticleSectionList(updatedSections));
-  // };
+const ImageEditor = ({ content, handleContent, handleRemoveItem }) => {
   return (
     <ImageContainer>
+      <EditItemButtons handleRemoveItem={handleRemoveItem} />
       <Image src={content.url} alt={content.alt} />
       <ImageEditors>
         <ImageSrcLabel htmlFor="file-upload">
@@ -57,6 +33,7 @@ const ImageEditor = ({ content, handleContent }) => {
 ImageEditor.propTypes = {
   content: PropTypes.instanceOf(Object).isRequired,
   handleContent: PropTypes.func.isRequired,
+  handleRemoveItem: PropTypes.func.isRequired,
 };
 
 export default ImageEditor;

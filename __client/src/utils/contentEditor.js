@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 import { updateArticleSectionList } from 'store/actions';
 import { IMAGE, LIST } from 'constants';
-import { RemoveElementButton } from 'pages/NewArticlePage/components';
+import { EditItemButtons } from 'pages/NewArticlePage/components';
 
 const contentEditor = ({
   component: Component,
@@ -88,20 +88,17 @@ const contentEditor = ({
     dispatch(updateArticleSectionList(updatedSections));
   };
   return (
-    <div>
-      <div>
-        <RemoveElementButton
-          style={{ position: 'relative' }}
-          onClick={handleRemoveItem}
-        />
-      </div>
+    <>
+      {type !== IMAGE && (
+        <EditItemButtons handleRemoveItem={handleRemoveItem} />
+      )}
       <Component
         handleContent={handleContent}
         handleRemoveItem={handleRemoveItem}
         content={content}
         {...rest}
       />
-    </div>
+    </>
   );
 };
 

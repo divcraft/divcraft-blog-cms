@@ -9,4 +9,5 @@ export const SubtitleContainer = styled.input`
   max-width: 100%;
   font-size: 16px;
   font-weight: 600;
+  margin: 10px 0;
 `;

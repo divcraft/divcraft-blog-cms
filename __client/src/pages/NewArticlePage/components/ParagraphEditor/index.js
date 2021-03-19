@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { ParagraphContainer } from './style';
 
 const ParagraphEditor = ({ content, handleContent }) => {
-  const [height, setHeight] = useState('auto');
+  const [height, setHeight] = useState(null);
   const handleChange = (e) => {
     handleContent(e);
     setHeight(e.target.scrollHeight);

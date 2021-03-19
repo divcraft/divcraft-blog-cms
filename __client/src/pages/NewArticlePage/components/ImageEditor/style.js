@@ -3,8 +3,8 @@ import styled from 'styled-components';
 export const ImageContainer = styled.div`
   margin: 10px auto;
   position: relative;
-  min-height: 100px;
-  min-width: 250px;
+  min-height: 70px;
+  min-width: 240px;
   background-color: ${({ theme: { colors } }) => colors.gray.regular};
   &:hover > div {
     opacity: 1;

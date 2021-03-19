@@ -10,5 +10,4 @@ export const ParagraphContainer = styled.textarea`
   line-height: 1.5;
   width: 100%;
   height: ${({ height }) => (height ? `${height}px` : 'auto')};
-  min-height: 30px;
 `;

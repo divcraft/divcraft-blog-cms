@@ -12,10 +12,21 @@ export const SectionTitle = styled.input`
   margin: auto;
   font-size: 24px;
   font-weight: 500;
+  margin-bottom: 15px;
 `;
 
-export const FlexContainer = styled.div`
+export const ContentContainer = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
+  min-height: 40px;
+  margin-bottom: 10px;
+  & > * {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+`;
+
+export const RelativeContainer = styled.div`
   position: relative;
 `;
