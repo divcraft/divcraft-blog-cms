@@ -7,7 +7,7 @@ const SubtitleEditor = ({ content, handleContent }) => {
     <SubtitleContainer
       onChange={handleContent}
       value={content}
-      placeholder="Wpisz tekst..."
+      placeholder="Wpisz podtytuł..."
     />
   );
 };

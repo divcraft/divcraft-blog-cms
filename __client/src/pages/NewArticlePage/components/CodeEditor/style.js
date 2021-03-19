@@ -6,7 +6,6 @@ export const CodeContainer = styled.textarea`
   border: none;
   border-top: solid 1px white;
   border-bottom: solid 1px white;
-  margin: 10px 0;
   font-style: 'monotype';
   line-height: 1.5;
   width: 100%;

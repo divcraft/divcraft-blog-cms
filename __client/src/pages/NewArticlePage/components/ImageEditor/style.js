@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const ImageContainer = styled.div`
-  margin: 10px auto;
+  margin: 0 auto;
   position: relative;
   min-height: 70px;
   min-width: 240px;

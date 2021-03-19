@@ -19,7 +19,7 @@ export const ContentContainer = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
-  min-height: 40px;
+  margin-top: 10px;
   margin-bottom: 10px;
   & > * {
     margin-top: 0;

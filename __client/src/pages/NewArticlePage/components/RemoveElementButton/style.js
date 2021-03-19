@@ -2,14 +2,15 @@ import styled, { css } from 'styled-components';
 
 export const StyledButton = styled.button`
   cursor: pointer;
+  padding: 0;
   display: block;
-  border-radius: 50%;
   background: none;
   color: ${({ theme: { colors } }) => colors.red.regular};
   font-size: 20px;
   ${({ pattern }) =>
     pattern === 'section' &&
     css`
+      border-radius: 50%;
       transition: 0.4s;
       position: absolute;
       top: 0;
@@ -22,9 +23,12 @@ export const StyledButton = styled.button`
     pattern === 'item' &&
     css`
       position: relative;
+      top: 2px;
       border: none;
-      width: 20px;
-      height: 20px;
+      width: 30px;
+      height: 12px;
+      overflow: hidden;
+      opacity: 0.7;
     `}
   &:hover {
     ${({ pattern }) =>
@@ -35,7 +39,7 @@ export const StyledButton = styled.button`
     ${({ pattern }) =>
       pattern === 'item' &&
       css`
-        transform: scale(1.3);
+        opacity: 1;
       `}
   }
   &::before {
