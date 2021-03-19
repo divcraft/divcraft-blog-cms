@@ -75,7 +75,7 @@ const contentEditor = ({
           .filter((item) => item.itemPosition !== itemPosition)
           .map((item, index) => ({
             ...item,
-            itemPosition: index,
+            itemPosition: index + 1,
           }));
         return {
           ...section,
