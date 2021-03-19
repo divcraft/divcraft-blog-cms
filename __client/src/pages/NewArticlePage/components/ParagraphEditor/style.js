@@ -6,7 +6,6 @@ export const ParagraphContainer = styled.textarea`
   border: hidden;
   border-top: solid 1px ${({ theme: { colors } }) => colors.gray.lighter};
   border-bottom: solid 1px ${({ theme: { colors } }) => colors.gray.lighter};
-  margin: 10px 0;
   line-height: 1.5;
   width: 100%;
   height: ${({ height }) => (height ? `${height}px` : 'auto')};

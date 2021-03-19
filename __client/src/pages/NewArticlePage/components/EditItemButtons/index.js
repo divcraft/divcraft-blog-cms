@@ -6,10 +6,7 @@ import { ButtonsContainer } from './style';
 const EditItemButtons = ({ handleRemoveItem }) => {
   return (
     <ButtonsContainer>
-      <RemoveElementButton
-        style={{ position: 'relative' }}
-        onClick={handleRemoveItem}
-      />
+      <RemoveElementButton pattern="item" onClick={handleRemoveItem} />
     </ButtonsContainer>
   );
 };

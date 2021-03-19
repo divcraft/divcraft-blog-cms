@@ -1,21 +1,48 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const StyledButton = styled.button`
-  display: block;
   cursor: pointer;
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 30px;
-  height: 30px;
+  display: block;
   border-radius: 50%;
-  transform: rotate(45deg);
-  font-size: 18px;
-  background-color: white;
-  border: solid 1px white;
+  background: none;
   color: ${({ theme: { colors } }) => colors.red.regular};
-  transition: 0.4s;
+  font-size: 20px;
+  ${({ pattern }) =>
+    pattern === 'section' &&
+    css`
+      transition: 0.4s;
+      position: absolute;
+      top: 0;
+      right: 0;
+      border: solid 1px white;
+      width: 25px;
+      height: 25px;
+    `}
+  ${({ pattern }) =>
+    pattern === 'item' &&
+    css`
+      position: relative;
+      border: none;
+      width: 20px;
+      height: 20px;
+    `}
   &:hover {
-    border: solid 1px ${({ theme: { colors } }) => colors.red.regular};
+    ${({ pattern }) =>
+      pattern === 'section' &&
+      css`
+        border: solid 1px ${({ theme: { colors } }) => colors.red.regular};
+      `}
+    ${({ pattern }) =>
+      pattern === 'item' &&
+      css`
+        transform: scale(1.3);
+      `}
+  }
+  &::before {
+    content: '+';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
   }
 `;

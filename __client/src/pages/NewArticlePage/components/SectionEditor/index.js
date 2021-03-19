@@ -79,7 +79,7 @@ const SectionEditor = ({ data: { title, items, sectionPosition } }) => {
           onChange={handleTitle}
           placeholder="Tytuł sekcji"
         />
-        <RemoveElementButton onClick={handleRemoveSection} />
+        <RemoveElementButton onClick={handleRemoveSection} pattern="section" />
       </RelativeContainer>
       <div>{sectionItemList}</div>
       <AddSectionItemButtons sectionPosition={sectionPosition} />
