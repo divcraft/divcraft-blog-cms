@@ -12,7 +12,7 @@ import {
   CodeEditor,
   ListEditor,
   AddSectionItemButtons,
-  RemoveElementButton,
+  EditElementButtons,
 } from 'pages/NewArticlePage/components';
 import { SectionTitle, ContentContainer, RelativeContainer } from './style';
 
@@ -79,7 +79,10 @@ const SectionEditor = ({ data: { title, items, sectionPosition } }) => {
           onChange={handleTitle}
           placeholder="Tytuł sekcji"
         />
-        <RemoveElementButton onClick={handleRemoveSection} pattern="section" />
+        <EditElementButtons
+          handleRemoveElement={handleRemoveSection}
+          pattern="section"
+        />
       </RelativeContainer>
       <div>{sectionItemList}</div>
       <AddSectionItemButtons sectionPosition={sectionPosition} />

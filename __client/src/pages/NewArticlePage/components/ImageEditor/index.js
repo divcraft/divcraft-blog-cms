@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { EditItemButtons } from 'pages/NewArticlePage/components';
+import { EditElementButtons } from 'pages/NewArticlePage/components';
 import {
   ImageContainer,
   Image,
@@ -13,7 +13,10 @@ import {
 const ImageEditor = ({ content, handleContent, handleRemoveItem }) => {
   return (
     <ImageContainer>
-      <EditItemButtons handleRemoveItem={handleRemoveItem} />
+      <EditElementButtons
+        handleRemoveElement={handleRemoveItem}
+        pattern="item"
+      />
       <Image src={content.url} alt={content.alt} />
       <ImageEditors>
         <ImageSrcLabel htmlFor="file-upload">

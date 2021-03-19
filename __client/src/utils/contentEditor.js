@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 import { updateArticleSectionList } from 'store/actions';
 import { IMAGE, LIST } from 'constants';
-import { EditItemButtons } from 'pages/NewArticlePage/components';
+import { EditElementButtons } from 'pages/NewArticlePage/components';
 
 const contentEditor = ({
   component: Component,
@@ -90,7 +90,10 @@ const contentEditor = ({
   return (
     <>
       {type !== IMAGE && (
-        <EditItemButtons handleRemoveItem={handleRemoveItem} />
+        <EditElementButtons
+          handleRemoveElement={handleRemoveItem}
+          pattern="item"
+        />
       )}
       <Component
         handleContent={handleContent}

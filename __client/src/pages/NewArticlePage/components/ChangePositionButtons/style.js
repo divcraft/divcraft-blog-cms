@@ -12,7 +12,7 @@ export const ArrowButton = styled.button`
   justify-content: center;
   align-items: center;
   position: relative;
-  width: 30px;
+  width: 25px;
   height: 10px;
   overflow: hidden;
   &:nth-child(1) svg {
@@ -21,13 +21,13 @@ export const ArrowButton = styled.button`
   &:nth-child(2) svg {
     bottom: 5px;
   }
+  &:hover svg {
+    opacity: 1;
+  }
 `;
 
 export const StyledFontAwesome = styled(FontAwesomeIcon)`
   position: relative;
   color: ${({ theme: { colors } }) => colors.gray.dark};
   opacity: 0.5;
-  &:hover {
-    opacity: 1;
-  }
 `;
