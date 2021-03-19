@@ -32,39 +32,21 @@ const initialState = {
             content:
               'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fugiat odio voluptatibus nemo nulla repellendus! Adipisci maiores recusandae quam quasi modi ea aut fuga nisi incidunt error totam, repellendus voluptates. Rerum!',
           },
-        ],
-      },
-      {
-        sectionPosition: 2,
-        title: 'section subtitle',
-        items: [
           {
-            itemPosition: 1,
+            itemPosition: 2,
             type: 'SUBTITLE',
             content: 'Podtytuł sekcji',
           },
-        ],
-      },
-      {
-        sectionPosition: 3,
-        title: 'section image',
-        items: [
           {
-            itemPosition: 1,
+            itemPosition: 3,
             type: 'IMAGE',
             content: {
               url: '',
               alt: '',
             },
           },
-        ],
-      },
-      {
-        sectionPosition: 4,
-        title: 'section code',
-        items: [
           {
-            itemPosition: 1,
+            itemPosition: 4,
             type: 'CODE',
             content: `<p>HTML Editor Sample Page</p>
 <h2>HTML Editor</h2>
@@ -80,14 +62,8 @@ size:12px">font size</span></li>
     <li>...and much more!</li>
 </ul>`,
           },
-        ],
-      },
-      {
-        sectionPosition: 5,
-        title: 'section list',
-        items: [
           {
-            itemPosition: 1,
+            itemPosition: 5,
             type: 'LIST',
             content: [
               {
@@ -109,6 +85,26 @@ size:12px">font size</span></li>
             ],
           },
         ],
+      },
+      {
+        sectionPosition: 2,
+        title: 'section subtitle',
+        items: [],
+      },
+      {
+        sectionPosition: 3,
+        title: 'section image',
+        items: [],
+      },
+      {
+        sectionPosition: 4,
+        title: 'section code',
+        items: [],
+      },
+      {
+        sectionPosition: 5,
+        title: 'section list',
+        items: [],
       },
     ],
   },

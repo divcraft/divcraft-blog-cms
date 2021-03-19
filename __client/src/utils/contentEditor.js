@@ -88,42 +88,66 @@ const contentEditor = ({
     dispatch(updateArticleSectionList(updatedSections));
   };
   const handleMoveItemUp = () => {
-    // if (sectionPosition === 1) return null;
-    // const updatedSections = sections.map(section => {
-    //   if (section.sectionPosition - 1 === sectionPosition) {
-    //     return ({
-    //       ...section,
-    //       sectionPosition: section.sectionPosition + 1,
-    //     });
-    //   } else if (section.sectionPosition === sectionPosition) {
-    //     return ({
-    //       ...section,
-    //       sectionPosition: section.sectionPosition - 1,
-    //     });
-    //   } else {
-    //     return section;
-    //   };
-    // });
-    // dispatch(updateArticleSectionList(updatedSections));
+    if (itemPosition === 1) return null;
+    const updatedSections = sections.map((section) => {
+      if (section.sectionPosition === sectionPosition) {
+        const updatedItems = section.items
+          .map((item) => {
+            if (item.itemPosition + 1 === itemPosition) {
+              return {
+                ...item,
+                itemPosition: item.itemPosition + 1,
+              };
+            }
+            if (item.itemPosition === itemPosition) {
+              return {
+                ...item,
+                itemPosition: item.itemPosition - 1,
+              };
+            }
+            return item;
+          })
+          .sort((a, b) => a.itemPosition - b.itemPosition);
+        return {
+          ...section,
+          items: updatedItems,
+        };
+      } else {
+        return section;
+      }
+    });
+    dispatch(updateArticleSectionList(updatedSections));
   };
   const handleMoveItemDown = () => {
-    // if (sectionPosition === sections.length) return null;
-    // const updatedSections = sections.map(section => {
-    //   if (section.sectionPosition + 1 === sectionPosition) {
-    //     return ({
-    //       ...section,
-    //       sectionPosition: section.sectionPosition - 1,
-    //     });
-    //   } else if (section.sectionPosition === sectionPosition) {
-    //     return ({
-    //       ...section,
-    //       sectionPosition: section.sectionPosition + 1,
-    //     });
-    //   } else {
-    //     return section;
-    //   };
-    // });
-    // dispatch(updateArticleSectionList(updatedSections));
+    const updatedSections = sections.map((section) => {
+      if (section.sectionPosition === sectionPosition) {
+        if (itemPosition === section.items.length) return null;
+        const updatedItems = section.items
+          .map((item) => {
+            if (item.itemPosition - 1 === itemPosition) {
+              return {
+                ...item,
+                itemPosition: item.itemPosition - 1,
+              };
+            }
+            if (item.itemPosition === itemPosition) {
+              return {
+                ...item,
+                itemPosition: item.itemPosition + 1,
+              };
+            }
+            return item;
+          })
+          .sort((a, b) => a.itemPosition - b.itemPosition);
+        return {
+          ...section,
+          items: updatedItems,
+        };
+      } else {
+        return section;
+      }
+    });
+    dispatch(updateArticleSectionList(updatedSections));
   };
   return (
     <>
