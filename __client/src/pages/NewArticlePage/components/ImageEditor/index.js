@@ -10,11 +10,19 @@ import {
   ImageAltInput,
 } from './style';
 
-const ImageEditor = ({ content, handleContent, handleRemoveItem }) => {
+const ImageEditor = ({
+  content,
+  handleContent,
+  handleRemoveItem,
+  handleMoveElementUp,
+  handleMoveElementDown,
+}) => {
   return (
     <ImageContainer>
       <EditElementButtons
         handleRemoveElement={handleRemoveItem}
+        handleMoveElementUp={handleMoveElementUp}
+        handleMoveElementDown={handleMoveElementDown}
         pattern="item"
       />
       <Image src={content.url} alt={content.alt} />
@@ -37,6 +45,8 @@ ImageEditor.propTypes = {
   content: PropTypes.instanceOf(Object).isRequired,
   handleContent: PropTypes.func.isRequired,
   handleRemoveItem: PropTypes.func.isRequired,
+  handleMoveElementUp: PropTypes.func.isRequired,
+  handleMoveElementDown: PropTypes.func.isRequired,
 };
 
 export default ImageEditor;

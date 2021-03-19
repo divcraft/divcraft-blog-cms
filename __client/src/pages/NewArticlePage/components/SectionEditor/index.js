@@ -41,6 +41,48 @@ const SectionEditor = ({ data: { title, items, sectionPosition } }) => {
       }));
     dispatch(updateArticleSectionList(updatedSections));
   };
+  const handleMoveSectionUp = () => {
+    if (sectionPosition === 1) return null;
+    const updatedSections = sections
+      .map((section) => {
+        if (section.sectionPosition + 1 === sectionPosition) {
+          return {
+            ...section,
+            sectionPosition: section.sectionPosition + 1,
+          };
+        }
+        if (section.sectionPosition === sectionPosition) {
+          return {
+            ...section,
+            sectionPosition: section.sectionPosition - 1,
+          };
+        }
+        return section;
+      })
+      .sort((a, b) => a.sectionPosition - b.sectionPosition);
+    dispatch(updateArticleSectionList(updatedSections));
+  };
+  const handleMoveSectionDown = () => {
+    if (sectionPosition === sections.length) return null;
+    const updatedSections = sections
+      .map((section) => {
+        if (section.sectionPosition - 1 === sectionPosition) {
+          return {
+            ...section,
+            sectionPosition: section.sectionPosition - 1,
+          };
+        }
+        if (section.sectionPosition === sectionPosition) {
+          return {
+            ...section,
+            sectionPosition: section.sectionPosition + 1,
+          };
+        }
+        return section;
+      })
+      .sort((a, b) => a.sectionPosition - b.sectionPosition);
+    dispatch(updateArticleSectionList(updatedSections));
+  };
   const sectionItemList = items.map(({ type, content, itemPosition }) => {
     const getComponent = () => {
       switch (type) {
@@ -59,9 +101,8 @@ const SectionEditor = ({ data: { title, items, sectionPosition } }) => {
       }
     };
     return (
-      <ContentContainer>
+      <ContentContainer key={itemPosition}>
         <ContentEditor
-          key={itemPosition}
           type={type}
           component={getComponent()}
           itemPosition={itemPosition}
@@ -81,6 +122,8 @@ const SectionEditor = ({ data: { title, items, sectionPosition } }) => {
         />
         <EditElementButtons
           handleRemoveElement={handleRemoveSection}
+          handleMoveElementUp={handleMoveSectionUp}
+          handleMoveElementDown={handleMoveSectionDown}
           pattern="section"
         />
       </RelativeContainer>

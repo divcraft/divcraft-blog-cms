@@ -87,17 +87,59 @@ const contentEditor = ({
     });
     dispatch(updateArticleSectionList(updatedSections));
   };
+  const handleMoveItemUp = () => {
+    // if (sectionPosition === 1) return null;
+    // const updatedSections = sections.map(section => {
+    //   if (section.sectionPosition - 1 === sectionPosition) {
+    //     return ({
+    //       ...section,
+    //       sectionPosition: section.sectionPosition + 1,
+    //     });
+    //   } else if (section.sectionPosition === sectionPosition) {
+    //     return ({
+    //       ...section,
+    //       sectionPosition: section.sectionPosition - 1,
+    //     });
+    //   } else {
+    //     return section;
+    //   };
+    // });
+    // dispatch(updateArticleSectionList(updatedSections));
+  };
+  const handleMoveItemDown = () => {
+    // if (sectionPosition === sections.length) return null;
+    // const updatedSections = sections.map(section => {
+    //   if (section.sectionPosition + 1 === sectionPosition) {
+    //     return ({
+    //       ...section,
+    //       sectionPosition: section.sectionPosition - 1,
+    //     });
+    //   } else if (section.sectionPosition === sectionPosition) {
+    //     return ({
+    //       ...section,
+    //       sectionPosition: section.sectionPosition + 1,
+    //     });
+    //   } else {
+    //     return section;
+    //   };
+    // });
+    // dispatch(updateArticleSectionList(updatedSections));
+  };
   return (
     <>
       {type !== IMAGE && (
         <EditElementButtons
           handleRemoveElement={handleRemoveItem}
+          handleMoveElementUp={handleMoveItemUp}
+          handleMoveElementDown={handleMoveItemDown}
           pattern="item"
         />
       )}
       <Component
         handleContent={handleContent}
         handleRemoveItem={handleRemoveItem}
+        handleMoveElementUp={handleMoveItemUp}
+        handleMoveElementDown={handleMoveItemDown}
         content={content}
         {...rest}
       />

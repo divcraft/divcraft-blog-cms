@@ -6,11 +6,19 @@ import {
 } from 'pages/NewArticlePage/components';
 import { ButtonsContainer } from './style';
 
-const EditElementButtons = ({ handleRemoveElement, pattern }) => {
+const EditElementButtons = ({
+  handleRemoveElement,
+  handleMoveElementUp,
+  handleMoveElementDown,
+  pattern,
+}) => {
   return (
     <ButtonsContainer pattern={pattern}>
       <RemoveElementButton pattern={pattern} onClick={handleRemoveElement} />
-      <ChangePositionButtons />
+      <ChangePositionButtons
+        handleMoveElementUp={handleMoveElementUp}
+        handleMoveElementDown={handleMoveElementDown}
+      />
     </ButtonsContainer>
   );
 };
@@ -18,5 +26,7 @@ const EditElementButtons = ({ handleRemoveElement, pattern }) => {
 EditElementButtons.propTypes = {
   pattern: PropTypes.oneOf(['section', 'item']).isRequired,
   handleRemoveElement: PropTypes.func.isRequired,
+  handleMoveElementUp: PropTypes.func.isRequired,
+  handleMoveElementDown: PropTypes.func.isRequired,
 };
 export default EditElementButtons;
