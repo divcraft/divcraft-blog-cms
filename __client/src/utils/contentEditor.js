@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 import { updateArticleSectionList } from 'store/actions';
 import { IMAGE, LIST } from 'constants';
+import { RemoveElementButton } from 'pages/NewArticlePage/components';
 
 const contentEditor = ({
   component: Component,
@@ -67,10 +68,40 @@ const contentEditor = ({
     });
     dispatch(updateArticleSectionList(updatedSections));
   };
+  const handleRemoveItem = () => {
+    const updatedSections = sections.map((section) => {
+      if (section.sectionPosition === sectionPosition) {
+        const updatedItems = section.items
+          .filter((item) => item.itemPosition !== itemPosition)
+          .map((item, index) => ({
+            ...item,
+            itemPosition: index,
+          }));
+        return {
+          ...section,
+          items: updatedItems,
+        };
+      } else {
+        return section;
+      }
+    });
+    dispatch(updateArticleSectionList(updatedSections));
+  };
   return (
-    <>
-      <Component handleContent={handleContent} content={content} {...rest} />
-    </>
+    <div>
+      <div>
+        <RemoveElementButton
+          style={{ position: 'relative' }}
+          onClick={handleRemoveItem}
+        />
+      </div>
+      <Component
+        handleContent={handleContent}
+        handleRemoveItem={handleRemoveItem}
+        content={content}
+        {...rest}
+      />
+    </div>
   );
 };
 

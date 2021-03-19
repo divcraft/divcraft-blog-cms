@@ -12,13 +12,15 @@ const ParagraphEditor = ({ content, handleContent }) => {
     setHeight(e.target.scrollHeight);
   };
   return (
-    <ParagraphContainer
-      onChange={handleChange}
-      onFocus={handleLoad}
-      height={height}
-      placeholder="Wpisz tekst..."
-      value={content}
-    />
+    <>
+      <ParagraphContainer
+        onChange={handleChange}
+        onFocus={handleLoad}
+        height={height}
+        placeholder="Wpisz tekst..."
+        value={content}
+      />
+    </>
   );
 };
 
