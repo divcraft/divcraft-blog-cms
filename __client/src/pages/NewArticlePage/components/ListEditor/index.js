@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateArticleSectionList } from 'store/actions';
+import { ADD, REMOVE } from 'constants';
 import { RemoveElementButton } from 'pages/NewArticlePage/components';
 import { ListItemContainer } from './style';
 
@@ -21,7 +22,7 @@ const ListEditor = ({
         const updatedItems = section.items.map((item) => {
           if (item.itemPosition === itemPosition) {
             let updatedListItems = [];
-            if (event === 'remove') {
+            if (event === REMOVE) {
               updatedListItems = item.content
                 .filter(
                   (listItem) => listItem.listItemPosition !== listItemPosition
@@ -30,7 +31,7 @@ const ListEditor = ({
                   ...listItem,
                   listItemPosition: index + 1,
                 }));
-            } else if (event === 'add') {
+            } else if (event === ADD) {
               updatedListItems = [
                 ...item.content,
                 {
@@ -71,13 +72,13 @@ const ListEditor = ({
           />
           <RemoveElementButton
             data-position={item.listItemPosition}
-            data-event="remove"
+            data-event={REMOVE}
             onClick={handleListItem}
             pattern="item"
           />
         </li>
       ))}
-      <button type="button" data-event="add" onClick={handleListItem}>
+      <button type="button" data-event={ADD} onClick={handleListItem}>
         Add...
       </button>
     </ul>
