@@ -2,7 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateArticleSectionList } from 'store/actions';
-import { PARAGRAPH, SUBTITLE, IMAGE, CODE, LIST } from 'constants';
+import {
+  PARAGRAPH,
+  SUBTITLE,
+  IMAGE,
+  CODE,
+  LIST,
+  MOVE_UP,
+  MOVE_DOWN,
+} from 'constants';
 import { ContentEditor } from 'utils';
 import { SectionContainer } from 'components';
 import {
@@ -41,42 +49,38 @@ const SectionEditor = ({ data: { title, items, sectionPosition } }) => {
       }));
     dispatch(updateArticleSectionList(updatedSections));
   };
-  const handleMoveSectionUp = () => {
-    if (sectionPosition === 1) return null;
+  const handleMoveSection = (direction) => {
+    if (direction === MOVE_UP && sectionPosition === 1) return null;
+    if (direction === MOVE_DOWN && sectionPosition === sections.length)
+      return null;
     const updatedSections = sections
       .map((section) => {
-        if (section.sectionPosition + 1 === sectionPosition) {
-          return {
-            ...section,
-            sectionPosition: section.sectionPosition + 1,
-          };
-        }
-        if (section.sectionPosition === sectionPosition) {
-          return {
-            ...section,
-            sectionPosition: section.sectionPosition - 1,
-          };
-        }
-        return section;
-      })
-      .sort((a, b) => a.sectionPosition - b.sectionPosition);
-    dispatch(updateArticleSectionList(updatedSections));
-  };
-  const handleMoveSectionDown = () => {
-    if (sectionPosition === sections.length) return null;
-    const updatedSections = sections
-      .map((section) => {
-        if (section.sectionPosition - 1 === sectionPosition) {
-          return {
-            ...section,
-            sectionPosition: section.sectionPosition - 1,
-          };
-        }
-        if (section.sectionPosition === sectionPosition) {
-          return {
-            ...section,
-            sectionPosition: section.sectionPosition + 1,
-          };
+        if (direction === MOVE_UP) {
+          if (section.sectionPosition + 1 === sectionPosition) {
+            return {
+              ...section,
+              sectionPosition: section.sectionPosition + 1,
+            };
+          }
+          if (section.sectionPosition === sectionPosition) {
+            return {
+              ...section,
+              sectionPosition: section.sectionPosition - 1,
+            };
+          }
+        } else if (direction === MOVE_DOWN) {
+          if (section.sectionPosition - 1 === sectionPosition) {
+            return {
+              ...section,
+              sectionPosition: section.sectionPosition - 1,
+            };
+          }
+          if (section.sectionPosition === sectionPosition) {
+            return {
+              ...section,
+              sectionPosition: section.sectionPosition + 1,
+            };
+          }
         }
         return section;
       })
@@ -122,8 +126,7 @@ const SectionEditor = ({ data: { title, items, sectionPosition } }) => {
         />
         <EditElementButtons
           handleRemoveElement={handleRemoveSection}
-          handleMoveElementUp={handleMoveSectionUp}
-          handleMoveElementDown={handleMoveSectionDown}
+          handleMoveElement={handleMoveSection}
           pattern="section"
         />
       </RelativeContainer>

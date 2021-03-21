@@ -9,18 +9,12 @@ import { ButtonsContainer } from './style';
 const EditElementButtons = ({
   handleRemoveElement,
   handleMoveElement,
-  // handleMoveElementUp,
-  // handleMoveElementDown,
   pattern,
 }) => {
   return (
     <ButtonsContainer pattern={pattern}>
       <RemoveElementButton pattern={pattern} onClick={handleRemoveElement} />
-      <ChangePositionButtons
-        handleMoveElement={handleMoveElement}
-        // handleMoveElementUp={handleMoveElementUp}
-        // handleMoveElementDown={handleMoveElementDown}
-      />
+      <ChangePositionButtons handleMoveElement={handleMoveElement} />
     </ButtonsContainer>
   );
 };
@@ -29,7 +23,5 @@ EditElementButtons.propTypes = {
   pattern: PropTypes.oneOf(['section', 'item']).isRequired,
   handleRemoveElement: PropTypes.func.isRequired,
   handleMoveElement: PropTypes.func.isRequired,
-  // handleMoveElementUp: PropTypes.func.isRequired,
-  // handleMoveElementDown: PropTypes.func.isRequired,
 };
 export default EditElementButtons;

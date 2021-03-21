@@ -4,11 +4,7 @@ import { MOVE_UP, MOVE_DOWN } from 'constants';
 import { faSortUp, faSortDown } from '@fortawesome/free-solid-svg-icons';
 import { StyledFontAwesome, ArrowButton } from './style';
 
-const ChangePositionButtons = ({
-  handleMoveElement,
-  // handleMoveElementUp,
-  // handleMoveElementDown,
-}) => {
+const ChangePositionButtons = ({ handleMoveElement }) => {
   return (
     <div>
       <ArrowButton type="button" onClick={() => handleMoveElement(MOVE_UP)}>
@@ -23,7 +19,5 @@ const ChangePositionButtons = ({
 
 ChangePositionButtons.propTypes = {
   handleMoveElement: PropTypes.func.isRequired,
-  // handleMoveElementUp: PropTypes.func.isRequired,
-  // handleMoveElementDown: PropTypes.func.isRequired,
 };
 export default ChangePositionButtons;
