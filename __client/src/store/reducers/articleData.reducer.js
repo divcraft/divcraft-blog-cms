@@ -28,42 +28,6 @@ const initialState = {
         items: [
           {
             itemPosition: 1,
-            type: 'PARAGRAPH',
-            content:
-              'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fugiat odio voluptatibus nemo nulla repellendus! Adipisci maiores recusandae quam quasi modi ea aut fuga nisi incidunt error totam, repellendus voluptates. Rerum!',
-          },
-          {
-            itemPosition: 2,
-            type: 'SUBTITLE',
-            content: 'Podtytuł sekcji',
-          },
-          {
-            itemPosition: 3,
-            type: 'IMAGE',
-            content: {
-              url: '',
-              alt: '',
-            },
-          },
-          {
-            itemPosition: 4,
-            type: 'CODE',
-            content: `<p>HTML Editor Sample Page</p>
-<h2>HTML Editor</h2>
-<p>You can use this online HTML editor to generate HTML code for your own website. You can do all sorts of 
-things with this HTML editor, such as:</p>
-<ul>
-    <li>Create <strong>bold</strong> or <em>italic</em> text.</li>
-    <li>Change the <span style="color:#800000">text color</span></li>
-    <li>Change the <span style="font-family:comic sans ms,cursive">font family</span> or <span style="font-
-size:12px">font size</span></li>
-    <li>Create <a href="#">hyperlinks</a></li>
-    <li>Create a bulleted list...</li>
-    <li>...and much more!</li>
-</ul>`,
-          },
-          {
-            itemPosition: 5,
             type: 'LIST',
             content: [
               {

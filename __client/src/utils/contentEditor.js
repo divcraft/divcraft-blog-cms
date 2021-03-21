@@ -168,6 +168,8 @@ const contentEditor = ({
         handleRemoveItem={handleRemoveItem}
         handleMoveElementUp={handleMoveItemUp}
         handleMoveElementDown={handleMoveItemDown}
+        sectionPosition={sectionPosition}
+        itemPosition={itemPosition}
         content={content}
         {...rest}
       />
