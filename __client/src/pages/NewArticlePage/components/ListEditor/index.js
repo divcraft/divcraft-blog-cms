@@ -19,35 +19,37 @@ const ListEditor = ({
     const { event } = e.target.dataset;
     const updatedSections = sections.map((section) => {
       if (section.sectionPosition === sectionPosition) {
-        const updatedItems = section.items.map((item) => {
-          if (item.itemPosition === itemPosition) {
-            let updatedListItems = [];
-            if (event === REMOVE) {
-              updatedListItems = item.content
-                .filter(
-                  (listItem) => listItem.listItemPosition !== listItemPosition
-                )
-                .map((listItem, index) => ({
-                  ...listItem,
-                  listItemPosition: index + 1,
-                }));
-            } else if (event === ADD) {
-              updatedListItems = [
-                ...item.content,
-                {
-                  listItemPosition: item.content.length + 1,
-                  data: '',
-                },
-              ];
+        const updatedItems = section.items
+          .map((item) => {
+            if (item.itemPosition === itemPosition) {
+              let updatedListItems = [];
+              if (event === REMOVE) {
+                updatedListItems = item.content
+                  .filter(
+                    (listItem) => listItem.listItemPosition !== listItemPosition
+                  )
+                  .map((listItem, index) => ({
+                    ...listItem,
+                    listItemPosition: index + 1,
+                  }));
+              } else if (event === ADD) {
+                updatedListItems = [
+                  ...item.content,
+                  {
+                    listItemPosition: item.content.length + 1,
+                    data: '',
+                  },
+                ];
+              }
+              return {
+                ...item,
+                content: updatedListItems,
+              };
+            } else {
+              return item;
             }
-            return {
-              ...item,
-              content: updatedListItems,
-            };
-          } else {
-            return item;
-          }
-        });
+          })
+          .filter((item) => item.content.length !== 0);
         return {
           ...section,
           items: updatedItems,
