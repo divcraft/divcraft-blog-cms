@@ -14,15 +14,13 @@ const ImageEditor = ({
   content,
   handleContent,
   handleRemoveItem,
-  handleMoveElementUp,
-  handleMoveElementDown,
+  handleMoveItem,
 }) => {
   return (
     <ImageContainer>
       <EditElementButtons
         handleRemoveElement={handleRemoveItem}
-        handleMoveElementUp={handleMoveElementUp}
-        handleMoveElementDown={handleMoveElementDown}
+        handleMoveElement={handleMoveItem}
         pattern="item"
       />
       <Image src={content.url} alt={content.alt} />
@@ -45,8 +43,7 @@ ImageEditor.propTypes = {
   content: PropTypes.instanceOf(Object).isRequired,
   handleContent: PropTypes.func.isRequired,
   handleRemoveItem: PropTypes.func.isRequired,
-  handleMoveElementUp: PropTypes.func.isRequired,
-  handleMoveElementDown: PropTypes.func.isRequired,
+  handleMoveItem: PropTypes.func.isRequired,
 };
 
 export default ImageEditor;

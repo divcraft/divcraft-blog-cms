@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 import { updateArticleSectionList } from 'store/actions';
-import { IMAGE, LIST } from 'constants';
+import { IMAGE, LIST, MOVE_UP, MOVE_DOWN } from 'constants';
 import { EditElementButtons } from 'pages/NewArticlePage/components';
 
 const contentEditor = ({
@@ -87,58 +87,43 @@ const contentEditor = ({
     });
     dispatch(updateArticleSectionList(updatedSections));
   };
-  const handleMoveItemUp = () => {
-    if (itemPosition === 1) return null;
-    const updatedSections = sections.map((section) => {
-      if (section.sectionPosition === sectionPosition) {
-        const updatedItems = section.items
-          .map((item) => {
-            if (item.itemPosition + 1 === itemPosition) {
-              return {
-                ...item,
-                itemPosition: item.itemPosition + 1,
-              };
-            }
-            if (item.itemPosition === itemPosition) {
-              return {
-                ...item,
-                itemPosition: item.itemPosition - 1,
-              };
-            }
-            return item;
-          })
-          .sort((a, b) => a.itemPosition - b.itemPosition);
-        return {
-          ...section,
-          items: updatedItems,
-        };
-      } else {
-        return section;
-      }
-    });
-    dispatch(updateArticleSectionList(updatedSections));
-  };
-  const handleMoveItemDown = () => {
+  const handleMoveItem = (direction) => {
     let continueUpdate = true;
+    if (direction === MOVE_UP && itemPosition === 1) return null;
     const updatedSections = sections.map((section) => {
       if (section.sectionPosition === sectionPosition) {
-        if (itemPosition === section.items.length) {
+        if (direction === MOVE_DOWN && itemPosition === section.items.length) {
           continueUpdate = false;
           return;
         }
         const updatedItems = section.items
           .map((item) => {
-            if (item.itemPosition - 1 === itemPosition) {
-              return {
-                ...item,
-                itemPosition: item.itemPosition - 1,
-              };
-            }
-            if (item.itemPosition === itemPosition) {
-              return {
-                ...item,
-                itemPosition: item.itemPosition + 1,
-              };
+            if (direction === MOVE_UP) {
+              if (item.itemPosition + 1 === itemPosition) {
+                return {
+                  ...item,
+                  itemPosition: item.itemPosition + 1,
+                };
+              }
+              if (item.itemPosition === itemPosition) {
+                return {
+                  ...item,
+                  itemPosition: item.itemPosition - 1,
+                };
+              }
+            } else if (direction === MOVE_DOWN) {
+              if (item.itemPosition - 1 === itemPosition) {
+                return {
+                  ...item,
+                  itemPosition: item.itemPosition - 1,
+                };
+              }
+              if (item.itemPosition === itemPosition) {
+                return {
+                  ...item,
+                  itemPosition: item.itemPosition + 1,
+                };
+              }
             }
             return item;
           })
@@ -158,16 +143,14 @@ const contentEditor = ({
       {type !== IMAGE && (
         <EditElementButtons
           handleRemoveElement={handleRemoveItem}
-          handleMoveElementUp={handleMoveItemUp}
-          handleMoveElementDown={handleMoveItemDown}
+          handleMoveElement={handleMoveItem}
           pattern="item"
         />
       )}
       <Component
         handleContent={handleContent}
         handleRemoveItem={handleRemoveItem}
-        handleMoveElementUp={handleMoveItemUp}
-        handleMoveElementDown={handleMoveItemDown}
+        handleMoveItem={handleMoveItem}
         sectionPosition={sectionPosition}
         itemPosition={itemPosition}
         content={content}
