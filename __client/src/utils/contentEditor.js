@@ -119,9 +119,13 @@ const contentEditor = ({
     dispatch(updateArticleSectionList(updatedSections));
   };
   const handleMoveItemDown = () => {
+    let continueUpdate = true;
     const updatedSections = sections.map((section) => {
       if (section.sectionPosition === sectionPosition) {
-        if (itemPosition === section.items.length) return null;
+        if (itemPosition === section.items.length) {
+          continueUpdate = false;
+          return;
+        }
         const updatedItems = section.items
           .map((item) => {
             if (item.itemPosition - 1 === itemPosition) {
@@ -147,7 +151,7 @@ const contentEditor = ({
         return section;
       }
     });
-    dispatch(updateArticleSectionList(updatedSections));
+    if (continueUpdate) dispatch(updateArticleSectionList(updatedSections));
   };
   return (
     <>

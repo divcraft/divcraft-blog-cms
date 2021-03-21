@@ -86,26 +86,6 @@ size:12px">font size</span></li>
           },
         ],
       },
-      {
-        sectionPosition: 2,
-        title: 'section subtitle',
-        items: [],
-      },
-      {
-        sectionPosition: 3,
-        title: 'section image',
-        items: [],
-      },
-      {
-        sectionPosition: 4,
-        title: 'section code',
-        items: [],
-      },
-      {
-        sectionPosition: 5,
-        title: 'section list',
-        items: [],
-      },
     ],
   },
 };
