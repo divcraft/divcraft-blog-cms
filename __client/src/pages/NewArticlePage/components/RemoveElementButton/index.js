@@ -7,7 +7,7 @@ const RemoveElementButton = ({ pattern, ...props }) => {
 };
 
 RemoveElementButton.propTypes = {
-  pattern: PropTypes.oneOf(['section', 'item']).isRequired,
+  pattern: PropTypes.oneOf(['section', 'item', 'listItem']).isRequired,
 };
 
 export default RemoveElementButton;

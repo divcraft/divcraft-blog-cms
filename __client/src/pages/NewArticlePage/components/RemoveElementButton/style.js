@@ -5,6 +5,7 @@ export const StyledButton = styled.button`
   padding: 0;
   display: block;
   background: none;
+  border: none;
   color: ${({ theme: { colors } }) => colors.red.regular};
   font-size: 20px;
   cursor: pointer;
@@ -21,9 +22,18 @@ export const StyledButton = styled.button`
     pattern === 'item' &&
     css`
       top: 2px;
-      border: none;
       width: 30px;
       height: 12px;
+      opacity: 0.7;
+    `}
+  ${({ pattern }) =>
+    pattern === 'listItem' &&
+    css`
+      position: absolute;
+      top: 5px;
+      left: -35px;
+      width: 15px;
+      height: 15px;
       opacity: 0.7;
     `}
   &:hover {
@@ -33,10 +43,11 @@ export const StyledButton = styled.button`
         border: solid 1px ${({ theme: { colors } }) => colors.red.regular};
       `}
     ${({ pattern }) =>
-      pattern === 'item' &&
-      css`
-        opacity: 1;
-      `}
+      pattern === 'item' ||
+      (pattern === 'listItem' &&
+        css`
+          opacity: 1;
+        `)}
   }
   &::before {
     content: '+';
