@@ -2,6 +2,13 @@ import styled from 'styled-components';
 
 export const ListItem = styled.li`
   position: relative;
+  & > button {
+    transition: 0.3s;
+    opacity: 0;
+  }
+  &:hover > button {
+    opacity: 1;
+  }
 `;
 
 export const ListItemInput = styled.input`

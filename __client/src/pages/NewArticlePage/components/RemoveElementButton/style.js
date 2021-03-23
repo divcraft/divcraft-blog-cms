@@ -43,11 +43,10 @@ export const StyledButton = styled.button`
         border: solid 1px ${({ theme: { colors } }) => colors.red.regular};
       `}
     ${({ pattern }) =>
-      pattern === 'item' ||
-      (pattern === 'listItem' &&
-        css`
-          opacity: 1;
-        `)}
+      (pattern === 'item' || pattern === 'listItem') &&
+      css`
+        opacity: 1;
+      `}
   }
   &::before {
     content: '+';

@@ -25,8 +25,22 @@ export const ContentContainer = styled.div`
     margin-top: 0;
     margin-bottom: 0;
   }
+  & > div:first-child {
+    transition: 0.3s;
+    opacity: 0;
+  }
+  &:hover > div:first-child {
+    opacity: 1;
+  }
 `;
 
 export const RelativeContainer = styled.div`
   position: relative;
+  & > div {
+    transition: 0.3s;
+    opacity: 0;
+  }
+  &:hover > div {
+    opacity: 1;
+  }
 `;

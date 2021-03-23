@@ -72,6 +72,12 @@ const ListEditor = ({
       <ul>
         {content.map((item) => (
           <ListItem key={item.listItemPosition}>
+            <RemoveElementButton
+              data-position={item.listItemPosition}
+              data-event={REMOVE}
+              onClick={handleListItem}
+              pattern="listItem"
+            />
             <ListItemInput
               data-position={item.listItemPosition}
               key={item.listItemPosition}
@@ -79,12 +85,6 @@ const ListEditor = ({
               value={item.data}
               onChange={handleContent}
               placeholder="Element listy..."
-            />
-            <RemoveElementButton
-              data-position={item.listItemPosition}
-              data-event={REMOVE}
-              onClick={handleListItem}
-              pattern="listItem"
             />
           </ListItem>
         ))}
