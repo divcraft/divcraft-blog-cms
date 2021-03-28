@@ -16,6 +16,7 @@ export const SectionTitle = styled.input`
 `;
 
 export const ContentContainer = styled.div`
+  width: ${({ pattern }) => (pattern === 'IMAGE' ? 'auto' : '100%')};
   position: relative;
   display: flex;
   flex-direction: column;
@@ -34,7 +35,7 @@ export const ContentContainer = styled.div`
   }
 `;
 
-export const RelativeContainer = styled.div`
+export const TitleContainer = styled.div`
   position: relative;
   & > div {
     transition: 0.3s;
@@ -43,4 +44,10 @@ export const RelativeContainer = styled.div`
   &:hover > div {
     opacity: 1;
   }
+`;
+
+export const ItemContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;

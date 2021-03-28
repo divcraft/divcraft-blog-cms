@@ -22,7 +22,12 @@ import {
   AddSectionItemButtons,
   EditElementButtons,
 } from 'pages/NewArticlePage/components';
-import { SectionTitle, ContentContainer, RelativeContainer } from './style';
+import {
+  SectionTitle,
+  ContentContainer,
+  TitleContainer,
+  ItemContainer,
+} from './style';
 
 const SectionEditor = ({ data: { title, items, sectionPosition } }) => {
   const sections = useSelector((state) => state.articleData.article.sections);
@@ -105,7 +110,7 @@ const SectionEditor = ({ data: { title, items, sectionPosition } }) => {
       }
     };
     return (
-      <ContentContainer key={itemPosition}>
+      <ContentContainer key={itemPosition} pattern={type}>
         <ContentEditor
           type={type}
           component={getComponent()}
@@ -118,7 +123,7 @@ const SectionEditor = ({ data: { title, items, sectionPosition } }) => {
   });
   return (
     <SectionContainer>
-      <RelativeContainer>
+      <TitleContainer>
         <SectionTitle
           value={title}
           onChange={handleTitle}
@@ -129,8 +134,8 @@ const SectionEditor = ({ data: { title, items, sectionPosition } }) => {
           handleMoveElement={handleMoveSection}
           pattern="section"
         />
-      </RelativeContainer>
-      <div>{sectionItemList}</div>
+      </TitleContainer>
+      <ItemContainer>{sectionItemList}</ItemContainer>
       <AddSectionItemButtons sectionPosition={sectionPosition} />
     </SectionContainer>
   );

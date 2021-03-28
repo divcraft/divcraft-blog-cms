@@ -140,17 +140,13 @@ const contentEditor = ({
   };
   return (
     <>
-      {type !== IMAGE && (
-        <EditElementButtons
-          handleRemoveElement={handleRemoveItem}
-          handleMoveElement={handleMoveItem}
-          pattern="item"
-        />
-      )}
+      <EditElementButtons
+        handleRemoveElement={handleRemoveItem}
+        handleMoveElement={handleMoveItem}
+        pattern="item"
+      />
       <Component
         handleContent={handleContent}
-        handleRemoveItem={handleRemoveItem}
-        handleMoveItem={handleMoveItem}
         sectionPosition={sectionPosition}
         itemPosition={itemPosition}
         content={content}

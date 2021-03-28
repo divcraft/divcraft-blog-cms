@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { EditElementButtons } from 'pages/NewArticlePage/components';
 import {
   ImageContainer,
   Image,
@@ -10,19 +9,9 @@ import {
   ImageAltInput,
 } from './style';
 
-const ImageEditor = ({
-  content,
-  handleContent,
-  handleRemoveItem,
-  handleMoveItem,
-}) => {
+const ImageEditor = ({ content, handleContent }) => {
   return (
     <ImageContainer>
-      <EditElementButtons
-        handleRemoveElement={handleRemoveItem}
-        handleMoveElement={handleMoveItem}
-        pattern="item"
-      />
       <Image src={content.url} alt={content.alt} />
       <ImageEditors>
         <ImageSrcLabel htmlFor="file-upload">
@@ -42,8 +31,6 @@ const ImageEditor = ({
 ImageEditor.propTypes = {
   content: PropTypes.instanceOf(Object).isRequired,
   handleContent: PropTypes.func.isRequired,
-  handleRemoveItem: PropTypes.func.isRequired,
-  handleMoveItem: PropTypes.func.isRequired,
 };
 
 export default ImageEditor;
