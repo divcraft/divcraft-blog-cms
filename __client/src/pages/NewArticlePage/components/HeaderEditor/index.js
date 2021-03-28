@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   editHeaderTitle,
@@ -15,10 +15,10 @@ import {
   ImageInput,
   ImageAltInput,
   ImageLabel,
-  GrayArea,
 } from './style';
 
 const HeaderEditor = () => {
+  const [imgPreview, setImgPreview] = useState(null);
   const dispatch = useDispatch();
   const header = useSelector((state) => state.articleData.article.header);
   const { title, subtitle, image } = header;
@@ -30,6 +30,16 @@ const HeaderEditor = () => {
   };
   const handleImageAlt = (e) => {
     dispatch(editHeaderImageAlt(e.target.value));
+  };
+  const handleImageSrc = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.addEventListener('load', () => {
+        setImgPreview(reader.result);
+      });
+      reader.readAsDataURL(file);
+    }
   };
   return (
     <>
@@ -45,21 +55,19 @@ const HeaderEditor = () => {
           placeholder="Podtytuł"
         />
         <ImageContainer>
-          {image.url ? (
-            <>
-              <Image src={image.url} alt={image.alt} />
-              <ImageAltInput
-                onChange={handleImageAlt}
-                placeholder="Opis obrazka"
-                value={image.alt}
-              />
-            </>
-          ) : (
-            <GrayArea />
-          )}
+          <Image src={imgPreview} alt={image.alt} />
+          <ImageAltInput
+            onChange={handleImageAlt}
+            placeholder="Opis obrazka"
+            value={image.alt}
+          />
           <ImageLabel htmlFor="file-upload">
             +
-            <ImageInput type="file" id="file-upload" />
+            <ImageInput
+              type="file"
+              id="file-upload"
+              onChange={handleImageSrc}
+            />
           </ImageLabel>
         </ImageContainer>
       </HeaderContainer>

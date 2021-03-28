@@ -20,7 +20,7 @@ export const Image = styled.img`
 `;
 
 export const ImageInput = styled.input`
-  display: none;
+  /* display: none; */
 `;
 
 export const ImageLabel = styled.label`
