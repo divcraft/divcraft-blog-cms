@@ -5,7 +5,7 @@ import { SectionTitle } from './style';
 
 const SectionContainer = ({ title, children }) => {
   return (
-    <StyledSectionContainer>
+    <StyledSectionContainer pattern="overview">
       <SectionTitle>{title}</SectionTitle>
       {children}
     </StyledSectionContainer>

@@ -122,7 +122,7 @@ const SectionEditor = ({ data: { title, items, sectionPosition } }) => {
     );
   });
   return (
-    <SectionContainer>
+    <SectionContainer pattern="articleEditor">
       <TitleContainer>
         <SectionTitle
           value={title}

@@ -1,5 +1,18 @@
 import styled from 'styled-components';
 
+export const ListElementsContainer = styled.div`
+  & ul {
+    margin-bottom: 0;
+  }
+  & > :last-child {
+    opacity: 0;
+    transition: 0.3s;
+  }
+  &:hover > :last-child {
+    opacity: 1;
+  }
+`;
+
 export const ListItem = styled.li`
   position: relative;
   & > button {
@@ -31,8 +44,4 @@ export const AddListItemButton = styled.button`
   padding: 0;
   cursor: pointer;
   color: darkgreen;
-  opacity: 0.7;
-  &:hover {
-    opacity: 1;
-  }
 `;

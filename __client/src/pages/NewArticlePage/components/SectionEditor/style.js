@@ -37,13 +37,6 @@ export const ContentContainer = styled.div`
 
 export const TitleContainer = styled.div`
   position: relative;
-  & > div {
-    transition: 0.3s;
-    opacity: 0;
-  }
-  &:hover > div {
-    opacity: 1;
-  }
 `;
 
 export const ItemContainer = styled.div`

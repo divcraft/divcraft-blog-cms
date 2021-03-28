@@ -4,7 +4,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { updateArticleSectionList } from 'store/actions';
 import { ADD, REMOVE } from 'constants';
 import { RemoveElementButton } from 'pages/NewArticlePage/components';
-import { ListItem, ListItemInput, AddListItemButton } from './style';
+import {
+  ListElementsContainer,
+  ListItem,
+  ListItemInput,
+  AddListItemButton,
+} from './style';
 
 const ListEditor = ({
   content,
@@ -68,7 +73,7 @@ const ListEditor = ({
     dispatch(updateArticleSectionList(updatedSections));
   };
   return (
-    <>
+    <ListElementsContainer>
       <ul>
         {content.map((item) => (
           <ListItem key={item.listItemPosition}>
@@ -96,7 +101,7 @@ const ListEditor = ({
       >
         +
       </AddListItemButton>
-    </>
+    </ListElementsContainer>
   );
 };
 
