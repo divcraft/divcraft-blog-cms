@@ -20,7 +20,7 @@ export const Image = styled.img`
 `;
 
 export const ImageInput = styled.input`
-  /* display: none; */
+  display: none;
 `;
 
 export const ImageLabel = styled.label`
@@ -64,7 +64,6 @@ export const SubtitleInput = styled(Input)`
 `;
 
 export const ImageAltInput = styled.input`
-  text-align: center;
   opacity: 0.7;
   width: ${(props) =>
     props.value ? props.value.length + 1 : props.placeholder.length}ch;

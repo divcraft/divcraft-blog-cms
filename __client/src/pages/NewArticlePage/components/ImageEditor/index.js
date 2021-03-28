@@ -14,9 +14,9 @@ const ImageEditor = ({ content, handleContent }) => {
     <ImageContainer>
       <Image src={content.url} alt={content.alt} />
       <ImageEditors>
-        <ImageSrcLabel htmlFor="file-upload">
+        <ImageSrcLabel htmlFor="header-img">
           <span>+</span>
-          <ImageSrcInput type="file" id="file-upload" />
+          <ImageSrcInput type="file" id="header-img" />
         </ImageSrcLabel>
         <ImageAltInput
           onChange={handleContent}
