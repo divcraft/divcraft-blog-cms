@@ -4,6 +4,7 @@ import {
   EDIT_HEADER_IMAGE_URL,
   EDIT_HEADER_IMAGE_ALT,
   UPDATE_ARTICLE_SECTION_LIST,
+  UPDATE_ARTICLE,
   CLEAR_ARTICLE_DATA,
 } from 'constants';
 
@@ -39,6 +40,13 @@ export const updateArticleSectionList = (sectionList) => {
   return {
     type: UPDATE_ARTICLE_SECTION_LIST,
     payload: sectionList,
+  };
+};
+
+export const updateArticle = (article) => {
+  return {
+    type: UPDATE_ARTICLE,
+    payload: article,
   };
 };
 

@@ -1,4 +1,5 @@
 const Articles = require('../mongoose/models/article.model');
+const manageImages = require('../utils/manageImages');
 
 module.exports = {
   findOne(req, res) {
@@ -24,18 +25,11 @@ module.exports = {
       }
     });
   },
-  create(req, res) {
-    const newArticle = new Articles({
-      // ...
-    });
-    newArticle.save((err) => {
-      if (err) {
-        res.status(500).send(err);
-        throw err;
-      } else {
-        res.send('An article has been updated correctly.', newArticle);
-      }
-    });
+  async create(req, res) {
+    const article = req.body;
+    const imagedArticle = await manageImages(article);
+    console.log(imagedArticle);
+    res.send(imagedArticle);
   },
   update(req, res) {
     const { id, updatedArticle } = req.body;

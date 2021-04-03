@@ -4,6 +4,7 @@ import {
   EDIT_HEADER_IMAGE_URL,
   EDIT_HEADER_IMAGE_ALT,
   UPDATE_ARTICLE_SECTION_LIST,
+  UPDATE_ARTICLE,
   CLEAR_ARTICLE_DATA,
 } from 'constants';
 
@@ -14,7 +15,7 @@ const initialState = {
       title: 'Najczęściej wykorzystywane metody na tablicach',
       subtitle: 'Metody używane na tablicach w javascript',
       image: {
-        url: '',
+        data: '',
         alt: '',
       },
     },
@@ -55,7 +56,7 @@ export default (state = initialState, action) => {
             ...state.article.header,
             image: {
               ...state.article.header.image,
-              url: action.payload,
+              data: action.payload,
             },
           },
         },
@@ -81,6 +82,11 @@ export default (state = initialState, action) => {
           ...state.article,
           sections: action.payload,
         },
+      };
+    case UPDATE_ARTICLE:
+      return {
+        ...state,
+        article: action.payload,
       };
     case CLEAR_ARTICLE_DATA:
       return {

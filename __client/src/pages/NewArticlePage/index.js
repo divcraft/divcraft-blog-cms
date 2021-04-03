@@ -1,7 +1,8 @@
 import React from 'react';
+import Axios from 'axios';
 import { TitleContainer, Wrapper } from 'components';
 import { useSelector, useDispatch } from 'react-redux';
-import { updateArticleSectionList } from 'store/actions';
+import { updateArticleSectionList, updateArticle } from 'store/actions';
 import {
   HeaderEditor,
   SectionEditor,
@@ -11,7 +12,20 @@ import {
 
 const NewArticlePage = () => {
   const dispatch = useDispatch();
-  const sections = useSelector((state) => state.articleData.article.sections);
+  const article = useSelector((state) => state.articleData.article);
+  const { sections } = article;
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    Axios.post('/api/articles', article)
+      .then((res) => {
+        const updatedArticle = res.data;
+        // console.log(updatedArticle);
+        dispatch(updateArticle(updatedArticle));
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   const sectionEditorList = sections.map((section) => (
     <SectionEditor key={section.sectionPosition} data={section} />
   ));
@@ -31,7 +45,10 @@ const NewArticlePage = () => {
       <TitleContainer title="Nowy artykuł" />
       <Wrapper>
         <InnerWrapper>
-          <form>
+          <button type="submit" form="article-editor">
+            Zapisz
+          </button>
+          <form onSubmit={handleSubmit} id="article-editor">
             <HeaderEditor />
             {sectionEditorList}
           </form>

@@ -54,7 +54,7 @@ const HeaderEditor = () => {
           placeholder="Podtytuł"
         />
         <ImageContainer>
-          <Image src={image.url} alt={image.alt} />
+          <Image src={image.data} alt={image.alt} />
           <ImageAltInput
             onChange={handleImageAlt}
             placeholder="Opis obrazka"

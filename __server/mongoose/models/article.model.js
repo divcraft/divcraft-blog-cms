@@ -14,21 +14,25 @@ const articleSchema = new Schema(
     header: {
       title: { type: String, required: true },
       subtitle: String,
-      imageUrl: String,
+      image: {
+        data: String,
+        alt: String,
+      },
     },
     sections: [
       {
-        priority: Number,
         title: { type: String, required: true },
         body: [
           {
             subtitle: String,
             paragraph: String,
             codeSnippet: String,
-            image: String,
+            image: {
+              data: String,
+              alt: String,
+            },
             list: [
               {
-                priority: Number,
                 content: String,
               },
             ],

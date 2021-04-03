@@ -12,7 +12,7 @@ import {
 const ImageEditor = ({ content, handleContent }) => {
   return (
     <ImageContainer>
-      <Image src={content.url} alt={content.alt} />
+      <Image src={content.data} alt={content.alt} />
       <ImageEditors>
         <ImageSrcLabel htmlFor="header-img">
           <span>+</span>
