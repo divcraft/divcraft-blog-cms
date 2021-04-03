@@ -1,7 +1,7 @@
 import {
   EDIT_HEADER_TITLE,
   EDIT_HEADER_SUBTITLE,
-  EDIT_HEADER_IMAGE_URL,
+  EDIT_HEADER_IMAGE_DATA,
   EDIT_HEADER_IMAGE_ALT,
   UPDATE_ARTICLE_SECTION_LIST,
   UPDATE_ARTICLE,
@@ -22,10 +22,10 @@ export const editHeaderSubtitle = (subtitle) => {
   };
 };
 
-export const editHeaderImageUrl = (imageUrl) => {
+export const editHeaderImageData = (imageData) => {
   return {
-    type: EDIT_HEADER_IMAGE_URL,
-    payload: imageUrl,
+    type: EDIT_HEADER_IMAGE_DATA,
+    payload: imageData,
   };
 };
 

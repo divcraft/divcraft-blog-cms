@@ -28,7 +28,6 @@ module.exports = {
   async create(req, res) {
     const article = req.body;
     const imagedArticle = await manageImages(article);
-    console.log(imagedArticle);
     res.send(imagedArticle);
   },
   update(req, res) {

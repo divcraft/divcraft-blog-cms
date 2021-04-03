@@ -24,8 +24,9 @@ const AddSectionItemButtons = ({ sectionPosition }) => {
       type: IMAGE,
       description: 'Obraz',
       content: {
-        url: '',
+        data: '',
         alt: '',
+        isUploaded: false,
       },
     },
     {

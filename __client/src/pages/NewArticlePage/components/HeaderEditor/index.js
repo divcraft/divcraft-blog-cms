@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   editHeaderTitle,
   editHeaderSubtitle,
-  editHeaderImageUrl,
+  editHeaderImageData,
   editHeaderImageAlt,
 } from 'store/actions';
 import {
@@ -30,12 +30,12 @@ const HeaderEditor = () => {
   const handleImageAlt = (e) => {
     dispatch(editHeaderImageAlt(e.target.value));
   };
-  const handleImageSrc = (e) => {
+  const handleImageData = (e) => {
     const file = e.target.files[0];
     if (file) {
       const reader = new FileReader();
       reader.addEventListener('load', () => {
-        dispatch(editHeaderImageUrl(reader.result));
+        dispatch(editHeaderImageData(reader.result));
       });
       reader.readAsDataURL(file);
     }
@@ -65,7 +65,7 @@ const HeaderEditor = () => {
             <ImageInput
               type="file"
               id="file-upload"
-              onChange={handleImageSrc}
+              onChange={handleImageData}
             />
           </ImageLabel>
         </ImageContainer>
