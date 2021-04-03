@@ -5,52 +5,20 @@ import {
   EDIT_HEADER_IMAGE_ALT,
   UPDATE_ARTICLE_SECTION_LIST,
   CLEAR_ARTICLE_DATA,
-  // LOADING,
-  // SUCCESSED,
-  // FAILED,
 } from 'constants';
 
 const initialState = {
   loadingState: null,
   article: {
     header: {
-      title: '',
-      subtitle: '',
+      title: 'Najczęściej wykorzystywane metody na tablicach',
+      subtitle: 'Metody używane na tablicach w javascript',
       image: {
         url: '',
         alt: '',
       },
     },
-    sections: [
-      {
-        sectionPosition: 1,
-        title: 'section paragraph',
-        items: [
-          {
-            itemPosition: 1,
-            type: 'LIST',
-            content: [
-              {
-                listItemPosition: 1,
-                data: 'list item 1',
-              },
-              {
-                listItemPosition: 2,
-                data: 'list item 2',
-              },
-              {
-                listItemPosition: 3,
-                data: 'list item 3',
-              },
-              {
-                listItemPosition: 4,
-                data: 'list item 4',
-              },
-            ],
-          },
-        ],
-      },
-    ],
+    sections: [],
   },
 };
 
