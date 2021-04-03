@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   editHeaderTitle,
   editHeaderSubtitle,
-  // editHeaderImageUrl,
+  editHeaderImageUrl,
   editHeaderImageAlt,
 } from 'store/actions';
 import {
@@ -18,7 +18,6 @@ import {
 } from './style';
 
 const HeaderEditor = () => {
-  const [imgPreview, setImgPreview] = useState(null);
   const dispatch = useDispatch();
   const header = useSelector((state) => state.articleData.article.header);
   const { title, subtitle, image } = header;
@@ -36,7 +35,7 @@ const HeaderEditor = () => {
     if (file) {
       const reader = new FileReader();
       reader.addEventListener('load', () => {
-        setImgPreview(reader.result);
+        dispatch(editHeaderImageUrl(reader.result));
       });
       reader.readAsDataURL(file);
     }
@@ -55,7 +54,7 @@ const HeaderEditor = () => {
           placeholder="Podtytuł"
         />
         <ImageContainer>
-          <Image src={imgPreview} alt={image.alt} />
+          <Image src={image.url} alt={image.alt} />
           <ImageAltInput
             onChange={handleImageAlt}
             placeholder="Opis obrazka"
