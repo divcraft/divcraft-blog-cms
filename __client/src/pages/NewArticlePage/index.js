@@ -19,11 +19,10 @@ const NewArticlePage = () => {
     Axios.post('/api/articles', article)
       .then((res) => {
         const updatedArticle = res.data;
-        // console.log(updatedArticle);
         dispatch(updateArticle(updatedArticle));
       })
       .catch((err) => {
-        console.log(err);
+        throw err;
       });
   };
   const sectionEditorList = sections.map((section) => (

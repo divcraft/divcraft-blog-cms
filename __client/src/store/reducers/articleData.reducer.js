@@ -12,8 +12,8 @@ const initialState = {
   loadingState: null,
   article: {
     header: {
-      title: 'Najczęściej wykorzystywane metody na tablicach',
-      subtitle: 'Metody używane na tablicach w javascript',
+      title: '',
+      subtitle: '',
       image: {
         data: '',
         alt: '',
@@ -58,6 +58,7 @@ export default (state = initialState, action) => {
             image: {
               ...state.article.header.image,
               data: action.payload,
+              isUploaded: false,
             },
           },
         },

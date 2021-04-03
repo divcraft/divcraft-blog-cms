@@ -12,6 +12,7 @@ import {
   SubtitleInput,
   ImageContainer,
   Image,
+  UploadedImage,
   ImageInput,
   ImageAltInput,
   ImageLabel,
@@ -41,36 +42,40 @@ const HeaderEditor = () => {
     }
   };
   return (
-    <>
-      <HeaderContainer>
-        <TitleInput
-          value={title}
-          onChange={handleTitle}
-          placeholder="Tytuł artykułu"
-        />
-        <SubtitleInput
-          value={subtitle}
-          onChange={handleSubtitle}
-          placeholder="Podtytuł"
-        />
-        <ImageContainer>
-          <Image src={image.data} alt={image.alt} />
-          <ImageAltInput
-            onChange={handleImageAlt}
-            placeholder="Opis obrazka"
-            value={image.alt}
+    <HeaderContainer>
+      <TitleInput
+        value={title}
+        onChange={handleTitle}
+        placeholder="Tytuł artykułu"
+      />
+      <SubtitleInput
+        value={subtitle}
+        onChange={handleSubtitle}
+        placeholder="Podtytuł"
+      />
+      <ImageContainer>
+        {image.isUploaded ? (
+          <UploadedImage
+            alt={image.alt}
+            cloudName="dmlal5qyb"
+            publicId={image.data}
+            width="1200"
+            crop="scale"
           />
-          <ImageLabel htmlFor="file-upload">
-            +
-            <ImageInput
-              type="file"
-              id="file-upload"
-              onChange={handleImageData}
-            />
-          </ImageLabel>
-        </ImageContainer>
-      </HeaderContainer>
-    </>
+        ) : (
+          <Image src={image.data} alt={image.alt} />
+        )}
+        <ImageAltInput
+          onChange={handleImageAlt}
+          placeholder="Opis obrazka"
+          value={image.alt}
+        />
+        <ImageLabel htmlFor="file-upload">
+          +
+          <ImageInput type="file" id="file-upload" onChange={handleImageData} />
+        </ImageLabel>
+      </ImageContainer>
+    </HeaderContainer>
   );
 };
 
