@@ -1,6 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
+  editCategory,
   editHeaderTitle,
   editHeaderSubtitle,
   editHeaderImageData,
@@ -8,6 +9,7 @@ import {
 } from 'store/actions';
 import {
   HeaderContainer,
+  CategorySelect,
   TitleInput,
   SubtitleInput,
   ImageContainer,
@@ -21,7 +23,11 @@ import {
 const HeaderEditor = () => {
   const dispatch = useDispatch();
   const header = useSelector((state) => state.articleData.article.header);
+  const categories = useSelector((state) => state.categories.categories);
   const { title, subtitle, image } = header;
+  const handleCategory = (e) => {
+    dispatch(editCategory(e.target.value));
+  };
   const handleTitle = (e) => {
     dispatch(editHeaderTitle(e.target.value));
   };
@@ -41,8 +47,17 @@ const HeaderEditor = () => {
       reader.readAsDataURL(file);
     }
   };
+  const categoriesList = categories.map((category) => (
+    <option key={category._id} value={category._id}>
+      {category.name}
+    </option>
+  ));
   return (
     <HeaderContainer>
+      <CategorySelect onChange={handleCategory} name="kategoria">
+        <option value="">kategoria</option>
+        {categoriesList}
+      </CategorySelect>
       <TitleInput
         value={title}
         onChange={handleTitle}

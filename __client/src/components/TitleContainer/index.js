@@ -17,13 +17,15 @@ const TitleContainer = ({ title, username, hasButtons, TitleButtons }) => {
 };
 
 TitleContainer.propTypes = {
-  title: PropTypes.string.isRequired,
-  username: PropTypes.string.isRequired,
+  title: PropTypes.string,
+  username: PropTypes.string,
   hasButtons: PropTypes.bool,
   TitleButtons: PropTypes.instanceOf(Object),
 };
 
 TitleContainer.defaultProps = {
+  title: null,
+  username: null,
   hasButtons: false,
   TitleButtons: null,
 };

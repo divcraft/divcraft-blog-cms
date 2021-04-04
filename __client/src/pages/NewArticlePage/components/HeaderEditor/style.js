@@ -57,17 +57,28 @@ export const Input = styled.input`
   max-width: 100%;
 `;
 
+export const CategorySelect = styled.select`
+  padding: 5px 0;
+  font-size: 14px;
+  line-height: 1.5;
+  color: ${({ theme: { colors } }) => colors.blue.regular};
+  margin: 10px auto 5px;
+  text-align: center;
+  appearance: none;
+  border: none;
+`;
+
 export const TitleInput = styled(Input)`
   font-size: 28px;
   font-weight: 500;
-  margin: 25px auto 10px;
+  margin: 10px auto;
 `;
 
 export const SubtitleInput = styled(Input)`
   font-size: 24px;
   font-weight: 400;
   color: ${({ theme: { colors } }) => colors.gray.dark};
-  margin: 10px auto 25px;
+  margin: 0px auto 20px;
 `;
 
 export const ImageAltInput = styled.input`

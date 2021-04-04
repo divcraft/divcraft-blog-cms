@@ -1,4 +1,5 @@
 import {
+  EDIT_CATEGORY,
   EDIT_HEADER_TITLE,
   EDIT_HEADER_SUBTITLE,
   EDIT_HEADER_IMAGE_DATA,
@@ -7,6 +8,13 @@ import {
   UPDATE_ARTICLE,
   CLEAR_ARTICLE_DATA,
 } from 'constants';
+
+export const editCategory = (categoryId) => {
+  return {
+    type: EDIT_CATEGORY,
+    payload: categoryId,
+  };
+};
 
 export const editHeaderTitle = (title) => {
   return {

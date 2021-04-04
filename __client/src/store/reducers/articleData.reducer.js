@@ -1,4 +1,5 @@
 import {
+  EDIT_CATEGORY,
   EDIT_HEADER_TITLE,
   EDIT_HEADER_SUBTITLE,
   EDIT_HEADER_IMAGE_DATA,
@@ -12,6 +13,7 @@ const initialState = {
   loadingState: null,
   article: {
     header: {
+      categoryId: '',
       title: '',
       subtitle: '',
       image: {
@@ -26,6 +28,17 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
+    case EDIT_CATEGORY:
+      return {
+        ...state,
+        article: {
+          ...state.article,
+          header: {
+            ...state.article.header,
+            categoryId: action.payload,
+          },
+        },
+      };
     case EDIT_HEADER_TITLE:
       return {
         ...state,
