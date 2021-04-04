@@ -15,7 +15,7 @@ const contentEditor = ({
 }) => {
   const sections = useSelector((state) => state.articleData.article.sections);
   const dispatch = useDispatch();
-  const handleContent = (e) => {
+  const handleContent = (e, imgData) => {
     const updatedContent = (prevContent) => {
       if (type === IMAGE) {
         if (e.target.type === 'text') {
@@ -26,7 +26,7 @@ const contentEditor = ({
         } else if (e.target.type === 'file') {
           return {
             ...prevContent,
-            src: e.target.value,
+            data: imgData,
           };
         }
       } else if (type === LIST) {

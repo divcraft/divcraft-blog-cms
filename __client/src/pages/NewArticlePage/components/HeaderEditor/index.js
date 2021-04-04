@@ -4,20 +4,15 @@ import {
   editCategory,
   editHeaderTitle,
   editHeaderSubtitle,
-  editHeaderImageData,
-  editHeaderImageAlt,
+  // editHeaderImageData,
+  // editHeaderImageAlt,
 } from 'store/actions';
+import { ImageEditor } from 'pages/NewArticlePage/components';
 import {
   HeaderContainer,
   CategorySelect,
   TitleInput,
   SubtitleInput,
-  ImageContainer,
-  Image,
-  UploadedImage,
-  ImageInput,
-  ImageAltInput,
-  ImageLabel,
 } from './style';
 
 const HeaderEditor = () => {
@@ -33,19 +28,6 @@ const HeaderEditor = () => {
   };
   const handleSubtitle = (e) => {
     dispatch(editHeaderSubtitle(e.target.value));
-  };
-  const handleImageAlt = (e) => {
-    dispatch(editHeaderImageAlt(e.target.value));
-  };
-  const handleImageData = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.addEventListener('load', () => {
-        dispatch(editHeaderImageData(reader.result));
-      });
-      reader.readAsDataURL(file);
-    }
   };
   const categoriesList = categories.map((category) => (
     <option key={category._id} value={category._id}>
@@ -68,28 +50,7 @@ const HeaderEditor = () => {
         onChange={handleSubtitle}
         placeholder="Podtytuł"
       />
-      <ImageContainer>
-        {image.isUploaded ? (
-          <UploadedImage
-            alt={image.alt}
-            cloudName="dmlal5qyb"
-            publicId={image.data}
-            width="1200"
-            crop="scale"
-          />
-        ) : (
-          <Image src={image.data} alt={image.alt} />
-        )}
-        <ImageAltInput
-          onChange={handleImageAlt}
-          placeholder="Opis obrazka"
-          value={image.alt}
-        />
-        <ImageLabel htmlFor="file-upload">
-          +
-          <ImageInput type="file" id="file-upload" onChange={handleImageData} />
-        </ImageLabel>
-      </ImageContainer>
+      <ImageEditor pattern="header" content={image} />
     </HeaderContainer>
   );
 };
