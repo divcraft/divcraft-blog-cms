@@ -11,3 +11,4 @@ export { default as AddSectionItemButtons } from './AddSectionItemButtons';
 export { default as RemoveElementButton } from './RemoveElementButton';
 export { default as EditElementButtons } from './EditElementButtons';
 export { default as ChangePositionButtons } from './ChangePositionButtons';
+export { default as TitleButtons } from './TitleButtons';

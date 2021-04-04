@@ -8,6 +8,7 @@ import {
   SectionEditor,
   InnerWrapper,
   AddElementButton,
+  TitleButtons,
 } from './components';
 
 const NewArticlePage = () => {
@@ -41,12 +42,13 @@ const NewArticlePage = () => {
   };
   return (
     <>
-      <TitleContainer title="Nowy artykuł" />
+      <TitleContainer
+        title="Nowy artykuł"
+        hasButtons
+        TitleButtons={TitleButtons}
+      />
       <Wrapper>
         <InnerWrapper>
-          <button type="submit" form="article-editor">
-            Zapisz
-          </button>
           <form onSubmit={handleSubmit} id="article-editor">
             <HeaderEditor />
             {sectionEditorList}

@@ -3,13 +3,13 @@ import PropTypes from 'prop-types';
 import { MainTitle, Wrapper } from 'components';
 import { Container, Border } from './style';
 
-const TitleContainer = ({ title, username, hasButtons }) => {
+const TitleContainer = ({ title, username, hasButtons, TitleButtons }) => {
   return (
     <Border>
       <Wrapper>
         <Container>
           <MainTitle>{username ? `Cześć, ${username}` : title}</MainTitle>
-          {hasButtons && <div>filter/sort buttons</div>}
+          {hasButtons && <TitleButtons />}
         </Container>
       </Wrapper>
     </Border>
@@ -17,15 +17,15 @@ const TitleContainer = ({ title, username, hasButtons }) => {
 };
 
 TitleContainer.propTypes = {
-  title: PropTypes.string,
-  username: PropTypes.string,
+  title: PropTypes.string.isRequired,
+  username: PropTypes.string.isRequired,
   hasButtons: PropTypes.bool,
+  TitleButtons: PropTypes.instanceOf(Object),
 };
 
 TitleContainer.defaultProps = {
-  title: null,
-  username: null,
   hasButtons: false,
+  TitleButtons: null,
 };
 
 export default TitleContainer;
