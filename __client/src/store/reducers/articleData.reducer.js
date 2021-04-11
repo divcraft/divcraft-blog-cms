@@ -10,10 +10,10 @@ import {
 } from 'constants';
 
 const initialState = {
-  loadingState: null,
+  user_id: '',
+  category_id: '',
   article: {
     header: {
-      categoryId: '',
       title: '',
       subtitle: '',
       image: {
@@ -31,13 +31,7 @@ export default (state = initialState, action) => {
     case EDIT_CATEGORY:
       return {
         ...state,
-        article: {
-          ...state.article,
-          header: {
-            ...state.article.header,
-            categoryId: action.payload,
-          },
-        },
+        category_id: action.payload,
       };
     case EDIT_HEADER_TITLE:
       return {

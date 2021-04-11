@@ -43,66 +43,50 @@ const ImageEditor = ({
     }
   };
   return (
-    <>
-      <ImageContainer pattern={pattern}>
-        {content.data ? (
-          <>
-            {content.isUploaded ? (
-              <UploadedImage
-                alt={content.alt}
-                cloudName="dmlal5qyb"
-                publicId={content.data}
-                width={pattern === 'header' && '1200'}
-                crop="scale"
-              />
-            ) : (
-              <PreviewImage alt={content.alt} src={content.data} />
-            )}
-          </>
-        ) : (
-          <NoImage />
-        )}
-        <ImageEditors>
-          <ImageAltInput
-            onChange={handleImageAlt}
-            placeholder="Opis obrazka"
-            value={content.alt}
-          />
-          <ImageDataLabel
+    <ImageContainer pattern={pattern}>
+      {content.data ? (
+        <>
+          {content.isUploaded ? (
+            <UploadedImage
+              alt={content.alt}
+              cloudName="dmlal5qyb"
+              publicId={content.data}
+              width={pattern === 'header' && '1200'}
+              crop="scale"
+            />
+          ) : (
+            <PreviewImage alt={content.alt} src={content.data} />
+          )}
+        </>
+      ) : (
+        <NoImage />
+      )}
+      <ImageEditors>
+        <ImageAltInput
+          onChange={handleImageAlt}
+          placeholder="Opis obrazka"
+          value={content.alt}
+        />
+        <ImageDataLabel
+          id={
+            pattern === 'header'
+              ? 'header-image'
+              : `image-${sectionPosition}-${itemPosition}`
+          }
+        >
+          +
+          <ImageDataInput
+            onChange={handleImageData}
+            type="file"
             id={
               pattern === 'header'
                 ? 'header-image'
                 : `image-${sectionPosition}-${itemPosition}`
             }
-          >
-            +
-            <ImageDataInput
-              onChange={handleImageData}
-              type="file"
-              id={
-                pattern === 'header'
-                  ? 'header-image'
-                  : `image-${sectionPosition}-${itemPosition}`
-              }
-            />
-          </ImageDataLabel>
-        </ImageEditors>
-      </ImageContainer>
-      {/* <ImageContainer>
-        <Image src={content.data} alt={content.alt} />
-        <ImageEditors>
-          <ImageSrcLabel htmlFor="header-img">
-            <span>+</span>
-            <ImageSrcInput type="file" id="header-img" />
-          </ImageSrcLabel>
-          <ImageAltInput
-            onChange={handleContent}
-            placeholder="Opis obrazka"
-            value={content.alt}
           />
-        </ImageEditors>
-      </ImageContainer> */}
-    </>
+        </ImageDataLabel>
+      </ImageEditors>
+    </ImageContainer>
   );
 };
 

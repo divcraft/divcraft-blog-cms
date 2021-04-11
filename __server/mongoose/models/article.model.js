@@ -17,6 +17,7 @@ const articleSchema = new Schema(
       image: {
         data: String,
         alt: String,
+        isUploaded: Boolean,
       },
     },
     sections: [

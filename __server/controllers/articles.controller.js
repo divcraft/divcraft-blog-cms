@@ -27,8 +27,19 @@ module.exports = {
   },
   async create(req, res) {
     const article = req.body;
-    const imagedArticle = await manageImages(article);
-    res.send(imagedArticle);
+    try {
+      const imagedArticle = await manageImages(article);
+      const newArticle = new Articles(imagedArticle);
+      newArticle.save((err) => {
+        if (err) {
+          res.status(500).send(err);
+        } else {
+          res.send(newArticle);
+        }
+      });
+    } catch (err) {
+      res.status(500).send(err);
+    }
   },
   update(req, res) {
     const { id, updatedArticle } = req.body;

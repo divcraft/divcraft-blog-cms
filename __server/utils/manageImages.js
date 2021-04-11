@@ -25,7 +25,11 @@ const manageImages = async (article) => {
     const updatedSections = article.sections.map((section) => {
       const updatedItems = section.items.map(async (item) => {
         let updatedItem;
-        if (item.type === 'IMAGE' && !item.content.isUploaded) {
+        if (
+          item.type === 'IMAGE' &&
+          !item.content.isUploaded &&
+          item.content.data
+        ) {
           const imageData = (await manageImage(item.content.data)).public_id;
           updatedItem = {
             ...item,

@@ -1,5 +1,6 @@
 import React from 'react';
 import { LinkButton, TitleButtonsContainer } from 'components';
+import { Button } from './style';
 
 const TitleLinkButtons = () => {
   return (
@@ -7,9 +8,9 @@ const TitleLinkButtons = () => {
       <LinkButton pattern="white" type="button">
         Podgląd
       </LinkButton>
-      <LinkButton pattern="white" type="submit" form="article-editor">
+      <Button pattern="white" type="submit" form="article-editor">
         Zapisz
-      </LinkButton>
+      </Button>
     </TitleButtonsContainer>
   );
 };

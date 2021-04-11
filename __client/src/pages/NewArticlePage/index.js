@@ -20,6 +20,8 @@ const NewArticlePage = () => {
     Axios.post('/api/articles', article)
       .then((res) => {
         const updatedArticle = res.data;
+        console.log(article);
+        console.log(updatedArticle);
         dispatch(updateArticle(updatedArticle));
       })
       .catch((err) => {
