@@ -22,21 +22,13 @@ const articleSchema = new Schema(
     },
     sections: [
       {
+        sectionPosition: { type: String, required: true },
         title: { type: String, required: true },
-        body: [
+        items: [
           {
-            subtitle: String,
-            paragraph: String,
-            codeSnippet: String,
-            image: {
-              data: String,
-              alt: String,
-            },
-            list: [
-              {
-                content: String,
-              },
-            ],
+            itemPosition: { type: Number, required: true },
+            type: { type: String, required: true },
+            content: Schema.Types.Mixed,
           },
         ],
       },
