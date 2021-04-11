@@ -1,4 +1,5 @@
 import {
+  ADD_USER_ID,
   EDIT_CATEGORY,
   EDIT_HEADER_TITLE,
   EDIT_HEADER_SUBTITLE,
@@ -28,6 +29,11 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
+    case ADD_USER_ID:
+      return {
+        ...state,
+        user_id: action.payload,
+      };
     case EDIT_CATEGORY:
       return {
         ...state,
@@ -98,16 +104,7 @@ export default (state = initialState, action) => {
         article: action.payload,
       };
     case CLEAR_ARTICLE_DATA:
-      return {
-        ...state,
-        article: {
-          ...state.article,
-          header: {
-            ...state.article.header,
-            imageUrl: action.payload,
-          },
-        },
-      };
+      return state;
     default:
       return state;
   }

@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Axios from 'axios';
 import { TitleContainer, Wrapper } from 'components';
 import { useSelector, useDispatch } from 'react-redux';
-import { updateArticleSectionList, updateArticle } from 'store/actions';
+import {
+  updateArticleSectionList,
+  // updateArticle,
+  addUserId,
+} from 'store/actions';
 import {
   HeaderEditor,
   SectionEditor,
@@ -14,6 +18,7 @@ import {
 const NewArticlePage = () => {
   const dispatch = useDispatch();
   const article = useSelector((state) => state.articleData.article);
+  const userId = useSelector((state) => state.userData.user._id);
   const { sections } = article;
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -22,7 +27,7 @@ const NewArticlePage = () => {
         const updatedArticle = res.data;
         console.log(article);
         console.log(updatedArticle);
-        dispatch(updateArticle(updatedArticle));
+        // dispatch(updateArticle(updatedArticle));
       })
       .catch((err) => {
         throw err;
@@ -42,6 +47,9 @@ const NewArticlePage = () => {
     ];
     dispatch(updateArticleSectionList(updatedSections));
   };
+  useEffect(() => {
+    dispatch(addUserId(userId));
+  }, []);
   return (
     <>
       <TitleContainer

@@ -1,4 +1,5 @@
 import {
+  ADD_USER_ID,
   EDIT_CATEGORY,
   EDIT_HEADER_TITLE,
   EDIT_HEADER_SUBTITLE,
@@ -8,6 +9,13 @@ import {
   UPDATE_ARTICLE,
   CLEAR_ARTICLE_DATA,
 } from 'constants';
+
+export const addUserId = (userId) => {
+  return {
+    type: ADD_USER_ID,
+    payload: userId,
+  };
+};
 
 export const editCategory = (categoryId) => {
   return {
