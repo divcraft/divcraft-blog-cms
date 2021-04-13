@@ -1,6 +1,6 @@
 const { cloudinary } = require('../config/cloudinaryConfig');
 
-const manageImages = async (article) => {
+const manageImages = (article) => {
   const manageImage = (stringImgData) => {
     return cloudinary.uploader.upload(stringImgData, {
       upload_preset: 'div-craft-setup',
@@ -21,8 +21,8 @@ const manageImages = async (article) => {
     }
     return article.header;
   };
-  const updateSections = () => {
-    const updatedSections = article.sections.map((section) => {
+  const updateSections = async () => {
+    const updatedSections = await article.sections.map((section) => {
       const updatedItems = section.items.map(async (item) => {
         let updatedItem;
         if (
@@ -53,8 +53,9 @@ const manageImages = async (article) => {
   };
 
   const imagedArticle = {
-    header: await updateHeader(),
-    sections: await updateSections(),
+    ...article,
+    header: updateHeader(),
+    sections: updateSections(),
   };
   return imagedArticle;
 };

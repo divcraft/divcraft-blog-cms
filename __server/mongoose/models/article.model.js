@@ -28,7 +28,7 @@ const articleSchema = new Schema(
           {
             itemPosition: { type: Number, required: true },
             type: { type: String, required: true },
-            content: Schema.Types.Mixed,
+            content: String,
           },
         ],
       },

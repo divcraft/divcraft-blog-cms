@@ -1,5 +1,5 @@
 const Articles = require('../mongoose/models/article.model');
-const manageImages = require('../utils/manageImages');
+// const manageImages = require('../utils/manageImages');
 
 module.exports = {
   findOne(req, res) {
@@ -27,19 +27,20 @@ module.exports = {
   },
   async create(req, res) {
     const article = req.body;
-    try {
-      const imagedArticle = await manageImages(article);
-      const newArticle = new Articles(imagedArticle);
-      newArticle.save((err) => {
-        if (err) {
-          res.status(500).send(err);
-        } else {
-          res.send(newArticle);
-        }
-      });
-    } catch (err) {
-      res.status(500).send(err);
-    }
+    const newArticle = new Articles(article);
+    newArticle.save((err) => {
+      if (err) {
+        res.status(500).send(err);
+      } else {
+        res.send(newArticle);
+      }
+    });
+    // try {
+    // const imagedArticle = await manageImages(article);
+    // res.send(imagedArticle);
+    // } catch (err) {
+    //   res.status(500).send(err);
+    // }
   },
   update(req, res) {
     const { id, updatedArticle } = req.body;
