@@ -4,7 +4,7 @@ import { TitleContainer, Wrapper } from 'components';
 import { useSelector, useDispatch } from 'react-redux';
 import {
   updateArticleSectionList,
-  // updateArticle,
+  updateArticle,
   addUserId,
 } from 'store/actions';
 import {
@@ -27,7 +27,7 @@ const NewArticlePage = () => {
         const updatedArticle = res.data;
         console.log(article);
         console.log(updatedArticle);
-        // dispatch(updateArticle(updatedArticle));
+        dispatch(updateArticle(updatedArticle));
       })
       .catch((err) => {
         throw err;
