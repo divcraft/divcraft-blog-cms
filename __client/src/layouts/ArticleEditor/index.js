@@ -6,6 +6,7 @@ import {
   updateArticleSectionList,
   updateArticle,
   addUserId,
+  clearArticleData,
 } from 'store/actions';
 import {
   HeaderEditor,
@@ -46,6 +47,9 @@ const NewArticlePage = () => {
   };
   useEffect(() => {
     dispatch(addUserId(userId));
+    return () => {
+      dispatch(clearArticleData());
+    };
   }, []);
   return (
     <Wrapper>

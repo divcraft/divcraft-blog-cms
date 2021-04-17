@@ -25,7 +25,7 @@ const EditArticlePage = () => {
   return (
     <>
       <TitleContainer
-        title={isDataLoaded && articleTitle}
+        title={isDataLoaded ? articleTitle : 'Ładowanie...'}
         hasButtons
         TitleButtons={TitleButtons}
       />

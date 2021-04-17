@@ -111,7 +111,7 @@ export default (state = initialState, action) => {
         article: action.payload,
       };
     case CLEAR_ARTICLE_DATA:
-      return state;
+      return initialState;
     case FETCH_ARTICLE_DATA_PROMISE:
       return {
         ...state,
