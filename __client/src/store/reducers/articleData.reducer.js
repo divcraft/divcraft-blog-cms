@@ -8,9 +8,16 @@ import {
   UPDATE_ARTICLE_SECTION_LIST,
   UPDATE_ARTICLE,
   CLEAR_ARTICLE_DATA,
+  FETCH_ARTICLE_DATA_PROMISE,
+  FETCH_ARTICLE_DATA_SUCCESS,
+  FETCH_ARTICLE_DATA_FAIL,
+  LOADING,
+  SUCCESSED,
+  FAILED,
 } from 'constants';
 
 const initialState = {
+  loadingState: null,
   user_id: '',
   category_id: '',
   article: {
@@ -105,6 +112,21 @@ export default (state = initialState, action) => {
       };
     case CLEAR_ARTICLE_DATA:
       return state;
+    case FETCH_ARTICLE_DATA_PROMISE:
+      return {
+        ...state,
+        loadingState: LOADING,
+      };
+    case FETCH_ARTICLE_DATA_SUCCESS:
+      return {
+        ...action.payload,
+        loadingState: SUCCESSED,
+      };
+    case FETCH_ARTICLE_DATA_FAIL:
+      return {
+        ...state,
+        loadingState: FAILED,
+      };
     default:
       return state;
   }

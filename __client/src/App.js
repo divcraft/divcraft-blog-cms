@@ -18,6 +18,7 @@ import {
   ContactPanelPage,
   AdminPanelPage,
   NewArticlePage,
+  EditArticlePage,
   MyAccountPage,
   HelpPage,
 } from 'pages';
@@ -57,6 +58,7 @@ const App = () => {
         adminAccess
       />
       <ProtectedRoute path="/nowy-artykul" component={NewArticlePage} />
+      <ProtectedRoute path="/edytuj-artykul/:id" component={EditArticlePage} />
       <ProtectedRoute path="/moje-konto" component={MyAccountPage} />
       <ProtectedRoute path="/pomoc" component={HelpPage} />
       <Redirect to="/przeglad" />

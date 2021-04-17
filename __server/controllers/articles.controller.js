@@ -8,7 +8,13 @@ module.exports = {
       if (err) {
         res.status(500).send(err);
       } else {
-        res.send(data);
+        // eslint-disable-next-line camelcase
+        const { user_id, category_id, article } = data;
+        res.send({
+          user_id,
+          category_id,
+          article,
+        });
       }
     });
   },

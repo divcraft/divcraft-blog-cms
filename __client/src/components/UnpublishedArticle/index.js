@@ -66,7 +66,7 @@ const UnpublishedArticle = ({ article, pattern }) => {
           <LinkButton to="/" pattern="white">
             Podgląd
           </LinkButton>
-          <LinkButton to="/" pattern="white">
+          <LinkButton to={`/edytuj-artykul/${_id}`} pattern="white">
             Edytuj
           </LinkButton>
           {pattern === 'toGettingPublic' ? (

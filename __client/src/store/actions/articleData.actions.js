@@ -1,3 +1,4 @@
+import Axios from 'axios';
 import {
   ADD_USER_ID,
   EDIT_CATEGORY,
@@ -8,6 +9,9 @@ import {
   UPDATE_ARTICLE_SECTION_LIST,
   UPDATE_ARTICLE,
   CLEAR_ARTICLE_DATA,
+  FETCH_ARTICLE_DATA_PROMISE,
+  FETCH_ARTICLE_DATA_SUCCESS,
+  FETCH_ARTICLE_DATA_FAIL,
 } from 'constants';
 
 export const addUserId = (userId) => {
@@ -64,6 +68,25 @@ export const updateArticle = (article) => {
     type: UPDATE_ARTICLE,
     payload: article,
   };
+};
+
+export const fetchArticleData = (articleId) => (dispatch) => {
+  dispatch({
+    type: FETCH_ARTICLE_DATA_PROMISE,
+  });
+  Axios.get(`/api/articles/${articleId}`)
+    .then((res) => {
+      dispatch({
+        type: FETCH_ARTICLE_DATA_SUCCESS,
+        payload: res.data,
+      });
+    })
+    .catch((err) => {
+      dispatch({
+        type: FETCH_ARTICLE_DATA_FAIL,
+      });
+      throw err;
+    });
 };
 
 export const clearArticleData = () => {
