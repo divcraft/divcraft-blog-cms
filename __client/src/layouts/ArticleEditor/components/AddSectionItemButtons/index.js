@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 import { updateArticleSectionList } from 'store/actions';
-import { AddElementButton } from 'pages/NewArticlePage/components';
+import { AddElementButton } from 'layouts/ArticleEditor/components';
 import { PARAGRAPH, SUBTITLE, IMAGE, CODE, LIST } from 'constants';
 import { ButtonsContainer } from './style';
 

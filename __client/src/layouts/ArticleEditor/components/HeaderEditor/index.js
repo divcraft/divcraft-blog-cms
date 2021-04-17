@@ -4,10 +4,8 @@ import {
   editCategory,
   editHeaderTitle,
   editHeaderSubtitle,
-  // editHeaderImageData,
-  // editHeaderImageAlt,
 } from 'store/actions';
-import { ImageEditor } from 'pages/NewArticlePage/components';
+import { ImageEditor } from 'layouts/ArticleEditor/components';
 import {
   HeaderContainer,
   CategorySelect,

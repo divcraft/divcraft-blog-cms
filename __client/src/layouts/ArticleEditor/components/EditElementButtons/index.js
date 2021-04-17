@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {
   RemoveElementButton,
   ChangePositionButtons,
-} from 'pages/NewArticlePage/components';
+} from 'layouts/ArticleEditor/components';
 import { ButtonsContainer } from './style';
 
 const EditElementButtons = ({

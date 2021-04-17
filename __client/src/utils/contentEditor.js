@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 import { updateArticleSectionList } from 'store/actions';
 import { IMAGE, LIST, MOVE_UP, MOVE_DOWN } from 'constants';
-import { EditElementButtons } from 'pages/NewArticlePage/components';
+import { EditElementButtons } from 'layouts/ArticleEditor/components';
 
 const contentEditor = ({
   component: Component,

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateArticleSectionList } from 'store/actions';
 import { ADD, REMOVE } from 'constants';
-import { RemoveElementButton } from 'pages/NewArticlePage/components';
+import { RemoveElementButton } from 'layouts/ArticleEditor/components';
 import {
   ListElementsContainer,
   ListItem,

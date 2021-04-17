@@ -21,7 +21,7 @@ import {
   ListEditor,
   AddSectionItemButtons,
   EditElementButtons,
-} from 'pages/NewArticlePage/components';
+} from 'layouts/ArticleEditor/components';
 import {
   SectionTitle,
   ContentContainer,
