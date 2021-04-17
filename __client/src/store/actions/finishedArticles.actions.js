@@ -18,9 +18,14 @@ export const fetchFinishedArticles = () => (dispatch) => {
     Axios.get(`/api/articles?user_id=${userId}&isFinished=true`)
       .then((res) => {
         const { data } = res;
+        const regroupedData = data.map((article) => ({
+          ...article,
+          header: article.article.header,
+          sections: article.article.sections,
+        }));
         dispatch({
           type: FETCH_FINISHED_ARTICLES_SUCCESS,
-          payload: data,
+          payload: regroupedData,
         });
       })
       .catch((err) => {

@@ -20,9 +20,14 @@ export const fetchToEditArticles = () => (dispatch) => {
     )
       .then((res) => {
         const { data } = res;
+        const regroupedData = data.map((article) => ({
+          ...article,
+          header: article.article.header,
+          sections: article.article.sections,
+        }));
         dispatch({
           type: FETCH_TO_EDIT_ARTICLES_SUCCESS,
-          payload: data,
+          payload: regroupedData,
         });
       })
       .catch((err) => {

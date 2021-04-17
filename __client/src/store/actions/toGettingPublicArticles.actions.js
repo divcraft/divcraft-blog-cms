@@ -20,9 +20,14 @@ export const fetchToGettingPublicArticlesOneUser = () => (dispatch) => {
     )
       .then((res) => {
         const { data } = res;
+        const regroupedData = data.map((article) => ({
+          ...article,
+          header: article.article.header,
+          sections: article.article.sections,
+        }));
         dispatch({
           type: FETCH_TO_GETTING_PUBLIC_ARTICLES_SUCCESS,
-          payload: data,
+          payload: regroupedData,
         });
       })
       .catch((err) => {
@@ -43,7 +48,14 @@ export const fetchToGettingPublicArticlesAllUsers = () => (dispatch) => {
     Axios.get(`/api/articles?isPublished=false&isFinished=true`)
       .then((res) => {
         const { data } = res;
-        const payload = data.filter((article) => article.user_id !== userId);
+        const regroupedData = data.map((article) => ({
+          ...article,
+          header: article.article.header,
+          sections: article.article.sections,
+        }));
+        const payload = regroupedData.filter(
+          (article) => article.user_id !== userId
+        );
         dispatch({
           type: FETCH_TO_GETTING_PUBLIC_ARTICLES_SUCCESS,
           payload,
