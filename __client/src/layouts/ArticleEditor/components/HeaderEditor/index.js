@@ -16,6 +16,7 @@ import {
 const HeaderEditor = () => {
   const dispatch = useDispatch();
   const header = useSelector((state) => state.articleData.article.header);
+  const categoryId = useSelector((state) => state.articleData.category_id);
   const categories = useSelector((state) => state.categories.categories);
   const { title, subtitle, image } = header;
   const handleCategory = (e) => {
@@ -28,7 +29,11 @@ const HeaderEditor = () => {
     dispatch(editHeaderSubtitle(e.target.value));
   };
   const categoriesList = categories.map((category) => (
-    <option key={category._id} value={category._id}>
+    <option
+      key={category._id}
+      value={category._id}
+      selected={categoryId === category._id}
+    >
       {category.name}
     </option>
   ));
