@@ -4,35 +4,37 @@ const { Schema } = mongoose;
 
 const articleSchema = new Schema(
   {
-    user_id: String,
-    category_id: String,
+    user_id: { type: String, required: true },
+    category_id: { type: String, required: true },
     averageRating: { type: Number, default: 0 },
     ratersNumber: { type: Number, default: 0 },
     isFinished: { type: Boolean, default: false },
     isPublished: { type: Boolean, default: false },
     publicationDate: Date,
-    header: {
-      title: { type: String, required: true },
-      subtitle: String,
-      image: {
-        data: String,
-        alt: String,
-        isUploaded: Boolean,
-      },
-    },
-    sections: [
-      {
-        sectionPosition: { type: String, required: true },
+    article: {
+      header: {
         title: { type: String, required: true },
-        items: [
-          {
-            itemPosition: { type: Number, required: true },
-            type: { type: String, required: true },
-            content: Schema.Types.Mixed,
-          },
-        ],
+        subtitle: String,
+        image: {
+          data: String,
+          alt: String,
+          isUploaded: Boolean,
+        },
       },
-    ],
+      sections: [
+        {
+          sectionPosition: { type: Number, required: true },
+          title: { type: String, required: true },
+          items: [
+            {
+              itemPosition: { type: Number, required: true },
+              type: { type: String, required: true },
+              content: Schema.Types.Mixed,
+            },
+          ],
+        },
+      ],
+    },
   },
   {
     timestamps: true,

@@ -17,16 +17,14 @@ import {
 
 const NewArticlePage = () => {
   const dispatch = useDispatch();
-  const article = useSelector((state) => state.articleData.article);
+  const articleData = useSelector((state) => state.articleData);
   const userId = useSelector((state) => state.userData.user._id);
-  const { sections } = article;
+  const { sections } = articleData.article;
   const handleSubmit = (e) => {
     e.preventDefault();
-    Axios.post('/api/articles', article)
+    Axios.post('/api/articles', articleData)
       .then((res) => {
         const updatedArticle = res.data;
-        console.log(article);
-        console.log(updatedArticle);
         dispatch(updateArticle(updatedArticle));
       })
       .catch((err) => {

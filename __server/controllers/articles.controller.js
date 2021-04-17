@@ -26,15 +26,19 @@ module.exports = {
     });
   },
   async create(req, res) {
-    const article = req.body;
+    const articleData = req.body;
     try {
-      const imagedArticle = await manageImages(article);
-      const newArticle = new Articles(imagedArticle);
+      const imagedArticle = await manageImages(articleData.article);
+      const updatedArticleData = {
+        ...articleData,
+        article: imagedArticle,
+      };
+      const newArticle = new Articles(updatedArticleData);
       newArticle.save((err) => {
         if (err) {
           res.status(500).send(err);
         } else {
-          res.send(newArticle);
+          res.send(newArticle.article);
         }
       });
     } catch (err) {

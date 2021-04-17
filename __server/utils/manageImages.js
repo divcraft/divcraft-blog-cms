@@ -13,7 +13,7 @@ const manageImages = async (article) => {
         ...article.header,
         image: {
           ...article.header.image,
-          data: imageData.public_id || 'pusto header',
+          data: imageData.public_id,
           isUploaded: true,
         },
       };
@@ -35,7 +35,7 @@ const manageImages = async (article) => {
                 ...item,
                 content: {
                   ...item.content,
-                  data: imageData.public_id || 'pusto',
+                  data: imageData.public_id,
                   isUploaded: true,
                 },
               };
