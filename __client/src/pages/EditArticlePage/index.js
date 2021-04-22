@@ -29,7 +29,11 @@ const EditArticlePage = () => {
         hasButtons
         TitleButtons={TitleButtons}
       />
-      {isDataLoaded ? <ArticleEditor /> : <LoadingIndicator pattern="page" />}
+      {isDataLoaded ? (
+        <ArticleEditor pattern="editArticle" />
+      ) : (
+        <LoadingIndicator pattern="page" />
+      )}
     </>
   );
 };

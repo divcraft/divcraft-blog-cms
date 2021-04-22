@@ -11,7 +11,7 @@ const NewArticlePage = () => {
         hasButtons
         TitleButtons={TitleButtons}
       />
-      <ArticleEditor />
+      <ArticleEditor pattern="newArticle" />
     </>
   );
 };

@@ -51,15 +51,26 @@ module.exports = {
       res.send(err);
     }
   },
-  update(req, res) {
-    const { id, updatedArticle } = req.body;
-    Articles.findByIdAndUpdate(id, updatedArticle, (err) => {
-      if (err) {
-        res.status(500).send(err);
-      } else {
-        res.json('An article has been added correctly.', updatedArticle);
-      }
-    });
+  async update(req, res) {
+    const article = req.body;
+    const { id } = req.params;
+    try {
+      const updatedArticle = await manageImages(article);
+      Articles.findByIdAndUpdate(
+        id,
+        { article: updatedArticle },
+        { new: true },
+        (err, data) => {
+          if (err) {
+            res.status(500).send(err);
+          } else {
+            res.send(data.article);
+          }
+        }
+      );
+    } catch (err) {
+      res.send(err);
+    }
   },
   remove(req, res) {
     const { id } = req.params;
