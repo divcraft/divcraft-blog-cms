@@ -1,7 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
-import { updateArticleSectionList } from 'store/actions';
+import {
+  updateArticleSectionList,
+  addMultipleDeletedPhotos,
+} from 'store/actions';
 import {
   PARAGRAPH,
   SUBTITLE,
@@ -46,6 +49,12 @@ const SectionEditor = ({ data: { title, items, sectionPosition } }) => {
     dispatch(updateArticleSectionList(updatedSections));
   };
   const handleRemoveSection = () => {
+    const deletedPhotos = items
+      .filter((item) => item.type === IMAGE)
+      .filter((item) => item.content.isUploaded)
+      .map((item) => item.content.data);
+    if (deletedPhotos.length > 0)
+      dispatch(addMultipleDeletedPhotos(deletedPhotos));
     const updatedSections = sections
       .filter((section) => section.sectionPosition !== sectionPosition)
       .map((section, index) => ({

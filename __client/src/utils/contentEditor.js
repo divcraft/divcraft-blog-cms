@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
-import { updateArticleSectionList } from 'store/actions';
+import { updateArticleSectionList, addDeletedPhoto } from 'store/actions';
 import { IMAGE, LIST, MOVE_UP, MOVE_DOWN } from 'constants';
 import { EditElementButtons } from 'layouts/ArticleEditor/components';
 
@@ -70,6 +70,9 @@ const contentEditor = ({
     dispatch(updateArticleSectionList(updatedSections));
   };
   const handleRemoveItem = () => {
+    if (type === IMAGE && content.isUploaded) {
+      dispatch(addDeletedPhoto(content.data));
+    }
     const updatedSections = sections.map((section) => {
       if (section.sectionPosition === sectionPosition) {
         const updatedItems = section.items
