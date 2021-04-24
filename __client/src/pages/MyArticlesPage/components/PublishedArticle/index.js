@@ -1,4 +1,5 @@
 import React, { useMemo } from 'react';
+import { Image as CloudinaryImage } from 'cloudinary-react';
 import PropTypes from 'prop-types';
 import { TileListItem, LinkButton, LinkText } from 'components';
 import { displayDate } from 'utils';
@@ -21,18 +22,32 @@ const PublishedArticle = ({ article }) => {
   const categories = useSelector((state) => state.categories.categories);
   const {
     averageRating,
-    header: { title },
     category_id,
     articleComments,
     publicationDate,
   } = article;
+  const {
+    header: { title, image },
+  } = article.article;
   const articleCategory = useMemo(
     () => categories.find((category) => category._id === category_id),
     [categories]
   );
   return (
     <TileListItem pattern="big">
-      <img src="" alt="" />
+      <span>
+        {image.data ? (
+          <CloudinaryImage
+            alt={image.alt}
+            cloudName="dmlal5qyb"
+            publicId={image.data}
+            width="180"
+            crop="scale"
+          />
+        ) : (
+          <div />
+        )}
+      </span>
       <div>
         <div>
           <div>

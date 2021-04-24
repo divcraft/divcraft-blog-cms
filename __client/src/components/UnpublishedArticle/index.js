@@ -1,5 +1,6 @@
 import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
+import { Image as CloudinaryImage } from 'cloudinary-react';
 import Axios from 'axios';
 import { displayDate } from 'utils';
 import { useSelector, useDispatch } from 'react-redux';
@@ -24,12 +25,10 @@ const UnpublishedArticle = ({ article, pattern }) => {
   const categories = useSelector((state) => state.categories.categories);
   const user = useSelector((state) => state.userData.user);
   const { markedArticles } = user;
+  const { _id, category_id, updatedAt } = article;
   const {
-    _id,
-    header: { title },
-    category_id,
-    updatedAt,
-  } = article;
+    header: { title, image },
+  } = article.article;
   const isMarked = markedArticles.includes(_id);
   const articleCategory = useMemo(
     () => categories.find((category) => category._id === category_id),
@@ -66,7 +65,19 @@ const UnpublishedArticle = ({ article, pattern }) => {
   };
   return (
     <TileListItem pattern="big">
-      <img src="" alt="" />
+      <span>
+        {image.data ? (
+          <CloudinaryImage
+            alt={image.alt}
+            cloudName="dmlal5qyb"
+            publicId={image.data}
+            width="180"
+            crop="scale"
+          />
+        ) : (
+          <div />
+        )}
+      </span>
       <div>
         <div>
           <div>

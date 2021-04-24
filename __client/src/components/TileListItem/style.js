@@ -4,7 +4,6 @@ export const TileListItem = styled.li`
   overflow: hidden;
   background-color: white;
   display: flex;
-  flex-grow: 1;
   justify-content: space-between;
   align-items: center;
   width: 100%;
@@ -22,24 +21,32 @@ export const TileListItem = styled.li`
     css`
       min-height: 100px;
       padding: 0;
-      & > img {
-        display: block;
-        width: 180px;
-        min-height: 100px;
-        height: 100%;
-        background-color: gray;
-        transform: scale(1.05);
-      }
       & > div {
         display: flex;
         justify-content: space-between;
         padding: 15px 20px;
         width: 100%;
-        & > div:first-child {
-          display: flex;
-          flex-direction: column;
-          justify-content: space-around;
-        }
+      }
+      & > span {
+        display: block;
+        min-width: 160px;
+        height: 100px;
+        padding: 0;
+      }
+      & > span > img {
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+      }
+      & > span > div {
+        background-color: gray;
+        width: 100%;
+        height: 100%;
+      }
+      & > div > div:first-child {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
       }
     `}
   &:last-child {
