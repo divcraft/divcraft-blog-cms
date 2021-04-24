@@ -1,7 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useDispatch } from 'react-redux';
-import { editHeaderImageData, editHeaderImageAlt } from 'store/actions';
+import { useSelector, useDispatch } from 'react-redux';
+import {
+  editHeaderImageData,
+  editHeaderImageAlt,
+  addDeletedPhoto,
+} from 'store/actions';
 import {
   ImageContainer,
   PreviewImage,
@@ -21,6 +25,16 @@ const ImageEditor = ({
   itemPosition,
 }) => {
   const dispatch = useDispatch();
+  const isImageUploaded =
+    pattern === 'header'
+      ? useSelector(
+          (state) => state.articleData.article.header.image.isUploaded
+        )
+      : content.isUploaded;
+  const photoId =
+    pattern === 'header'
+      ? useSelector((state) => state.articleData.article.header.image.data)
+      : content.data;
   const handleImageAlt = (e) => {
     if (pattern === 'header') {
       dispatch(editHeaderImageAlt(e.target.value));
@@ -29,6 +43,7 @@ const ImageEditor = ({
     }
   };
   const handleImageData = (e) => {
+    if (isImageUploaded) dispatch(addDeletedPhoto(photoId));
     const file = e.target.files[0];
     if (file) {
       const reader = new FileReader();
@@ -51,7 +66,7 @@ const ImageEditor = ({
               alt={content.alt}
               cloudName="dmlal5qyb"
               publicId={content.data}
-              width={pattern === 'header' && '1200'}
+              width={pattern === 'header' ? '1200' : 'auto'}
               crop="scale"
             />
           ) : (

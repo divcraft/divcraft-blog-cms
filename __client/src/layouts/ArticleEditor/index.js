@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Axios from 'axios';
-import { useParams } from 'react-router-dom';
+import { useParams, withRouter } from 'react-router-dom';
 import { Wrapper } from 'components';
 import { useSelector, useDispatch } from 'react-redux';
 import {
@@ -9,6 +9,7 @@ import {
   updateArticle,
   addUserId,
   clearArticleData,
+  clearDeletedPhotosArray,
 } from 'store/actions';
 import {
   HeaderEditor,
@@ -17,7 +18,7 @@ import {
   AddElementButton,
 } from './components';
 
-const ArticleEditor = ({ pattern }) => {
+const ArticleEditor = ({ pattern, history }) => {
   const dispatch = useDispatch();
   const articleData = useSelector((state) => state.articleData);
   const deletedPhotos = useSelector((state) => state.deletedPhotos);
@@ -29,8 +30,8 @@ const ArticleEditor = ({ pattern }) => {
     if (pattern === 'newArticle') {
       Axios.post('/api/articles', articleData)
         .then((res) => {
-          const updatedArticle = res.data;
-          dispatch(updateArticle(updatedArticle));
+          const articleId = res.data;
+          history.push(`/edytuj-artykul/${articleId}`);
         })
         .catch((err) => {
           throw err;
@@ -43,8 +44,8 @@ const ArticleEditor = ({ pattern }) => {
       })
         .then((res) => {
           const updatedArticle = res.data;
-          console.log(updatedArticle);
-          // dispatch(updateArticle(updatedArticle));
+          dispatch(updateArticle(updatedArticle));
+          dispatch(clearDeletedPhotosArray());
         })
         .catch((err) => {
           throw err;
@@ -69,6 +70,7 @@ const ArticleEditor = ({ pattern }) => {
     dispatch(addUserId(userId));
     return () => {
       dispatch(clearArticleData());
+      dispatch(clearDeletedPhotosArray());
     };
   }, []);
   return (
@@ -88,6 +90,7 @@ const ArticleEditor = ({ pattern }) => {
 
 ArticleEditor.propTypes = {
   pattern: PropTypes.oneOf(['newArticle', 'editArticle']),
+  history: PropTypes.instanceOf(Object).isRequired,
 };
 
-export default ArticleEditor;
+export default withRouter(ArticleEditor);

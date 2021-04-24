@@ -27,6 +27,7 @@ const contentEditor = ({
           return {
             ...prevContent,
             data: imgData,
+            isUploaded: false,
           };
         }
       } else if (type === LIST) {
