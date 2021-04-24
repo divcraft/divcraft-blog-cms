@@ -6,6 +6,7 @@ import {
   FETCH_TO_GETTING_PUBLIC_ARTICLES_PROMISE,
   FETCH_TO_GETTING_PUBLIC_ARTICLES_SUCCESS,
   FETCH_TO_GETTING_PUBLIC_ARTICLES_FAIL,
+  REMOVE_TO_GETTING_PUBLIC_ARTICLE,
   CLEAR_TO_GETTING_PUBLIC_ARTICLES,
 } from 'constants';
 
@@ -69,6 +70,11 @@ export const fetchToGettingPublicArticlesAllUsers = () => (dispatch) => {
       });
   }, []);
 };
+
+export const removeToGettingPublicArticle = (articleId) => ({
+  type: REMOVE_TO_GETTING_PUBLIC_ARTICLE,
+  payload: articleId,
+});
 
 export const clearToGettingPublicArticles = {
   type: CLEAR_TO_GETTING_PUBLIC_ARTICLES,

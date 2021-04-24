@@ -6,6 +6,7 @@ import {
   FETCH_TO_EDIT_ARTICLES_PROMISE,
   FETCH_TO_EDIT_ARTICLES_SUCCESS,
   FETCH_TO_EDIT_ARTICLES_FAIL,
+  REMOVE_TO_EDIT_ARTICLE,
   CLEAR_TO_EDIT_ARTICLES,
 } from 'constants';
 
@@ -38,6 +39,11 @@ export const fetchToEditArticles = () => (dispatch) => {
       });
   }, []);
 };
+
+export const removeToEditArticle = (articleId) => ({
+  type: REMOVE_TO_EDIT_ARTICLE,
+  payload: articleId,
+});
 
 export const clearToEditArticles = {
   type: CLEAR_TO_EDIT_ARTICLES,

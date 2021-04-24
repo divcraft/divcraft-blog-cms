@@ -52,20 +52,30 @@ module.exports = {
     }
   },
   async update(req, res) {
-    const { article, deletedPhotos } = req.body;
     const { id } = req.params;
+    const { toUpdate } = req.query;
+    let updateConfig;
     try {
-      const updatedArticle = await manageImages(article, deletedPhotos);
+      if (toUpdate === 'article') {
+        const { deletedPhotos } = req.body;
+        let { article } = req.body;
+        article = await manageImages(article, deletedPhotos);
+        updateConfig = { article };
+      } else {
+        updateConfig = req.body;
+      }
       Articles.findByIdAndUpdate(
         id,
-        { article: updatedArticle },
+        updateConfig,
         { new: true },
         (err, data) => {
           if (err) {
             res.status(500).send(err);
-          } else {
-            res.send(data.article);
-          }
+          } else if (toUpdate === 'article') {
+              res.send(data.article);
+            } else {
+              res.send(data._id);
+            }
         }
       );
     } catch (err) {
@@ -74,11 +84,11 @@ module.exports = {
   },
   remove(req, res) {
     const { id } = req.params;
-    Articles.findByIdAndDelete(id, (err) => {
+    Articles.findByIdAndDelete(id, (err, data) => {
       if (err) {
         res.status(500).send(err);
       } else {
-        res.send(`An article with ID '${id}' has been deleted successfully.`);
+        res.send(data._id);
       }
     });
   },

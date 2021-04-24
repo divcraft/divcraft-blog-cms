@@ -38,7 +38,7 @@ const ArticleEditor = ({ pattern, history }) => {
         });
     } else if (pattern === 'editArticle') {
       const { article } = articleData;
-      Axios.put(`/api/articles/${id}`, {
+      Axios.put(`/api/articles/${id}?toUpdate=article`, {
         article,
         deletedPhotos,
       })

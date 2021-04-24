@@ -2,6 +2,7 @@ import {
   FETCH_TO_EDIT_ARTICLES_PROMISE,
   FETCH_TO_EDIT_ARTICLES_SUCCESS,
   FETCH_TO_EDIT_ARTICLES_FAIL,
+  REMOVE_TO_EDIT_ARTICLE,
   CLEAR_TO_EDIT_ARTICLES,
   LOADING,
   SUCCESSED,
@@ -29,6 +30,13 @@ export default (state = initialState, action) => {
       return {
         ...state,
         loadingState: FAILED,
+      };
+    case REMOVE_TO_EDIT_ARTICLE:
+      return {
+        ...state,
+        articles: state.articles.filter(
+          (article) => article._id !== action.payload
+        ),
       };
     case CLEAR_TO_EDIT_ARTICLES:
       return {

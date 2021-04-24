@@ -1,10 +1,16 @@
 import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
-import { TileListItem, LinkButton, LinkText } from 'components';
+import Axios from 'axios';
 import { displayDate } from 'utils';
 import { useSelector, useDispatch } from 'react-redux';
-import { addMarkedArticle, removeMarkedArticle } from 'store/actions';
+import {
+  addMarkedArticle,
+  removeMarkedArticle,
+  removeToEditArticle,
+  removeToGettingPublicArticle,
+} from 'store/actions';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
+import { TileListItem, LinkButton, StandardButton, LinkText } from 'components';
 import {
   LinkContainer,
   StyledFontAwesome,
@@ -35,6 +41,28 @@ const UnpublishedArticle = ({ article, pattern }) => {
     } else {
       dispatch(removeMarkedArticle(_id, user));
     }
+  };
+  const handleRemoveFromPublication = () => {
+    Axios.put(`/api/articles/${_id}?toUpdate=isFinished`, {
+      isFinished: false,
+    })
+      .then((res) => {
+        const articleId = res.data;
+        dispatch(removeToGettingPublicArticle(articleId));
+      })
+      .catch((err) => {
+        throw err;
+      });
+  };
+  const handleDeleteArticle = () => {
+    Axios.delete(`/api/articles/${_id}`)
+      .then((res) => {
+        const articleId = res.data;
+        dispatch(removeToEditArticle(articleId));
+      })
+      .catch((err) => {
+        throw err;
+      });
   };
   return (
     <TileListItem pattern="big">
@@ -70,13 +98,16 @@ const UnpublishedArticle = ({ article, pattern }) => {
             Edytuj
           </LinkButton>
           {pattern === 'toGettingPublic' ? (
-            <LinkButton to="/" pattern="blueWide">
+            <StandardButton
+              onClick={handleRemoveFromPublication}
+              pattern="blueWide"
+            >
               Wycofaj z publikacji
-            </LinkButton>
+            </StandardButton>
           ) : (
-            <LinkButton to="/" pattern="blueWide">
+            <StandardButton onClick={handleDeleteArticle} pattern="blueWide">
               Usuń
-            </LinkButton>
+            </StandardButton>
           )}
         </LinkContainer>
       </div>

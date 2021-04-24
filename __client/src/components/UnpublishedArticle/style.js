@@ -8,7 +8,7 @@ export const LinkContainer = styled.div`
   & a:nth-child(2) {
     margin-left: 10px;
   }
-  & a:nth-child(3) {
+  & button {
     margin-top: 10px;
   }
 `;

@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-export const Button = styled.button`
+export const StandardButton = styled.button`
   cursor: pointer;
   text-decoration: none;
   border-radius: 15px;

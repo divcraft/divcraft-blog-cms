@@ -18,3 +18,4 @@ export { default as UnpublishedArticleList } from './UnpublishedArticleList';
 export { default as NotificationsList } from './NotificationsList';
 export { default as NotificationsListItem } from './NotificationsListItem';
 export { TitleButtonsContainer } from './TitleButtonsContainer';
+export { StandardButton } from './StandardButton';
