@@ -20,6 +20,7 @@ import {
 const ArticleEditor = ({ pattern }) => {
   const dispatch = useDispatch();
   const articleData = useSelector((state) => state.articleData);
+  const deletedPhotos = useSelector((state) => state.deletedPhotos);
   const userId = useSelector((state) => state.userData.user._id);
   const { sections } = articleData.article;
   const { id } = useParams();
@@ -35,7 +36,11 @@ const ArticleEditor = ({ pattern }) => {
           throw err;
         });
     } else if (pattern === 'editArticle') {
-      Axios.put(`/api/articles/${id}`, articleData.article)
+      const { article } = articleData;
+      Axios.put(`/api/articles/${id}`, {
+        article,
+        deletedPhotos,
+      })
         .then((res) => {
           const updatedArticle = res.data;
           console.log(updatedArticle);

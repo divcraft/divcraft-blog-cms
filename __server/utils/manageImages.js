@@ -1,6 +1,11 @@
 const { cloudinary } = require('../config/cloudinaryConfig');
 
-const manageImages = async (article) => {
+const manageImages = async (article, deletedPhotos) => {
+  if (deletedPhotos.length > 0) {
+    await cloudinary.v2.api.delete_resources(deletedPhotos, (err, data) =>
+      console.log(`usunięto zdjęcia, ${data}`)
+    );
+  }
   const manageImage = async (stringImgData) => {
     return cloudinary.uploader.upload(stringImgData, {
       upload_preset: 'div-craft-setup',

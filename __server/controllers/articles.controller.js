@@ -52,10 +52,10 @@ module.exports = {
     }
   },
   async update(req, res) {
-    const article = req.body;
+    const { article, deletedPhotos } = req.body;
     const { id } = req.params;
     try {
-      const updatedArticle = await manageImages(article);
+      const updatedArticle = await manageImages(article, deletedPhotos);
       Articles.findByIdAndUpdate(
         id,
         { article: updatedArticle },
