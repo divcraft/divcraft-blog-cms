@@ -12,3 +12,4 @@ export * from './toEditArticles.constants';
 export * from './articleData.constants';
 export * from './sectionDataTypes.constants';
 export * from './buttonEvents.constants';
+export * from './deletedPhotos.constants';

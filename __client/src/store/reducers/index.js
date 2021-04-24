@@ -10,6 +10,7 @@ import comments from './comments.reducer';
 import toGettingPublicArticles from './toGettingPublicArticles.reducer';
 import toEditArticles from './toEditArticles.reducer';
 import articleData from './articleData.reducer';
+import deletedPhotos from './deletedPhotos.reducer';
 
 const rootReducer = combineReducers({
   errorMessage,
@@ -23,6 +24,7 @@ const rootReducer = combineReducers({
   toGettingPublicArticles,
   toEditArticles,
   articleData,
+  deletedPhotos,
 });
 
 export default rootReducer;
