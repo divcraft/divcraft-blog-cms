@@ -40,11 +40,11 @@ module.exports = {
         article: imagedArticle,
       };
       const newArticle = new Articles(updatedArticleData);
-      newArticle.save((err) => {
+      newArticle.save((err, data) => {
         if (err) {
           res.status(500).send(err);
         } else {
-          res.send(newArticle.article);
+          res.send(data._id);
         }
       });
     } catch (err) {

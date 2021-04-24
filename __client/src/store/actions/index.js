@@ -9,3 +9,4 @@ export * from './comments.actions';
 export * from './toGettingPublicArticles.actions';
 export * from './toEditArticles.actions';
 export * from './articleData.actions';
+export * from './deletedPhotos.actions';
