@@ -5,7 +5,7 @@ const { Schema } = mongoose;
 const articleSchema = new Schema(
   {
     user_id: { type: String, required: true },
-    category_id: { type: String, required: true },
+    category_id: String,
     averageRating: { type: Number, default: 0 },
     ratersNumber: { type: Number, default: 0 },
     isFinished: { type: Boolean, default: false },
