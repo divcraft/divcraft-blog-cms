@@ -1,5 +1,6 @@
 const Articles = require('../mongoose/models/article.model');
 const manageImages = require('../utils/manageImages');
+const { cloudinary } = require('../config/cloudinaryConfig');
 
 module.exports = {
   findOne(req, res) {
@@ -72,10 +73,10 @@ module.exports = {
           if (err) {
             res.status(500).send(err);
           } else if (toUpdate === 'article') {
-              res.send(data.article);
-            } else {
-              res.send(data._id);
-            }
+            res.send(data.article);
+          } else {
+            res.send(data._id);
+          }
         }
       );
     } catch (err) {
@@ -88,7 +89,26 @@ module.exports = {
       if (err) {
         res.status(500).send(err);
       } else {
-        res.send(data._id);
+        let deletedPhotos = [];
+        data.article.sections.forEach((section) => {
+          const deletedItemImages = section.items
+            .filter((item) => item.type === 'IMAGE')
+            .map((item) => item.content.data);
+          deletedPhotos = [...deletedPhotos, ...deletedItemImages];
+        });
+        const headerImageId = data.article.header.image.data;
+        if (headerImageId) deletedPhotos = [...deletedPhotos, headerImageId];
+        if (deletedPhotos.length > 0) {
+          cloudinary.api.delete_resources(deletedPhotos, (error) => {
+            if (error) {
+              res.status(500).send(error);
+            } else {
+              res.send(data._id);
+            }
+          });
+        } else {
+          res.send(data._id);
+        }
       }
     });
   },
