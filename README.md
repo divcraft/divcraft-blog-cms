@@ -1,6 +1,6 @@
 ## Blog Panel Web Application (MERN stack)
 
-Boilerplate based on MongoDB, Express, React & Node.js
+The project has been based on MongoDB, Express, React & Node.js technologies.
 
 The application allows you to create, edit and manage blog articles. Each article is assigned to its author account.
 
