@@ -4,7 +4,7 @@ The project has been based on MongoDB, Express, React & Node.js technologies.
 
 The application contains a set of tools that help to create, edit and delete blog articles. The whole project has been based on the following conception:
 
-There are two types of users: authors and admins. Authors are given their own credentials data by the admins. Both types of users can create blog articles which are saved on the edit stage page. From this point they can edit their started articles further. When an article is ready, the author sends the article to "to get published" stage. At this point one of admins does validate the article and according to the result either sends the article to the blog or sends it back to the edit stage to the author to fix the mistakes.
+There are two types of users: authors and admins. Authors are given their own credentials data by the admins. Both types of users can create blog articles which are saved on the edit stage page. From this point they can edit their started articles further. When an article is ready, the author sends the article to "to get published" stage. At this point one of admins does validate the article and according to the result either sends the article to the blog or sends it back to the edit stage for the author to fix the mistakes.
 
 ## How to use the application
 
